@@ -23,4 +23,9 @@ class Branch extends Model
     {
         return $this->hasMany(ACS::class);
     }
+
+    public function polytrauma(): HasMany
+    {
+        return $this->hasMany(Polytrauma::class);
+    }
 }
