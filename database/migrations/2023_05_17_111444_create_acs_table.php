@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('acs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('branch_id')->nullable()->constrained('branch')->nullOnDelete();
-            $table->foreignId('user_id')->nullable()->constrained('user')->nullOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->string('department')->nullable();
             $table->string('history_disease')->nullable();
             $table->string('full_name')->nullable();
@@ -50,9 +50,7 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+
     public function down(): void
     {
         Schema::dropIfExists('acs');
