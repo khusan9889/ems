@@ -15,9 +15,11 @@
 
 <!-- begin panel -->
 
-<x-panel title="Panel">
-	Дашборд
+<x-panel title="ACS List">
+	@include('acs.index')
 </x-panel>
 </div>
 <!-- end panel -->
 @endsection
+
+
