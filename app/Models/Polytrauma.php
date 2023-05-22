@@ -11,6 +11,8 @@ class Polytrauma extends Model
 {
     use HasFactory, Scopes;
 
+    protected $table = 'polytrauma';
+
     public $fillable = [
         'branch_id',
         'user_id',

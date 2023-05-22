@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Redis;
 
 class ACSController extends Controller
 {
-    use ApiResponse;
+    // use ApiResponse;
 
     public function index(Request $request)
     {

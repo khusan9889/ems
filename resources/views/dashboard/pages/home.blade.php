@@ -18,6 +18,11 @@
 <x-panel title="ACS List">
 	@include('acs.index')
 </x-panel>
+
+<x-panel title="Polytrauma">
+	@include('polytrauma.index')
+</x-panel>
+
 </div>
 <!-- end panel -->
 @endsection
