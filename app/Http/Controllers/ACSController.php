@@ -12,5 +12,10 @@ class ACSController extends Controller
 {
     use ApiResponse;
 
-    
+    public function index(Request $request)
+    {
+        $data = ACS::all();
+
+        return view('acs.index', compact('data'));
+    }
 }

@@ -12,6 +12,8 @@ class ACS extends Model
 {
     use HasFactory, Scopes;
 
+    protected $table = 'acs';
+
     public $fillable = [
         'branch_id',
         'user_id',
@@ -57,4 +59,3 @@ class ACS extends Model
         return $this->belongsTo(User::class);
     }
 }
-
