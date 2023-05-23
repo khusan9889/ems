@@ -21,7 +21,7 @@
                     <th>hospitalization_date</th>
                     <th>discharge_date</th>
                     <th>hospitalization_channels</th>
-                    <th>treatment_result</th>
+                    <!-- <th>treatment_result</th>
                     <th>final_result</th>
                     <th>anginal_attack_date</th>
                     <th>cta_invasive_angiography</th>
@@ -42,7 +42,7 @@
                     <th>aspirin</th>
                     <th>p2y12</th>
                     <th>high_intensity_statins</th>
-                    <th>ACE_inhibitors_ARBs</th>
+                    <th>ACE_inhibitors_ARBs</th> -->
                     <th>physician_full_name</th>
                     <th>stat_department_full_name</th>
                 </tr>
@@ -57,7 +57,7 @@
                     <td>{{$item->hospitalization_date}}</td>
                     <td>{{$item->discharge_date}}</td>
                     <td>{{$item->hospitalization_channels}}</td>
-                    <td>{{$item->treatment_result}}</td>
+                    <!-- <td>{{$item->treatment_result}}</td>
                     <td>{{$item->final_result}}</td>
                     <td>{{$item->anginal_attack_date}}</td>
                     <td>{{$item->cta_invasive_angiography}}</td>
@@ -78,7 +78,7 @@
                     <td>{{$item->aspirin}}</td>
                     <td>{{$item->p2y12}}</td>
                     <td>{{$item->high_intensity_statins}}</td>
-                    <td>{{$item->ACE_inhibitors_ARBs}}</td>
+                    <td>{{$item->ACE_inhibitors_ARBs}}</td> -->
                     <td>{{$item->physician_full_name}}</td>
                     <td>{{$item->stat_department_full_name}}</td>
 

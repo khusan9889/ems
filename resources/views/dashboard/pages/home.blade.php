@@ -19,9 +19,9 @@
 	@include('acs.index')
 </x-panel>
 
-<x-panel title="Polytrauma">
+<!-- <x-panel title="Polytrauma">
 	@include('polytrauma.index')
-</x-panel>
+</x-panel> -->
 
 </div>
 <!-- end panel -->

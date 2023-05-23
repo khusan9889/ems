@@ -1,7 +1,5 @@
 <x-slot name="header">
-        <!-- <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('acs.acs_list') }}
-        </h2> -->
+        
     </x-slot>
     <style>
         table, th, td {

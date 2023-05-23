@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
         $data = ACS::all();
-        $data = Polytrauma::all();
+        // $datap = Polytrauma::all();
         return view('dashboard.pages.home', compact('data'));
     });
     
