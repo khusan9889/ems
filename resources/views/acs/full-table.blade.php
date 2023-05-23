@@ -51,7 +51,7 @@
             }
         </style>
         <div class="table-responsive">
-            <table class="table">
+            <table class="table align-middle">
                 <thead>
                     <tr>
                         <th>id</th>
