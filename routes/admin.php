@@ -11,6 +11,7 @@ Route::group(['middleware' => 'auth'], function () {
         // $datap = Polytrauma::all();
         return view('dashboard.pages.home', compact('data'));
     });
+
     
     // Route::get('acs', [ACSController::class, 'index']);
 });
