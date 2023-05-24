@@ -1,5 +1,6 @@
 <!-- required files -->
-<script src="../assets/plugins/ionicons/dist/ionicons/ionicons.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-Xs4mwd6JczjdTev+ssUJTCqyTh48YC4wx+z0JX9H8duU97R9GnwdcRv7bkP2CCfbwMFw4zxUjcK5K8x/+P/PyA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <div class="table-responsive">
     <table class="table table-striped table-bordered align-middle">
         <thead>
@@ -28,7 +29,8 @@
                 <td>{{$item->hospitalization_channels}}</td>
                 <td>{{$item->physician_full_name}}</td>
                 <td>{{$item->stat_department_full_name}}</td>
-                <td><ion-icon name="eye-outline"></ion-icon></td> <!-- Icon column with the eye-outline class -->
+                <td><i class="fas fa-eye"></i></td> <!-- Icon column with the eye icon using Font Awesome classes -->
+
             </tr>
             @endforeach
         </tbody>
