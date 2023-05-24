@@ -29,7 +29,11 @@
                 <td>{{$item->hospitalization_channels}}</td>
                 <td>{{$item->physician_full_name}}</td>
                 <td>{{$item->stat_department_full_name}}</td>
-                <td><i class="fas fa-eye"></i></td> <!-- Icon column with the eye icon using Font Awesome classes -->
+                <td>
+                    <i class="fas fa-eye"></i> <!-- Eye icon -->
+                    <i class="fas fa-pen"></i> <!-- Pen icon -->
+                    <i class="fas fa-trash-alt"></i> <!-- Bin icon -->
+                </td>
 
             </tr>
             @endforeach
