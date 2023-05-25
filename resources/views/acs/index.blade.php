@@ -1,10 +1,21 @@
 <!-- required files -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-Xs4mwd6JczjdTev+ssUJTCqyTh48YC4wx+z0JX9H8duU97R9GnwdcRv7bkP2CCfbwMFw4zxUjcK5K8x/+P/PyA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+<!-- required files -->
+<link href="../assets/plugins/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+<link href="../assets/plugins/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" />
+<script src="../assets/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../assets/plugins/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+<script src="../assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../assets/plugins/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+
 <div class="table-responsive">
-    <table class="table table-striped table-bordered align-middle">
+    <table id="data-table-default" class="table table-striped table-bordered align-middle">
+
         <thead>
             <tr>
+                
+
                 <th>id</th>
                 <th>department</th>
                 <th>history_disease</th>
@@ -21,7 +32,7 @@
             @foreach($data as $key => $item)
             <tr>
                 <td>{{$item->id}}</td>
-                <td>{{$item->department}}</td>
+                <td>{{$item->department}}</td>image.png
                 <td>{{$item->history_disease}}</td>
                 <td>{{$item->full_name}}</td>
                 <td>{{$item->hospitalization_date}}</td>
@@ -30,9 +41,16 @@
                 <td>{{$item->physician_full_name}}</td>
                 <td>{{$item->stat_department_full_name}}</td>
                 <td>
-                    <i class="fas fa-eye"></i> <!-- Eye icon -->
-                    <i class="fas fa-pen"></i> <!-- Pen icon -->
-                    <i class="fas fa-trash-alt"></i> <!-- Bin icon -->
+                    <button type="button" class="btn btn-primary btn-xs">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button type="button" class="btn btn-warning btn-xs">
+                        <i class="fas fa-pen"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger btn-xs">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                    
                 </td>
 
             </tr>
@@ -40,3 +58,9 @@
         </tbody>
     </table>
 </div>
+
+<script>
+  $('#data-table-default').DataTable({
+    responsive: true
+  });
+</script>
