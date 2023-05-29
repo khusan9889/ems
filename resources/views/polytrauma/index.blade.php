@@ -17,11 +17,8 @@
             <tr>
                 <td class="align-middle">
                     <div class="d-flex align-items-center justify-content-center">
-                        <button class="btn btn-link btn-sm sort-btn" data-sort-by="id" data-sort-type="asc">
-                            <i class="fas fa-long-arrow-alt-up fa-lg"></i>
-                        </button>
-                        <button class="btn btn-link btn-sm sort-btn" data-sort-by="id" data-sort-type="desc">
-                            <i class="fas fa-long-arrow-alt-down fa-lg"></i>
+                        <button class="btn btn-link btn-sm sort-btn" data-sort-by="id" onclick="toggleSortDirection(this)">
+                            <i class="fas fa-sort fa-lg"></i>
                         </button>
                     </div>
                 </td>
