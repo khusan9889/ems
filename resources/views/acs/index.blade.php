@@ -9,6 +9,13 @@
 <script src="../assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../assets/plugins/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script> -->
 
+<!-- <link href="../assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+<script src="../assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script> -->
+<!-- <link href="../assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" /> -->
+<!-- <link href="../assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" rel="stylesheet" />
+<link href="../assets/plugins/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+ -->
+
 <div class="table-responsive">
     <table id="data-table-default" class="table table-striped table-bordered align-middle">
 
@@ -58,6 +65,7 @@
                 </td>
             </tr>
 
+
         </thead>
         <tbody>
             @foreach($data as $key => $item)
@@ -93,8 +101,19 @@
     </table>
 </div>
 
-<!-- <script>
-  $('#data-table-default').DataTable({
-    responsive: true
-  });
-</script> -->
+
+<!-- <script src="../assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+<script src="../assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+<script src="../assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="../assets/plugins/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script> -->
+
+
+<script>
+    $(document).ready(function() {
+        $('.datepicker').datepicker({
+            todayHighlight: true,
+            autoclose: true
+        });
+    });
+</script>
+
