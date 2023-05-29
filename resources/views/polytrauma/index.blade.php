@@ -54,7 +54,6 @@
                 </td>
             </tr>
 
-
         </thead>
         <tbody>
             @foreach($data as $key => $item)

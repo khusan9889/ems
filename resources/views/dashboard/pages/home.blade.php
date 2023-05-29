@@ -27,6 +27,5 @@
 
 
 
-</div>
 <!-- end panel -->
 @endsection

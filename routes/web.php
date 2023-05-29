@@ -23,9 +23,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/polytrauma', function () {
-    return view('polytrauma');
-})->middleware(['auth'])->name('polytrauma');
+
 
 // Route::get('/acs/full-table', [ACSController::class, 'fullTable'])->name('acs.full-table');
 

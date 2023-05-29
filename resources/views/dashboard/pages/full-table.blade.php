@@ -1,5 +1,20 @@
+@extends('dashboard.layouts.default')
 
-<table class="table">
+@section('title', 'Детальный список ОКС')
+
+@section('content')
+<!-- begin breadcrumb -->
+<ol class="breadcrumb float-xl-right">
+	<li class="breadcrumb-item"><a href="javascript:;">Дашборд</a></li>
+	<li class="breadcrumb-item active">Дашборд</li>
+</ol>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">Дашборд</h1>
+<!-- end page-header -->
+
+
+<table class="class="table table-hover">
     <thead>
         <tr>
             <th>id</th>
@@ -73,3 +88,5 @@
         @endforeach
     </tbody>
 </table>
+
+@endsection
