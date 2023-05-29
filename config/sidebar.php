@@ -16,8 +16,14 @@ return [
 	'menu' => [
 		[
 			'icon' => 'fa fa-th-large',
-			'title' => 'Дашборд',
+			'title' => 'ОКС',
 			'url' => '/',
+
+		],
+		[
+			'icon' => 'fa fa-th-large',
+			'title' => 'Политравма',
+			'url' => '/polytrauma',
 		],
 		// [
 		// 	'icon' => 'fa fa-align-left',

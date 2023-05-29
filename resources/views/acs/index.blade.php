@@ -3,16 +3,16 @@
 
         <thead>
             <tr>
-                <th>id</th>
-                <th>department</th>
-                <th>history_disease</th>
-                <th>full_name</th>
-                <th>hospitalization_date</th>
-                <th>discharge_date</th>
-                <th>hospitalization_channels</th>
-                <th>physician_full_name</th>
-                <th>stat_department_full_name</th>
-                <th>Actions</th> <!-- Empty header for the icon column -->
+                <th>№</th>
+                <th>Отделение</th>
+                <th>Номер ИБ</th>
+                <th>Пациент ФИО</th>
+                <th>Дата поступления</th>
+                <th>Дата выписки</th>
+                <th>Канал госпитализации</th>
+                <th>ФИО лечащего врача</th>
+                <th>ФИО специалиста стат.отдела</th>
+                <th>Действия</th> <!-- Empty header for the icon column -->
             </tr>
             <tr>
                 <td class="align-middle">
@@ -50,7 +50,7 @@
                     <select class="form-control form-control-sm" name="stat_department_full_name"></select>
                 </td>
                 <td>
-                    <button class="btn btn-success btn-block">Apply</button>
+                    <button class="btn btn-success btn-block">Применить</button>
                 </td>
             </tr>
 

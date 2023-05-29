@@ -13,18 +13,20 @@
 <h1 class="page-header">Дашборд</h1>
 <!-- end page-header -->
 
-<!-- begin panel -->
 
-<x-panel title="ACS List">
-	@include('acs.index')
-</x-panel>
+<!-- changing panel name according url -->
+@if(request()->is('polytrauma'))
+    <x-panel title="Политравма">
+        @include('polytrauma.index')
+    </x-panel>
+@else
+    <x-panel title="ОКС">
+        @include('acs.index')
+    </x-panel>
+@endif
 
-<!-- <x-panel title="Polytrauma">
-	@include('polytrauma.index')
-</x-panel> -->
+
 
 </div>
 <!-- end panel -->
 @endsection
-
-

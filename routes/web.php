@@ -23,7 +23,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/acs/full-table', [ACSController::class, 'fullTable'])->name('acs.full-table');
+Route::get('/polytrauma', function () {
+    return view('polytrauma');
+})->middleware(['auth'])->name('polytrauma');
+
+// Route::get('/acs/full-table', [ACSController::class, 'fullTable'])->name('acs.full-table');
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
