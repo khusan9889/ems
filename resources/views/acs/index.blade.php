@@ -1,21 +1,3 @@
-<!-- required files -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-Xs4mwd6JczjdTev+ssUJTCqyTh48YC4wx+z0JX9H8duU97R9GnwdcRv7bkP2CCfbwMFw4zxUjcK5K8x/+P/PyA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
-
-<!-- required files -->
-<!-- <link href="../assets/plugins/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
-<link href="../assets/plugins/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" />
-<script src="../assets/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../assets/plugins/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
-<script src="../assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../assets/plugins/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script> -->
-
-<!-- <link href="../assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
-<script src="../assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script> -->
-<!-- <link href="../assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" /> -->
-<!-- <link href="../assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" rel="stylesheet" />
-<link href="../assets/plugins/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
- -->
-
 <div class="table-responsive">
     <table id="data-table-default" class="table table-striped table-bordered align-middle">
 
@@ -34,7 +16,14 @@
             </tr>
             <tr>
                 <td>
-                    <select class="form-control form-control-sm" name="" id=""></select>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <button class="btn btn-link btn-sm sort-btn" data-sort-by="id" data-sort-type="asc">
+                            <i class="fas fa-long-arrow-alt-up fa-lg"></i>
+                        </button>
+                        <button class="btn btn-link btn-sm sort-btn" data-sort-by="id" data-sort-type="desc">
+                            <i class="fas fa-long-arrow-alt-down fa-lg"></i>
+                        </button>
+                    </div>
                 </td>
                 <td>
                     <select class="form-control form-control-sm" name="department"></select>
@@ -61,7 +50,7 @@
                     <select class="form-control form-control-sm" name="stat_department_full_name"></select>
                 </td>
                 <td>
-                    <button class="btn btn-success btn-sm">Apply</button>
+                    <button class="btn btn-success btn-block">Apply</button>
                 </td>
             </tr>
 
@@ -80,7 +69,6 @@
                 <td>{{$item->physician_full_name}}</td>
                 <td>{{$item->stat_department_full_name}}</td>
                 <td class="align-middle">
-
                     <div class="d-flex">
                         <button type="button" class="btn btn-primary btn-xs mr-1">
                             <i class="fas fa-eye"></i>
@@ -92,28 +80,9 @@
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </div>
-                    
                 </td>
-
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
-
-
-<!-- <script src="../assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-<script src="../assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
-<script src="../assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-<script src="../assets/plugins/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script> -->
-
-
-<script>
-    $(document).ready(function() {
-        $('.datepicker').datepicker({
-            todayHighlight: true,
-            autoclose: true
-        });
-    });
-</script>
-
