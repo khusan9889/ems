@@ -1,93 +1,144 @@
 @extends('dashboard.layouts.default')
 
-
-
 @section('content')
-<!-- begin breadcrumb -->
-<!-- <ol class="breadcrumb float-xl-right">
-	<li class="breadcrumb-item"><a href="javascript:;">Дашборд</a></li>
-	<li class="breadcrumb-item active">Дашборд</li>
-</ol> -->
-<!-- end breadcrumb -->
-<!-- begin page-header -->
-<h1 class="page-header">ОКС-детальная таблица</h1>
-<!-- end page-header -->
-
-<div class="table-responsive">
-    <table class="table table-striped table-bordered align-middle">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>department</th>
-                <th>history_disease</th>
-                <th>full_name</th>
-                <th>hospitalization_date</th>
-                <th>discharge_date</th>
-                <th>hospitalization_channels</th>
-                <th>treatment_result</th>
-                <th>final_result</th>
-                <th>anginal_attack_date</th>
-                <th>cta_invasive_angiography</th>
-                <th>cta_90min</th>
-                <th>deferred_cta_invasive</th>
-                <th>deferred_cta_completed</th>
-                <th>reasons_not_performing_cta</th>
-                <th>thrombolytic_therapy</th>
-                <th>thrombolytic_therapy_administered</th>
-                <th>not_administering_tlt</th>
-                <th>ecg_during_hospitalization</th>
-                <th>st_segment</th>
-                <th>echocardiogram</th>
-                <th>first_measurement</th>
-                <th>cholestero_levels</th>
-                <th>aptt</th>
-                <th>anticoagulant</th>
-                <th>aspirin</th>
-                <th>p2y12</th>
-                <th>high_intensity_statins</th>
-                <th>ACE_inhibitors_ARBs</th>
-                <th>physician_full_name</th>
-                <th>stat_department_full_name</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($data as $key => $item)
-                <tr>
-                    <td>{{$item->id}}</td>
-                    <td>{{$item->department}}</td>
-                    <td>{{$item->history_disease}} </td>
-                    <td>{{$item->full_name}}</td>
-                    <td>{{$item->hospitalization_date}}</td>
-                    <td>{{$item->discharge_date}}</td>
-                    <td>{{$item->hospitalization_channels}}</td>
-                    <td>{{$item->treatment_result}}</td>
-                    <td>{{$item->final_result}}</td>
-                    <td>{{$item->anginal_attack_date}}</td>
-                    <td>{{$item->cta_invasive_angiography}}</td>
-                    <td>{{$item->cta_90min}}</td>
-                    <td>{{$item->deferred_cta_invasive}}</td>
-                    <td>{{$item->deferred_cta_completed}}</td>
-                    <td>{{$item->reasons_not_performing_cta}}</td>
-                    <td>{{$item->thrombolytic_therapy}}</td>
-                    <td>{{$item->thrombolytic_therapy_administered}}</td>
-                    <td>{{$item->not_administering_tlt}}</td>
-                    <td>{{$item->ecg_during_hospitalization}}</td>
-                    <td>{{$item->st_segment}}</td>
-                    <td>{{$item->echocardiogram}}</td>
-                    <td>{{$item->first_measurement}}</td>
-                    <td>{{$item->cholestero_levels}}</td>
-                    <td>{{$item->aptt}}</td>
-                    <td>{{$item->anticoagulant}}</td>
-                    <td>{{$item->aspirin}}</td>
-                    <td>{{$item->p2y12}}</td>
-                    <td>{{$item->high_intensity_statins}}</td>
-                    <td>{{$item->ACE_inhibitors_ARBs}}</td>
-                    <td>{{$item->physician_full_name}}</td>
-                    <td>{{$item->stat_department_full_name}}</td>
-                </tr>
+    <h1 class="page-header">ОКС-детальная таблица</h1>
+    <div class="row justify-content-center">
+        @foreach($data as $key => $item)
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Форма {{$item->id}}</h5>
+                            <table class="table table-striped table-bordered align-middle">
+                                <tbody>
+                                    <tr>
+                                        <th>id</th>
+                                        <td>{{$item->id}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>department</th>
+                                        <td>{{$item->department}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>history_disease</th>
+                                        <td>{{$item->history_disease}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>full_name</th>
+                                        <td>{{$item->full_name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>hospitalization_date</th>
+                                        <td>{{$item->hospitalization_date}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>discharge_date</th>
+                                        <td>{{$item->discharge_date}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>hospitalization_channels</th>
+                                        <td>{{$item->hospitalization_channels}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>treatment_result</th>
+                                        <td>{{$item->treatment_result}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>final_result</th>
+                                        <td>{{$item->final_result}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>anginal_attack_date</th>
+                                        <td>{{$item->anginal_attack_date}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>cta_invasive_angiography</th>
+                                        <td>{{$item->cta_invasive_angiography}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>cta_90min</th>
+                                        <td>{{$item->cta_90min}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>deferred_cta_invasive</th>
+                                        <td>{{$item->deferred_cta_invasive}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>deferred_cta_completed</th>
+                                        <td>{{$item->deferred_cta_completed}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>reasons_not_performing_cta</th>
+                                        <td>{{$item->reasons_not_performing_cta}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>thrombolytic_therapy</th>
+                                        <td>{{$item->thrombolytic_therapy}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>thrombolytic_therapy_administered</th>
+                                        <td>{{$item->thrombolytic_therapy_administered}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>not_administering_tlt</th>
+                                        <td>{{$item->not_administering_tlt}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>ecg_during_hospitalization</th>
+                                        <td>{{$item->ecg_during_hospitalization}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>st_segment</th>
+                                        <td>{{$item->st_segment}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>echocardiogram</th>
+                                        <td>{{$item->echocardiogram}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>first_measurement</th>
+                                        <td>{{$item->first_measurement}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>cholestero_levels</th>
+                                        <td>{{$item->cholestero_levels}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>aptt</th>
+                                        <td>{{$item->aptt}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>anticoagulant</th>
+                                        <td>{{$item->anticoagulant}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>aspirin</th>
+                                        <td>{{$item->aspirin}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>p2y12</th>
+                                        <td>{{$item->p2y12}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>high_intensity_statins</th>
+                                        <td>{{$item->high_intensity_statins}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>ACE_inhibitors_ARBs</th>
+                                        <td>{{$item->ACE_inhibitors_ARBs}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>physician_full_name</th>
+                                        <td>{{$item->physician_full_name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>stat_department_full_name</th>
+                                        <td>{{$item->stat_department_full_name}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             @endforeach
-        </tbody>
-    </table>
-</div>
-
+        </div>
 @endsection
