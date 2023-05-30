@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ACS;
+use App\Services\Contracts\ACSServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -35,4 +36,12 @@ class ACSController extends Controller
 
         return view('acs.full-table', compact('data'));
     }
+
+    // public function redirectById($id, ACSServiceInterface $service)
+    // {
+    //     $acs = $service->redirectById($id);
+    //     if (!$acs) {
+    //         return $this->error("Not found");
+    //     }
+    // }
 }

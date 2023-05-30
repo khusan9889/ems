@@ -31,5 +31,10 @@ class ACSService implements ACSServiceInterface
     {
         return $this->update($id, $request);
     }
+
+    // public function redirectById($acsId)
+    // {
+    //     return ACS::find($acsId); 
+    // }
 }
 

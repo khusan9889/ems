@@ -23,6 +23,6 @@ Route::group(['middleware' => 'auth'], function () {
         $data = Polytrauma::all();
         return view('dashboard.pages.full-table-polyt', compact('data'));
     })->name('full-table-polyt');
-    // Route::get('acs', [ACSController::class, 'index']);
+    
 });
 

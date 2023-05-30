@@ -46,8 +46,10 @@
                 <td>
                     <select class="form-control form-control-sm" name="stat_department_full_name"></select>
                 </td>
-                <td>
-                    <button class="btn btn-success btn-block">Применить</button>
+                <td class="align-middle d-flex justify-content-center">
+                    <div class="btn btn-success">
+                        <i class="fas fa-plus fa-sm"></i>
+                    </div>
                 </td>
             </tr>
 

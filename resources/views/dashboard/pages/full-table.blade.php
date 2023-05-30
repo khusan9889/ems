@@ -15,123 +15,123 @@
                                         <td>{{$item->id}}</td>
                                     </tr>
                                     <tr>
-                                        <th>department</th>
+                                        <th>Отделение</th>
                                         <td>{{$item->department}}</td>
                                     </tr>
                                     <tr>
-                                        <th>history_disease</th>
+                                        <th>№ Истории болезни</th>
                                         <td>{{$item->history_disease}}</td>
                                     </tr>
                                     <tr>
-                                        <th>full_name</th>
+                                        <th>ФИО пациента</th>
                                         <td>{{$item->full_name}}</td>
                                     </tr>
                                     <tr>
-                                        <th>hospitalization_date</th>
+                                        <th>Дата и время госпитализации</th>
                                         <td>{{$item->hospitalization_date}}</td>
                                     </tr>
                                     <tr>
-                                        <th>discharge_date</th>
+                                        <th>Дата и время выписки</th>
                                         <td>{{$item->discharge_date}}</td>
                                     </tr>
                                     <tr>
-                                        <th>hospitalization_channels</th>
+                                        <th>Каналы госпитализации</th>
                                         <td>{{$item->hospitalization_channels}}</td>
                                     </tr>
                                     <tr>
-                                        <th>treatment_result</th>
+                                        <th>Исход лечения</th>
                                         <td>{{$item->treatment_result}}</td>
                                     </tr>
                                     <tr>
-                                        <th>final_result</th>
+                                        <th>Исход</th>
                                         <td>{{$item->final_result}}</td>
                                     </tr>
                                     <tr>
-                                        <th>anginal_attack_date</th>
+                                        <th>Срок ангинального приступа при поступлении</th>
                                         <td>{{$item->anginal_attack_date}}</td>
                                     </tr>
                                     <tr>
-                                        <th>cta_invasive_angiography</th>
+                                        <th>Показана экстренная ЧКВ/инвазивная ангиография?</th>
                                         <td>{{$item->cta_invasive_angiography}}</td>
                                     </tr>
                                     <tr>
-                                        <th>cta_90min</th>
+                                        <th>Экстренная ЧКВ выполнена в течение 90 мин?</th>
                                         <td>{{$item->cta_90min}}</td>
                                     </tr>
                                     <tr>
-                                        <th>deferred_cta_invasive</th>
+                                        <th>Показана отсроченная ЧКВ/инвазивная ангиография?</th>
                                         <td>{{$item->deferred_cta_invasive}}</td>
                                     </tr>
                                     <tr>
-                                        <th>deferred_cta_completed</th>
+                                        <th>Отсроченная ЧКВ выполнена?</th>
                                         <td>{{$item->deferred_cta_completed}}</td>
                                     </tr>
                                     <tr>
-                                        <th>reasons_not_performing_cta</th>
+                                        <th>Причины невыполнения  ЧКВ</th>
                                         <td>{{$item->reasons_not_performing_cta}}</td>
                                     </tr>
                                     <tr>
-                                        <th>thrombolytic_therapy</th>
+                                        <th>Показана ли тромболитическая терапия (ТЛТ)?</th>
                                         <td>{{$item->thrombolytic_therapy}}</td>
                                     </tr>
                                     <tr>
-                                        <th>thrombolytic_therapy_administered</th>
+                                        <th>Проведена ли ТЛТ?</th>
                                         <td>{{$item->thrombolytic_therapy_administered}}</td>
                                     </tr>
                                     <tr>
-                                        <th>not_administering_tlt</th>
+                                        <th>Причины не проведения ТЛТ</th>
                                         <td>{{$item->not_administering_tlt}}</td>
                                     </tr>
                                     <tr>
-                                        <th>ecg_during_hospitalization</th>
+                                        <th>Проведено ли во время госпитализации ЭКГ?</th>
                                         <td>{{$item->ecg_during_hospitalization}}</td>
                                     </tr>
                                     <tr>
-                                        <th>st_segment</th>
+                                        <th>Если проведено ЭКГ, СТ сегмента повышен?</th>
                                         <td>{{$item->st_segment}}</td>
                                     </tr>
                                     <tr>
-                                        <th>echocardiogram</th>
+                                        <th>Проведено ЭхоКГ (с оценкой ФВ ЛЖ%)?</th>
                                         <td>{{$item->echocardiogram}}</td>
                                     </tr>
                                     <tr>
-                                        <th>first_measurement</th>
+                                        <th>Если «Да», то время первого измерения ФВ ЛЖ%</th>
                                         <td>{{$item->first_measurement}}</td>
                                     </tr>
                                     <tr>
-                                        <th>cholestero_levels</th>
+                                        <th>Проведены анализы на ЛПНП</th>
                                         <td>{{$item->cholestero_levels}}</td>
                                     </tr>
                                     <tr>
-                                        <th>aptt</th>
+                                        <th>Проведены анализ на АЧТВ (25-36сек)?</th>
                                         <td>{{$item->aptt}}</td>
                                     </tr>
                                     <tr>
-                                        <th>anticoagulant</th>
+                                        <th>Проведена антикоагулянтная терапия?</th>
                                         <td>{{$item->anticoagulant}}</td>
                                     </tr>
                                     <tr>
-                                        <th>aspirin</th>
+                                        <th>Принимал ли аспирин?</th>
                                         <td>{{$item->aspirin}}</td>
                                     </tr>
                                     <tr>
-                                        <th>p2y12</th>
+                                        <th>Принимал ингибиторы P2Y12</th>
                                         <td>{{$item->p2y12}}</td>
                                     </tr>
                                     <tr>
-                                        <th>high_intensity_statins</th>
+                                        <th>Принимал ли статины высокой интенсивности</th>
                                         <td>{{$item->high_intensity_statins}}</td>
                                     </tr>
                                     <tr>
-                                        <th>ACE_inhibitors_ARBs</th>
+                                        <th>Принимал ингибиторы АПФ или БРАII?</th>
                                         <td>{{$item->ACE_inhibitors_ARBs}}</td>
                                     </tr>
                                     <tr>
-                                        <th>physician_full_name</th>
+                                        <th>ФИО лечащего врача</th>
                                         <td>{{$item->physician_full_name}}</td>
                                     </tr>
                                     <tr>
-                                        <th>stat_department_full_name</th>
+                                        <th>ФИО специалиста стат.отдела</th>
                                         <td>{{$item->stat_department_full_name}}</td>
                                     </tr>
                                 </tbody>
