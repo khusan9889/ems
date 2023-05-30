@@ -16,9 +16,9 @@ Route::group(['middleware' => 'auth'], function () {
         return view('dashboard.pages.home', compact('data'));
     });
     Route::get('/fullform-acs', function () {
-        $data = Polytrauma::all();
+        $data = ACS::all();
         return view('dashboard.pages.full-table', compact('data'));
-    });
+    })->name('full-table'); 
     
     // Route::get('acs', [ACSController::class, 'index']);
 });
