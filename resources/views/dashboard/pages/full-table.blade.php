@@ -10,7 +10,7 @@
 </ol> -->
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Политравма-детальная таблица</h1>
+<h1 class="page-header">ОКС-детальная таблица</h1>
 <!-- end page-header -->
 
 <div class="table-responsive">
