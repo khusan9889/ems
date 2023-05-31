@@ -74,7 +74,8 @@
                         <button type="button" class="btn btn-warning btn-xs mr-1">
                             <i class="fas fa-pen"></i>
                         </button>
-                        <button type="button" class="btn btn-danger btn-xs mr-1">
+                        <button type="button" class="btn btn-danger btn-xs mr-1"
+                            onclick="{{ $selectedID = $item->id }}; confirmDelete({{ $item->id }})">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </div>
@@ -84,3 +85,22 @@
         </tbody>
     </table>
 </div>
+
+
+<!-- Confirmation Modal -->
+@includeWhen($selectedID, 'components.modals.confirmation-modal', ['id' => $selectedID])
+
+<script>
+    function confirmDelete(id) {
+        $('#deleteConfirmationModal').modal('show');
+
+        $('#deleteForm').attr('action', '/delete/' + id);
+    }
+
+    // Add this code to handle the form submission success
+    $('#deleteForm').submit(function() {
+        $('#deleteConfirmationModal').modal('hide');
+        history.go(-1); // Redirect back to the previous page
+        return false; // Prevent the form from submitting normally
+    });
+</script>

@@ -2,15 +2,15 @@
 
 namespace App\Services;
 
-use App\Models\ACS;
-use App\Services\Contracts\ACSServiceInterface;
+use App\Models\Polytrauma;
+use App\Services\Contracts\PolytraumaServiceInterface;
 use App\Traits\Crud;
 
-class ACSService implements ACSServiceInterface
+class PolytraumaService implements PolytraumaServiceInterface
 {
     use Crud;
 
-    public $modelClass = ACS::class;
+    public $modelClass = Polytrauma::class;
 
     public function filter()
     {
@@ -42,4 +42,3 @@ class ACSService implements ACSServiceInterface
         return false;
     }
 }
-

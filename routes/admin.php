@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ACSController;
+use App\Http\Controllers\PolytraumaController;
 use App\Models\ACS;
 use App\Models\Polytrauma;
 use Illuminate\Http\Request;
@@ -25,5 +26,5 @@ Route::group(['middleware' => 'auth'], function () {
         return view('dashboard.pages.full-table-polyt', compact('data'));
     })->name('full-table-polyt');
     Route::delete('/delete/{id}', [ACSController::class, 'destroy'])->name('delete');
-
+    Route::delete('/delete/{id}', [PolytraumaController::class, 'destroy'])->name('delete');
 });
