@@ -25,6 +25,12 @@ Route::group(['middleware' => 'auth'], function () {
         $data = Polytrauma::findOrFail($id);
         return view('dashboard.pages.full-table-polyt', compact('data'));
     })->name('full-table-polyt');
+    // Add the route for the create-page
+    Route::get('/create-page', function () {
+        // Handle logic for the create page
+        return view('dashboard.pages.create-page');
+    })->name('create-page');
+
     Route::delete('/delete/{id}', [ACSController::class, 'destroy'])->name('delete');
     Route::delete('/delete/{id}', [PolytraumaController::class, 'destroy'])->name('delete');
 });

@@ -52,11 +52,12 @@
                 </td>
                 <td class="align-middle d-flex justify-content-center">
                     <div class="btn btn-success">
-                        <i class="fas fa-plus fa-sm"></i>
+                        <a href="{{ route('create-page') }}">
+                            <i class="fas fa-plus fa-sm"></i>
+                        </a>
                     </div>
                 </td>
             </tr>
-
 
         </thead>
         <tbody>
