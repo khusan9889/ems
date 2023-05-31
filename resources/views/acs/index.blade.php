@@ -69,7 +69,7 @@
                 <td>{{$item->stat_department_full_name}}</td>
                 <td class="align-middle">
                     <div class="d-flex">
-                        <a href="{{ route('full-table') }}" class="btn btn-primary btn-xs mr-1">
+                        <a href="{{ route('full-table',['id'=> $item->id]) }}" class="btn btn-primary btn-xs mr-1">
                             <i class="fas fa-eye"></i>
                         </a>
                         <button type="button" class="btn btn-warning btn-xs mr-1">
@@ -85,5 +85,3 @@
         </tbody>
     </table>
 </div>
-
-
