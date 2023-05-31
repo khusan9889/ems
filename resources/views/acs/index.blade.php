@@ -60,7 +60,7 @@
 
         </thead>
         <tbody>
-            @forelse($data as $key => $item)
+            @foreach($data as $key => $item)
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->department }}</td>
@@ -87,9 +87,7 @@
                         </div>
                     </td>
                 </tr>
-            @empty
-                <p>No users</p>
-            @endforelse
+            @endforeach
         </tbody>
     </table>
 </div>
