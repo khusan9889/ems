@@ -10,5 +10,5 @@ interface ACSServiceInterface
 
     public function customUpdate($id, $request);
 
-    // public function redirectById($id);
+    public function delete($id);
 }

@@ -37,11 +37,12 @@ class ACSController extends Controller
         return view('acs.full-table', compact('data'));
     }
 
-    // public function redirectById($id, ACSServiceInterface $service)
-    // {
-    //     $acs = $service->redirectById($id);
-    //     if (!$acs) {
-    //         return $this->error("Not found");
-    //     }
-    // }
+    public function destroy($id)
+    {
+        $acs = ACS::findOrFail($id);
+        $acs->delete();
+
+        return redirect()->back()->with('success', 'Record deleted successfully');
+    }
 }
+

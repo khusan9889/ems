@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\ACS;
 use App\Services\Contracts\ACSServiceInterface;
 use App\Traits\Crud;
+use Illuminate\Support\Facades\DB;
 
 class ACSService implements ACSServiceInterface
 {
@@ -32,9 +33,14 @@ class ACSService implements ACSServiceInterface
         return $this->update($id, $request);
     }
 
-    // public function redirectById($acsId)
-    // {
-    //     return ACS::find($acsId); 
-    // }
+    public function delete($id)
+    {
+        $model = $this->modelClass::find($id);
+        if ($model) {
+            $model->delete();
+            return true;
+        }
+        return false;
+    }
 }
 
