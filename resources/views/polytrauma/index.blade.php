@@ -1,3 +1,7 @@
+@php
+    $selectedID = null;
+@endphp
+
 <div class="table-responsive">
     <table id="data-table-default" class="table table-striped table-bordered align-middle">
 
