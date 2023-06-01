@@ -11,6 +11,8 @@ class Branch extends Model
 {
     use HasFactory, Scopes;
 
+    protected $table = 'branch';
+
     public $fillable = [
         'name',
     ];

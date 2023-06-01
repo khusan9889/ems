@@ -22,9 +22,9 @@ class ACSService implements ACSServiceInterface
             ->customPaginate();
     }
 
-    public function customStore($request)
+    public function customStore($data)
     {
-        return $this->store($request);
+        return $this->store($data);
     }
 
     public function customUpdate($id, $request)
@@ -40,6 +40,10 @@ class ACSService implements ACSServiceInterface
             return true;
         }
         return false;
+    }
+    public function createRecord(array $data)
+    {
+        return $this->modelClass::create($data);
     }
 }
 

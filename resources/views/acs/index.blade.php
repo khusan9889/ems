@@ -52,9 +52,7 @@
                 </td>
                 <td class="align-middle d-flex justify-content-center">
                     <div class="btn btn-success">
-                        <a href="{{ route('create-page') }}">
-                            <i class="fas fa-plus fa-sm"></i>
-                        </a>
+                        <a href="{{ route('acs.create-page') }}" class="btn btn-success btn-xs">Добавить</a>
                     </div>
                 </td>
             </tr>

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreACSRequest;
 use App\Models\ACS;
 use App\Services\Contracts\ACSServiceInterface;
+use App\Traits\Crud;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 
 class ACSController extends Controller
 {
@@ -43,6 +45,13 @@ class ACSController extends Controller
         $acs->delete();
 
         return redirect()->back()->with('success', 'Record deleted successfully');
+    }
+
+    public function store(StoreACSRequest $request)
+    {
+        ACS::create($request->validated());
+
+        return redirect()->back()->with('success', 'Record stored successfully');
     }
 }
 
