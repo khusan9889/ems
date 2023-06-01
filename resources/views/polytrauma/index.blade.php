@@ -27,7 +27,11 @@
                     </div>
                 </td>
                 <td>
-                    <select class="form-control form-control-sm" name="department"></select>
+                    <select class="form-control form-control-sm" name="department">
+                        @foreach($branches as $branch)
+                            <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                        @endforeach
+                    </select>
                 </td>
                 <td>
                     <input class="form-control form-control-sm" type="text" name="history_disease">

@@ -18,7 +18,6 @@
                 <select class="form-control" id="department" name="department">
                     <!-- Add options for department -->
                     <option value="" hidden>Выбрать отделение</option>
-
                     @foreach ($branches as $branch)
                         <option value="{{ $branch->id }}">{{ $branch->name }}</option>
                     @endforeach
@@ -411,7 +410,7 @@
                     <input type="text" class="form-control" id="stat_department_full_name"
                         name="stat_department_full_name">
                 </div>
-                
+
 
                 <button type="submit" class="btn btn-primary">Сохранить</button>
         </form>
