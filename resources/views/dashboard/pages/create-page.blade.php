@@ -72,45 +72,45 @@
             </div>
             <hr>
             <div class="form-group">
-                <label for="overall_outcome"><b>Исход</b></label><br>
+                <label for="final_result"><b>Исход</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="overall_outcome" id="overallOption1" value="ОИМ с Q">
+                    <input class="form-check-input" type="radio" name="final_result" id="overallOption1" value="ОИМ с Q">
                     <label class="form-check-label" for="overallOption1">ОИМ с Q</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="overall_outcome" id="overallOption2" value="Оим без Q">
+                    <input class="form-check-input" type="radio" name="final_result" id="overallOption2" value="Оим без Q">
                     <label class="form-check-label" for="overallOption2">Оим без Q</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="overall_outcome" id="overallOption3" value="Прогрессирующая стенокардия">
+                    <input class="form-check-input" type="radio" name="final_result" id="overallOption3" value="Прогрессирующая стенокардия">
                     <label class="form-check-label" for="overallOption3">Прогрессирующая стенокардия</label>
                 </div>
             </div>
             <hr>
             <div class="form-group">
-                <label for="anginal_onset"><b>Срок ангинального приступа при поступлении</b></label><br>
+                <label for="anginal_attack_date"><b>Срок ангинального приступа при поступлении</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="anginal_onset" id="anginalOption1" value="до 6ч.">
+                    <input class="form-check-input" type="radio" name="anginal_attack_date" id="anginalOption1" value="до 6ч.">
                     <label class="form-check-label" for="anginalOption1">до 6ч.</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="anginal_onset" id="anginalOption2" value="6-12ч.">
+                    <input class="form-check-input" type="radio" name="anginal_attack_date" id="anginalOption2" value="6-12ч.">
                     <label class="form-check-label" for="anginalOption2">6-12ч.</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="anginal_onset" id="anginalOption3" value="позже 12ч.">
+                    <input class="form-check-input" type="radio" name="anginal_attack_date" id="anginalOption3" value="позже 12ч.">
                     <label class="form-check-label" for="anginalOption3">позже 12ч.</label>
                 </div>
             </div>
             <hr>
             <div class="form-group">
-                <label for="urgent_angiography"><b>Показана <span style="font-weight: 900; background-color: yellow;">экстренная</span> ЧКВ/инвазивная ангиография:</b></label><br>
+                <label for="cta_invasive_angiography"><b>Показана <span style="font-weight: 900; background-color: yellow;">экстренная</span> ЧКВ/инвазивная ангиография:</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="urgent_angiography" id="urgentOption1" value="Да">
+                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption1" value="Да">
                     <label class="form-check-label" for="urgentOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="urgent_angiography" id="urgentOption2" value="Нет">
+                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption2" value="Нет">
                     <label class="form-check-label" for="urgentOption2">Нет</label>
                 </div>
             </div>
@@ -342,12 +342,12 @@
                     <label for="p2y12"><b>Принимал ингибиторы P2Y12:</b></label><br>
                     <span>(prasugrel, ticagrelor, или clopidogrel)</span><br><br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="column1" id="p2y12Option1"
+                        <input class="form-check-input" type="radio" name="p2y12" id="p2y12Option1"
                             value="Да">
                         <label class="form-check-label" for="p2y12Option1">Да</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="column1" id="p2y12Option2"
+                        <input class="form-check-input" type="radio" name="p2y12" id="p2y12Option2"
                             value="Нет">
                         <label class="form-check-label" for="p2y12Option2">Нет</label>
                     </div>

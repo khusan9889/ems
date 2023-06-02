@@ -31,7 +31,27 @@ class StoreACSRequest extends FormRequest
             'stat_department_full_name' => 'required',
             'hospitalization_channels' => 'required',
             'treatment_result' => 'required',
-            
+            'final_result' => 'required',
+            'anginal_attack_date' => 'required',
+            'cta_invasive_angiography' => 'required',
+            'cta_90min' => 'required',
+            'deferred_cta_invasive' => 'required',
+            'deferred_cta_completed' => 'required',
+            'reasons_not_performing_cta' => 'required',
+            'thrombolytic_therapy' => 'required',
+            'thrombolytic_therapy_administered' => 'required',
+            'not_administering_tlt' => 'required',
+            'ecg_during_hospitalization' => 'required',
+            'st_segment' => 'required',
+            'echocardiogram' => 'required',
+            'first_measurement' => 'required',
+            'cholestero_levels' => 'required',
+            'aptt' => 'required',
+            'anticoagulant' => 'required',
+            'aspirin' => 'required',
+            'p2y12' => 'required',
+            'high_intensity_statins' => 'required',
+            'ACE_inhibitors_ARBs' => 'required',
         ];
     }
 }
