@@ -98,14 +98,15 @@
 <script>
     function confirmDelete(id) {
         $('#deleteConfirmationModal').modal('show');
-
-        $('#deleteForm').attr('action', '/delete/' + id);
+        $('#deleteForm').attr('action', '/acs/delete/' + id);
     }
 
-    // Add this code to handle the form submission success
-    $('#deleteForm').submit(function() {
-        $('#deleteConfirmationModal').modal('hide');
-        history.go(-1); // Redirect back to the previous page
-        return false; // Prevent the form from submitting normally
+    $(document).ready(function() {
+        // Add this code to handle the form submission success
+        $('#deleteForm').on('submit', function() {
+            $('#deleteConfirmationModal').modal('hide');
+            history.go(-1); // Redirect back to the previous page
+            return true; // Allow the form to submit
+        });
     });
 </script>
