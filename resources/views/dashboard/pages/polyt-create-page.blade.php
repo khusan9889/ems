@@ -11,7 +11,7 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('acs.add') }}" method="POST">
+        <form action="{{ route('polytrauma.add') }}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="department">{{ __('validation.attributes.department') }}</label>

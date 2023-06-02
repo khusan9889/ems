@@ -33,7 +33,9 @@ Route::group(['middleware' => 'auth'], function () {
             // Handle logic for the create page
             return view('dashboard.pages.create-page', compact('branches'));
         })->name('acs.create-page');
+
         Route::post('add', [ACSController::class, 'store'])->name('acs.add');
+
         Route::delete('/delete/{id}', [ACSController::class, 'destroy'])->name('delete');
     });
 
@@ -42,9 +44,12 @@ Route::group(['middleware' => 'auth'], function () {
             $branches = Branch::all(['id', 'name']);
             return view('dashboard.pages.polyt-create-page', compact('branches'));
         })->name('polytrauma.polyt-create-page');
-        
+
+        Route::post('add', [PolytraumaController::class, 'store'])->name('polytrauma.add');
+
+        Route::delete('/delete/{id}', [PolytraumaController::class, 'destroy'])->name('delete');
     });
 
 
-    Route::delete('/delete/{id}', [PolytraumaController::class, 'destroy'])->name('delete');
+
 });

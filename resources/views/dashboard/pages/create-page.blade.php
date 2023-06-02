@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.default')
 
 @section('content')
-    <x-panel title="Создать">
+    <x-panel title="ОКС">
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
