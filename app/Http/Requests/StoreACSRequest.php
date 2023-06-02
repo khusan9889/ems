@@ -30,6 +30,8 @@ class StoreACSRequest extends FormRequest
             'physician_full_name' => 'required',
             'stat_department_full_name' => 'required',
             'hospitalization_channels' => 'required',
+            'treatment_result' => 'required',
+            
         ];
     }
 }

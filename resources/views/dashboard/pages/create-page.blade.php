@@ -56,17 +56,17 @@
             </div>
             <hr>
             <div class="form-group">
-                <label for="treatment_outcome"><b>Исход лечения</b></label><br>
+                <label for="treatment_result"><b>Исход лечения</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="treatment_outcome" id="outcomeOption1" value="option1">
+                    <input class="form-check-input" type="radio" name="treatment_result" id="outcomeOption1" value="Выписан">
                     <label class="form-check-label" for="outcomeOption1">Выписан</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="treatment_outcome" id="outcomeOption2" value="option2">
+                    <input class="form-check-input" type="radio" name="treatment_result" id="outcomeOption2" value="Летальный исход">
                     <label class="form-check-label" for="outcomeOption2">Летальный исход</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="treatment_outcome" id="outcomeOption3" value="option3">
+                    <input class="form-check-input" type="radio" name="treatment_result" id="outcomeOption3" value="Выписан в тяжелом состоянии">
                     <label class="form-check-label" for="outcomeOption3">Выписан в тяжелом состоянии</label>
                 </div>
             </div>
