@@ -67,7 +67,7 @@
                                         <td>{{$data->deferred_cta_completed}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Причины невыполнения  ЧКВ</th>
+                                        <th>Причины невыполнения ЧКВ</th>
                                         <td>{{$data->reasons_not_performing_cta}}</td>
                                     </tr>
                                     <tr>
