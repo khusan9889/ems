@@ -42,15 +42,15 @@
             <div class="form-group">
                 <label for="hospitalization_channels"><b>Канал госпитализации</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="hospitalization_channel" id="hospitalizationOption1" value="option1">
+                    <input class="form-check-input" type="radio" name="hospitalization_channels" id="hospitalizationOption1" value="Скорая">
                     <label class="form-check-label" for="hospitalizationOption1">Скорая</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="hospitalization_channel" id="hospitalizationOption2" value="option2">
+                    <input class="form-check-input" type="radio" name="hospitalization_channels" id="hospitalizationOption2" value="Самотек">
                     <label class="form-check-label" for="hospitalizationOption2">Самотек</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="hospitalization_channel" id="hospitalizationOption3" value="option3">
+                    <input class="form-check-input" type="radio" name="hospitalization_channels" id="hospitalizationOption3" value="Направление">
                     <label class="form-check-label" for="hospitalizationOption3">Направление</label>
                 </div>
             </div>

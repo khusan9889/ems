@@ -29,6 +29,7 @@ class StoreACSRequest extends FormRequest
             'discharge_date' => 'required',
             'physician_full_name' => 'required',
             'stat_department_full_name' => 'required',
+            'hospitalization_channels' => 'required',
         ];
     }
 }
