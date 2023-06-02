@@ -37,6 +37,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/delete/{id}', [ACSController::class, 'destroy'])->name('delete');
     });
 
+    Route::group(['prefix' => 'polytrauma'], function () {
+        Route::get('polyt-create-page', function () {
+            $branches = Branch::all(['id', 'name']);
+            return view('dashboard.pages.polyt-create-page', compact('branches'));
+        })->name('polytrauma.polyt-create-page');
+        
+    });
+
 
     Route::delete('/delete/{id}', [PolytraumaController::class, 'destroy'])->name('delete');
 });

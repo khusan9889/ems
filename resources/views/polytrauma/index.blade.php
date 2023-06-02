@@ -52,7 +52,7 @@
                 </td>
                 <td class="align-middle d-flex justify-content-center">
                     <div class="btn btn-success">
-                        <i class="fas fa-plus fa-sm"></i>
+                        <a href="{{ route('polytrauma.polyt-create-page') }}" class="btn btn-success btn-xs">Добавить</a>
                     </div>
                 </td>
             </tr>
@@ -97,14 +97,15 @@
 <script>
     function confirmDelete(id) {
         $('#deleteConfirmationModal').modal('show');
-
-        $('#deleteForm').attr('action', '/delete/' + id);
+        $('#deleteForm').attr('action', '/acs/delete/' + id);
     }
 
-    // Add this code to handle the form submission success
-    $('#deleteForm').submit(function() {
-        $('#deleteConfirmationModal').modal('hide');
-        history.go(-1); // Redirect back to the previous page
-        return false; // Prevent the form from submitting normally
+    $(document).ready(function() {
+        // Add this code to handle the form submission success
+        $('#deleteForm').on('submit', function() {
+            $('#deleteConfirmationModal').modal('hide');
+            history.go(-1); // Redirect back to the previous page
+            return true; // Allow the form to submit
+        });
     });
 </script>
