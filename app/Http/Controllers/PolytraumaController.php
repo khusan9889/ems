@@ -38,13 +38,13 @@ class PolytraumaController extends Controller
 
         $data = $query->get();
 
-        return view('acs.full-table', compact('data'));
+        return view('polytrauma.full-table', compact('data'));
     }
 
     public function destroy($id)
     {
-        $acs = Polytrauma::findOrFail($id);
-        $acs->delete();
+        $polytrauma = Polytrauma::findOrFail($id);
+        $polytrauma->delete();
 
         return redirect()->back()->with('success', 'Record deleted successfully');
     }

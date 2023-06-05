@@ -97,7 +97,7 @@
 <script>
     function confirmDelete(id) {
         $('#deleteConfirmationModal').modal('show');
-        $('#deleteForm').attr('action', '/acs/delete/' + id);
+        $('#deleteForm').attr('action', '/polytrauma/delete/' + id);
     }
 
     $(document).ready(function() {

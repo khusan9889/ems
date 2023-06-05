@@ -36,6 +36,11 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::post('add', [ACSController::class, 'store'])->name('acs.add');
 
+        Route::get('/edit-page/{id}', [ACSController::class, 'edit'])->name('edit-page');
+        Route::put('/update-data/{id}', [ACSController::class, 'update'])->name('update-data');
+
+
+
         Route::delete('/delete/{id}', [ACSController::class, 'destroy'])->name('delete');
     });
 
@@ -50,6 +55,5 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/delete/{id}', [PolytraumaController::class, 'destroy'])->name('delete');
     });
 
-
-
 });
+

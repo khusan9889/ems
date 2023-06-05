@@ -59,4 +59,21 @@ class ACSController extends Controller
         return redirect()->back()->with('success', 'Record stored successfully');
     }
 
+    public function edit($id)
+    {
+        $data = ACS::findOrFail($id);
+
+        return view('dashboard.pages.edit-page', compact('data'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $acs = ACS::findOrFail($id);
+        $acs->update($request->all());
+
+        return redirect()->back()->with('success', 'Record updated successfully');
+    }
+
 }
+
+
