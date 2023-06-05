@@ -11,7 +11,7 @@ class StorePolytraumaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,6 +28,8 @@ class StorePolytraumaRequest extends FormRequest
             'hospitalization_date' => 'required',
             'discharge_date' => 'required',
             'hospitalization_channels' => 'required',
+            'days_amount' => 'required',
+            'days_in_intensive_care' => 'required',
             'treatment_result' => 'required',
             'severity_of_ts' => 'required',
             'injury_of_iss' => 'required',

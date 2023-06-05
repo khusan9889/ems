@@ -54,14 +54,15 @@
                     <label class="form-check-label" for="hospitalizationOption3">Направление</label>
                 </div>
             </div>
+            <hr>
             <div class="form-group">
-                <label for="discharge_date">Кол-во к/дней</label>
-                <input type="text" class="form-control" id="Кол-во к/дней" name="discharge_date">
+                <label for="days_amount">Кол-во к/дней</label>
+                <input type="text" class="form-control" id="days_amount" name="days_amount">
             </div>
 
             <div class="form-group">
-                <label for="discharge_date">Кол-во к/дней в отд. Реанимации</label>
-                <input type="text" class="form-control" id="discharge_date" name="discharge_date">
+                <label for="days_in_intensive_care">Кол-во к/дней в отд. Реанимации</label>
+                <input type="text" class="form-control" id="days_in_intensive_care" name="days_in_intensive_care">
             </div>
             <div class="form-group">
                 <label for="treatment_result"><b>Исход лечения</b></label><br>
@@ -74,6 +75,7 @@
                     <label class="form-check-label" for="treatment_resultOption2">Летальный исход</label>
                 </div>
             </div>
+            <hr>
             <div class="form-group">
                 <label for="severity_of_ts">Тяжесть состояния по TS (баллов)</label>
                 <input type="text" class="form-control" id="severity_of_ts" name="severity_of_ts">
@@ -315,7 +317,7 @@
                     <label class="form-check-label" for="osteosynthesis_of_fracturesOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="osteosynthesis_of_fracturesOption2" id="urgentOption2" value="Нет">
+                    <input class="form-check-input" type="radio" name="osteosynthesis_of_fractures" id="osteosynthesis_of_fracturesOption2" value="Нет">
                     <label class="form-check-label" for="osteosynthesis_of_fracturesOption2">Нет</label>
                 </div>
             </div>

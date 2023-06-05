@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePolytraumaRequest;
+use App\Models\Branch;
 use App\Models\Polytrauma;
 use App\Traits\Crud;
 use Illuminate\Http\Request;
@@ -50,7 +51,11 @@ class PolytraumaController extends Controller
 
     public function store(StorePolytraumaRequest $request)
     {
-        Polytrauma::created($request->validated());
+        $validatedData = $request->validated();
+        $department = Branch::findOrFail($validatedData['department']);
+        $validatedData['department'] = $department->name;
+
+        Polytrauma::create($validatedData);
 
         return redirect()->back()->with('success', 'Record stored successfully');
     }

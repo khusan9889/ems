@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreACSRequest;
 use App\Models\ACS;
+use App\Models\Branch;
 use App\Services\Contracts\ACSServiceInterface;
 use App\Traits\Crud;
 use Illuminate\Http\Request;
@@ -49,7 +50,11 @@ class ACSController extends Controller
 
     public function store(StoreACSRequest $request)
     {
-        ACS::create($request->validated());
+        $validatedData = $request->validated();
+        $department = Branch::findOrFail($validatedData['department']);
+        $validatedData['department'] = $department->name;
+
+        ACS::create($validatedData);
 
         return redirect()->back()->with('success', 'Record stored successfully');
     }

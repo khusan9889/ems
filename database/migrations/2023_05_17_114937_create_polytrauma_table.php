@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('hospitalization_date')->nullable();
             $table->string('discharge_date')->nullable();
             $table->string('hospitalization_channels')->nullable();
+            $table->string('days_amount')->nullable();
+            $table->string('days_in_intensive_care')->nullable();
             $table->string('treatment_result')->nullable();
             $table->string('severity_of_ts')->nullable();
             $table->string('injury_of_iss')->nullable();
@@ -45,7 +47,7 @@ return new class extends Migration
             $table->string('skull_trepanation')->nullable();
             $table->string('physician_full_name')->nullable();
             $table->string('stat_department_full_name')->nullable();
-            
+
             $table->timestamps();
         });
     }

@@ -41,4 +41,9 @@ class PolytraumaService implements PolytraumaServiceInterface
         }
         return false;
     }
+
+    public function createRecord(array $data)
+    {
+        return $this->modelClass::create($data);
+    }
 }
