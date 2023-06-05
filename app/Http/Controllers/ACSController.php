@@ -62,8 +62,9 @@ class ACSController extends Controller
     public function edit($id)
     {
         $data = ACS::findOrFail($id);
+        $branches = Branch::all();
 
-        return view('dashboard.pages.edit-page', compact('data'));
+        return view('dashboard.pages.edit-page', compact('data', 'branches'));
     }
 
     public function update(Request $request, $id)
