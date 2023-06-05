@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePolytraumaRequest;
 use App\Models\Polytrauma;
 use App\Traits\Crud;
 use Illuminate\Http\Request;
@@ -46,4 +47,12 @@ class PolytraumaController extends Controller
 
         return redirect()->back()->with('success', 'Record deleted successfully');
     }
+
+    public function store(StorePolytraumaRequest $request)
+    {
+        Polytrauma::created($request->validated());
+
+        return redirect()->back()->with('success', 'Record stored successfully');
+    }
+
 }

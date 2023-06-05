@@ -56,255 +56,279 @@
             </div>
             <div class="form-group">
                 <label for="discharge_date">Кол-во к/дней</label>
-                <input type="text" class="form-control" id="discharge_date" name="discharge_date">
+                <input type="text" class="form-control" id="Кол-во к/дней" name="discharge_date">
             </div>
 
             <div class="form-group">
                 <label for="discharge_date">Кол-во к/дней в отд. Реанимации</label>
                 <input type="text" class="form-control" id="discharge_date" name="discharge_date">
             </div>
-
             <div class="form-group">
                 <label for="treatment_result"><b>Исход лечения</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="treatment_result" id="outcomeOption1" value="Выписан">
-                    <label class="form-check-label" for="outcomeOption1">Выписан</label>
+                    <input class="form-check-input" type="radio" name="treatment_result" id="treatment_resultOption1" value="Выписан">
+                    <label class="form-check-label" for="treatment_resultOption1">Выписан</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="treatment_result" id="outcomeOption2" value="Летальный исход">
-                    <label class="form-check-label" for="outcomeOption2">Летальный исход</label>
+                    <input class="form-check-input" type="radio" name="treatment_result" id="treatment_resultOption2" value="Летальный исход">
+                    <label class="form-check-label" for="treatment_resultOption2">Летальный исход</label>
                 </div>
             </div>
             <div class="form-group">
-                <label for="discharge_date">Тяжесть состояния по TS (баллов)</label>
-                <input type="text" class="form-control" id="discharge_date" name="discharge_date">
+                <label for="severity_of_ts">Тяжесть состояния по TS (баллов)</label>
+                <input type="text" class="form-control" id="severity_of_ts" name="severity_of_ts">
             </div>
             <div class="form-group">
-                <label for="discharge_date">Тяжесть состояния по ISS (баллов)</label>
-                <input type="text" class="form-control" id="discharge_date" name="discharge_date">
-            </div>
-            <hr>
-            <div class="form-group">
-                <label for="final_result"><b>Время поступления после получения травмы:</b></label><br>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="final_result" id="overallOption1" value="ОИМ с Q">
-                    <label class="form-check-label" for="overallOption1">до 1ч.</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="final_result" id="overallOption2" value="Оим без Q">
-                    <label class="form-check-label" for="overallOption2">1-3ч.</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="final_result" id="overallOption3" value="Прогрессирующая стенокардия">
-                    <label class="form-check-label" for="overallOption3">6-12ч.</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="final_result" id="overallOption3" value="Прогрессирующая стенокардия">
-                    <label class="form-check-label" for="overallOption3">12-24ч.</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="final_result" id="overallOption3" value="Прогрессирующая стенокардия">
-                    <label class="form-check-label" for="overallOption3">позже 24ч.</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="anginal_attack_date"><b>Механизм травмы</b></label><br>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="anginal_attack_date" id="anginalOption1" value="до 6ч.">
-                    <label class="form-check-label" for="anginalOption1">ДТП</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="anginal_attack_date" id="anginalOption2" value="6-12ч.">
-                    <label class="form-check-label" for="anginalOption2">Кататравма</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="anginal_attack_date" id="anginalOption3" value="позже 12ч.">
-                    <label class="form-check-label" for="anginalOption3">Производственная</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="anginal_attack_date" id="anginalOption3" value="позже 12ч.">
-                    <label class="form-check-label" for="anginalOption3">Прочие</label>
-                </div>
+                <label for="injury_of_iss">Тяжесть состояния по ISS (баллов)</label>
+                <input type="text" class="form-control" id="injury_of_iss" name="injury_of_iss">
             </div>
             <hr>
             <div class="form-group">
-                <label for="cta_invasive_angiography"><b>Осмотр хирурга:</b></label><br>
+                <label for="arrival_after_injury"><b>Время поступления после получения травмы:</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption1" value="Да">
-                    <label class="form-check-label" for="urgentOption1">Да</label>
+                    <input class="form-check-input" type="radio" name="arrival_after_injury" id="arrival_after_injuryOption1" value="до 1ч.">
+                    <label class="form-check-label" for="arrival_after_injuryOption1">до 1ч.</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption2" value="Нет">
-                    <label class="form-check-label" for="urgentOption2">Нет</label>
+                    <input class="form-check-input" type="radio" name="arrival_after_injury" id="arrival_after_injuryOption2" value="1-3ч.">
+                    <label class="form-check-label" for="arrival_after_injuryOption2">1-3ч.</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="arrival_after_injury" id="arrival_after_injuryOption3" value="6-12ч.">
+                    <label class="form-check-label" for="arrival_after_injuryOption3">6-12ч.</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="arrival_after_injury" id="arrival_after_injuryOption4" value="12-24ч.">
+                    <label class="form-check-label" for="arrival_after_injuryOption4">12-24ч.</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="arrival_after_injury" id="arrival_after_injuryOption5" value="позже 24ч.">
+                    <label class="form-check-label" for="arrival_after_injuryOption5">позже 24ч.</label>
                 </div>
             </div>
             <div class="form-group">
-                <label for="cta_invasive_angiography"><b>Осмотр нейрохирурга:</b></label><br>
+                <label for="mechanism_of_injury"><b>Механизм травмы</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption1" value="Да">
-                    <label class="form-check-label" for="urgentOption1">Да</label>
+                    <input class="form-check-input" type="radio" name="mechanism_of_injury" id="mechanism_of_injuryOption1" value="ДТП">
+                    <label class="form-check-label" for="mechanism_of_injuryOption1">ДТП</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption2" value="Нет">
-                    <label class="form-check-label" for="urgentOption2">Нет</label>
+                    <input class="form-check-input" type="radio" name="mechanism_of_injury" id="mechanism_of_injuryOption2" value="Кататравма">
+                    <label class="form-check-label" for="mechanism_of_injuryOption2">Кататравма</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="mechanism_of_injury" id="mechanism_of_injuryOption3" value="Производственная">
+                    <label class="form-check-label" for="mechanism_of_injuryOption3">Производственная</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="mechanism_of_injury" id="mechanism_of_injuryOption4" value="Прочие">
+                    <label class="form-check-label" for=mechanism_of_injuryOption4">Прочие</label>
                 </div>
             </div>
             <hr>
             <div class="form-group">
-                <label for="cta_invasive_angiography"><b>Осмотр травматолога:</b></label><br>
+                <label for="survey_of_surgeon"><b>Осмотр хирурга:</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption1" value="Да">
-                    <label class="form-check-label" for="urgentOption1">Да</label>
+                    <input class="form-check-input" type="radio" name="survey_of_surgeon" id="urgesurvey_of_surgeonOption1ntOption1" value="Да">
+                    <label class="form-check-label" for="survey_of_surgeonOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption2" value="Нет">
-                    <label class="form-check-label" for="urgentOption2">Нет</label>
+                    <input class="form-check-input" type="radio" name="survey_of_surgeon" id="survey_of_surgeonOption2" value="Нет">
+                    <label class="form-check-label" for="survey_of_surgeonOption2">Нет</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="survey_of_neurosurgeon"><b>Осмотр нейрохирурга:</b></label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="survey_of_neurosurgeon" id="survey_of_neurosurgeonOption1" value="Да">
+                    <label class="form-check-label" for="survey_of_neurosurgeonOption1">Да</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="survey_of_neurosurgeon" id="survey_of_neurosurgeonOption2" value="Нет">
+                    <label class="form-check-label" for="survey_of_neurosurgeonOption2">Нет</label>
                 </div>
             </div>
             <hr>
             <div class="form-group">
-                <label for="cta_invasive_angiography"><b>Осмотр других узких специалистов:</b></label><br>
+                <label for="survey_of_traumatologist"><b>Осмотр травматолога:</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption1" value="Да">
-                    <label class="form-check-label" for="urgentOption1">Да</label>
+                    <input class="form-check-input" type="radio" name="survey_of_traumatologist" id="survey_of_traumatologistOption1" value="Да">
+                    <label class="form-check-label" for="survey_of_traumatologistOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption2" value="Нет">
-                    <label class="form-check-label" for="urgentOption2">Нет</label>
+                    <input class="form-check-input" type="radio" name="survey_of_traumatologist" id="survey_of_traumatologistOption2" value="Нет">
+                    <label class="form-check-label" for="survey_of_traumatologistOption2">Нет</label>
                 </div>
             </div>
             <hr>
             <div class="form-group">
-                <label for="cta_invasive_angiography"><b>Проведена R-графия: </b><span>(черепа, грудной клетки, костей таза, конечностей):</span></label><br>
+                <label for="narrow_specialists"><b>Осмотр других узких специалистов:</b></label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="narrow_specialists" id="narrow_specialistsOption1" value="Да">
+                    <label class="form-check-label" for="narrow_specialistsOption1">Да</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="narrow_specialists" id="narrow_specialistsOption2" value="Нет">
+                    <label class="form-check-label" for="narrow_specialistsOption2">Нет</label>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="r_graphy"><b>Проведена R-графия: </b><span>(черепа, грудной клетки, костей таза, конечностей):</span></label><br>
 
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption1" value="Да">
-                    <label class="form-check-label" for="urgentOption1">Да</label>
+                    <input class="form-check-input" type="radio" name="r_graphy" id="r_graphyOption1" value="Да">
+                    <label class="form-check-label" for="r_graphyOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption2" value="Нет">
-                    <label class="form-check-label" for="urgentOption2">Нет</label>
+                    <input class="form-check-input" type="radio" name="r_graphy" id="r_graphyOption2" value="Нет">
+                    <label class="form-check-label" for="r_graphyOption2">Нет</label>
                 </div>
             </div>
             <hr>
             <div class="form-group">
-                <label for="cta_invasive_angiography"><b>Проведено УЗС </b><span>(плевральныйх и брюшной полостей, забрюшинного пространства):</span></label><br>
+                <label for="conducted_ultrasound"><b>Проведено УЗС </b><span>(плевральныйх и брюшной полостей, забрюшинного пространства):</span></label><br>
 
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption1" value="Да">
-                    <label class="form-check-label" for="urgentOption1">Да</label>
+                    <input class="form-check-input" type="radio" name="conducted_ultrasound" id="conducted_ultrasoundOption1" value="Да">
+                    <label class="form-check-label" for="conducted_ultrasoundOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption2" value="Нет">
-                    <label class="form-check-label" for="urgentOption2">Нет</label>
-                </div>
-            </div>
-            <hr>
-            <div class="form-group">
-                <label for="cta_invasive_angiography"><b>Проведено МКСТ </b><span>(всего тела "full body"):</span></label><br>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption1" value="Да">
-                    <label class="form-check-label" for="urgentOption1">Да</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption2" value="Нет">
-                    <label class="form-check-label" for="urgentOption2">Нет</label>
+                    <input class="form-check-input" type="radio" name="conducted_ultrasound" id="conducted_ultrasoundOption2" value="Нет">
+                    <label class="form-check-label" for="conducted_ultrasoundOption2">Нет</label>
                 </div>
             </div>
             <hr>
             <div class="form-group">
-                <label for="cta_invasive_angiography"><b>Проведено МКСТ </b><span>(отдельных частей тела;):</span></label><br>
+                <label for="msct"><b>Проведено МКСТ </b><span>(всего тела "full body"):</span></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption1" value="Да">
-                    <label class="form-check-label" for="urgentOption1">Да</label>
+                    <input class="form-check-input" type="radio" name="msct" id="msctOption1" value="Да">
+                    <label class="form-check-label" for="msctOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption2" value="Нет">
-                    <label class="form-check-label" for="urgentOption2">Нет</label>
-                </div>
-            </div>
-            <hr>
-            <div class="form-group">
-                <label for="cta_invasive_angiography"><b>Содержание нейтральный жиров в крови и моче:</b></label><br>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption1" value="Да">
-                    <label class="form-check-label" for="urgentOption1">Да</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption2" value="Нет">
-                    <label class="form-check-label" for="urgentOption2">Нет</label>
+                    <input class="form-check-input" type="radio" name="msct" id="msctOption2" value="Нет">
+                    <label class="form-check-label" for="msctOption2">Нет</label>
                 </div>
             </div>
             <hr>
             <div class="form-group">
-                <label for="cta_invasive_angiography"><b>Проведен анализ Нв, Ht в динамике:</b></label><br>
+                <label for="msct_individual_parts"><b>Проведено МКСТ </b><span>(отдельных частей тела;):</span></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption1" value="Да">
-                    <label class="form-check-label" for="urgentOption1">Да</label>
+                    <input class="form-check-input" type="radio" name="msct_individual_parts" id="msct_individual_partsOption1" value="Да">
+                    <label class="form-check-label" for="msct_individual_partsOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption2" value="Нет">
-                    <label class="form-check-label" for="urgentOption2">Нет</label>
-                </div>
-            </div>
-            <hr>
-            <div class="form-group">
-                <label for="cta_invasive_angiography"><b>Проведено УЗС в динамике:</b></label><br>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption1" value="Да">
-                    <label class="form-check-label" for="urgentOption1">Да</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption2" value="Нет">
-                    <label class="form-check-label" for="urgentOption2">Нет</label>
+                    <input class="form-check-input" type="radio" name="msct_individual_parts" id="msct_individual_partsOption2" value="Нет">
+                    <label class="form-check-label" for="msct_individual_partsOption2">Нет</label>
                 </div>
             </div>
             <hr>
             <div class="form-group">
-                <label for="cta_invasive_angiography"><b>Диагностическая лапароскопия</b></label><br>
+                <label for="neutral_fats"><b>Содержание нейтральный жиров в крови и моче:</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption1" value="Да">
-                    <label class="form-check-label" for="urgentOption1">Да</label>
+                    <input class="form-check-input" type="radio" name="neutral_fats" id="neutral_fatsOption1" value="Да">
+                    <label class="form-check-label" for="мneutral_fatsOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption2" value="Нет">
-                    <label class="form-check-label" for="urgentOption2">Нет</label>
-                </div>
-            </div>
-            <hr>
-            <div class="form-group">
-                <label for="cta_invasive_angiography"><b>Торакоскопия (торакотомия):</b></label><br>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption1" value="Да">
-                    <label class="form-check-label" for="urgentOption1">Да</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption2" value="Нет">
-                    <label class="form-check-label" for="urgentOption2">Нет</label>
+                    <input class="form-check-input" type="radio" name="neutral_fats" id="neutral_fatsOption2" value="Нет">
+                    <label class="form-check-label" for="neutral_fatsOption2">Нет</label>
                 </div>
             </div>
             <hr>
             <div class="form-group">
-                <label for="cta_invasive_angiography"><b>Остеосинтез переломов:</b></label><br>
+                <label for="analysis_of_hb_ht"><b>Проведен анализ Нв, Ht в динамике:</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption1" value="Да">
-                    <label class="form-check-label" for="urgentOption1">Да</label>
+                    <input class="form-check-input" type="radio" name="analysis_of_hb_ht" id="analysis_of_hb_htOption1" value="Да">
+                    <label class="form-check-label" for="analysis_of_hb_htOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption2" value="Нет">
-                    <label class="form-check-label" for="urgentOption2">Нет</label>
+                    <input class="form-check-input" type="radio" name="analysis_of_hb_ht" id="analysis_of_hb_htOption2" value="Нет">
+                    <label class="form-check-label" for="analysis_of_hb_htOption2">Нет</label>
                 </div>
             </div>
             <hr>
             <div class="form-group">
-                <label for="cta_invasive_angiography"><b>Трепанация черепа:</b></label><br>
+                <label for="dynamic_uzs"><b>Проведено УЗС в динамике:</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption1" value="Да">
-                    <label class="form-check-label" for="urgentOption1">Да</label>
+                    <input class="form-check-input" type="radio" name="dynamic_uzs" id="dynamic_uzsOption1" value="Да">
+                    <label class="form-check-label" for="dynamic_uzsOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption2" value="Нет">
-                    <label class="form-check-label" for="urgentOption2">Нет</label>
+                    <input class="form-check-input" type="radio" name="dynamic_uzs" id="dynamic_uzsOption2" value="Нет">
+                    <label class="form-check-label" for="dynamic_uzsOption2">Нет</label>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="diagnostic_laparoscopy"><b>Диагностическая лапароскопия</b></label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="diagnostic_laparoscopy" id="diagnostic_laparoscopyOption1" value="Да">
+                    <label class="form-check-label" for="diagnostic_laparoscopyOption1">Да</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="diagnostic_laparoscopy" id="diagnostic_laparoscopyOption2" value="Нет">
+                    <label class="form-check-label" for="diagnostic_laparoscopyOption2">Нет</label>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="thoracocentesis"><b>Торакоцентез:</b></label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="thoracocentesis" id="thoracocentesisOption1" value="Да">
+                    <label class="form-check-label" for="thoracocentesisOption1">Да</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="thoracocentesis" id="thoracocentesisOption2" value="Нет">
+                    <label class="form-check-label" for="thoracocentesisOption2">Нет</label>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="laparotomy"><b>Лапаратомия:</b></label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="laparotomy" id="laparotomyOption1" value="Да">
+                    <label class="form-check-label" for="laparotomyOption1">Да</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="laparotomy" id="laparotomyOption2" value="Нет">
+                    <label class="form-check-label" for="laparotomyOption2">Нет</label>
+                </div>
+            </div>
+            <hr>
+
+            <div class="form-group">
+                <label for="thoracoscopy_thoracotomy"><b>Торакоскопия (торакотомия):</b></label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="thoracoscopy_thoracotomy" id="thoracoscopy_thoracotomyOption1" value="Да">
+                    <label class="form-check-label" for="thoracoscopy_thoracotomyOption1">Да</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="thoracoscopy_thoracotomy" id="thoracoscopy_thoracotomyOption2" value="Нет">
+                    <label class="form-check-label" for="thoracoscopy_thoracotomyOption2">Нет</label>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="osteosynthesis_of_fractures"><b>Остеосинтез переломов:</b></label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="osteosynthesis_of_fractures" id="osteosynthesis_of_fracturesOption1" value="Да">
+                    <label class="form-check-label" for="osteosynthesis_of_fracturesOption1">Да</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="osteosynthesis_of_fracturesOption2" id="urgentOption2" value="Нет">
+                    <label class="form-check-label" for="osteosynthesis_of_fracturesOption2">Нет</label>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="skull_trepanation"><b>Трепанация черепа:</b></label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="skull_trepanation" id="skull_trepanationOption1" value="Да">
+                    <label class="form-check-label" for="skull_trepanationOption1">Да</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="skull_trepanation" id="skull_trepanationOption2" value="Нет">
+                    <label class="form-check-label" for="skull_trepanationOption2">Нет</label>
                 </div>
             </div>
             <hr>
