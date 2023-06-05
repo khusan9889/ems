@@ -4,7 +4,7 @@
     <h1 class="page-header">Политравма-детальная таблица</h1>
     <div class="row justify-content-center">
 
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card mb-4">
                     <div class="card-body">
                         <h5 class="card-title">Форма {{$data->id}}</h5>
