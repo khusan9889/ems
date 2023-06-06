@@ -60,4 +60,22 @@ class PolytraumaController extends Controller
         return redirect()->back()->with('success', 'Record stored successfully');
     }
 
+    public function edit($id)
+    {
+        $data = Polytrauma::findOrFail($id);
+        $branches = Branch::all();
+
+        return view('dashboard.pages.polyt-edit-page', compact('data', 'branches'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $polytrauma = Polytrauma::findOrFail($id);
+        $polytrauma->update($request->all());
+
+        return redirect('/polytrauma')->with('success', 'Record updated successfully');
+    }
+
 }
+
+

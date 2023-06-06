@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.default')
+    @extends('dashboard.layouts.default')
 
 @section('content')
     <x-panel title="Регистр политравм в СЭМП">
@@ -214,7 +214,7 @@
             </div>
             <hr>
             <div class="form-group">
-                <label for="msct_individual_parts"><b>Проведено МКСТ </b><span>(отдельных частей тела;):</span></label><br>
+                <label for="msct_individual_parts"><b>Проведено МКСТ </b><span>(отдельных частей тела):</span></label><br>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="msct_individual_parts" id="msct_individual_partsOption1" value="Да">
                     <label class="form-check-label" for="msct_individual_partsOption1">Да</label>

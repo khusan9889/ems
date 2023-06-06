@@ -51,6 +51,9 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::post('add', [PolytraumaController::class, 'store'])->name('polytrauma.add');
 
+        Route::get('/polyt-edit-page/{id}', [PolytraumaController::class, 'edit'])->name('polyt-edit-page');
+        Route::put('/update-data/{id}', [PolytraumaController::class, 'update'])->name('polyt-update-data');
+
         Route::delete('/delete/{id}', [PolytraumaController::class, 'destroy'])->name('delete');
     });
 

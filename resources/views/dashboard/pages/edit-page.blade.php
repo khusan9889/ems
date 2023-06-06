@@ -22,7 +22,7 @@
                                     <td>{{$data->id}}</td>
                                 </tr>
                                 <tr>
-                                    <th>ОТделение</th>
+                                    <th>Отделение</th>
                                     <td>{{$data->department}}</td>
                                 </tr>
                                 <tr>

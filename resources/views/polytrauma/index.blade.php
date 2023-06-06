@@ -75,9 +75,10 @@
                         <a href="{{ route('full-table-polyt', ['id'=> $item->id]) }}" class="btn btn-primary btn-xs mr-1">
                             <i class="fas fa-eye"></i>
                         </a>
-                        <button type="button" class="btn btn-warning btn-xs mr-1">
+                        <a href="{{ route('polyt-edit-page', ['id' => $item->id]) }}"
+                            class="btn btn-warning btn-xs mr-1">
                             <i class="fas fa-pen"></i>
-                        </button>
+                        </a>
                         <button type="button" class="btn btn-danger btn-xs mr-1"
                             onclick="{{ $selectedID = $item->id }}; confirmDelete({{ $item->id }})">
                             <i class="fas fa-trash-alt"></i>
