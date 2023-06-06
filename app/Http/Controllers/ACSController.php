@@ -15,7 +15,6 @@ class ACSController extends Controller
     public function index(Request $request)
     {
         $data = ACS::all();
-
         return view('acs.index', compact('data'));
     }
 

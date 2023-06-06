@@ -92,6 +92,10 @@
     </table>
 </div>
 
+<!-- Pagination -->
+<div class="d-flex justify-content-center">
+    {{ $data->links() }}
+</div>
 
 <!-- Confirmation Modal -->
 @includeWhen($selectedID, 'components.modals.confirmation-modal', ['id' => $selectedID])
@@ -111,3 +115,5 @@
         });
     });
 </script>
+
+

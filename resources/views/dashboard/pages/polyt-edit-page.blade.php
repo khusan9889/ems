@@ -11,7 +11,7 @@
                             <i class="fas fa-arrow-left"></i>
                         </a>
                     </div>
-                        <form id="saveForm" method="POST" action="{{ route('polyt-update-data', ['id' => $data->id]) }}">
+                        <form method="POST" action="{{ route('polyt-update-data', ['id' => $data->id]) }}">
                             @csrf
                         @method('PUT')
 

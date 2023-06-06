@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Polytrauma;
 use App\Services\Contracts\PolytraumaServiceInterface;
 use App\Traits\Crud;
+use Illuminate\Pagination\Paginator;
 
 class PolytraumaService implements PolytraumaServiceInterface
 {

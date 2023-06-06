@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
-        $data = ACS::all();
+        $data = ACS::paginate(10);
         return view('dashboard.pages.home', compact('data'));
     });
     Route::get('/polytrauma', function () {
-        $data = Polytrauma::all();
+        $data = Polytrauma::paginate(10);
         return view('dashboard.pages.home', compact('data'));
     });
     Route::get('/fullform-acs/{id}', function ($id) {
