@@ -157,48 +157,237 @@
                                         </div>
                                     </td>
                                 </tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                <!-- Add more rows for radio questions -->
                                 <tr>
-                                    <th>ФИО лечащего врача</th>
+                                    <th>Если не проведена ЧКВ, отметьте причину:</th>
                                     <td>
-                                        <input type="text" name="physician_full_name" value="{{$data->physician_full_name}}">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="reasons_not_performing_cta" id="reasons_not_performing_ctaOption1" value="медицинские противопоказания" {{ $data->reasons_not_performing_cta == 'медицинские противопоказания' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="reasons_not_performing_ctaOption1">медицинские противопоказания</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="reasons_not_performing_cta" id="reasons_not_performing_ctaOption2" value="отсутствие специалиста" {{ $data->reasons_not_performing_cta == 'отсутствие специалиста' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="reasons_not_performing_ctaOption2">отсутствие специалиста</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="reasons_not_performing_cta" id="reasons_not_performing_ctaOption3" value="отсутствие оборудования" {{ $data->reasons_not_performing_cta == 'отсутствие оборудования' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="reasons_not_performing_ctaOption3">отсутствие оборудования</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="reasons_not_performing_cta" id="reasons_not_performing_ctaOption4" value="занятость оборудования" {{ $data->reasons_not_performing_cta == 'занятость оборудования' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="reasons_not_performing_ctaOption4">занятость оборудования</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="reasons_not_performing_cta" id="reasons_not_performing_ctaOption5" value="отсутствие расходных материалов" {{ $data->reasons_not_performing_cta == 'отсутствие расходных материалов' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="reasons_not_performing_ctaOption5">отсутствие расходных материалов</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="reasons_not_performing_cta" id="reasons_not_performing_ctaOption6" value="отказ больного" {{ $data->reasons_not_performing_cta == 'отказ больного' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="reasons_not_performing_ctaOption6">отказ больного</label>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>ФИО специалиста стат.отдела</th>
+                                    <th>Показана ли тромболитическая терапия (ТЛТ):</th>
                                     <td>
-                                        <input type="text" name="stat_department_full_name" value="{{$data->stat_department_full_name}}">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="thrombolytic_therapy" id="thrombolytic_therapyOption1" value="Да" {{ $data->thrombolytic_therapy == 'Да' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="thrombolytic_therapyOption1">Да</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="thrombolytic_therapy" id="thrombolytic_therapyOption2" value="Нет" {{ $data->thrombolytic_therapy == 'Нет' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="thrombolytic_therapyOption2">Нет</label>
+                                        </div>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <th>Если «Да», то проведена ли ТЛТ:</th>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="thrombolytic_therapy_administered" id="thrombolytic_therapy_administeredOption1" value="Да" {{ $data->thrombolytic_therapy_administered == 'Да' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="thrombolytic_therapy_administeredOption1">Да</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="thrombolytic_therapy_administered" id="thrombolytic_therapy_administeredOption2" value="Нет" {{ $data->thrombolytic_therapy_administered == 'Нет' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="thrombolytic_therapy_administeredOption2">Нет</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Если «НЕТ», отметьте причину:</th>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="not_administering_tlt" id="not_administering_tltOption1" value="медицинские противопоказания" {{ $data->not_administering_tlt == 'медицинские противопоказания' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="not_administering_tltOption1">медицинские противопоказания</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="not_administering_tlt" id="not_administering_tltOption2" value="отсутствие препарата" {{ $data->not_administering_tlt == 'отсутствие препарата' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="not_administering_tltOption2">отсутствие препарата</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="not_administering_tlt" id="not_administering_tltOption3" value="отказ больного" {{ $data->not_administering_tlt == 'отказ больного' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="not_administering_tltOption3">отказ больного</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <th><span><b> * Во время госпитализации больному (-ой):</b><span></span> <br>
+                                        Проведено ЭКГ</th>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="ecg_during_hospitalization" id="ecg_during_hospitalizationOption1" value="Да" {{ $data->ecg_during_hospitalization == 'Да' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="ecg_during_hospitalizationOption1">Да</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="ecg_during_hospitalization" id="ecg_during_hospitalizationOption2" value="Нет" {{ $data->ecg_during_hospitalization == 'Нет' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="ecg_during_hospitalizationOption2">Нет</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Если проведено ЭКГ, СТ сегмента повышен:</th>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="st_segment" id="st_segmentOption1" value="Да" {{ $data->st_segment == 'Да' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="st_segmentOption1">Да</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="st_segment" id="st_segmentOption2" value="Нет" {{ $data->st_segment == 'Нет' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="st_segmentOption2">Нет</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Проведено ЭхоКГ (с оценкой ФВ ЛЖ%):</th>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="echocardiogram" id="echocardiogramOption1" value="Да" {{ $data->echocardiogram == 'Да' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="echocardiogramOption1">Да</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="echocardiogram" id="echocardiogramOption2" value="Нет" {{ $data->echocardiogram == 'Нет' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="echocardiogramOption2">Нет</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Если «Да», то время первого измерения ФВ ЛЖ%</th>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="first_measurement" id="first_measurementOption1" value="≤3 сутки" {{ $data->first_measurement == '≤3 сутки' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="first_measurementOption1">≤3 сутки</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="first_measurement" id="first_measurementOption2" value=">3 суток" {{ $data->first_measurement == '>3 суток' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="first_measurementOption2">>3 суток</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Проведены анализы на ЛПНП</th>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="cholestero_levels" id="cholestero_levelsOption1" value="Да" {{ $data->cholestero_levels == 'Да' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="cholestero_levelsOption1">Да</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="cholestero_levels" id="cholestero_levelsOption2" value="Нет" {{ $data->cholestero_levels == 'Нет' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="cholestero_levelsOption2">Нет</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Проведены анализ на АЧТВ (25-36сек)</th>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="aptt" id="apttOption1" value="Да" {{ $data->aptt == 'Да' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="apttOption1">Да</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="aptt" id="apttOption2" value="Нет" {{ $data->aptt == 'Нет' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="apttOption2">Нет</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Проведена антикоагулянтная терапия:</th>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="anticoagulant" id="anticoagulantOption1" value="Да" {{ $data->anticoagulant == 'Да' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="anticoagulantOption1">Да</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="anticoagulant" id="anticoagulantOption2" value="Нет" {{ $data->anticoagulant == 'Нет' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="anticoagulantOption2">Нет</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Принимал аспирин:</th>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="aspirin" id="aspirinOption1" value="Да" {{ $data->aspirin == 'Да' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="aspirinOption1">Да</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="aspirin" id="aspirinOption2" value="Нет" {{ $data->aspirin == 'Нет' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="aspirinOption2">Нет</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Принимал ингибиторы P2Y12:
+                                        <br><span>(prasugrel, ticagrelor, или clopidogrel)</span><br>
+                                    </th>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="p2y12" id="p2y12Option1" value="Да" {{ $data->p2y12 == 'Да' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="p2y12Option1">Да</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="p2y12" id="p2y12Option2" value="Нет" {{ $data->p2y12 == 'Нет' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="p2y12Option2">Нет</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Принимал статины высокой интенсивности:</th>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="high_intensity_statins" id="high_intensity_statinsOption1" value="Да" {{ $data->high_intensity_statins == 'Да' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="high_intensity_statinsOption1">Да</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="high_intensity_statins" id="high_intensity_statinsOption2" value="Нет" {{ $data->high_intensity_statins == 'Нет' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="high_intensity_statinsOption2">Нет</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Принимал ингибиторы АПФ или БРАII:</th>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="ACE_inhibitors_ARBs" id="ACE_inhibitors_ARBsOption1" value="Да" {{ $data->ACE_inhibitors_ARBs == 'Да' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="ACE_inhibitors_ARBsOption1">Да</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="ACE_inhibitors_ARBs" id="ACE_inhibitors_ARBsOption2" value="Нет" {{ $data->ACE_inhibitors_ARBs == 'Нет' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="ACE_inhibitors_ARBsOption2">Нет</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>ФИО лечащего врача</th>
+                                    <td>{{$data->physician_full_name}}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>ФИО специалиста стат.отдела</th>
+                                    <td>{{$data->stat_department_full_name}}</td>
                                 </tr>
                             </tbody>
                         </table>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
                     </form>
                 </div>
             </div>
@@ -206,29 +395,3 @@
     </div>
 @endsection
 
-
-
-
-
-
-                                <!-- Add more rows for other columns -->
-                                {{-- <tr>
-                                    <th>Исход лечения</th>
-                                    <td>
-                                        <select class="form-control" name="treatment_result">
-                                            <option value="Выписан" {{ $data->treatment_result == 'Выписан' ? 'selected' : '' }}>Выписан</option>
-                                            <option value="Летальный исход" {{ $data->treatment_result == 'Летальный исход' ? 'selected' : '' }}>Летальный исход</option>
-                                            <option value="Выписан в тяжелом состоянии" {{ $data->treatment_result == 'Выписан в тяжелом состоянии' ? 'selected' : '' }}>Выписан в тяжелом состоянии</option>
-                                        </select>
-                                    </td>
-                                </tr> --}}
-
-
-
-
-                                {{-- <tr>
-                                    <th>Срок ангинального приступа при поступлении</th>
-                                    <td>
-                                        <input type="text" name="anginal_attack_date" value="{{$data->anginal_attack_date}}">
-                                    </td>
-                                </tr> --}}

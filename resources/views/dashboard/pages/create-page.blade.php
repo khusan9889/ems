@@ -223,21 +223,14 @@
                 <div class="form-group">
                     <label for="ecg_during_hospitalization"><b>Проведено <span style="font-weight: 900; background-color: yellow;"> ЭКГ
                             </span></b></label><br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="ecg_during_hospitalization" id="ecg_during_hospitalizationOption1"
-                            value="медицинские противопоказания">
-                        <label class="form-check-label" for="ecg_during_hospitalizationOption1">медицинские противопоказания</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="ecg_during_hospitalization" id="ecg_during_hospitalizationOption2"
-                            value="отсутствие препарата<">
-                        <label class="form-check-label" for="ecg_during_hospitalizationOption2">отсутствие препарата</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="ecg_during_hospitalization" id="ecg_during_hospitalizationOption3"
-                            value="отказ больного">
-                        <label class="form-check-label" for="ecg_during_hospitalizationOption3">отказ больного</label>
-                    </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="ecg_during_hospitalization" id="ecg_during_hospitalizationOption1" value="Да">
+                            <label class="form-check-label" for="ecg_during_hospitalizationOption1">Да</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="ecg_during_hospitalization" id="ecg_during_hospitalizationOption2" value="Нет">
+                            <label class="form-check-label" for="ecg_during_hospitalizationOption1">Нет</label>
+                        </div>
                 </div>
                 <hr>
                 <div class="form-group">
