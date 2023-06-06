@@ -9,11 +9,11 @@
                     <div class="d-flex justify-content-between">
                         <h5 class="card-title">Форма {{$data->id}}</h5>
                         <div>
-                            <a href="" class="btn btn-secondary me-2 btn-sm">
-                                <i class="fas fa-arrow-left"></i>
-                            </a>
                             <a href="{{ route('edit-page', ['id' => $data->id]) }}" class="btn btn-primary btn-sm">
                                 <i class="fas fa-pen"></i>
+                            </a>
+                            <a href="{{ url('/') }}" class="btn btn-secondary me-2 btn-sm">
+                                <i class="fas fa-arrow-left"></i>
                             </a>
                         </div>
                     </div>

@@ -1,14 +1,18 @@
 @extends('dashboard.layouts.default')
-
 @section('content')
     <h1 class="page-header">ОКС-таблица для изменений</h1>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card mb-4">
                 <div class="card-body">
-                    <h5 class="card-title">Форма {{$data->id}}</h5>
-                    <form method="POST" action="{{ route('update-data', ['id' => $data->id]) }}">
-                        @csrf
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="card-title">Форма {{$data->id}}</h5>
+                        <a href="{{ url('/') }}" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                        <form id="saveForm" method="POST" action="{{ route('update-data', ['id' => $data->id]) }}">
+                            @csrf
                         @method('PUT')
 
                         <table class="table table-striped table-bordered align-middle">
@@ -395,3 +399,11 @@
     </div>
 @endsection
 
+{{-- <script>
+    function redirectToMainPage() {
+        // Perform any necessary form validation or data processing here
+
+        // Redirect to the main page
+        window.location.href = "{{ url('/') }}";
+    }
+</script> --}}
