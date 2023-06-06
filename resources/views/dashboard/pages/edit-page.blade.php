@@ -18,39 +18,24 @@
                                     <td>{{$data->id}}</td>
                                 </tr>
                                 <tr>
-                                    <th>Отделение</th>
-                                    <td>
-                                        <select class="form-control" name="department">
-                                            <!-- Add options for department -->
-                                            @foreach ($branches as $branch)
-                                                <option value="{{ $branch->id }}" {{ $data->department == $branch->id ? 'selected' : '' }}>{{ $branch->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
+                                    <th>ОТделение</th>
+                                    <td>{{$data->department}}</td>
                                 </tr>
                                 <tr>
                                     <th>Номер ИБ</th>
-                                    <td>
-                                        <input type="text" name="final_result" value="{{$data->history_disease}}">
-                                    </td>
+                                    <td>{{$data->history_disease}}</td>
                                 </tr>
                                 <tr>
                                     <th>Пациент ФИО</th>
-                                    <td>
-                                        <input type="text" name="full_name" value="{{$data->full_name}}">
-                                    </td>
+                                    <td>{{$data->full_name}}</td>
                                 </tr>
                                 <tr>
                                     <th>Дата поступления</th>
-                                    <td>
-                                        <input type="text" name="hospitalization_date" value="{{$data->hospitalization_date}}">
-                                    </td>
+                                    <td>{{$data->hospitalization_date}}</td>
                                 </tr>
                                 <tr>
                                     <th>Дата выписки</th>
-                                    <td>
-                                        <input type="text" name="discharge_date" value="{{$data->discharge_date}}">
-                                    </td>
+                                    <td>{{$data->discharge_date}}</td>
                                 </tr>
                                 <tr>
                                     <th>Канал госпитализации</th>
@@ -172,7 +157,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                
+
 
 
 

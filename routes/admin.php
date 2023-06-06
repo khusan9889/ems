@@ -30,7 +30,6 @@ Route::group(['middleware' => 'auth'], function () {
     {
         Route::get('create-page', function () {
             $branches = Branch::all(['id', 'name']);
-            // Handle logic for the create page
             return view('dashboard.pages.create-page', compact('branches'));
         })->name('acs.create-page');
 
