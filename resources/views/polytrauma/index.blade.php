@@ -21,8 +21,7 @@
             <tr>
                 <td class="align-middle">
                     <div class="d-flex align-items-center justify-content-center">
-                        <button class="btn btn-link btn-sm sort-btn" data-sort-by="id"
-                            onclick="toggleSortDirection(this)">
+                        <button class="btn btn-link btn-sm sort-btn" data-sort-by="id" onclick="toggleSortDirection(this)">
                             <i class="fas fa-sort fa-lg"></i>
                         </button>
                     </div>
@@ -30,7 +29,9 @@
                 <td>
                     <select class="form-control form-control-sm" name="department">
                         @foreach ($departments as $department)
-                            <option value="{{ $department->id }}">{{ $department->name }}</option>
+                            <option value="{{ $department->name }}" style="font-size: 12px;"
+                                @if ($department->name == request('department')) selected @endif>{{ $department->name }}
+                            </option>
                         @endforeach
                     </select>
                 </td>

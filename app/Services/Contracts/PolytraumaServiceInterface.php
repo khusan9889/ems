@@ -13,4 +13,6 @@ interface PolytraumaServiceInterface
     public function delete($id);
 
     public function createRecord(array $data);
+
+    public function customFilter(array $filters);
 }

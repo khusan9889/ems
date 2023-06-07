@@ -19,54 +19,60 @@
                 <th>Действия</th>
             </tr>
             <tr>
-                <td class="align-middle">
-                    <div class="d-flex align-items-center justify-content-center">
-                        <button class="btn btn-link btn-sm sort-btn" data-sort-by="id" onclick="toggleSortDirection(this)">
-                            <i class="fas fa-sort fa-lg"></i>
-                        </button>
-                    </div>
-                </td>
-                <td>
-                    <select class="form-control form-control-sm" name="department">
-                        @foreach ($departments as $department)
-                            <option value="{{ $department->id }}">{{ $department->name }}</option>
-                        @endforeach
-                    </select>
-                </td>
-                <td>
-                    <input class="form-control form-control-sm" type="text" name="history_disease">
-                </td>
-                <td>
-                    <input class="form-control form-control-sm" type="text" name="full_name">
-                </td>
-                <td>
-                    <input class="form-control form-control-sm" type="text" name="hospitalization_date">
-                </td>
-                <td>
-                    <input class="form-control form-control-sm" type="text" name="discharge_date">
-                </td>
-                <td>
-                    <select class="form-control form-control-sm" name="hospitalization_channels"></select>
-                </td>
-                <td>
-                    <input class="form-control form-control-sm" name="physician_full_name"></select>
-                </td>
-                <td>
-                    <input class="form-control form-control-sm" name="stat_department_full_name"></select>
-                </td>
-                <td class="align-middle d-flex justify-content-center">
-                    <div class="btn btn-success">
-                        <a href="{{ route('acs.create-page') }}" class="btn btn-success btn-xs">Добавить</a>
-                    </div>
-                </td>
+                <form action="">
+                    <td class="align-middle">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <button class="btn btn-link btn-sm sort-btn" data-sort-by="id"
+                                onclick="toggleSortDirection(this)">
+                                <i class="fas fa-sort fa-lg"></i>
+                            </button>
+                        </div>
+                    </td>
+                    <td>
+                        <select class="form-control form-control-sm" name="branch">
+                            <option value="" style="font-size: 12px;">Выберите отделение</option>
+                            @foreach ($branches as $id => $name)
+                                <option value="{{ $id }}" style="font-size: 12px;"
+                                    @if ($id == request('branch')) selected @endif>{{ $name }}</option>
+                            @endforeach
+                        </select>
+                    </td>
+                    <td>
+                        <input class="form-control form-control-sm" type="text" name="history_disease"
+                            value="{{ request('history_disease') }}">
+                    </td>
+                    <td>
+                        <input class="form-control form-control-sm" type="text" name="full_name">
+                    </td>
+                    <td>
+                        <input class="form-control form-control-sm" type="text" name="hospitalization_date">
+                    </td>
+                    <td>
+                        <input class="form-control form-control-sm" type="text" name="discharge_date">
+                    </td>
+                    <td>
+                        <select class="form-control form-control-sm" name="hospitalization_channels"></select>
+                    </td>
+                    <td>
+                        <input class="form-control form-control-sm" name="physician_full_name"></select>
+                    </td>
+                    <td>
+                        <input class="form-control form-control-sm" name="stat_department_full_name"></select>
+                    </td>
+                    <td class="align-middle d-flex justify-content-center">
+                        <div>
+                            <button type="submit" class="btn btn-primary">Применить</button>
+                        </div>
+                    </td>
+                </form>
             </tr>
 
         </thead>
         <tbody>
-            @foreach($data as $key => $item)
+            @foreach ($data as $key => $item)
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->department }}</td>
+                    <td>{{ $item->branch->name }}</td>
                     <td>{{ $item->history_disease }}</td>
                     <td>{{ $item->full_name }}</td>
                     <td>{{ $item->hospitalization_date }}</td>
@@ -121,5 +127,3 @@
         });
     });
 </script>
-
-

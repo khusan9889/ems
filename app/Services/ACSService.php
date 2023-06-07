@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Models\ACS;
 use App\Services\Contracts\ACSServiceInterface;
 use App\Traits\Crud;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class ACSService implements ACSServiceInterface
 {
@@ -47,13 +46,14 @@ class ACSService implements ACSServiceInterface
         return $this->modelClass::create($data);
     }
 
-    public function customFilter(array $filters): LengthAwarePaginator
+    public function customFilter(array $filters)
     {
         $query = $this->modelClass::query();
 
         // Filter by department
-        if (isset($filters['department'])) {
-            $query->where('department', $filters['department']);
+        if (isset($filters['branch'])) {
+            $branchId = $filters['branch']; // Assuming the value is the branch ID
+            $query->where('branch_id', $branchId);
         }
 
         // Filter by history disease
@@ -76,9 +76,17 @@ class ACSService implements ACSServiceInterface
             $query->where('discharge_date', 'like', "%{$filters['discharge_date']}%");
         }
 
-        // Add more filters for other columns if needed
-        return $this->filter($filters);
+        if (isset($filters['physician_full_name'])) {
+            $query->where('physician_full_name', 'like', "%{$filters['physician_full_name']}%");
+        }
+
+        if (isset($filters['stat_department_full_name'])) {
+            $query->where('stat_department_full_name', 'like', "%{$filters['stat_department_full_name']}%");
+        }
+
+        $perPage = 10; // Adjust the number of records per page as needed
+        $results = $query->paginate($perPage);
+
+        return $results;
     }
-
 }
-

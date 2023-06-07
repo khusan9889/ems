@@ -6,7 +6,6 @@ use App\Http\Requests\StoreACSRequest;
 use App\Models\ACS;
 use App\Models\Branch;
 use App\Services\Contracts\ACSServiceInterface;
-use App\Traits\Crud;
 use Illuminate\Http\Request;
 
 
@@ -14,9 +13,19 @@ class ACSController extends Controller
 {
     public function index(Request $request, ACSServiceInterface $acsService)
     {
-        $data = $acsService->customFilter($request->all());
-        $departments = Branch::all();
-        return view('dashboard.pages.home', compact('data', 'departments'));
+        $filters = [
+            'branch' => $request->input('branch'),
+            'history_disease' => $request->input('history_disease'),
+            'full_name' => $request->input('full_name'),
+            'hospitalization_date' => $request->input('hospitalization_date'),
+            'discharge_date' => $request->input('discharge_date')
+            // Add more filters for other columns if needed
+        ];
+
+        $data = $acsService->customFilter($filters);
+        $branches = Branch::pluck('name', 'id'); // Get branch names with their IDs
+
+        return view('dashboard.pages.home', compact('data', 'branches'));
     }
 
     public function fullTable(Request $request)
@@ -24,9 +33,9 @@ class ACSController extends Controller
         $query = ACS::query();
 
         // Filter by department
-        if ($request->has('department')) {
-            $department = $request->input('department');
-            $query->where('department', $department);
+        if ($request->has('branch')) {
+            $branch = $request->input('branch');
+            $query->where('branch', $branch);
         }
 
         // Search by full name
@@ -51,8 +60,8 @@ class ACSController extends Controller
     public function store(StoreACSRequest $request)
     {
         $validatedData = $request->validated();
-        $department = Branch::findOrFail($validatedData['department']);
-        $validatedData['department'] = $department->name;
+        $branch = Branch::findOrFail($validatedData['branch']);
+        $validatedData['branch'] = $branch->name;
 
         ACS::create($validatedData);
 

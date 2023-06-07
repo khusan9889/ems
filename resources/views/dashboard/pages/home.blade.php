@@ -21,7 +21,7 @@
         </x-panel>
     @else
         <x-panel title="ОКС">
-            @include('acs.index', ['departments' => $departments])
+            @include('acs.index', ['branches' => $branches])
         </x-panel>
     @endif
 

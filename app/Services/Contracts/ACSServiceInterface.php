@@ -16,6 +16,5 @@ interface ACSServiceInterface
 
     public function createRecord(array $data);
 
-    public function customFilter(array $filters): LengthAwarePaginator;
-
+    public function customFilter(array $filters);
 }

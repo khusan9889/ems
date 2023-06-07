@@ -47,4 +47,42 @@ class PolytraumaService implements PolytraumaServiceInterface
     {
         return $this->modelClass::create($data);
     }
+
+    public function customFilter(array $filters)
+    {
+        $query = $this->modelClass::query();
+
+        // Filter by department
+        if (isset($filters['department'])) {
+            // dd(1);
+            $query->where('department', $filters['department']);
+        }
+
+        // Filter by history disease
+        if (isset($filters['history_disease'])) {
+            $query->where('history_disease', 'like', "%{$filters['history_disease']}%");
+        }
+
+        // Filter by full name
+        if (isset($filters['full_name'])) {
+            $query->where('full_name', 'like', "%{$filters['full_name']}%");
+        }
+
+        // Filter by hospitalization date
+        if (isset($filters['hospitalization_date'])) {
+            $query->where('hospitalization_date', 'like', "%{$filters['hospitalization_date']}%");
+        }
+
+        // Filter by discharge date
+        if (isset($filters['discharge_date'])) {
+            $query->where('discharge_date', 'like', "%{$filters['discharge_date']}%");
+        }
+
+        // Add more filters for other columns if needed
+
+        $perPage = 10; // Adjust the number of records per page as needed
+        $results = $query->paginate($perPage);
+
+        return $results;
+    }
 }

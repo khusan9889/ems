@@ -22,7 +22,7 @@ class StoreACSRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'department' => 'required',
+            'branch' => 'required',
             'history_disease' => 'required',
             'full_name' => 'required',
             'hospitalization_date' => 'required',
