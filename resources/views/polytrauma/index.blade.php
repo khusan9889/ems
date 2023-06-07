@@ -50,10 +50,10 @@
                     <select class="form-control form-control-sm" name="hospitalization_channels"></select>
                 </td>
                 <td>
-                    <select class="form-control form-control-sm" name="physician_full_name"></select>
+                    <input class="form-control form-control-sm" name="physician_full_name"></select>
                 </td>
                 <td>
-                    <select class="form-control form-control-sm" name="stat_department_full_name"></select>
+                    <input class="form-control form-control-sm" name="stat_department_full_name"></select>
                 </td>
                 <td class="align-middle d-flex justify-content-center">
                     <div class="btn btn-success">

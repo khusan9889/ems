@@ -28,11 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
         })->name('acs.create-page');
 
         Route::post('add', [ACSController::class, 'store'])->name('acs.add');
-
         Route::get('/edit-page/{id}', [ACSController::class, 'edit'])->name('edit-page');
         Route::put('/update-data/{id}', [ACSController::class, 'update'])->name('update-data');
-
-
 
         Route::delete('/delete/{id}', [ACSController::class, 'destroy'])->name('delete');
     });
@@ -44,7 +41,6 @@ Route::group(['middleware' => 'auth'], function () {
         })->name('polytrauma.polyt-create-page');
 
         Route::post('add', [PolytraumaController::class, 'store'])->name('polytrauma.add');
-
         Route::get('/polyt-edit-page/{id}', [PolytraumaController::class, 'edit'])->name('polyt-edit-page');
         Route::put('/update-data/{id}', [PolytraumaController::class, 'update'])->name('polyt-update-data');
 
