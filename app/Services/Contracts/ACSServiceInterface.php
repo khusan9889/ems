@@ -2,6 +2,8 @@
 
 namespace App\Services\Contracts;
 
+use Illuminate\Pagination\LengthAwarePaginator;
+
 interface ACSServiceInterface
 {
     public function filter();
@@ -13,5 +15,7 @@ interface ACSServiceInterface
     public function delete($id);
 
     public function createRecord(array $data);
+
+    public function customFilter(array $filters): LengthAwarePaginator;
 
 }

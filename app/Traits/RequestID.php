@@ -10,3 +10,4 @@ trait RequestID
     return array_merge(parent::all(), ['id' => $this->route()->parameters()['id']]);
   }
 }
+

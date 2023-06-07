@@ -12,9 +12,9 @@ use Illuminate\Http\Request;
 
 class ACSController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, ACSServiceInterface $acsService)
     {
-        $data = ACS::paginate(10);
+        $data = $acsService->customFilter($request->all());
         $departments = Branch::all();
         return view('dashboard.pages.home', compact('data', 'departments'));
     }
