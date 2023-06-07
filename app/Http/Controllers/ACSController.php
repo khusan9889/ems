@@ -18,8 +18,10 @@ class ACSController extends Controller
             'history_disease' => $request->input('history_disease'),
             'full_name' => $request->input('full_name'),
             'hospitalization_date' => $request->input('hospitalization_date'),
-            'discharge_date' => $request->input('discharge_date')
-            // Add more filters for other columns if needed
+            'discharge_date' => $request->input('discharge_date'),
+            'physician_full_name' => $request->input('physician_full_name'),
+            'stat_department_full_name' => $request->input('stat_department_full_name'),
+            
         ];
 
         $data = $acsService->customFilter($filters);
@@ -60,9 +62,23 @@ class ACSController extends Controller
     public function store(StoreACSRequest $request)
     {
         $validatedData = $request->validated();
-        $branch = Branch::findOrFail($validatedData['branch']);
-        $validatedData['branch'] = $branch->name;
 
+        // Get the selected branch's ID from the form data
+        $branchId = $validatedData['branch_id'] ?? null;
+
+        // Find the corresponding branch record
+        $branch = Branch::find($branchId);
+
+        if (!$branch) {
+            // Branch does not exist in the database
+            // You can handle this situation based on your requirements, such as throwing an exception or returning an error message
+            return redirect()->back()->with('error', 'Selected branch does not exist.');
+        }
+
+        // Set the branch ID in the data array before creating the record
+        $validatedData['branch_id'] = $branch->id;
+
+        // Create the ACS record
         ACS::create($validatedData);
 
         return redirect()->back()->with('success', 'Record stored successfully');

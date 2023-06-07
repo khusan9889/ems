@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\ACS;
+use App\Models\Branch;
 use App\Services\Contracts\ACSServiceInterface;
 use App\Traits\Crud;
 
@@ -43,6 +44,18 @@ class ACSService implements ACSServiceInterface
     }
     public function createRecord(array $data)
     {
+        $branchId = $data['branch'] ?? null;
+        $branch = Branch::find($branchId);
+
+        if (!$branch) {
+            // Branch does not exist in the database
+            // You can handle this situation based on your requirements, such as throwing an exception or returning an error message
+            throw new \Exception('Selected branch does not exist.');
+        }
+
+        // Set the branch name in the data array before creating the record
+        $data['branch'] = $branch->name;
+
         return $this->modelClass::create($data);
     }
 

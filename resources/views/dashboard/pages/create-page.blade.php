@@ -14,8 +14,8 @@
         <form action="{{ route('acs.add') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="department">{{ __('validation.attributes.department') }}</label>
-                <select class="form-control" id="department" name="department">
+                {{-- <label for="branch">{{ __('validation.attributes.branch') }}</label> --}}
+                <select class="form-control" id="branch" name="branch_id">
                     <!-- Add options for department -->
                     <option value="" hidden>Выбрать отделение</option>
                     @foreach ($branches as $branch)
