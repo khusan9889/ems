@@ -11,6 +11,7 @@
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
         "illuminate/pagination": "*",
+        "illuminate/support": "*",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
         "laravel/telescope": "^4.14",

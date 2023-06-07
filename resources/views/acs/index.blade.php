@@ -22,8 +22,7 @@
                 <form action="">
                     <td class="align-middle">
                         <div class="d-flex align-items-center justify-content-center">
-                            <button class="btn btn-link btn-sm sort-btn" data-sort-by="id"
-                                onclick="toggleSortDirection(this)">
+                            <button class="btn btn-link btn-sm sort-btn" data-sort-by="id" onclick="toggleSortDirection(this)">
                                 <i class="fas fa-sort fa-lg"></i>
                             </button>
                         </div>

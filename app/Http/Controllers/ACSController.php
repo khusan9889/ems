@@ -21,7 +21,7 @@ class ACSController extends Controller
             'discharge_date' => $request->input('discharge_date'),
             'physician_full_name' => $request->input('physician_full_name'),
             'stat_department_full_name' => $request->input('stat_department_full_name'),
-            
+
         ];
 
         $data = $acsService->customFilter($filters);
