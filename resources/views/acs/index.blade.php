@@ -27,7 +27,11 @@
                     </div>
                 </td>
                 <td>
-                    <select class="form-control form-control-sm" name="department"></select>
+                    <select class="form-control form-control-sm" name="department">
+                        @foreach ($departments as $department)
+                            <option value="{{ $department->id }}">{{ $department->name }}</option>
+                        @endforeach
+                    </select>
                 </td>
                 <td>
                     <input class="form-control form-control-sm" type="text" name="history_disease">
@@ -89,8 +93,10 @@
                 </tr>
             @endforeach
         </tbody>
+
     </table>
 </div>
+
 
 <!-- Pagination -->
 <div class="d-flex justify-content-center">

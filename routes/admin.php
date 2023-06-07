@@ -8,14 +8,9 @@ use App\Models\Polytrauma;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', function () {
-        $data = ACS::paginate(10);
-        return view('dashboard.pages.home', compact('data'));
-    });
-    Route::get('/polytrauma', function () {
-        $data = Polytrauma::paginate(10);
-        return view('dashboard.pages.home', compact('data'));
-    });
+    Route::get('/', [ACSController::class, 'index']);
+    Route::get('/polytrauma', [PolytraumaController::class, 'index']);
+
     Route::get('/fullform-acs/{id}', function ($id) {
         $data = ACS::findOrFail($id);
         return view('dashboard.pages.full-table', compact('data'));
@@ -26,8 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('full-table-polyt');
     // Add the route for the create-page
 
-    Route::group(['prefix' => 'acs'], function ()
-    {
+    Route::group(['prefix' => 'acs'], function () {
         Route::get('create-page', function () {
             $branches = Branch::all(['id', 'name']);
             return view('dashboard.pages.create-page', compact('branches'));
@@ -56,6 +50,4 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::delete('/delete/{id}', [PolytraumaController::class, 'destroy'])->name('delete');
     });
-
 });
-

@@ -14,8 +14,9 @@ class ACSController extends Controller
 {
     public function index(Request $request)
     {
-        $data = ACS::all();
-        return view('acs.index', compact('data'));
+        $data = ACS::paginate(10);
+        $departments = Branch::all();
+        return view('dashboard.pages.home', compact('data', 'departments'));
     }
 
     public function fullTable(Request $request)

@@ -16,8 +16,9 @@ class PolytraumaController extends Controller
 
     public function index(Request $request)
     {
-        $data = Polytrauma::all();
-        return view('polytrauma.index', compact('data'));
+        $data = Polytrauma::paginate(10);
+        $departments = Branch::all();
+        return view('dashboard.pages.home', compact('data', 'departments'));
     }
 
     public function fullTable(Request $request)
@@ -75,7 +76,4 @@ class PolytraumaController extends Controller
 
         return redirect('/polytrauma')->with('success', 'Record updated successfully');
     }
-
 }
-
-
