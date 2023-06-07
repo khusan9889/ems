@@ -17,7 +17,7 @@
     <!-- changing panel name according url -->
     @if (request()->is('polytrauma'))
         <x-panel title="Политравма">
-            @include('polytrauma.index', ['departments' => $departments])
+            @include('polytrauma.index', ['branches' => $branches])
         </x-panel>
     @else
         <x-panel title="ОКС">

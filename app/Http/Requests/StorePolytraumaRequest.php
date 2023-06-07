@@ -22,7 +22,7 @@ class StorePolytraumaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'department' => 'required',
+            'branch_id' => 'required',
             'history_disease' => 'required',
             'full_name' => 'required',
             'hospitalization_date' => 'required',

@@ -19,6 +19,7 @@
                 <th>Действия</th>
             </tr>
             <tr>
+                <form action="">
                 <td class="align-middle">
                     <div class="d-flex align-items-center justify-content-center">
                         <button class="btn btn-link btn-sm sort-btn" data-sort-by="id" onclick="toggleSortDirection(this)">
@@ -27,16 +28,17 @@
                     </div>
                 </td>
                 <td>
-                    <select class="form-control form-control-sm" name="department">
-                        @foreach ($departments as $department)
-                            <option value="{{ $department->name }}" style="font-size: 12px;"
-                                @if ($department->name == request('department')) selected @endif>{{ $department->name }}
-                            </option>
+                    <select class="form-control form-control-sm" name="branch">
+                        <option value="" style="font-size: 12px;">Выберите отделение</option>
+                        @foreach ($branches as $id => $name)
+                            <option value="{{ $id }}" style="font-size: 12px;"
+                                @if ($id == request('branch')) selected @endif>{{ $name }}</option>
                         @endforeach
                     </select>
                 </td>
                 <td>
-                    <input class="form-control form-control-sm" type="text" name="history_disease">
+                    <input class="form-control form-control-sm" type="text" name="history_disease"
+                            value="{{ request('history_disease') }}">
                 </td>
                 <td>
                     <input class="form-control form-control-sm" type="text" name="full_name">
@@ -57,11 +59,11 @@
                     <input class="form-control form-control-sm" name="stat_department_full_name"></select>
                 </td>
                 <td class="align-middle d-flex justify-content-center">
-                    <div class="btn btn-success">
-                        <a href="{{ route('polytrauma.polyt-create-page') }}"
-                            class="btn btn-success btn-xs">Добавить</a>
+                    <div>
+                        <button type="submit" class="btn btn-primary">Применить</button>
                     </div>
                 </td>
+                </form>
             </tr>
 
         </thead>
@@ -69,7 +71,7 @@
             @foreach ($data as $key => $item)
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->department }}</td>
+                    <td>{{ $item->branch->name }}</td>
                     <td>{{ $item->history_disease }}</td>
                     <td>{{ $item->full_name }}</td>
                     <td>{{ $item->hospitalization_date }}</td>

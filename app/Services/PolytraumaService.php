@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
+use App\Models\Branch;
 use App\Models\Polytrauma;
 use App\Services\Contracts\PolytraumaServiceInterface;
 use App\Traits\Crud;
-use Illuminate\Pagination\Paginator;
 
 class PolytraumaService implements PolytraumaServiceInterface
 {
@@ -45,6 +45,18 @@ class PolytraumaService implements PolytraumaServiceInterface
 
     public function createRecord(array $data)
     {
+        $branchId = $data['branch'] ?? null;
+        $branch = Branch::find($branchId);
+
+        if (!$branch) {
+            // Branch does not exist in the database
+            // You can handle this situation based on your requirements, such as throwing an exception or returning an error message
+            throw new \Exception('Selected branch does not exist.');
+        }
+
+        // Set the branch name in the data array before creating the record
+        $data['branch'] = $branch->name;
+
         return $this->modelClass::create($data);
     }
 
@@ -53,9 +65,9 @@ class PolytraumaService implements PolytraumaServiceInterface
         $query = $this->modelClass::query();
 
         // Filter by department
-        if (isset($filters['department'])) {
-            // dd(1);
-            $query->where('department', $filters['department']);
+        if (isset($filters['branch'])) {
+            $branchId = $filters['branch']; // Assuming the value is the branch ID
+            $query->where('branch_id', $branchId);
         }
 
         // Filter by history disease
@@ -78,7 +90,13 @@ class PolytraumaService implements PolytraumaServiceInterface
             $query->where('discharge_date', 'like', "%{$filters['discharge_date']}%");
         }
 
-        // Add more filters for other columns if needed
+        if (isset($filters['physician_full_name'])) {
+            $query->where('physician_full_name', 'like', "%{$filters['physician_full_name']}%");
+        }
+
+        if (isset($filters['stat_department_full_name'])) {
+            $query->where('stat_department_full_name', 'like', "%{$filters['stat_department_full_name']}%");
+        }
 
         $perPage = 10; // Adjust the number of records per page as needed
         $results = $query->paginate($perPage);
