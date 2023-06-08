@@ -399,11 +399,3 @@
     </div>
 @endsection
 
-{{-- <script>
-    function redirectToMainPage() {
-        // Perform any necessary form validation or data processing here
-
-        // Redirect to the main page
-        window.location.href = "{{ url('/') }}";
-    }
-</script> --}}

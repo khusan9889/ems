@@ -83,10 +83,9 @@ class PolytraumaController extends Controller
         // Set the branch ID in the data array before creating the record
         $validatedData['branch_id'] = $branch->id;
 
-        // Create the ACS record
         Polytrauma::create($validatedData);
 
-        return redirect()->back()->with('success', 'Record stored successfully');
+        return redirect('/polytrauma')->with('success', 'Record updated successfully');
     }
 
     public function edit($id)

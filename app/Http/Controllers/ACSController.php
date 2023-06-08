@@ -22,7 +22,7 @@ class ACSController extends Controller
             'physician_full_name' => $request->input('physician_full_name'),
             'stat_department_full_name' => $request->input('stat_department_full_name'),
             'hospitalization_channels' => $request->input('hospitalization_channels'),
-            'sort' => $request->input('sort') ?? 'DESC', 
+            'sort' => $request->input('sort') ?? 'DESC',
         ];
 
         $hospitalization_channels = ACS::HOSPITALIZATION_CHANNELS;
@@ -84,7 +84,7 @@ class ACSController extends Controller
         // Create the ACS record
         ACS::create($validatedData);
 
-        return redirect()->back()->with('success', 'Record stored successfully');
+        return redirect('/')->with('success', 'Record updated successfully');
     }
 
     public function edit($id)
