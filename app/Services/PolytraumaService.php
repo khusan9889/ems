@@ -62,13 +62,18 @@ class PolytraumaService implements PolytraumaServiceInterface
 
     public function customFilter(array $filters)
     {
-        $query = $this->modelClass::query();
-
-        // Filter by department
-        if (isset($filters['branch'])) {
-            $branchId = $filters['branch']; // Assuming the value is the branch ID
-            $query->where('branch_id', $branchId);
-        }
+        $query = $this->modelClass::when(
+            $filters['sort'],
+            fn ($query, $value) => $query->orderBy('id', $value)
+        )
+            ->when(
+                $filters['hospitalization_channels'],
+                fn ($query, $value) => $query->where('hospitalization_channels', $value)
+            )
+            ->when(
+                $filters['branch'],
+                fn ($query, $value) => $query->where('branch_id', $value)
+            );
 
         // Filter by history disease
         if (isset($filters['history_disease'])) {

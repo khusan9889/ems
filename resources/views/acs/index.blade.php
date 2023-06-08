@@ -1,6 +1,9 @@
 @php
     $selectedID = null;
+    $order = request()->sort;
 @endphp
+
+{{-- @dd(request()->all()) --}}
 
 <div class="table-responsive">
     <table id="data-table-default" class="table table-striped table-bordered align-middle">
@@ -22,14 +25,16 @@
                 <form action="">
                     <td class="align-middle">
                         <div class="d-flex align-items-center justify-content-center">
-                            <button class="btn btn-link btn-sm sort-btn" data-sort-by="id" onclick="toggleSortDirection(this)">
+                            <button class="btn btn-link btn-sm sort-btn" data-sort-by="id"
+                                onclick="{{ $order = $order === 'ASC' ? 'DESC' : 'ASC' }}">
                                 <i class="fas fa-sort fa-lg"></i>
                             </button>
+                            <input type="hidden" name="sort" value="{{ $order }}">
                         </div>
                     </td>
                     <td>
                         <select class="form-control form-control-sm" name="branch">
-                            <option value="" style="font-size: 12px;">Выберите отделение</option>
+                            <option value="" style="font-size: 12px;">Все</option>
                             @foreach ($branches as $id => $name)
                                 <option value="{{ $id }}" style="font-size: 12px;"
                                     @if ($id == request('branch')) selected @endif>{{ $name }}</option>
@@ -53,7 +58,8 @@
                         <select class="form-control form-control-sm" name="hospitalization_channels">
                             <option value="">Все</option> <!-- Add an option for selecting all channels -->
                             @foreach ($hospitalization_channels as $key => $value)
-                                <option value="{{ $key }}" @if ($key == request('hospitalization_channels')) selected @endif>{{ $value }}</option>
+                                <option value="{{ $key }}" @if ($key == request('hospitalization_channels')) selected @endif>
+                                    {{ $value }}</option>
                             @endforeach
                         </select>
                     </td>
@@ -65,7 +71,7 @@
                     </td>
                     <td class="align-middle d-flex justify-content-center">
                         <div>
-                            <button type="submit" class="btn btn-primary">Применить</button>
+                            <button type="submit" class="btn btn-sm btn-primary">Применить</button>
                         </div>
                     </td>
                 </form>

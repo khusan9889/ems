@@ -61,7 +61,19 @@ class ACSService implements ACSServiceInterface
 
     public function customFilter(array $filters)
     {
-        $query = $this->modelClass::query();
+        $query = $this->modelClass::when(
+            $filters['sort'],
+            fn ($query, $value) => $query->orderBy('id', $value)
+        )
+            ->when(
+                $filters['hospitalization_channels'],
+                fn ($query, $value) => $query->where('hospitalization_channels', $value)
+            )
+            ->when(
+                $filters['branch'],
+                fn ($query, $value) => $query->where('branch_id', $value)
+            );
+        // ->get();
 
         // Filter by department
         if (isset($filters['branch'])) {
@@ -98,23 +110,23 @@ class ACSService implements ACSServiceInterface
         }
 
         // Filter by hospitalization channels
-        if (isset($filters['hospitalization_channels'])) {
-            $hospitalizationChannels = $filters['hospitalization_channels'];
-            if ($hospitalizationChannels !== '') {
-                if (!is_array($hospitalizationChannels)) {
-                    $hospitalizationChannels = [$hospitalizationChannels];
-                }
-                $query->whereIn('hospitalization_channels', $hospitalizationChannels);
-            }
-        }
+        // if (isset($filters['hospitalization_channels'])) {
+        //     $hospitalizationChannels = $filters['hospitalization_channels'];
+        //     if ($hospitalizationChannels !== '') {
+        //         if (!is_array($hospitalizationChannels)) {
+        //             $hospitalizationChannels = [$hospitalizationChannels];
+        //         }
+        //         $query->whereIn('hospitalization_channels', $hospitalizationChannels);
+        //     }
+        // }
 
         // Sort by ID
-        $sortById = $filters['sort_by_id'] ?? null;
-        if ($sortById === 'asc') {
-            $query->orderBy('id', 'asc');
-        } elseif ($sortById === 'desc') {
-            $query->orderBy('id', 'desc');
-        }
+        // $sortById = $filters['sort_by_id'] ?? null;
+        // if ($sortById === 'asc') {
+        //     $query->orderBy('id', 'asc');
+        // } elseif ($sortById === 'desc') {
+        //     $query->orderBy('id', 'desc');
+        // }
 
 
         $perPage = 10; // Adjust the number of records per page as needed

@@ -1,5 +1,6 @@
 @php
     $selectedID = null;
+    $order = request()->sort;
 @endphp
 
 <div class="table-responsive">
@@ -22,14 +23,16 @@
                 <form action="">
                 <td class="align-middle">
                     <div class="d-flex align-items-center justify-content-center">
-                        <button class="btn btn-link btn-sm sort-btn" data-sort-by="id" onclick="toggleSortDirection(this)">
+                        <button class="btn btn-link btn-sm sort-btn" data-sort-by="id"
+                            onclick="{{ $order = $order === 'ASC' ? 'DESC' : 'ASC' }}">
                             <i class="fas fa-sort fa-lg"></i>
                         </button>
+                        <input type="hidden" name="sort" value="{{ $order }}">
                     </div>
                 </td>
                 <td>
                     <select class="form-control form-control-sm" name="branch">
-                        <option value="" style="font-size: 12px;">Выберите отделение</option>
+                        <option value="" style="font-size: 12px;">Все</option>
                         @foreach ($branches as $id => $name)
                             <option value="{{ $id }}" style="font-size: 12px;"
                                 @if ($id == request('branch')) selected @endif>{{ $name }}</option>

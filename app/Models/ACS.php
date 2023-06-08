@@ -14,41 +14,6 @@ class ACS extends Model
 
     protected $table = 'acs';
 
-    // public $fillable = [
-    //     'branch_id',
-    //     'user_id',
-    //     'department',
-    //     'history_disease',
-    //     'full_name',
-    //     'hospitalization_date',
-    //     'discharge_date',
-    //     'hospitalization_channels',
-    //     'treatment_result',
-    //     'final_result',
-    //     'anginal_attack_date',
-    //     'cta_invasive_angiography',
-    //     'cta_90min',
-    //     'deferred_cta_invasive',
-    //     'deferred_cta_completed',
-    //     'reasons_not_performing_cta',
-    //     'thrombolytic_therapy',
-    //     'thrombolytic_therapy_administered',
-    //     'not_administering_tlt',
-    //     'ecg_during_hospitalization',
-    //     'st_segment',
-    //     'echocardiogram',
-    //     'first_measurement',
-    //     'cholestero_levels',
-    //     'aptt',
-    //     'anticoagulant',
-    //     'aspirin',
-    //     'p2y12',
-    //     'high_intensity_statins',
-    //     'ACE_inhibitors_ARBs',
-    //     'physician_full_name',
-    //     'stat_department_full_name',
-    // ];
-
     protected $guarded = [];
 
     const HOSPITALIZATION_CHANNELS = [
