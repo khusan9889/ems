@@ -50,7 +50,12 @@
                         <input class="form-control form-control-sm" type="text" name="discharge_date">
                     </td>
                     <td>
-                        <select class="form-control form-control-sm" name="hospitalization_channels"></select>
+                        <select class="form-control form-control-sm" name="hospitalization_channels">
+                            <option value="">Все</option> <!-- Add an option for selecting all channels -->
+                            @foreach ($hospitalization_channels as $key => $value)
+                                <option value="{{ $key }}" @if ($key == request('hospitalization_channels')) selected @endif>{{ $value }}</option>
+                            @endforeach
+                        </select>
                     </td>
                     <td>
                         <input class="form-control form-control-sm" name="physician_full_name"></select>

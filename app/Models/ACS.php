@@ -51,6 +51,12 @@ class ACS extends Model
 
     protected $guarded = [];
 
+    const HOSPITALIZATION_CHANNELS = [
+        'Направление' => 'Направление',
+        'Самотек' => 'Самотек',
+        'Скорая' => 'Скорая',
+    ];
+
     public function branch(): BelongsTo
     {
         return $this->belongsTo(Branch::class);

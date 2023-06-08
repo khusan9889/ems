@@ -23,13 +23,25 @@ class PolytraumaController extends Controller
             'discharge_date' => $request->input('discharge_date'),
             'physician_full_name' => $request->input('physician_full_name'),
             'stat_department_full_name' => $request->input('stat_department_full_name'),
-
+            'hospitalization_channels' => $request->input('hospitalization_channels'), // Add this line
         ];
+
+        $hospitalization_channels = Polytrauma::HOSPITALIZATION_CHANNELS;
+
+        $query = Polytrauma::query(); // Define the $query variable here
+
+        // Filter by hospitalization channels
+        if ($request->has('hospitalization_channels')) {
+            $hospitalizationChannels = $request->input('hospitalization_channels');
+            if ($hospitalizationChannels !== '') {
+                $query->where('hospitalization_channels', $hospitalizationChannels);
+            }
+        }
 
         $data = $polytraumaService->customFilter($filters);
         $branches = Branch::pluck('name', 'id'); // Get branch names with their IDs
 
-        return view('dashboard.pages.home', compact('data', 'branches'));
+        return view('dashboard.pages.home', compact('data', 'branches', 'hospitalization_channels'));
     }
 
     public function fullTable(Request $request)

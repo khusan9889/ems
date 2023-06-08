@@ -21,13 +21,26 @@ class ACSController extends Controller
             'discharge_date' => $request->input('discharge_date'),
             'physician_full_name' => $request->input('physician_full_name'),
             'stat_department_full_name' => $request->input('stat_department_full_name'),
-
+            'hospitalization_channels' => $request->input('hospitalization_channels'), // Add this line
+            'sort_by_id' => $request->input('sort_by_id'), // Add this line for sorting by ID
         ];
+
+        $hospitalization_channels = ACS::HOSPITALIZATION_CHANNELS;
+
+        $query = ACS::query(); // Define the $query variable here
+
+        // Filter by hospitalization channels
+        if ($request->has('hospitalization_channels')) {
+            $hospitalizationChannels = $request->input('hospitalization_channels');
+            if ($hospitalizationChannels !== '') {
+                $query->where('hospitalization_channels', $hospitalizationChannels);
+            }
+        }
 
         $data = $acsService->customFilter($filters);
         $branches = Branch::pluck('name', 'id'); // Get branch names with their IDs
 
-        return view('dashboard.pages.home', compact('data', 'branches'));
+        return view('dashboard.pages.home', compact('data', 'branches', 'hospitalization_channels'));
     }
 
     public function fullTable(Request $request)

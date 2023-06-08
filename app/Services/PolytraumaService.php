@@ -98,6 +98,18 @@ class PolytraumaService implements PolytraumaServiceInterface
             $query->where('stat_department_full_name', 'like', "%{$filters['stat_department_full_name']}%");
         }
 
+        // Filter by hospitalization channels
+        if (isset($filters['hospitalization_channels'])) {
+            $hospitalizationChannels = $filters['hospitalization_channels'];
+            if ($hospitalizationChannels !== '') {
+                if (!is_array($hospitalizationChannels)) {
+                    $hospitalizationChannels = [$hospitalizationChannels];
+                }
+                $query->whereIn('hospitalization_channels', $hospitalizationChannels);
+            }
+        }
+
+
         $perPage = 10; // Adjust the number of records per page as needed
         $results = $query->paginate($perPage);
 
