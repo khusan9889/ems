@@ -1,44 +1,83 @@
-    @extends('dashboard.layouts.default')
+@extends('dashboard.layouts.default')
+
+@push('custom_css')
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+@endpush
 
 @section('content')
     <x-panel title="Регистр политравм в СЭМП">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+
         <form action="{{ route('polytrauma.add') }}" method="POST">
             @csrf
-            <div class="form-group">
-                {{-- <label for="department">{{ __('validation.attributes.department') }}</label> --}}
-                <select class="form-control" id="branch" name="branch_id">
-                    <!-- Add options for department -->
-                    <option value="" hidden>Выбрать отделение</option>
-                    @foreach ($branches as $branch)
-                        <option value="{{ $branch->id }}">{{ $branch->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="history_disease">Номер ИБ</label>
-                <input type="text" class="form-control" id="history_disease" name="history_disease">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="branch">Выбрать отделение</label>
+                        <select class="form-control" id="branch" name="branch_id">
+                            <!-- Add options for department -->
+                            <option value="" hidden>Выберите отделение</option>
+                            @foreach ($branches as $branch)
+                                <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('branch_id')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group ml-auto">
+                        <label for="history_disease">Номер Истории Болезни</label>
+                        <input type="text" class="form-control" id="history_disease" name="history_disease">
+                        @error('history_disease')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="full_name">Пациент ФИО</label>
                 <input type="text" class="form-control" id="full_name" name="full_name">
+                @error('full_name')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
-            <div class="form-group">
-                <label for="hospitalization_date">Дата поступления</label>
-                <input type="text" class="form-control" id="hospitalization_date" name="hospitalization_date">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="hospitalization_date">Дата и время поступления</label>
+                        <div class="input-group mb-2 mr-sm-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <input class="form-control" id="hospitalization_calendar" type="text" name="hospitalization_date">
+                        </div>
+                        @error('hospitalization_date')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="discharge_date">Дата выписки</label>
+                        <div class="input-group mb-2 mr-sm-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <input class="form-control" id="discharge_calendar" type="text" name="discharge_date">
+                        </div>
+                        @error('discharge_date')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="discharge_date">Дата выписки</label>
-                <input type="text" class="form-control" id="discharge_date" name="discharge_date">
-            </div>
+
             <div class="form-group">
                 <label for="hospitalization_channels"><b>Канал госпитализации</b></label><br>
                 <div class="form-check form-check-inline">
@@ -53,17 +92,35 @@
                     <input class="form-check-input" type="radio" name="hospitalization_channels" id="hospitalizationOption3" value="Направление">
                     <label class="form-check-label" for="hospitalizationOption3">Направление</label>
                 </div>
+                @error('hospitalization_channels')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
-            <div class="form-group">
-                <label for="days_amount">Кол-во к/дней</label>
-                <input type="text" class="form-control" id="days_amount" name="days_amount">
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="days_amount"><b>Кол-во к/дней</b></label>
+                        <input type="text" class="form-control" id="days_amount" name="days_amount">
+                        @error('days_amount')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="days_in_intensive_care"><b>Кол-во к/дней в отд. Реанимации</b></label>
+                        <input type="text" class="form-control" id="days_in_intensive_care" name="days_in_intensive_care">
+                        @error('days_in_intensive_care')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="days_in_intensive_care">Кол-во к/дней в отд. Реанимации</label>
-                <input type="text" class="form-control" id="days_in_intensive_care" name="days_in_intensive_care">
-            </div>
             <div class="form-group">
                 <label for="treatment_result"><b>Исход лечения</b></label><br>
                 <div class="form-check form-check-inline">
@@ -74,15 +131,29 @@
                     <input class="form-check-input" type="radio" name="treatment_result" id="treatment_resultOption2" value="Летальный исход">
                     <label class="form-check-label" for="treatment_resultOption2">Летальный исход</label>
                 </div>
+                @error('treatment_result')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
-            <hr>
-            <div class="form-group">
-                <label for="severity_of_ts">Тяжесть состояния по TS (баллов)</label>
-                <input type="text" class="form-control" id="severity_of_ts" name="severity_of_ts">
-            </div>
-            <div class="form-group">
-                <label for="injury_of_iss">Тяжесть состояния по ISS (баллов)</label>
-                <input type="text" class="form-control" id="injury_of_iss" name="injury_of_iss">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="severity_of_ts"><b>Тяжесть состояния по TS (баллов)</b></label>
+                        <input type="text" class="form-control" id="severity_of_ts" name="severity_of_ts">
+                        @error('severity_of_ts')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="injury_of_iss"><b>Тяжесть состояния по ISS (баллов)</b></label>
+                        <input type="text" class="form-control" id="injury_of_iss" name="injury_of_iss">
+                        @error('injury_of_iss')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
             </div>
             <hr>
             <div class="form-group">
@@ -107,6 +178,9 @@
                     <input class="form-check-input" type="radio" name="arrival_after_injury" id="arrival_after_injuryOption5" value="позже 24ч.">
                     <label class="form-check-label" for="arrival_after_injuryOption5">позже 24ч.</label>
                 </div>
+                @error('arrival_after_injury')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="mechanism_of_injury"><b>Механизм травмы</b></label><br>
@@ -126,6 +200,9 @@
                     <input class="form-check-input" type="radio" name="mechanism_of_injury" id="mechanism_of_injuryOption4" value="Прочие">
                     <label class="form-check-label" for=mechanism_of_injuryOption4">Прочие</label>
                 </div>
+                @error('mechanism_of_injury')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -138,6 +215,9 @@
                     <input class="form-check-input" type="radio" name="survey_of_surgeon" id="survey_of_surgeonOption2" value="Нет">
                     <label class="form-check-label" for="survey_of_surgeonOption2">Нет</label>
                 </div>
+                @error('survey_of_surgeon')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="survey_of_neurosurgeon"><b>Осмотр нейрохирурга:</b></label><br>
@@ -149,6 +229,9 @@
                     <input class="form-check-input" type="radio" name="survey_of_neurosurgeon" id="survey_of_neurosurgeonOption2" value="Нет">
                     <label class="form-check-label" for="survey_of_neurosurgeonOption2">Нет</label>
                 </div>
+                @error('survey_of_neurosurgeon')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -161,6 +244,9 @@
                     <input class="form-check-input" type="radio" name="survey_of_traumatologist" id="survey_of_traumatologistOption2" value="Нет">
                     <label class="form-check-label" for="survey_of_traumatologistOption2">Нет</label>
                 </div>
+                @error('survey_of_traumatologist')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -173,6 +259,9 @@
                     <input class="form-check-input" type="radio" name="narrow_specialists" id="narrow_specialistsOption2" value="Нет">
                     <label class="form-check-label" for="narrow_specialistsOption2">Нет</label>
                 </div>
+                @error('narrow_specialists')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -186,10 +275,13 @@
                     <input class="form-check-input" type="radio" name="r_graphy" id="r_graphyOption2" value="Нет">
                     <label class="form-check-label" for="r_graphyOption2">Нет</label>
                 </div>
+                @error('r_graphy')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
-                <label for="conducted_ultrasound"><b>Проведено УЗС </b><span>(плевральныйх и брюшной полостей, забрюшинного пространства):</span></label><br>
+                <label for="conducted_ultrasound"><b>Проведено УЗС </b><span>(плевральных и брюшной полостей, забрюшинного пространства):</span></label><br>
 
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="conducted_ultrasound" id="conducted_ultrasoundOption1" value="Да">
@@ -199,6 +291,9 @@
                     <input class="form-check-input" type="radio" name="conducted_ultrasound" id="conducted_ultrasoundOption2" value="Нет">
                     <label class="form-check-label" for="conducted_ultrasoundOption2">Нет</label>
                 </div>
+                @error('conducted_ultrasound')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -211,6 +306,9 @@
                     <input class="form-check-input" type="radio" name="msct" id="msctOption2" value="Нет">
                     <label class="form-check-label" for="msctOption2">Нет</label>
                 </div>
+                @error('msct')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -223,6 +321,9 @@
                     <input class="form-check-input" type="radio" name="msct_individual_parts" id="msct_individual_partsOption2" value="Нет">
                     <label class="form-check-label" for="msct_individual_partsOption2">Нет</label>
                 </div>
+                @error('msct_individual_parts')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -235,6 +336,9 @@
                     <input class="form-check-input" type="radio" name="neutral_fats" id="neutral_fatsOption2" value="Нет">
                     <label class="form-check-label" for="neutral_fatsOption2">Нет</label>
                 </div>
+                @error('neutral_fats')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -247,6 +351,9 @@
                     <input class="form-check-input" type="radio" name="analysis_of_hb_ht" id="analysis_of_hb_htOption2" value="Нет">
                     <label class="form-check-label" for="analysis_of_hb_htOption2">Нет</label>
                 </div>
+                @error('analysis_of_hb_ht')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -259,6 +366,9 @@
                     <input class="form-check-input" type="radio" name="dynamic_uzs" id="dynamic_uzsOption2" value="Нет">
                     <label class="form-check-label" for="dynamic_uzsOption2">Нет</label>
                 </div>
+                @error('dynamic_uzs')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -271,6 +381,9 @@
                     <input class="form-check-input" type="radio" name="diagnostic_laparoscopy" id="diagnostic_laparoscopyOption2" value="Нет">
                     <label class="form-check-label" for="diagnostic_laparoscopyOption2">Нет</label>
                 </div>
+                @error('diagnostic_laparoscopy')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -283,6 +396,9 @@
                     <input class="form-check-input" type="radio" name="thoracocentesis" id="thoracocentesisOption2" value="Нет">
                     <label class="form-check-label" for="thoracocentesisOption2">Нет</label>
                 </div>
+                @error('thoracocentesis')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -295,6 +411,9 @@
                     <input class="form-check-input" type="radio" name="laparotomy" id="laparotomyOption2" value="Нет">
                     <label class="form-check-label" for="laparotomyOption2">Нет</label>
                 </div>
+                @error('laparotomy')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
 
@@ -308,6 +427,9 @@
                     <input class="form-check-input" type="radio" name="thoracoscopy_thoracotomy" id="thoracoscopy_thoracotomyOption2" value="Нет">
                     <label class="form-check-label" for="thoracoscopy_thoracotomyOption2">Нет</label>
                 </div>
+                @error('thoracoscopy_thoracotomy')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -320,6 +442,9 @@
                     <input class="form-check-input" type="radio" name="osteosynthesis_of_fractures" id="osteosynthesis_of_fracturesOption2" value="Нет">
                     <label class="form-check-label" for="osteosynthesis_of_fracturesOption2">Нет</label>
                 </div>
+                @error('osteosynthesis_of_fractures')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -332,19 +457,123 @@
                     <input class="form-check-input" type="radio" name="skull_trepanation" id="skull_trepanationOption2" value="Нет">
                     <label class="form-check-label" for="skull_trepanationOption2">Нет</label>
                 </div>
+                @error('skull_trepanation')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
                 <label for="physician_full_name">ФИО лечащего врача:</label><br>
                 <input type="text" class="form-control" id="physician_full_name" name="physician_full_name">
+                @error('physician_full_name')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
+
             <div class="form-group">
                 <label for="stat_department_full_name">ФИО специалиста стат.отдела:</label>
                 <input type="text" class="form-control" id="stat_department_full_name"
                     name="stat_department_full_name">
+                @error('stat_department_full_name')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
 
                 <button type="submit" class="btn btn-primary">Сохранить</button>
         </form>
     </x-panel>
 @endsection
+
+
+@push('custom_js')
+    <script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+        $('#hospitalization_calendar').daterangepicker({
+            "singleDatePicker": true,
+            "showDropdowns": true,
+            "timePicker": true,
+            "timePicker24Hour": true,
+            "locale": {
+                format: 'DD.MM.YYYY HH:mm',
+                "separator": " - ",
+                "applyLabel": "Применить",
+                "cancelLabel": "Отменить",
+                "fromLabel": "From",
+                "toLabel": "To",
+                "customRangeLabel": "Custom",
+                "weekLabel": "W",
+                "daysOfWeek": [
+                    "Вс",
+                    "Пн",
+                    "Вт",
+                    "Ср",
+                    "Чт",
+                    "Пт",
+                    "Сб"
+                ],
+                "monthNames": [
+                    "Январь",
+                    "Февраль",
+                    "Март",
+                    "Апрель",
+                    "Май",
+                    "Июнь",
+                    "Июль",
+                    "Август",
+                    "Сентябрь",
+                    "Октябрь",
+                    "Ноябрь",
+                    "Декабрь"
+                ],
+                "firstDay": 1
+            },
+        }, function(start, end, label) {
+            $('#hospitalization_calendar').val(start.format('DD.MM.YYYY HH:mm'));
+        });
+
+        $('#discharge_calendar').daterangepicker({
+            "singleDatePicker": true,
+            "showDropdowns": true,
+            "timePicker": true,
+            "timePicker24Hour": true,
+            "locale": {
+                format: 'DD.MM.YYYY HH:mm',
+                "separator": " - ",
+                "applyLabel": "Применить",
+                "cancelLabel": "Отменить",
+                "fromLabel": "From",
+                "toLabel": "To",
+                "customRangeLabel": "Custom",
+                "weekLabel": "W",
+                "daysOfWeek": [
+                    "Вс",
+                    "Пн",
+                    "Вт",
+                    "Ср",
+                    "Чт",
+                    "Пт",
+                    "Сб"
+                ],
+                "monthNames": [
+                    "Январь",
+                    "Февраль",
+                    "Март",
+                    "Апрель",
+                    "Май",
+                    "Июнь",
+                    "Июль",
+                    "Август",
+                    "Сентябрь",
+                    "Октябрь",
+                    "Ноябрь",
+                    "Декабрь"
+                ],
+                "firstDay": 1
+            },
+        }, function(start, end, label) {
+            $('#discharge_calendar').val(start.format('DD.MM.YYYY HH:mm'));
+        });
+    </script>
+@endpush

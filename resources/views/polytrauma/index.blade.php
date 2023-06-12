@@ -44,13 +44,16 @@
                             value="{{ request('history_disease') }}">
                 </td>
                 <td>
-                    <input class="form-control form-control-sm" type="text" name="full_name">
+                    <input class="form-control form-control-sm" type="text" name="full_name"
+                        value="{{ request('full_name') }}">
                 </td>
                 <td>
-                    <input class="form-control form-control-sm" type="text" name="hospitalization_date">
+                    <input class="form-control form-control-sm" type="text" name="hospitalization_date"
+                        value="{{ request('hospitalization_date') }}">
                 </td>
                 <td>
-                    <input class="form-control form-control-sm" type="text" name="discharge_date">
+                    <input class="form-control form-control-sm" type="text" name="discharge_date"
+                        value="{{ request('discharge_date') }}">
                 </td>
                 <td>
                     <select class="form-control form-control-sm" name="hospitalization_channels">
@@ -61,10 +64,10 @@
                     </select>
                 </td>
                 <td>
-                    <input class="form-control form-control-sm" name="physician_full_name"></select>
+                    <input class="form-control form-control-sm" name="physician_full_name" value="{{ request('physician_full_name') }}"></input>
                 </td>
                 <td>
-                    <input class="form-control form-control-sm" name="stat_department_full_name"></select>
+                    <input class="form-control form-control-sm" name="stat_department_full_name" value="{{ request('stat_department_full_name') }}"></input>
                 </td>
                 <td class="align-middle d-flex justify-content-center">
                     <div>

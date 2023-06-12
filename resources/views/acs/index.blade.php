@@ -67,10 +67,10 @@
                         </select>
                     </td>
                     <td>
-                        <input class="form-control form-control-sm" name="physician_full_name" value="{{ request('physician_full_name') }}"></select>
+                        <input class="form-control form-control-sm" name="physician_full_name" value="{{ request('physician_full_name') }}"></input>
                     </td>
                     <td>
-                        <input class="form-control form-control-sm" name="stat_department_full_name" value="{{ request('stat_department_full_name') }}"></select>
+                        <input class="form-control form-control-sm" name="stat_department_full_name" value="{{ request('stat_department_full_name') }}"></input>
                     </td>
                     <td class="align-middle d-flex justify-content-center">
                         <div>

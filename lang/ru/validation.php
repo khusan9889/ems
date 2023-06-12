@@ -177,7 +177,6 @@ return [
         'hospitalization_channels' => 'Канал госпитализации',
         'physician_full_name' => 'ФИО лечащего врача',
         'stat_department_full_name' => 'ФИО специалиста стат.отдела',
-        'hospitalization_channels' => 'Каналы госпитализации',
         'treatment_result' => 'Исход лечения',
         'final_result' => 'Исход',
         'anginal_attack_date' => 'Срок ангинального приступа при поступлении',
