@@ -128,7 +128,7 @@
         $('#deleteForm').attr('action', '/acs/delete/' + id);
     }
 
-    $(document).ready(function() {
+    $().ready(function() {
         // Add this code to handle the form submission success
         $('#deleteForm').on('submit', function() {
             $('#deleteConfirmationModal').modal('hide');
