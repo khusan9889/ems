@@ -1,3 +1,21 @@
+<!-- Include Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- Include Tempus Dominus DateTime Picker CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css">
+
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!-- Include Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Include Moment.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+<!-- Include Tempus Dominus DateTime Picker JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
+
 @extends('dashboard.layouts.default')
 
 @section('content')
@@ -13,31 +31,54 @@
         @endif
         <form action="{{ route('acs.add') }}" method="POST">
             @csrf
-            <div class="form-group">
-                {{-- <label for="branch">{{ __('validation.attributes.branch') }}</label> --}}
-                <select class="form-control" id="branch" name="branch_id">
-                    <!-- Add options for department -->
-                    <option value="" hidden>Выбрать отделение</option>
-                    @foreach ($branches as $branch)
-                        <option value="{{ $branch->id }}">{{ $branch->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="history_disease">Номер ИБ</label>
-                <input type="text" class="form-control" id="history_disease" name="history_disease">
+            <div class="row">
+                <div class="col-8 d-flex">
+                    <div class="form-group">
+                        <label for="branch">Выбрать отделение</label>
+                        <select class="form-control" id="branch" name="branch_id">
+                            <!-- Add options for department -->
+                            <option value="" hidden>Выберите отделение</option>
+                            @foreach ($branches as $branch)
+                                <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3 d-flex">
+                    <div class="form-group ml-auto">
+                        <label for="history_disease">Номер ИБ</label>
+                        <input type="text" class="form-control" id="history_disease" name="history_disease">
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="full_name">Пациент ФИО</label>
                 <input type="text" class="form-control" id="full_name" name="full_name">
             </div>
-            <div class="form-group">
-                <label for="hospitalization_date">Дата поступления</label>
-                <input type="text" class="form-control" id="hospitalization_date" name="hospitalization_date">
-            </div>
-            <div class="form-group">
-                <label for="discharge_date">Дата выписки</label>
-                <input type="text" class="form-control" id="discharge_date" name="discharge_date">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="hospitalization_date">Дата и время поступления</label>
+                        <div class="input-group date" id="hospitalization_date_picker" data-target-input="nearest">
+                            <input type="text" class="form-control datetimepicker-input" data-target="#hospitalization_date_picker" id="hospitalization_date" name="hospitalization_date">
+                            <div class="input-group-append" data-target="#hospitalization_date_picker" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="discharge_date">Дата выписки</label>
+                        <div class="input-group date" id="discharge_date_picker" data-target-input="nearest">
+                            <input type="text" class="form-control" data-target="#discharge_date_picker" id="discharge_date" name="discharge_date">
+                            <div class="input-group-append" data-target="#discharge_date_picker" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="hospitalization_channels"><b>Канал госпитализации</b></label><br>
@@ -385,3 +426,51 @@
         </form>
     </x-panel>
 @endsection
+
+
+<script>
+    $(document).ready(function() {
+        $('#hospitalization_date_picker').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm', // Adjust the format according to your needs
+            icons: {
+                time: 'fa fa-clock',
+                date: 'fa fa-calendar',
+                up: 'fa fa-chevron-up',
+                down: 'fa fa-chevron-down',
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-calendar-check',
+                clear: 'fa fa-trash',
+                close: 'fa fa-times'
+            }
+        });
+
+        $('#discharge_date_picker').datepicker({
+            format: 'yyyy-mm-dd', // Adjust the format according to your needs
+            autoclose: true,
+            todayHighlight: true,
+            icons: {
+                up: 'fa fa-chevron-up',
+                down: 'fa fa-chevron-down',
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-calendar-check',
+                clear: 'fa fa-trash',
+                close: 'fa fa-times'
+            }
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
