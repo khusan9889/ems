@@ -1,38 +1,27 @@
 <!-- Include Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
 <!-- Include Tempus Dominus DateTime Picker CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css">
-
-<!-- Include jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-<!-- Include Bootstrap JS -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 <!-- Include Moment.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- Include Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- Include Tempus Dominus DateTime Picker JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
+
+
 
 @extends('dashboard.layouts.default')
 
 @section('content')
     <x-panel title="Регистр ОКС в СЭМП">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+
         <form action="{{ route('acs.add') }}" method="POST">
             @csrf
             <div class="row">
-                <div class="col-8 d-flex">
+                <div class="col-6">
                     <div class="form-group">
                         <label for="branch">Выбрать отделение</label>
                         <select class="form-control" id="branch" name="branch_id">
@@ -42,18 +31,27 @@
                                 <option value="{{ $branch->id }}">{{ $branch->name }}</option>
                             @endforeach
                         </select>
+                        @error('branch_id')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
-                <div class="col-3 d-flex">
+                <div class="col-6">
                     <div class="form-group ml-auto">
-                        <label for="history_disease">Номер ИБ</label>
+                        <label for="history_disease">Номер Истории Болезни</label>
                         <input type="text" class="form-control" id="history_disease" name="history_disease">
+                        @error('history_disease')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="full_name">Пациент ФИО</label>
                 <input type="text" class="form-control" id="full_name" name="full_name">
+                @error('full_name')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <div class="row">
                 <div class="col-6">
@@ -65,6 +63,9 @@
                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                             </div>
                         </div>
+                        @error('hospitalization_date')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 
@@ -77,9 +78,13 @@
                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                             </div>
                         </div>
+                        @error('discharge_date')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
             </div>
+
             <div class="form-group">
                 <label for="hospitalization_channels"><b>Канал госпитализации</b></label><br>
                 <div class="form-check form-check-inline">
@@ -94,6 +99,9 @@
                     <input class="form-check-input" type="radio" name="hospitalization_channels" id="hospitalizationOption3" value="Направление">
                     <label class="form-check-label" for="hospitalizationOption3">Направление</label>
                 </div>
+                @error('hospitalization_channels')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -110,6 +118,9 @@
                     <input class="form-check-input" type="radio" name="treatment_result" id="outcomeOption3" value="Выписан в тяжелом состоянии">
                     <label class="form-check-label" for="outcomeOption3">Выписан в тяжелом состоянии</label>
                 </div>
+                @error('treatment_result')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -126,6 +137,9 @@
                     <input class="form-check-input" type="radio" name="final_result" id="overallOption3" value="Прогрессирующая стенокардия">
                     <label class="form-check-label" for="overallOption3">Прогрессирующая стенокардия</label>
                 </div>
+                @error('final_result')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -142,6 +156,9 @@
                     <input class="form-check-input" type="radio" name="anginal_attack_date" id="anginalOption3" value="позже 12ч.">
                     <label class="form-check-label" for="anginalOption3">позже 12ч.</label>
                 </div>
+                @error('anginal_attack_date')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -154,6 +171,9 @@
                     <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption2" value="Нет">
                     <label class="form-check-label" for="urgentOption2">Нет</label>
                 </div>
+                @error('cta_invasive_angiography')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -166,6 +186,9 @@
                     <input class="form-check-input" type="radio" name="cta_90min" id="cta_90minOption2" value="Нет">
                     <label class="form-check-label" for="cta_90minOption2">Нет</label>
                 </div>
+                @error('cta_90min')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -178,6 +201,9 @@
                     <input class="form-check-input" type="radio" name="deferred_cta_invasive" id="deferred_cta_invasiveOption2" value="Нет">
                     <label class="form-check-label" for="deferred_cta_invasiveOption2">Нет</label>
                 </div>
+                @error('deferred_cta_invasive')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -190,6 +216,9 @@
                     <input class="form-check-input" type="radio" name="deferred_cta_completed" id="deferred_cta_completedOption2" value="Нет">
                     <label class="form-check-label" for="deferred_cta_completedOption2">Нет</label>
                 </div>
+                @error('deferred_cta_completed')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -218,6 +247,9 @@
                     <input class="form-check-input" type="radio" name="reasons_not_performing_cta" id="reasons_not_performing_ctaOption6" value="отказ больного">
                     <label class="form-check-label" for="reasons_not_performing_ctaOption6">отказ больного</label>
                 </div>
+                @error('reasons_not_performing_cta')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -230,6 +262,9 @@
                     <input class="form-check-input" type="radio" name="thrombolytic_therapy" id="thrombolytic_therapyOption2" value="Нет">
                     <label class="form-check-label" for="thrombolytic_therapyOption2">Нет</label>
                 </div>
+                @error('thrombolytic_therapy')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -242,6 +277,9 @@
                     <input class="form-check-input" type="radio" name="thrombolytic_therapy_administered" id="thrombolytic_therapy_administeredOption2" value="Нет">
                     <label class="form-check-label" for="thrombolytic_therapy_administeredOption2">Нет</label>
                 </div>
+                @error('thrombolytic_therapy_administered')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <div class="form-group">
@@ -258,6 +296,9 @@
                     <input class="form-check-input" type="radio" name="not_administering_tlt" id="not_administering_tltOption3" value="отказ больного">
                     <label class="form-check-label" for="not_administering_tltOption3">отказ больного</label>
                 </div>
+                @error('not_administering_tlt')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <hr>
             <span><b> * Во время госпитализации больному (-ой):</b><span></span> <br><br>
@@ -271,6 +312,9 @@
                             <input class="form-check-input" type="radio" name="ecg_during_hospitalization" id="ecg_during_hospitalizationOption2" value="Нет">
                             <label class="form-check-label" for="ecg_during_hospitalizationOption1">Нет</label>
                         </div>
+                        @error('ecg_during_hospitalization')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                 </div>
                 <hr>
                 <div class="form-group">
@@ -285,6 +329,9 @@
                             value="Нет">
                         <label class="form-check-label" for="st_segmentOption2">Нет</label>
                     </div>
+                    @error('st_segment')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <hr>
                 <div class="form-group">
@@ -299,6 +346,9 @@
                             value="Нет">
                         <label class="form-check-label" for="echocardiogramOption2">Нет</label>
                     </div>
+                    @error('echocardiogram')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <hr>
                 <div class="form-group">
@@ -313,6 +363,9 @@
                             value=">3 суток">
                         <label class="form-check-label" for="first_measurementOption2">>3 суток</label>
                     </div>
+                    @error('first_measurement')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <hr>
                 <div class="form-group">
@@ -327,6 +380,9 @@
                             value="Нет">
                         <label class="form-check-label" for="cholestero_levelsOption2">Нет</label>
                     </div>
+                    @error('cholestero_levels')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <hr>
                 <div class="form-group">
@@ -341,6 +397,9 @@
                             value="Нет">
                         <label class="form-check-label" for="apttOption2">Нет</label>
                     </div>
+                    @error('aptt')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <hr>
                 <div class="form-group">
@@ -355,6 +414,9 @@
                             value="Нет">
                         <label class="form-check-label" for="anticoagulantOption2">Нет</label>
                     </div>
+                    @error('anticoagulant')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <hr>
                 <div class="form-group">
@@ -369,6 +431,9 @@
                             value="Нет">
                         <label class="form-check-label" for="aspirinOption2">Нет</label>
                     </div>
+                    @error('aspirin')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <hr>
                 <div class="form-group">
@@ -384,6 +449,9 @@
                             value="Нет">
                         <label class="form-check-label" for="p2y12Option2">Нет</label>
                     </div>
+                    @error('p2y12')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <hr>
                 <div class="form-group">
@@ -397,6 +465,9 @@
                         <input class="form-check-input" type="radio" name="high_intensity_statins" id="high_intensity_statinsOption2" value="Нет">
                         <label class="form-check-label" for="high_intensity_statinsOption2">Нет</label>
                     </div>
+                    @error('high_intensity_statins')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <hr>
                 <div class="form-group">
@@ -409,16 +480,25 @@
                         <input class="form-check-input" type="radio" name="ACE_inhibitors_ARBs" id="ACE_inhibitors_ARBsOption2" value="Нет">
                         <label class="form-check-label" for="ACE_inhibitors_ARBsOption2">Нет</label>
                     </div>
+                    @error('ACE_inhibitors_ARBs')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <hr>
                 <div class="form-group">
                     <label for="physician_full_name">ФИО лечащего врача:</label>
                     <input type="text" class="form-control" id="physician_full_name" name="physician_full_name">
+                    @error('physician_full_name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="stat_department_full_name">ФИО специалиста стат.отдела:</label>
                     <input type="text" class="form-control" id="stat_department_full_name"
                         name="stat_department_full_name">
+                    @error('stat_department_full_name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
 
@@ -431,38 +511,25 @@
 <script>
     $(document).ready(function() {
         $('#hospitalization_date_picker').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm', // Adjust the format according to your needs
-            icons: {
-                time: 'fa fa-clock',
-                date: 'fa fa-calendar',
-                up: 'fa fa-chevron-up',
-                down: 'fa fa-chevron-down',
-                previous: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right',
-                today: 'fa fa-calendar-check',
-                clear: 'fa fa-trash',
-                close: 'fa fa-times'
-            }
+            format: 'DD.MM.YYYY HH:mm',
+            // Rest of the options...
+        }).on("change.datetimepicker", function (e) {
+            var formattedDate = moment(e.date).format('DD.MM.YYYY HH:mm');
+            $(this).find('input').val(formattedDate);
         });
 
-        $('#discharge_date_picker').datepicker({
-            format: 'yyyy-mm-dd', // Adjust the format according to your needs
-            autoclose: true,
-            todayHighlight: true,
-            icons: {
-                up: 'fa fa-chevron-up',
-                down: 'fa fa-chevron-down',
-                previous: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right',
-                today: 'fa fa-calendar-check',
-                clear: 'fa fa-trash',
-                close: 'fa fa-times'
-            }
+        $('#discharge_date_picker').datetimepicker({
+            format: 'DD.MM.YYYY HH:mm',
+            // Rest of the options...
+        }).on("change.datetimepicker", function (e) {
+            var formattedDate = moment(e.date).format('DD.MM.YYYY HH:mm');
+            $(this).find('input').val(formattedDate);
         });
+
+        // Set the locale to en for 24-hour format
+        moment.locale('en');
     });
 </script>
-
-
 
 
 
