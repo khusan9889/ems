@@ -104,7 +104,7 @@
             </div>
             <hr>
             <div class="form-group">
-                <label for="cta_invasive_angiography"><b>Показана <span style="font-weight: 900; background-color: yellow;">экстренная</span> ЧКВ/инвазивная ангиография:</b></label><br>
+                <label for="cta_invasive_angiography"><b>Показана экстренная ЧКВ/инвазивная ангиография:</b></label><br>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="cta_invasive_angiography" id="urgentOption1" value="Да">
                     <label class="form-check-label" for="urgentOption1">Да</label>
@@ -116,7 +116,7 @@
             </div>
             <hr>
             <div class="form-group">
-                <label for="cta_90min"><b>Экстренная ЧКВ выполнена <span style="font-weight: 900; background-color: yellow;"> в течение 90 минут:</span></b></label><br>
+                <label for="cta_90min"><b>Экстренная ЧКВ выполнена в течение 90 минут:</b></label><br>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="cta_90min" id="cta_90minOption1" value="Да">
                     <label class="form-check-label" for="cta_90minOption1">Да</label>
@@ -128,7 +128,7 @@
             </div>
             <hr>
             <div class="form-group">
-                <label for="deferred_cta_invasive"><b>Показана <span style="font-weight: 900; background-color: yellow;">отсроченная</span> ЧКВ выполнена/инвазивная ангиография:</b></label><br>
+                <label for="deferred_cta_invasive"><b>Показана отсроченная ЧКВ выполнена/инвазивная ангиография:</b></label><br>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="deferred_cta_invasive" id="deferred_cta_invasiveOption1" value="Да">
                     <label class="form-check-label" for="deferred_cta_invasiveOption1">Да</label>
@@ -221,8 +221,7 @@
             <hr>
             <span><b> * Во время госпитализации больному (-ой):</b><span></span> <br><br>
                 <div class="form-group">
-                    <label for="ecg_during_hospitalization"><b>Проведено <span style="font-weight: 900; background-color: yellow;"> ЭКГ
-                            </span></b></label><br>
+                    <label for="ecg_during_hospitalization"><b>Проведено ЭКГ</b></label><br>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="ecg_during_hospitalization" id="ecg_during_hospitalizationOption1" value="Да">
                             <label class="form-check-label" for="ecg_during_hospitalizationOption1">Да</label>

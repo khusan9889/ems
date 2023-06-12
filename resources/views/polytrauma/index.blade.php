@@ -68,7 +68,7 @@
                 </td>
                 <td class="align-middle d-flex justify-content-center">
                     <div>
-                        <button type="submit" class="btn btn-primary">Применить</button>
+                        <button type="submit" class="btn btn-sm btn-primary">Применить</button>
                     </div>
                 </td>
                 </form>

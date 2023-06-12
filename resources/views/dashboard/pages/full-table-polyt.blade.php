@@ -25,7 +25,7 @@
                             </tr>
                             <tr>
                                 <th>Отделение</th>
-                                <td>{{$data->department}}</td>
+                                <td>{{$data->branch->name}}</td>
                             </tr>
                             <tr>
                                 <th>№ Истории болезни</th>
