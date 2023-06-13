@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('branch_id')->nullable()->constrained('branch')->nullOnDelete();
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
-            $table->string('department')->nullable();
+            // $table->string('department')->nullable();
             $table->string('history_disease')->nullable();
             $table->string('full_name')->nullable();
             $table->string('hospitalization_date')->nullable();

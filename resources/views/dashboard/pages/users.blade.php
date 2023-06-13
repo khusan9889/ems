@@ -14,9 +14,10 @@
             <thead>
                 <tr>
                     <th>№</th>
-                    <th>ФИО пользователя</th>
-                    <th>E-mail</th>
                     <th>Субъект СЭМП</th>
+                    <th>Отделение</th>
+                    <th>ФИО пользователя</th>
+                    <th>Номер телефона</th>
                     <th>Действия</th>
                 </tr>
                 <tr>
@@ -31,20 +32,30 @@
                         </div>
                     </td>
                     <td>
-                        <input class="form-control form-control-sm" type="text" name="full_name"
-                            value="{{ request('full_name') }}">
-                    </td>
-                    <td>
-                        <input class="form-control form-control-sm" type="text" name="email"
-                            value="{{ request('email') }}">
-                    </td>
-                    <td>
-                        <select class="form-control form-control-sm" name="hospitalization_channels">
-                            <option value="">Все</option> <!-- Add an option for selecting all channels -->
-                            {{-- @foreach ($hospitalization_channels as $key => $value)
-                                <option value="{{ $key }}" @if ($key == request('hospitalization_channels')) selected @endif>{{ $value }}</option>
+                        <select class="form-control form-control-sm" name="branch">
+                            <option value="" style="font-size: 12px;">Все</option>
+                            {{-- @foreach ($branches as $id => $name)
+                                <option value="{{ $id }}" style="font-size: 12px;"
+                                    @if ($id == request('branch')) selected @endif>{{ $name }}</option>
                             @endforeach --}}
                         </select>
+                    </td>
+                    <td>
+                        <select class="form-control form-control-sm" name="branch">
+                            <option value="" style="font-size: 12px;">Все</option>
+                            {{-- @foreach ($branches as $id => $name)
+                                <option value="{{ $id }}" style="font-size: 12px;"
+                                    @if ($id == request('branch')) selected @endif>{{ $name }}</option>
+                            @endforeach --}}
+                        </select>
+                    </td>
+                    <td>
+                        <input class="form-control form-control-sm" type="text" name="name"
+                            value="{{ request('name') }}">
+                    </td>
+                    <td>
+                        <input class="form-control form-control-sm" type="text" name="phone_number"
+                            value="{{ request('phone_number') }}">
                     </td>
                     <td class="align-middle d-flex justify-content-center">
                         <div>
