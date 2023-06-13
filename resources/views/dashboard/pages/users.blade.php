@@ -18,6 +18,7 @@
                     <th>Отделение</th>
                     <th>ФИО пользователя</th>
                     <th>Номер телефона</th>
+                    <th>Электронная почта</th>
                     <th>Действия</th>
                 </tr>
                 <tr>
@@ -42,7 +43,7 @@
                         </select>
                     </td>
                     <td>
-                        <select class="form-control form-control-sm" name="branch">
+                        <select class="form-control form-control-sm" name="department">
                             <option value="" style="font-size: 12px;">Все</option>
                             {{-- @foreach ($branches as $id => $name)
                                 <option value="{{ $id }}" style="font-size: 12px;"
@@ -57,6 +58,10 @@
                     <td>
                         <input class="form-control form-control-sm" type="text" name="phone_number"
                             value="{{ request('phone_number') }}">
+                    </td>
+                    <td>
+                        <input class="form-control form-control-sm" type="text" name="email"
+                            value="{{ request('email') }}">
                     </td>
                     <td class="align-middle d-flex justify-content-center">
                         <div>
@@ -74,7 +79,22 @@
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->phone_number }}</td>
                     <td>{{ $item->email }}</td>
-
+                    <td class="align-middle">
+                        <div class="d-flex">
+                            <a href="{{ route('full-table-polyt', ['id' => $item->id]) }}"
+                                class="btn btn-primary btn-xs mr-1">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="{{ route('polyt-edit-page', ['id' => $item->id]) }}"
+                                class="btn btn-warning btn-xs mr-1">
+                                <i class="fas fa-pen"></i>
+                            </a>
+                            <button type="button" class="btn btn-danger btn-xs mr-1"
+                                onclick="{{ $selectedID = $item->id }}; confirmDelete({{ $item->id }})">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

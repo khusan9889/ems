@@ -15,6 +15,8 @@ class UserService implements UserServiceInterface
     public function filter()
     {
         return $this->modelClass::whereLike('name')
+            ->whereLike('phone_number')
+            ->whereLike('email')
             ->whereEqual('key')
             ->whereBetween2('created_at')
             ->whereBetween2('updated_at')
@@ -43,9 +45,18 @@ class UserService implements UserServiceInterface
             $query->where('branch_id', $filters['branch']);
         }
 
+        if ($filters['name']) {
+            $query->where('name', 'like', '%' . $filters['name'] . '%');
+        }
+
+        if ($filters['email']) {
+            $query->where('email', 'like', '%' . $filters['email'] . '%');
+        }
+
+        if ($filters['phone_number']) {
+            $query->where('phone_number', 'like', '%' . $filters['phone_number'] . '%');
+        }
+
         return $query->paginate(10);
     }
-
-
 }
-
