@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Traits\Scopes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -22,6 +23,7 @@ class User extends Authenticatable
      */
     public $fillable = [
         'name',
+        'branch_id',
         'email',
         'phone_number',
         'branch_id',
@@ -57,8 +59,8 @@ class User extends Authenticatable
         return $this->hasMany(Polytrauma::class);
     }
 
-    public function branch(): HasMany
+    public function branch(): BelongsTo
     {
-        return $this->hasMany(Branch::class);
+        return $this->belongsTo(Branch::class);
     }
 }

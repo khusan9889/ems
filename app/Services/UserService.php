@@ -39,6 +39,10 @@ class UserService implements UserServiceInterface
             fn ($query, $value) => $query->orderBy('id', $value)
         );
 
+        if ($filters['branch']) {
+            $query->where('branch_id', $filters['branch']);
+        }
+
         return $query->paginate(10);
     }
 

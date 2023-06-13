@@ -34,10 +34,11 @@
                     <td>
                         <select class="form-control form-control-sm" name="branch">
                             <option value="" style="font-size: 12px;">Все</option>
-                            {{-- @foreach ($branches as $id => $name)
+                                @foreach ($branches as $id => $name)
                                 <option value="{{ $id }}" style="font-size: 12px;"
                                     @if ($id == request('branch')) selected @endif>{{ $name }}</option>
-                            @endforeach --}}
+                                @endforeach
+                            </select>
                         </select>
                     </td>
                     <td>
@@ -68,7 +69,10 @@
                 @foreach ($data as $key => $item)
                 <tr>
                     <td>{{ $item->id }}</td>
+                    <td>{{ $item->branch->name }}</td>
+                    <td>{{ $item->department }}</td>
                     <td>{{ $item->name }}</td>
+                    <td>{{ $item->phone_number }}</td>
                     <td>{{ $item->email }}</td>
 
                 </tr>
