@@ -22,6 +22,14 @@
             </div>
             @include('polytrauma.index', ['branches' => $branches])
         </x-panel>
+    @elseif (request()->is('users'))
+        <x-panel title="Пользователи">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="panel-title">Пользователи</h4>
+                <a href="{{ route('polytrauma.polyt-create-page') }}" class="btn btn-success">Добавить</a>
+            </div>
+            @include('dashboard.pages.users', ['branches' => $branches])
+        </x-panel>
     @else
         <x-panel title="ОКС">
             <div class="d-flex justify-content-between align-items-center mb-3">

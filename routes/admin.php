@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [ACSController::class, 'index']);
-    
+
     Route::get('/polytrauma', [PolytraumaController::class, 'index']);
 
     Route::get('/fullform-acs/{id}', function ($id) {
@@ -47,4 +47,13 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::delete('/delete/{id}', [PolytraumaController::class, 'destroy'])->name('delete');
     });
+
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/', function () {
+            $branches = Branch::all(['id', 'name']);
+            return view('dashboard.pages.users', compact('branches'));
+        })->name('users');
+    });
+
+    
 });
