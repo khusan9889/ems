@@ -2,8 +2,7 @@
 
 namespace App\Services\Contracts;
 
-
-interface ACSServiceInterface
+interface UserServiceInterface
 {
     public function filter();
 
@@ -11,9 +10,6 @@ interface ACSServiceInterface
 
     public function customUpdate($id, $request);
 
-    public function delete($id);
+    public function customfilter(array $filters);
 
-    public function createRecord(array $data);
-
-    public function customFilter(array $filters);
 }

@@ -23,6 +23,7 @@ class User extends Authenticatable
     public $fillable = [
         'name',
         'email',
+        'branch_id',
         'password',
     ];
 
@@ -53,5 +54,10 @@ class User extends Authenticatable
     public function polytrauma(): HasMany
     {
         return $this->hasMany(Polytrauma::class);
+    }
+
+    public function branch(): HasMany
+    {
+        return $this->hasMany(Branch::class);
     }
 }

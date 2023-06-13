@@ -17,6 +17,7 @@
                     <th>ФИО пользователя</th>
                     <th>E-mail</th>
                     <th>Субъект СЭМП</th>
+                    <th>Действия</th>
                 </tr>
                 <tr>
                     <form action="">
@@ -45,9 +46,23 @@
                             @endforeach --}}
                         </select>
                     </td>
+                    <td class="align-middle d-flex justify-content-center">
+                        <div>
+                            <button type="submit" class="btn btn-sm btn-primary">Применить</button>
+                        </div>
+                    </td>
                 </tr>
             </thead>
+            <tbody>
+                @foreach ($data as $key => $item)
+                <tr>
+                    <td>{{ $item->id }}</td>
+                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->email }}</td>
 
+                </tr>
+                @endforeach
+            </tbody>
         </table>
     </div>
 </x-panel>

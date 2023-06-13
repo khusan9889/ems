@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ACSController;
 use App\Http\Controllers\PolytraumaController;
+use App\Http\Controllers\UserController;
 use App\Models\ACS;
 use App\Models\Branch;
 use App\Models\Polytrauma;
@@ -49,11 +50,8 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::group(['prefix' => 'users'], function () {
-        Route::get('/', function () {
-            $branches = Branch::all(['id', 'name']);
-            return view('dashboard.pages.users', compact('branches'));
-        })->name('users');
+        Route::get('/', [UserController::class, 'index']);
     });
 
-    
+
 });

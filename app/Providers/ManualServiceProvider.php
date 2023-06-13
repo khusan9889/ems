@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use App\Services\Contracts\ExampleServiceInterface;
 use App\Services\Contracts\PolytraumaServiceInterface;
-use App\Services\ExampleService;
+use App\Services\Contracts\UserServiceInterface;
 use App\Services\PolytraumaService;
+use App\Services\UserService;
 use Illuminate\Support\ServiceProvider;
 
 class ManualServiceProvider extends ServiceProvider
@@ -18,6 +18,7 @@ class ManualServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(PolytraumaServiceInterface::class, PolytraumaService::class);
+        $this->app->singleton(UserServiceInterface::class, UserService::class);
     }
 
     /**
