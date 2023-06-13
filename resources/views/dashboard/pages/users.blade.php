@@ -15,7 +15,7 @@
                 <tr>
                     <th>№</th>
                     <th>Субъект СЭМП</th>
-                    <th>Отделение</th>
+                    {{-- <th>Отделение</th> --}}
                     <th>ФИО пользователя</th>
                     <th>Номер телефона</th>
                     <th>Электронная почта</th>
@@ -42,15 +42,15 @@
                             </select>
                         </select>
                     </td>
-                    <td>
+                    {{-- <td>
                         <select class="form-control form-control-sm" name="department">
-                            <option value="" style="font-size: 12px;">Все</option>
+                            <option value="" style="font-size: 12px;">Все</option> --}}
                             {{-- @foreach ($branches as $id => $name)
                                 <option value="{{ $id }}" style="font-size: 12px;"
                                     @if ($id == request('branch')) selected @endif>{{ $name }}</option>
                             @endforeach --}}
-                        </select>
-                    </td>
+                        {{-- </select>
+                    </td> --}}
                     <td>
                         <input class="form-control form-control-sm" type="text" name="name"
                             value="{{ request('name') }}">
@@ -75,7 +75,7 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->branch->name }}</td>
-                    <td>{{ $item->department }}</td>
+                    {{-- <td>{{ $item->department }}</td> --}}
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->phone_number }}</td>
                     <td>{{ $item->email }}</td>
