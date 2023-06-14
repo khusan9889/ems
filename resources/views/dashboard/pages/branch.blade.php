@@ -7,7 +7,7 @@
 
 
 @section('content')
-<x-panel title="Пользователи в СЭМП">
+<x-panel title="Отделения в СЭМП">
 <h4 class="panel-title">Пользователи</h4>
     <div class="table-responsive">
         <table id="data-table-default" class="table table-striped table-bordered align-middle">

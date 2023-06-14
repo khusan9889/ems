@@ -2,15 +2,16 @@
 
 namespace App\Services;
 
+use App\Models\Branch;
 use App\Models\Example;
-use App\Services\Contracts\ExampleServiceInterface;
+use App\Services\Contracts\BranchServiceInterface;
 use App\Traits\Crud;
 
-class BranchService implements ExampleServiceInterface
+class BranchService implements BranchServiceInterface
 {
     use Crud;
 
-    public $modelClass = Example::class;
+    public $modelClass = Branch::class;
 
     public function filter()
     {
