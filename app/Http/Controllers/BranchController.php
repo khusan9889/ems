@@ -10,6 +10,6 @@ class BranchController extends Controller
     public function index()
     {
         $branches = Branch::all(['id', 'name']);
-        return view('acs.index', compact('branches'));
+        return view('dashboard.pages.branch', compact('branches'));
     }
 }

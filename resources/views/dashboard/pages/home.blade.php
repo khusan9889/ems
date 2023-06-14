@@ -7,7 +7,7 @@
     <h1 class="page-header">Дашборд</h1>
     <!-- end page-header -->
 
-
+    <!-- changing panel name according to the URL -->
     @if (request()->is('polytrauma'))
         <x-panel title="Политравма">
             <div class="d-flex justify-content-between align-items-center mb-3">

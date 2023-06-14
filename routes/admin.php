@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ACSController;
+use App\Http\Controllers\BranchController;
 use App\Http\Controllers\PolytraumaController;
 use App\Http\Controllers\UserController;
 use App\Models\ACS;
@@ -53,5 +54,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', [UserController::class, 'index']);
     });
 
+    Route::group(['prefix' => 'branch'], function () {
+        Route::get('/', [BranchController::class, 'index']);
+    });
 
 });

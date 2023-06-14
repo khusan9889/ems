@@ -56,7 +56,7 @@ return [
 				// 	'title' => 'Изменить'
 				// ]]
 			], [
-				'url' => 'javascript:;',
+				'url' => '/branch',
 				'title' => 'Отделение'
 			],]
 		]
