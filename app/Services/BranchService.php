@@ -21,6 +21,7 @@ class BranchService implements BranchServiceInterface
             ->whereBetween2('updated_at')
             ->sort()
             ->customPaginate();
+            
     }
 
     public function customStore($request)

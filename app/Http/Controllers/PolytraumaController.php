@@ -67,20 +67,14 @@ class PolytraumaController extends Controller
     public function store(StorePolytraumaRequest $request)
     {
         $validatedData = $request->validated();
-
-        // Get the selected branch's ID from the form data
         $branchId = $validatedData['branch_id'] ?? null;
 
-        // Find the corresponding branch record
         $branch = Branch::find($branchId);
 
         if (!$branch) {
-            // Branch does not exist in the database
-            // You can handle this situation based on your requirements, such as throwing an exception or returning an error message
             return redirect()->back()->with('error', 'Selected branch does not exist.');
         }
 
-        // Set the branch ID in the data array before creating the record
         $validatedData['branch_id'] = $branch->id;
 
         Polytrauma::create($validatedData);

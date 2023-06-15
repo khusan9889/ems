@@ -70,11 +70,8 @@
                     <td>{{ $item->email }}</td>
                     <td class="align-middle">
                         <div class="d-flex">
-                            <a href="{{ route('full-table-polyt', ['id' => $item->id]) }}"
-                                class="btn btn-primary btn-xs mr-1">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                            <a href="{{ route('polyt-edit-page', ['id' => $item->id]) }}"
+
+                            <a href="{{ route('users-edit', ['id' => $item->id]) }}"
                                 class="btn btn-warning btn-xs mr-1">
                                 <i class="fas fa-pen"></i>
                             </a>
@@ -91,6 +88,29 @@
     </div>
 </x-panel>
 
+
+<!-- Pagination -->
+<div class="d-flex justify-content-center">
+    {{ $data->links() }}
+</div>
+
+<!-- Confirmation Modal -->
+@includeWhen($selectedID, 'components.modals.confirmation-modal', ['id' => $selectedID])
+
+<script>
+    function confirmDelete(id) {
+        $('#deleteConfirmationModal').modal('show');
+        $('#deleteForm').attr('action', '/user/delete/' + id);
+    }
+
+    $().ready(function() {
+        // Add this code to handle the form submission success
+        $('#deleteForm').on('submit', function() {
+            $('#deleteConfirmationModal').modal('hide');
+            history.go(-1); // Redirect back to the previous page
+            return true; // Allow the form to submit
+        });
+    });
+</script>
+
 @endsection
-
-

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branch;
+use App\Models\User;
 use App\Services\Contracts\UserServiceInterface;
 use Illuminate\Http\Request;
 
@@ -22,5 +23,21 @@ class UserController extends Controller
         $branches = Branch::pluck('name', 'id'); // Get branch names with their IDs
 
         return view('dashboard.pages.users', compact('data', 'branches'));
+    }
+
+    public function edit($id)
+    {
+        $data = User::findOrFail($id);
+        $branches = User::all();
+
+        return view('dashboard.pages.users-edit-page', compact('data', 'branches'));
+    }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->back()->with('success', 'Record deleted successfully');
     }
 }

@@ -59,4 +59,14 @@ class UserService implements UserServiceInterface
 
         return $query->paginate(10);
     }
+
+    public function delete($id)
+    {
+        $model = $this->modelClass::find($id);
+        if ($model) {
+            $model->delete();
+            return true;
+        }
+        return false;
+    }
 }

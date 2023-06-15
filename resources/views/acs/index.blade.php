@@ -3,7 +3,6 @@
     $order = request()->sort;
 @endphp
 
-{{-- @dd(request()->all()) --}}
 
 <div class="table-responsive">
     <table id="data-table-default" class="table table-striped table-bordered align-middle">

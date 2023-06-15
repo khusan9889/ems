@@ -56,6 +56,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'branch'], function () {
         Route::get('/', [BranchController::class, 'index']);
+        Route::get('/users-edit/{id}', [UserController::class,'edit'])->name('users-edit');
+
+        Route::delete('delete/{id}', [UserController::class, 'destroy'])->name('delete');
     });
 
 });
