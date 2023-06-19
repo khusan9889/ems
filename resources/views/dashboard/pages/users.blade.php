@@ -18,6 +18,7 @@
                     <th>ФИО пользователя</th>
                     <th>Номер телефона</th>
                     <th>Электронная почта</th>
+                    <th>Роль</th>
                     <th>Действия</th>
                 </tr>
                 <tr>
@@ -53,6 +54,16 @@
                         <input class="form-control form-control-sm" type="text" name="email"
                             value="{{ request('email') }}">
                     </td>
+                    <td>
+                        <select class="form-control form-control-sm" name="role">
+                            <option value="" style="font-size: 12px;">Все</option>
+                                @foreach ($roles as $id => $name)
+                                <option value="{{ $id }}" style="font-size: 12px;"
+                                    @if ($id == request('role')) selected @endif>{{ $name }}</option>
+                                @endforeach
+                            </select>
+                        </select>
+                    </td>
                     <td class="align-middle d-flex justify-content-center">
                         <div>
                             <button type="submit" class="btn btn-sm btn-primary">Применить</button>
@@ -68,6 +79,7 @@
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->phone_number }}</td>
                     <td>{{ $item->email }}</td>
+                    <td> {{ $item->role->name }} </td>
                     <td class="align-middle">
                         <div class="d-flex">
                             <a href="{{ route('users-edit', ['id' => $item->id]) }}"

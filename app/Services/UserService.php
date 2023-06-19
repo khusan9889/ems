@@ -45,6 +45,10 @@ class UserService implements UserServiceInterface
             $query->where('branch_id', $filters['branch']);
         }
 
+        if ($filters['role']) {
+            $query->where('role_id', $filters['role']);
+        }
+
         if ($filters['name']) {
             $query->where('name', 'like', '%' . $filters['name'] . '%');
         }

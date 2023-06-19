@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branch;
+use App\Models\Role;
 use App\Models\User;
 use App\Services\Contracts\UserServiceInterface;
 use Illuminate\Http\Request;
@@ -16,13 +17,14 @@ class UserController extends Controller
             'email' => $request->input('email'),
             'phone_number' => $request->input('phone_number'),
             'branch' => $request->input('branch'),
+            'role' =>$request->input('role'),
             'sort' => $request->input('sort') ?? 'DESC',
         ];
 
         $data = $userService->customFilter($filters);
         $branches = Branch::pluck('name', 'id'); // Get branch names with their IDs
-
-        return view('dashboard.pages.users', compact('data', 'branches'));
+        $roles = Role::pluck('name', 'id');
+        return view('dashboard.pages.users', compact('data', 'branches', 'roles'));
     }
 
     public function edit($id)

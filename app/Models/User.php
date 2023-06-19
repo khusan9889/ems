@@ -24,7 +24,7 @@ class User extends Authenticatable
     public $fillable = [
         'name',
         'branch_id',
-        'role',
+        'role_id',
         'email',
         'phone_number',
         'branch_id',
