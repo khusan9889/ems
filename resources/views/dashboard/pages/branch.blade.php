@@ -13,6 +13,7 @@
                 <tr>
                     <th>№</th>
                     <th>Отделение</th>
+                    <th>Действия</th>
                 </tr>
                 <tr>
                     <form action="">

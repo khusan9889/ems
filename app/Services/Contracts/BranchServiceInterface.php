@@ -9,4 +9,7 @@ interface BranchServiceInterface
     public function customStore($request);
 
     public function customUpdate($id, $request);
+
+    public function customfilter(array $filters);
+
 }
