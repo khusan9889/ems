@@ -70,7 +70,6 @@
                     <td>{{ $item->email }}</td>
                     <td class="align-middle">
                         <div class="d-flex">
-
                             <a href="{{ route('users-edit', ['id' => $item->id]) }}"
                                 class="btn btn-warning btn-xs mr-1">
                                 <i class="fas fa-pen"></i>
@@ -100,7 +99,7 @@
 <script>
     function confirmDelete(id) {
         $('#deleteConfirmationModal').modal('show');
-        $('#deleteForm').attr('action', '/user/delete/' + id);
+        $('#deleteForm').attr('action', '/users/delete/' + id);
     }
 
     $().ready(function() {
