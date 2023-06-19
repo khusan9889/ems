@@ -5,7 +5,6 @@
 @endphp
 
 
-
 @section('content')
 <x-panel title="Пользователи в СЭМП">
 <h4 class="panel-title">Пользователи</h4>

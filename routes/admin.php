@@ -52,13 +52,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', [UserController::class, 'index']);
+        Route::get('/users-edit/{id}', [UserController::class,'edit'])->name('users-edit');
+        Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+
+        Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('delete');
     });
 
     Route::group(['prefix' => 'branch'], function () {
         Route::get('/', [BranchController::class, 'index']);
-        Route::get('/users-edit/{id}', [UserController::class,'edit'])->name('users-edit');
 
-        Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('delete');
     });
 
 });
