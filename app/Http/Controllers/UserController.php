@@ -17,21 +17,37 @@ class UserController extends Controller
             'email' => $request->input('email'),
             'phone_number' => $request->input('phone_number'),
             'branch' => $request->input('branch'),
-            'role' =>$request->input('role'),
+            'role' => $request->input('role'),
             'sort' => $request->input('sort') ?? 'DESC',
         ];
 
         $data = $userService->customFilter($filters);
         $branches = Branch::pluck('name', 'id'); // Get branch names with their IDs
         $roles = Role::pluck('name', 'id');
+
         return view('dashboard.pages.users', compact('data', 'branches', 'roles'));
+    }
+
+    public function create(Request $request)
+    {
+        //
+    }
+
+    public function store(Request $request)
+    {
+        //
+    }
+
+    public function show(Request $request, User $user)
+    {
+        //
     }
 
     public function update(Request $request, User $user)
     {
         $user->update($request->only('name', 'branch_id', 'role_id', 'email', 'phone_number'));
 
-        return view('dashboard.pages.users');
+        return redirect()->route('users.index');
     }
 
     // public function update(Request $request, User $user)
@@ -41,20 +57,23 @@ class UserController extends Controller
     //     return redirect()->route('users-edit', $user->id)->with('success', 'User updated successfully');
     // }
 
-    public function edit($id)
+    public function edit(Request $request, User $user)
     {
-        $data = User::findOrFail($id);
+        // dd($user);
+        // $data = User::findOrFail($id);
+        $data = $user;
         $branches = Branch::all();
         $roles = Role::all();
 
         return view('dashboard.pages.users-edit-page', compact('data', 'branches', 'roles'));
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, User $user)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
+        dd($user);
+        // $user = User::findOrFail($id);
+        // $user->delete();
 
-        return redirect()->back()->with('success', 'Record deleted successfully');
+        // return redirect()->route('users.index')->with('success', 'Record deleted successfully');
     }
 }

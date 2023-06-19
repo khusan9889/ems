@@ -118,22 +118,22 @@
 </div>
 
 <!-- Confirmation Modal -->
-@includeWhen($selectedID, 'components.modals.confirmation-modal', ['id' => $selectedID])
+@includeWhen($selectedID, 'components.modals.confirmation-modal', ['id' => $selectedID, 'routeName'=> 'polytrauma.delete'])
 
 @push('scripts')
     <script>
         function confirmDelete(id) {
             $('#deleteConfirmationModal').modal('show');
-            $('#deleteForm').attr('action', '/polytrauma/delete/' + id);
+            // $('#deleteForm').attr('action', '/polytrauma/delete/' + id);
         }
 
         $(document).ready(function() {
             // Add this code to handle the form submission success
-            $('#deleteForm').on('submit', function() {
-                $('#deleteConfirmationModal').modal('hide');
-                history.go(-1); // Redirect back to the previous page
-                return true; // Allow the form to submit
-            });
+            // $('#deleteForm').on('submit', function() {
+            //     $('#deleteConfirmationModal').modal('hide');
+            //     history.go(-1); // Redirect back to the previous page
+            //     return true; // Allow the form to submit
+            // });
         });
     </script>
 @endpush

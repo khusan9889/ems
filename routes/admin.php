@@ -34,7 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit-page/{id}', [ACSController::class, 'edit'])->name('edit-page');
         Route::put('/update-data/{id}', [ACSController::class, 'update'])->name('update-data');
 
-        Route::delete('/delete/{id}', [ACSController::class, 'destroy'])->name('delete');
+        Route::delete('/delete/{id}', [ACSController::class, 'destroy'])->name('acs.delete');
     });
 
     Route::group(['prefix' => 'polytrauma'], function () {
@@ -47,20 +47,20 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/polyt-edit-page/{id}', [PolytraumaController::class, 'edit'])->name('polyt-edit-page');
         Route::put('/update-data/{id}', [PolytraumaController::class, 'update'])->name('polyt-update-data');
 
-        Route::delete('/delete/{id}', [PolytraumaController::class, 'destroy'])->name('delete');
+        Route::delete('/delete/{id}', [PolytraumaController::class, 'destroy'])->name('polytrauma.delete');
     });
 
-    Route::group(['prefix' => 'users'], function () {
-        Route::get('/', [UserController::class, 'index']);
-        Route::get('/users-edit/{id}', [UserController::class,'edit'])->name('users-edit');
-        Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+    // Route::group(['prefix' => 'users'], function () {
+    //     Route::get('/', [UserController::class, 'index'])->name('users.index');
+    //     Route::get('/users-edit/{id}', [UserController::class,'edit'])->name('users-edit');
+    //     Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
 
-        Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('delete');
-    });
+    //     Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('users.delete');
+    // });
+
+    Route::resource('users', UserController::class);
 
     Route::group(['prefix' => 'branch'], function () {
         Route::get('/', [BranchController::class, 'index']);
-
     });
-
 });

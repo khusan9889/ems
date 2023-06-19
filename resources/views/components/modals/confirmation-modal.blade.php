@@ -13,7 +13,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
-                <form id="deleteForm" action="{{ route('delete', $selectedID) }}" method="POST">
+                <form id="deleteForm" action="{{ route($routeName, $selectedID) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Удалить</button>
