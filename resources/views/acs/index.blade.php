@@ -11,6 +11,7 @@
             <tr>
                 <th>№</th>
                 <th>Субъект</th>
+                {{-- <th>Отделение</th> --}}
                 <th>Номер ИБ</th>
                 <th>Пациент ФИО</th>
                 <th>Дата поступления</th>
@@ -40,6 +41,7 @@
                             @endforeach
                         </select>
                     </td>
+
                     <td>
                         <input class="form-control form-control-sm" type="text" name="history_disease"
                             value="{{ request('history_disease') }}">

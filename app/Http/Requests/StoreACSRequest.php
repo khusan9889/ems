@@ -23,6 +23,7 @@ class StoreACSRequest extends FormRequest
     {
         return [
             'branch_id' => 'required',
+            'department_id' => 'required',
             'history_disease' => 'required',
             'full_name' => 'required',
             'hospitalization_date' => 'required',

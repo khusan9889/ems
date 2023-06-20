@@ -25,7 +25,7 @@
                                     <td>{{$data->id}}</td>
                                 </tr>
                                 <tr>
-                                    <th>Отделение</th>
+                                    <th>Субъект СЭМП</th>
                                     <td>{{$data->branch->name}}</td>
                                 </tr>
                                 <tr>
@@ -152,24 +152,4 @@
         </div>
     </div>
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

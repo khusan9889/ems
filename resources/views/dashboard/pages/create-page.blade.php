@@ -28,10 +28,10 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="department">Выбрать отделение</label>
-                        <select class="form-control" id="department" name="department_id">
+                        <select class="form-control" id="department" name="department">
                             <option value="" hidden>Выберите отделение</option>
                         </select>
-                        @error('branch_id')
+                        @error('department')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
