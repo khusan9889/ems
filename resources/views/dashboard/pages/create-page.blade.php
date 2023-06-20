@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="branch">Выбрать субъект</label>
+                        <label for="branch">Выбрать субъект СЭМП</label>
                         <select class="form-control" id="branch" name="branch_id">
                             <!-- Add options for department -->
                             <option value="" hidden>Выберите субъект</option>
@@ -29,12 +29,7 @@
                     <div class="form-group">
                         <label for="department">Выбрать отделение</label>
                         <select class="form-control" id="department" name="department_id">
-                            <!-- Add options for department -->
                             <option value="" hidden>Выберите отделение</option>
-                            {{-- @foreach ($branches as $branch)
-                                <option value="{{ $branch->id }}">{{ $branch->name }}</option>
-                            @endforeach --}}
-
                         </select>
                         @error('branch_id')
                             <span class="text-danger">{{ $message }}</span>
