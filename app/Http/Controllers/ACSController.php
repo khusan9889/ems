@@ -65,11 +65,8 @@ class ACSController extends Controller
     public function store(StoreACSRequest $request)
     {
         $validatedData = $request->validated();
-
-        // Get the selected branch's ID from the form data
         $branchId = $validatedData['branch_id'] ?? null;
 
-        // Find the corresponding branch record
         $branch = Branch::find($branchId);
 
         if (!$branch) {
@@ -78,10 +75,8 @@ class ACSController extends Controller
             return redirect()->back()->with('error', 'Selected branch does not exist.');
         }
 
-        // Set the branch ID in the data array before creating the record
         $validatedData['branch_id'] = $branch->id;
 
-        // Create the ACS record
         ACS::create($validatedData);
 
         return redirect('/')->with('success', 'Record updated successfully');

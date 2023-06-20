@@ -14,7 +14,6 @@
                     <div class="form-group">
                         <label for="branch">Выбрать субъект СЭМП</label>
                         <select class="form-control" id="branch" name="branch_id">
-                            <!-- Add options for department -->
                             <option value="" hidden>Выберите субъект</option>
                             @foreach ($branches as $branch)
                                 <option value="{{ $branch->id }}">{{ $branch->name }}</option>
@@ -30,6 +29,9 @@
                         <label for="department">Выбрать отделение</label>
                         <select class="form-control" id="department" name="department">
                             <option value="" hidden>Выберите отделение</option>
+                            @foreach ($departments as $department)
+                                <option value="{{ $department->id }}">{{ $department->name }}</option>
+                            @endforeach
                         </select>
                         @error('department')
                             <span class="text-danger">{{ $message }}</span>

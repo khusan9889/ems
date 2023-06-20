@@ -39,7 +39,7 @@
                                             @if ($id == request('branch')) selected @endif>{{ $name }}</option>
                                     @endforeach
                                 </select>
-                                </select>
+
                             </td>
                             <td>
                                 <input class="form-control form-control-sm" type="text" name="name"
@@ -113,12 +113,7 @@
     }
 
     $().ready(function() {
-        // Add this code to handle the form submission success
-        // $('#deleteForm').on('submit', function() {
-        //     $('#deleteConfirmationModal').modal('hide');
-        //     history.go(-1); // Redirect back to the previous page
-        //     return true; // Allow the form to submit
-        // });
+
     });
 </script>
 @endsection

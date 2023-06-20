@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePolytraumaRequest;
 use App\Models\Branch;
+use App\Models\Department;
 use App\Models\Polytrauma;
 use App\Services\Contracts\PolytraumaServiceInterface;
 use Illuminate\Http\Request;
@@ -31,8 +32,9 @@ class PolytraumaController extends Controller
 
         $data = $polytraumaService->customFilter($filters);
         $branches = Branch::pluck('name', 'id'); // Get branch names with their IDs
+        $departments = Department::pluck('name', 'id');
 
-        return view('dashboard.pages.home', compact('data', 'branches', 'hospitalization_channels'));
+        return view('dashboard.pages.home', compact('data', 'branches', 'departments','hospitalization_channels'));
     }
 
     public function fullTable(Request $request)
