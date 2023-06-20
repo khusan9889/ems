@@ -16,6 +16,8 @@ class Department extends Model
         'name',
     ];
 
+    protected $table = 'department';
+
     public function branch(): BelongsTo
     {
         return $this->belongsTo(Branch::class);

@@ -4,6 +4,9 @@
 <head>
     @include('dashboard.includes.head')
     @stack('custom_css')
+
+    @vite(['resources/js/app.js'])
+
 </head>
 @php
     $bodyClass = !empty($boxedLayout) ? 'boxed-layout' : '';
@@ -14,7 +17,7 @@
     $sidebarSearch = !empty($sidebarSearch) ? $sidebarSearch : '';
     $topMenu = !empty($topMenu) ? $topMenu : '';
     $footer = !empty($footer) ? $footer : '';
-    
+
     $pageContainerClass = !empty($topMenu) ? 'page-with-top-menu ' : '';
     $pageContainerClass .= !empty($sidebarRight) ? 'page-with-right-sidebar ' : '';
     $pageContainerClass .= !empty($sidebarLight) ? 'page-with-light-sidebar ' : '';
@@ -23,7 +26,7 @@
     $pageContainerClass .= !empty($sidebarMinified) ? 'page-sidebar-minified ' : '';
     $pageContainerClass .= !empty($sidebarTwo) ? 'page-with-two-sidebar ' : '';
     $pageContainerClass .= !empty($contentFullHeight) ? 'page-content-full-height ' : '';
-    
+
     $contentClass = !empty($contentFullWidth) || !empty($contentFullHeight) ? 'content-full-width ' : '';
     $contentClass .= !empty($contentInverseMode) ? 'content-inverse-mode ' : '';
 @endphp
@@ -55,7 +58,6 @@
 
     @stack('custom_js')
     @include('dashboard.includes.page-js')
-
 
 </body>
 

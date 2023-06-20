@@ -12,13 +12,29 @@
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="branch">Выбрать отделение</label>
+                        <label for="branch">Выбрать субъект</label>
                         <select class="form-control" id="branch" name="branch_id">
                             <!-- Add options for department -->
-                            <option value="" hidden>Выберите отделение</option>
+                            <option value="" hidden>Выберите субъект</option>
                             @foreach ($branches as $branch)
                                 <option value="{{ $branch->id }}">{{ $branch->name }}</option>
                             @endforeach
+                        </select>
+                        @error('branch_id')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="department">Выбрать отделение</label>
+                        <select class="form-control" id="department" name="department_id">
+                            <!-- Add options for department -->
+                            <option value="" hidden>Выберите отделение</option>
+                            {{-- @foreach ($branches as $branch)
+                                <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                            @endforeach --}}
+
                         </select>
                         @error('branch_id')
                             <span class="text-danger">{{ $message }}</span>
@@ -52,10 +68,11 @@
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </div>
                             </div>
-                            <input class="form-control" id="hospitalization_calendar" type="text" name="hospitalization_date">
+                            <input class="form-control" id="hospitalization_calendar" type="text"
+                                name="hospitalization_date">
                         </div>
                         @error('hospitalization_date')
-                        <span class="text-danger">{{ $message }}</span>
+                            <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
@@ -72,7 +89,7 @@
                             <input class="form-control" id="discharge_calendar" type="text" name="discharge_date">
                         </div>
                         @error('discharge_date')
-                        <span class="text-danger">{{ $message }}</span>
+                            <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
@@ -630,5 +647,38 @@
         }, function(start, end, label) {
             $('#discharge_calendar').val(start.format('DD.MM.YYYY HH:mm'));
         });
+
+        let departments = [];
+        const branch = document.getElementById('branch')
+        branch.addEventListener('change', async function(event) {
+            try {
+                const target = event.target
+                // console.log({
+                //     target
+                // });
+
+                const res = await axios({
+                    url: '/departments/branch',
+                    params: {
+                        branch_id: Number(target.value)
+                    }
+                })
+
+                departments = res.data
+
+                const department = document.getElementById('department')
+
+                department.innerHTML = '<option value="" hidden>Выберите отделение</option>'
+                departments.forEach(dep => {
+                    const optEl = document.createElement('option')
+                    optEl.value = dep.id
+                    optEl.innerHTML = dep.name
+                    department.insertAdjacentElement('beforeend', optEl)
+                })
+            } catch (error) {
+                alert(error.message)
+            }
+
+        })
     </script>
 @endpush

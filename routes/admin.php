@@ -60,7 +60,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('users', UserController::class);
 
-    Route::group(['prefix' => 'branch'], function () {
+    Route::group(['prefix' => 'branches'], function () {
         Route::get('/', [BranchController::class, 'index']);
+    });
+
+    Route::group(['prefix' => 'departments'], function () {
+        Route::get('/branch', [BranchController::class, 'fetchDepartments']);
     });
 });
