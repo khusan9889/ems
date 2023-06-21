@@ -16,7 +16,7 @@ class Department extends Model
         'name',
     ];
 
-    protected $table = 'department';
+    protected $table = 'departments';
 
     public function branch(): BelongsTo
     {

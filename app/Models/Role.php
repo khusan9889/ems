@@ -11,7 +11,7 @@ class Role extends Model
 {
     use HasFactory, Scopes;
 
-    protected $table = 'role';
+    protected $table = 'roles';
 
     public $fillable = [
         'name',

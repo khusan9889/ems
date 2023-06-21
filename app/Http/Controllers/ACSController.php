@@ -70,6 +70,7 @@ class ACSController extends Controller
         $branch = Branch::find($branchId);
 
         if (!$branch) {
+        
             return redirect()->back()->with('error', 'Selected branch does not exist.');
         }
 
