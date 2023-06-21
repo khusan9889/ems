@@ -53,14 +53,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/delete/{id}', [PolytraumaController::class, 'destroy'])->name('polytrauma.delete');
     });
 
-    // Route::group(['prefix' => 'users'], function () {
-    //     Route::get('/', [UserController::class, 'index'])->name('users.index');
-    //     Route::get('/users-edit/{id}', [UserController::class,'edit'])->name('users-edit');
-    //     Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
-
-    //     Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('users.delete');
-    // });
-
     Route::resource('users', UserController::class);
 
     Route::group(['prefix' => 'branch'], function () {

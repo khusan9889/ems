@@ -70,8 +70,6 @@ class ACSController extends Controller
         $branch = Branch::find($branchId);
 
         if (!$branch) {
-            // Branch does not exist in the database
-            // You can handle this situation based on your requirements, such as throwing an exception or returning an error message
             return redirect()->back()->with('error', 'Selected branch does not exist.');
         }
 

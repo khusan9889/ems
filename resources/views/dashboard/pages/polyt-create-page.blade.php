@@ -594,9 +594,6 @@
         branch.addEventListener('change', async function(event) {
             try {
                 const target = event.target
-                // console.log({
-                //     target
-                // });
 
                 const res = await axios({
                     url: '/departments/branch',

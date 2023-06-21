@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('acs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('branch_id')->nullable()->constrained('branch')->nullOnDelete();
+            $table->foreignId('branch_id')->nullable()->constrained('branches')->nullOnDelete();
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
-            $table->string('department')->nullable();
+            $table->unsignedBigInteger('department_id')->nullable()->constrained('departments')->nullOnDelete();
             $table->string('history_disease')->nullable();
             $table->string('full_name')->nullable();
             $table->string('hospitalization_date')->nullable();
