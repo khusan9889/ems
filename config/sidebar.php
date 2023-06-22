@@ -22,7 +22,7 @@ return [
 		],
 		[
 			'icon' => 'fa fa-th-large',
-			'title' => 'Политравма',
+        'title' => 'Политравма',
 			'url' => '/polytrauma',
 		],
         // [
@@ -57,7 +57,7 @@ return [
 				// ]]
 			], [
 				'url' => '/branch',
-				'title' => 'Отделение'
+				'title' => 'Субъекты'
 			],]
 		]
 	]

@@ -61,8 +61,8 @@ class BranchService implements BranchServiceInterface
             $query->where('phone_number', 'like', '%' . $filters['phone_number'] . '%');
         }
 
-        return $query->paginate(10);
+        return $query->paginate(16);
     }
 
-    
+
 }

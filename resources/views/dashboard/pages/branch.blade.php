@@ -5,15 +5,15 @@
 @endphp
 
 @section('content')
-<x-panel title="Отделения в СЭМП">
-    <h4 class="panel-title">Отделения СЭМП</h4>
+<x-panel title="Субъекты в СЭМП">
+    <h4 class="panel-title">Субъекты в СЭМП</h4>
     <div class="table-responsive">
         <table id="data-table-default" class="table table-striped table-bordered align-middle">
             <thead>
                 <tr>
                     <th>№</th>
-                    <th>Отделение</th>
-                    <th>Действия</th>
+                    <th>Субъект</th>
+
                 </tr>
                 <tr>
                     <form action="">
@@ -30,11 +30,7 @@
                             <input class="form-control form-control-sm" type="text" name="name"
                                 value="{{ request('name') }}">
                         </td>
-                        <td class="align-middle d-flex justify-content-center">
-                            <div>
-                                <button type="submit" class="btn btn-sm btn-primary">Применить</button>
-                            </div>
-                        </td>
+
                     </form>
                 </tr>
             </thead>
