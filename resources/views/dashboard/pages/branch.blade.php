@@ -15,7 +15,7 @@
                     <th>Субъект</th>
 
                 </tr>
-                <tr>
+                {{-- <tr>
                     <form action="">
                         <td class="align-middle">
                             <div class="d-flex align-items-center justify-content-center">
@@ -32,7 +32,7 @@
                         </td>
 
                     </form>
-                </tr>
+                </tr> --}}
             </thead>
             <tbody>
                 @foreach ($data as $key => $item)
