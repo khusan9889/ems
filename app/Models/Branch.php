@@ -32,9 +32,9 @@ class Branch extends Model
         return $this->hasMany(Polytrauma::class);
     }
 
-    public function user(): BelongsTo
+    public function user(): HasMany
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class);
     }
 
     public function department(): HasMany
