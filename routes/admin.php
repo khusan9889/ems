@@ -8,6 +8,7 @@ use App\Models\ACS;
 use App\Models\Branch;
 use App\Models\Department;
 use App\Models\Polytrauma;
+use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {
@@ -57,6 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'branch'], function () {
         Route::get('/', [BranchController::class, 'index']);
+
     });
 
     Route::group(['prefix' => 'departments'], function () {

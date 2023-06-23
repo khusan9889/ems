@@ -11,7 +11,7 @@ return [
 		],
 		[
 			'icon' => 'fa fa-th-large',
-        'title' => 'Политравма',
+			'title' => 'Политравма',
 			'url' => '/polytrauma',
 		],
 		[
@@ -19,14 +19,16 @@ return [
 			'title' => 'Справочник',
 			'url' => 'javascript:;',
 			'caret' => true,
-			'sub_menu' => [[
-				'url' => 'users',
-				'title' => 'Пользователи',
-
-			], [
-				'url' => '/branch',
-				'title' => 'Субъекты'
-			],]
+			'sub_menu' => [
+				[
+					'url' => 'users',
+					'title' => 'Пользователи',
+				],
+				[
+					'url' => '/branch',
+					'title' => 'Субъекты'
+				],
+			]
 		]
 	]
 ];

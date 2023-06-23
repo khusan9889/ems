@@ -21,13 +21,7 @@ $sidebarClass = (!empty($sidebarTransparent)) ? 'sidebar-transparent' : '';
 					</div>
 				</a>
 			</li>
-			{{-- <li>
-				<ul class="nav nav-profile">
-					<li><a href="javascript:;"><i class="fa fa-cog"></i> Settings</a></li>
-					<li><a href="javascript:;"><i class="fa fa-pencil-alt"></i> Send Feedback</a></li>
-					<li><a href="javascript:;"><i class="fa fa-question-circle"></i> Helps</a></li>
-				</ul>
-			</li> --}}
+
 		</ul>
 		<!-- end sidebar user -->
 		@endif
@@ -63,7 +57,7 @@ $sidebarClass = (!empty($sidebarTransparent)) ? 'sidebar-transparent' : '';
 				$subSubMenu .= '</ul>';
 			}
 
-			$active = ($currentUrl == $menu['url']) ? 'active' : '';
+			$active = (strpos($currentUrl, $menu['url']) === 0 || strpos($currentUrl, $menu['url']) !== false) ? 'active' : '';
 
 			if ($active) {
 			$GLOBALS['parent_active'] = true;
@@ -102,7 +96,7 @@ $sidebarClass = (!empty($sidebarTransparent)) ? 'sidebar-transparent' : '';
 				$subMenu .= renderSubMenu($menu['sub_menu'], $currentUrl);
 				$subMenu .= '</ul>';
 			}
-			$active = ($currentUrl == $menu['url']) ? 'active' : '';
+			$active = (strpos($currentUrl, $menu['url']) === 0) ? 'active' : '';
 			$active = (empty($active) && !empty($GLOBALS['parent_active'])) ? 'active' : $active;
 			echo '
 			<li class="'. $hasSub .' '. $active .'">
