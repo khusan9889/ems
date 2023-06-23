@@ -6,8 +6,8 @@
 
 
 @section('content')
-    <x-panel title="Пользователи в СЭМП">
-        <h4 class="panel-title">Пользователи</h4>
+    <h1 class="page-header">Пользователи</h1>
+    <x-panel>
         <div class="table-responsive">
             <table id="data-table-default" class="table table-striped table-bordered align-middle">
                 <thead>
