@@ -15,24 +15,6 @@
                     <th>Субъект</th>
 
                 </tr>
-                {{-- <tr>
-                    <form action="">
-                        <td class="align-middle">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <button class="btn btn-link btn-sm sort-btn" data-sort-by="id"
-                                    onclick="{{ $order = $order === 'ASC' ? 'DESC' : 'ASC' }}">
-                                    <i class="fas fa-sort fa-lg"></i>
-                                </button>
-                                <input type="hidden" name="sort" value="{{ $order }}">
-                            </div>
-                        </td>
-                        <td>
-                            <input class="form-control form-control-sm" type="text" name="name"
-                                value="{{ request('name') }}">
-                        </td>
-
-                    </form>
-                </tr> --}}
             </thead>
             <tbody>
                 @foreach ($data as $key => $item)
