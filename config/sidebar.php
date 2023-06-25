@@ -28,6 +28,10 @@ return [
 					'url' => '/branch',
 					'title' => 'Субъекты'
 				],
+                [
+                    'url' => '/departments',
+                    'title' => 'Отделения'
+                ],
 			]
 		]
 	]

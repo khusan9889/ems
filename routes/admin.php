@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ACSController;
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PolytraumaController;
 use App\Http\Controllers\UserController;
 use App\Models\ACS;
@@ -62,6 +63,8 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::group(['prefix' => 'departments'], function () {
+        Route::get('/', [DepartmentController::class, 'index']);
         Route::get('/branch', [BranchController::class, 'fetchDepartments']);
+
     });
 });
