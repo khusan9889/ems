@@ -20,7 +20,9 @@
                         <th>Роль</th>
                         <th style="display: flex; justify-content: space-between; align-items: center;">
                             <span style="margin-right: 5px;">Действия</span>
-                            <i class="fas fa-plus fa-xs btn btn-info"></i>
+                            <a href="{{ route('users.create-page') }}" class="btn btn-info btn-sm" style="margin-left: 5px;">
+                                <i class="fas fa-plus"></i>
+                            </a>
                         </th>
                     </tr>
                     <tr>

@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::resource('users', UserController::class);
+    
 
     Route::group(['prefix' => 'branch'], function () {
         Route::get('/', [BranchController::class, 'index']);
