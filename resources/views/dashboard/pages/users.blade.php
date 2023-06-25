@@ -18,7 +18,10 @@
                         <th>Номер телефона</th>
                         <th>Электронная почта</th>
                         <th>Роль</th>
-                        <th>Действия</th>
+                        <th style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="margin-right: 5px;">Действия</span>
+                            <i class="fas fa-plus fa-xs btn btn-info"></i>
+                        </th>
                     </tr>
                     <tr>
                         <form action="">
