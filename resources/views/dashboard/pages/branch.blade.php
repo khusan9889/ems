@@ -1,8 +1,4 @@
 @extends('dashboard.layouts.default')
-@php
-    $selectedID = null;
-    $order = request()->sort;
-@endphp
 
 @section('content')
 <x-panel title="Субъекты в СЭМП">
@@ -11,16 +7,15 @@
         <table id="data-table-default" class="table table-striped table-bordered align-middle">
             <thead>
                 <tr>
-                    <th>№</th>
+                    <th style="width: 60px;">№</th>
                     <th>Субъект</th>
-
                 </tr>
             </thead>
             <tbody>
-                @foreach ($data as $key => $item)
+                @foreach ($branches as $key => $branch)
                 <tr>
-                    <td>{{ $item->id }}</td>
-                    <td>{{ $item->name }}</td>
+                    <td>{{ $branch->id }}</td>
+                    <td>{{ $branch->name }}</td>
                 </tr>
                 @endforeach
             </tbody>

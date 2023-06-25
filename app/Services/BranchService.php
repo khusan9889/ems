@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\Branch;
-use App\Models\Example;
 use App\Services\Contracts\BranchServiceInterface;
 use App\Traits\Crud;
 
