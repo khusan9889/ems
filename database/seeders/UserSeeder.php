@@ -16,7 +16,8 @@ class UserSeeder extends Seeder
             'name' => 'Admin',
             'phone_number' => '971003021',
             'email' => 'admin@gmail.com',
-            'password' => bcrypt(11111111)
+            'password' => bcrypt(11111111),
+            'branch_id'=>1,
         ]);
     }
 }

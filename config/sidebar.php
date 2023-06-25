@@ -6,7 +6,7 @@ return [
 		[
 			'icon' => 'fa fa-th-large',
 			'title' => 'ОКС',
-			'url' => '/',
+			'url' => '/acs',
 
 		],
 		[

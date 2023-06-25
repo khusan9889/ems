@@ -7,6 +7,8 @@ interface ACSServiceInterface
 {
     public function filter();
 
+    public function apiData();
+
     public function customStore($request);
 
     public function customUpdate($id, $request);

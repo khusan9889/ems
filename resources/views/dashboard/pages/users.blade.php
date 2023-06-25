@@ -20,7 +20,7 @@
                         <th>Роль</th>
                         <th style="display: flex; justify-content: space-between; align-items: center;">
                             <span style="margin-right: 5px;">Действия</span>
-                            <a href="{{ route('users.create-page') }}" class="btn btn-info btn-sm" style="margin-left: 5px;">
+                            <a href="" class="btn btn-info btn-sm" style="margin-left: 5px;">
                                 <i class="fas fa-plus"></i>
                             </a>
                         </th>
@@ -83,7 +83,7 @@
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->phone_number }}</td>
                             <td>{{ $item->email }}</td>
-                            <td> {{ $item->role->name }} </td>
+                            <td> {{ $item->role?->name }} </td>
                             <td class="align-middle">
                                 <div class="d-flex">
                                     <a href="{{ route('users.edit', $item->id) }}" class="btn btn-warning btn-xs mr-1">

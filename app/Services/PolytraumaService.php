@@ -120,4 +120,11 @@ class PolytraumaService implements PolytraumaServiceInterface
 
         return $results;
     }
+
+    public function apiData()
+    {
+        return $this->modelClass::whereBetween2('created_at', 'date')
+            ->sort()
+            ->get();
+    }
 }

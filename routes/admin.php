@@ -13,7 +13,7 @@ use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', [ACSController::class, 'index']);
+    Route::get('/acs', [ACSController::class, 'index']);
 
     Route::get('/polytrauma', [PolytraumaController::class, 'index']);
 
@@ -56,7 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::resource('users', UserController::class);
-    
+
 
     Route::group(['prefix' => 'branch'], function () {
         Route::get('/', [BranchController::class, 'index']);
