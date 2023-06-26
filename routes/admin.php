@@ -54,8 +54,29 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/delete/{id}', [PolytraumaController::class, 'destroy'])->name('polytrauma.delete');
     });
 
-    Route::resource('users', UserController::class);
+    // Route::resource('users', UserController::class);
 
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/', [UserController::class, 'index'])->name('users.index');
+
+        Route::get('users-create-page', [UserController::class, 'create'])->name('users.create-page');
+
+        Route::post('/users', [UserController::class, 'store'])->name('users.store');
+
+        Route::get('/edit-page/{user}', [UserController::class, 'edit'])->name('users.edit-page');
+
+        Route::put('/update-data/{user}', [UserController::class, 'update'])->name('users.update');
+
+        Route::delete('/delete/{user}', [UserController::class, 'destroy'])->name('users.delete');
+
+    });
+
+    Route::post('/departments/fetch', [DepartmentController::class, 'fetchDepartments'])->name('departments.fetch');
+
+
+    // Route::get('/dashboard/pages/users/create', [UserController::class, 'create'])->name('dashboard.pages.users-create-page');
+
+    // Route::get('users-create-page', [UserController::class, 'create']);
 
     Route::group(['prefix' => 'branch'], function () {
         Route::get('/', [BranchController::class, 'index']);
