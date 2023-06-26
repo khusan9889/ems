@@ -46,7 +46,7 @@ return [
             'caret' => true,
             'sub_menu' => [
                 [
-                    'url' => 'users',
+                    'url' => '/users',
                     'title' => 'Пользователи',
                 ],
                 [
