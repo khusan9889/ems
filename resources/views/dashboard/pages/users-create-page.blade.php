@@ -30,6 +30,9 @@
                         <label for="department">Выбрать отделение</label>
                         <select class="form-control" id="department" name="department_id">
                             <option value="" hidden>Выберите отделение</option>
+                            @foreach ($departments as $department)
+                                <option value="{{ $department->id }}">{{ $department->name }}</option>
+                            @endforeach
                         </select>
                         @error('department_id')
                             <span class="text-danger">{{ $message }}</span>
