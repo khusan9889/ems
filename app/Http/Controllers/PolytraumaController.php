@@ -81,7 +81,7 @@ class PolytraumaController extends Controller
 
         Polytrauma::create($validatedData);
 
-        return redirect('/polytrauma')->with('success', 'Record updated successfully');
+        return redirect('/polytrauma/list')->with('success', 'Record updated successfully');
     }
 
     public function edit($id)
@@ -97,7 +97,7 @@ class PolytraumaController extends Controller
         $polytrauma = Polytrauma::findOrFail($id);
         $polytrauma->update($request->all());
 
-        return redirect('/polytrauma')->with('success', 'Record updated successfully');
+        return redirect('/polytrauma/list')->with('success', 'Record updated successfully');
     }
 
     public function statistics(Request $request, PolytraumaServiceInterface $service)

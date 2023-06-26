@@ -5,7 +5,7 @@
 @section('content')
 
 <h1 class="page-header">
-    @if (request()->is('polytrauma'))
+    @if (request()->is('polytrauma/list'))
         Политравма
     @else
         ОКС
@@ -14,7 +14,7 @@
     <!-- end page-header -->
 
     <!-- changing panel name according to the URL -->
-    @if (request()->is('polytrauma'))
+    @if (request()->is('polytrauma/list'))
         <x-panel>
             <div class="d-flex justify-content-end mb-3">
                 <a href="{{ route('polytrauma.polyt-create-page') }}" class="btn btn-success">Добавить</a>

@@ -24,8 +24,12 @@
                                 <td>{{$data->id}}</td>
                             </tr>
                             <tr>
-                                <th>Отделение</th>
+                                <th>Субъект СЭМП</th>
                                 <td>{{$data->branch->name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Отделение</th>
+                                <td>{{$data->department->name}}</td>
                             </tr>
                             <tr>
                                 <th>№ Истории болезни</th>

@@ -12,7 +12,7 @@ use App\Models\Polytrauma;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/acs/list', [ACSController::class, 'index'])->name('acs-index');
+    Route::get('/acs/list', [ACSController::class, 'index']);
 
     Route::get('/polytrauma/list', [PolytraumaController::class, 'index']);
 
@@ -54,8 +54,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/delete/{id}', [PolytraumaController::class, 'destroy'])->name('polytrauma.delete');
     });
 
-    // Route::resource('users', UserController::class);
-
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', [UserController::class, 'index'])->name('users.index');
 
@@ -72,11 +70,6 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::post('/departments/fetch', [DepartmentController::class, 'fetchDepartments'])->name('departments.fetch');
-
-
-    // Route::get('/dashboard/pages/users/create', [UserController::class, 'create'])->name('dashboard.pages.users-create-page');
-
-    // Route::get('users-create-page', [UserController::class, 'create']);
 
     Route::group(['prefix' => 'branch'], function () {
         Route::get('/', [BranchController::class, 'index']);
