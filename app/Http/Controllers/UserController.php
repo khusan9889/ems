@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branch;
+use App\Models\Department;
 use App\Models\Role;
 use App\Models\User;
 use App\Services\Contracts\UserServiceInterface;
@@ -32,8 +33,8 @@ class UserController extends Controller
     {
         $branches = Branch::all(['id', 'name']);
         $roles = Role::all(['id', 'name']);
-
-        return view('dashboard.pages.users-create-page', compact('branches', 'roles'));
+        $departments = Department::all(['id', 'name']);
+        return view('dashboard.pages.users-create-page', compact('branches', 'roles', 'departments'));
     }
 
 
@@ -91,5 +92,13 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->back()->with('success', 'User deleted successfully');
+    }
+
+    public function fetchDepartments(Request $request)
+    {
+        $branchId = $request->input('branch_id');
+        $departments = Department::where('branch_id', $branchId)->get();
+
+        return response()->json(['departments' => $departments]);
     }
 }

@@ -72,6 +72,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     });
 
+    Route::post('/departments/fetch', [DepartmentController::class, 'fetchDepartments'])->name('departments.fetch');
 
 
     // Route::get('/dashboard/pages/users/create', [UserController::class, 'create'])->name('dashboard.pages.users-create-page');

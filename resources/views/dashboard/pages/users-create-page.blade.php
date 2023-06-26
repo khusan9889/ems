@@ -10,15 +10,30 @@
                 <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
             </div>
 
-            <div class="form-group">
-                <label for="branch_id">Отделение</label>
-                <select class="form-control" id="branch_id" name="branch_id" required>
-                    @foreach ($branches as $branch)
-                        <option value="{{ $branch->id }}">
-                            {{ $branch->name }}
-                        </option>
-                    @endforeach
-                </select>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="branch">Выбрать субъект СЭМП</label>
+                    <select class="form-control" id="branch" name="branch_id">
+                        <option value="" hidden>Выберите субъект</option>
+                        @foreach ($branches as $branch)
+                            <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('branch_id')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="department">Выбрать отделение</label>
+                    <select class="form-control" id="department" name="department_id">
+                        <option value="" hidden>Выберите отделение</option>
+                    </select>
+                    @error('department_id')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
             </div>
 
             <!-- Roles Dropdown -->
@@ -52,3 +67,37 @@
         </form>
     </x-panel>
 @endsection
+
+@push('scripts')
+    <script>
+       let departments = [];
+        const branch = document.getElementById('branch')
+        branch.addEventListener('change', async function(event) {
+            try {
+                const target = event.target
+
+                const res = await axios({
+                    url: '/departments/branch',
+                    params: {
+                        branch_id: Number(target.value)
+                    }
+                })
+
+                departments = res.data
+
+                const department = document.getElementById('department')
+
+                department.innerHTML = '<option value="" hidden>Выберите отделение</option>'
+                departments.forEach(dep => {
+                    const optEl = document.createElement('option')
+                    optEl.value = dep.id
+                    optEl.innerHTML = dep.name
+                    department.insertAdjacentElement('beforeend', optEl)
+                })
+            } catch (error) {
+                alert(error.message)
+            }
+
+        })
+    </script>
+@endpush
