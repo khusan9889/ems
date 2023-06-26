@@ -9,13 +9,12 @@ use App\Models\ACS;
 use App\Models\Branch;
 use App\Models\Department;
 use App\Models\Polytrauma;
-use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/acs', [ACSController::class, 'index']);
+    Route::get('/acs/list', [ACSController::class, 'index']);
 
-    Route::get('/polytrauma', [PolytraumaController::class, 'index']);
+    Route::get('/polytrauma/list', [PolytraumaController::class, 'index']);
 
     Route::get('/fullform-acs/{id}', function ($id) {
         $data = ACS::findOrFail($id);
@@ -30,7 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'acs'], function () {
         Route::get('create-page', function () {
             $branches = Branch::all(['id', 'name']);
-            $departments = Department::all(['id','name']);
+            $departments = Department::all(['id', 'name']);
             return view('dashboard.pages.create-page', compact('branches', 'departments'));
         })->name('acs.create-page');
 
@@ -44,7 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'polytrauma'], function () {
         Route::get('polyt-create-page', function () {
             $branches = Branch::all(['id', 'name']);
-            $departments = Department::all(['id','name']);
+            $departments = Department::all(['id', 'name']);
             return view('dashboard.pages.polyt-create-page', compact('branches', 'departments'));
         })->name('polytrauma.polyt-create-page');
 
@@ -68,4 +67,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/branch', [BranchController::class, 'fetchDepartments']);
 
     });
+
+    Route::get('/acs/statistics', [ACSController::class, 'statistics']);
+    Route::get('/polytrauma/statistics', [PolytraumaController::class, 'statistics']);
+
 });

@@ -8,6 +8,8 @@ interface PolytraumaServiceInterface
 
     public function apiData();
 
+    public function statistics($request);
+
     public function customStore($request);
 
     public function customUpdate($id, $request);

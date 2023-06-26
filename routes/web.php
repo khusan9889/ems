@@ -22,7 +22,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/', function () {
-    return redirect('/acs');
+    return redirect('/acs/list');
 });
 
 // Route::get('/acs/full-table', [ACSController::class, 'fullTable'])->name('acs.full-table');

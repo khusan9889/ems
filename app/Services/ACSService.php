@@ -131,9 +131,83 @@ class ACSService implements ACSServiceInterface
 
         $data = $this->modelClass::whereDate('created_at', '>=', $date_start)
             ->wheredate('created_at', '<=', $date_end)->get();
-        $n = $data->count();
-        foreach ($data as $item) {
+        $n = $data->count() ?? 1;
+        if (!$n) $n = 1;
+        $result = [];
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов, которые выписаны',
+            'value' => $tmp->where('treatment_result', 'Выписан')->count() / $n * 100
+        ];
 
-        }
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов, которые умерли',
+            'value' => $tmp->where('treatment_result', 'Летальный исход')->count() / $n * 100
+        ];
+
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов, которые выписаны в тяжелом состоянии',
+            'value' => $tmp->where('treatment_result', 'Выписан в тяжелом состоянии')->count() / $n * 100
+        ];
+
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов с исходом в ОИМ с Q',
+            'value' => $tmp->where('final_result', 'ОИМ с Q')->count() / $n * 100
+        ];
+
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов с исходом в ОИМ без Q',
+            'value' => $tmp->where('final_result', 'ОИМ без Q')->count() / $n * 100
+        ];
+
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов с исходом в прогрессирующую стенокардию',
+            'value' => $tmp->where('final_result', 'Прогрессирующая стенокардия')->count() / $n * 100
+        ];
+
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов, поступивших в сроки до 6 часов',
+            'value' => $tmp->where('anginal_attack_date', 'до 6ч.')->count() / $n * 100
+        ];
+
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов, поступивших в сроки 6-12 часов',
+            'value' => $tmp->where('anginal_attack_date', '6-12ч.')->count() / $n * 100
+        ];
+
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов, поступивших в сроки позже 12 часов',
+            'value' => $tmp->where('anginal_attack_date', 'позже 12ч.')->count() / $n * 100
+        ];
+
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов, которым показана экстренное ЧКВ',
+            'value' => $tmp->where('cta_invasive_angiography', 'Да')->count() / $n * 100
+        ];
+
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов, которым показана отсроченное ЧКВ',
+            'value' => $tmp->where('deferred_cta_invasive', 'Да')->count() / $n * 100
+        ];
+
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов, которым выполнено экстренное ЧКВ',
+            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+        ];
+// 13 gacha tayyor
+
+
+        return $result;
     }
 }

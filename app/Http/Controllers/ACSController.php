@@ -70,7 +70,7 @@ class ACSController extends Controller
         $branch = Branch::find($branchId);
 
         if (!$branch) {
-        
+
             return redirect()->back()->with('error', 'Selected branch does not exist.');
         }
 
@@ -93,7 +93,12 @@ class ACSController extends Controller
     {
         $acs = ACS::findOrFail($id);
         $acs->update($request->all());
-
         return redirect('/')->with('success', 'Record updated successfully');
+    }
+
+    public function statistics(Request $request, ACSServiceInterface $service)
+    {
+        $data = $service->statistics($request);
+        return view('dashboard.pages.acs.statistics', compact('data'));
     }
 }

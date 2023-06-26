@@ -6,6 +6,7 @@ use App\Models\Branch;
 use App\Models\Polytrauma;
 use App\Services\Contracts\PolytraumaServiceInterface;
 use App\Traits\Crud;
+use Exception;
 
 class PolytraumaService implements PolytraumaServiceInterface
 {
@@ -51,7 +52,7 @@ class PolytraumaService implements PolytraumaServiceInterface
         if (!$branch) {
             // Branch does not exist in the database
             // You can handle this situation based on your requirements, such as throwing an exception or returning an error message
-            throw new \Exception('Selected branch does not exist.');
+            throw new Exception('Selected branch does not exist.');
         }
 
         // Set the branch name in the data array before creating the record
@@ -64,15 +65,15 @@ class PolytraumaService implements PolytraumaServiceInterface
     {
         $query = $this->modelClass::when(
             $filters['sort'],
-            fn ($query, $value) => $query->orderBy('id', $value)
+            fn($query, $value) => $query->orderBy('id', $value)
         )
             ->when(
                 $filters['hospitalization_channels'],
-                fn ($query, $value) => $query->where('hospitalization_channels', $value)
+                fn($query, $value) => $query->where('hospitalization_channels', $value)
             )
             ->when(
                 $filters['branch'],
-                fn ($query, $value) => $query->where('branch_id', $value)
+                fn($query, $value) => $query->where('branch_id', $value)
             );
 
         // Filter by history disease
@@ -126,5 +127,26 @@ class PolytraumaService implements PolytraumaServiceInterface
         return $this->modelClass::whereBetween2('created_at', 'date')
             ->sort()
             ->get();
+    }
+
+    public function statistics($request)
+    {
+        $date_end = $request->date_end ?? date('Y-m-d');
+        $date_start = $request->date_start ?? date('Y-m-d', strtotime($date_end . ' -30 days'));
+
+        $data = $this->modelClass::whereDate('created_at', '>=', $date_start)
+            ->wheredate('created_at', '<=', $date_end)->get();
+        $n = $data->count() ?? 1;
+        if (!$n) $n = 1;
+        $result = [];
+        $tmp = $data;
+
+        $result[] = [
+            'title' => 'Доля пациентов, которые выписаны',
+            'value' => $tmp->where('treatment_result', 'Выписан')->count() / $n * 100
+        ];
+
+
+        return $result;
     }
 }

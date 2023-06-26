@@ -34,7 +34,7 @@ class PolytraumaController extends Controller
         $branches = Branch::pluck('name', 'id'); // Get branch names with their IDs
         $departments = Department::pluck('name', 'id');
 
-        return view('dashboard.pages.home', compact('data', 'branches', 'departments','hospitalization_channels'));
+        return view('dashboard.pages.home', compact('data', 'branches', 'departments', 'hospitalization_channels'));
     }
 
     public function fullTable(Request $request)
@@ -98,5 +98,11 @@ class PolytraumaController extends Controller
         $polytrauma->update($request->all());
 
         return redirect('/polytrauma')->with('success', 'Record updated successfully');
+    }
+
+    public function statistics(Request $request, PolytraumaServiceInterface $service)
+    {
+        $data = $service->statistics($request);
+        return view('dashboard.pages.polytrauma.statistics', compact('data'));
     }
 }
