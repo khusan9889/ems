@@ -8,6 +8,9 @@
 @section('content')
     <h1 class="page-header">Пользователи</h1>
     <x-panel>
+        <div class="d-flex justify-content-end mb-3">
+            <a href="{{ route('users.create-page') }}" class="btn btn-success">Добавить</a>
+        </div>
         <div class="table-responsive">
             <table id="data-table-default" class="table table-striped table-bordered align-middle">
                 <thead>
@@ -18,12 +21,7 @@
                         <th>Номер телефона</th>
                         <th>Электронная почта</th>
                         <th>Роль</th>
-                        <th style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="margin-right: 5px;">Действия</span>
-                            <a href="" class="btn btn-info btn-sm" style="margin-left: 5px;">
-                                <i class="fas fa-plus"></i>
-                            </a>
-                        </th>
+                        <th>Действия</th>
                     </tr>
                     <tr>
                         <form action="">
@@ -86,7 +84,7 @@
                             <td> {{ $item->role?->name }} </td>
                             <td class="align-middle">
                                 <div class="d-flex">
-                                    <a href="{{ route('users.edit', $item->id) }}" class="btn btn-warning btn-xs mr-1">
+                                    <a href="{{ route('users.edit-page', $item->id) }}" class="btn btn-warning btn-xs mr-1">
                                         <i class="fas fa-pen"></i>
                                     </a>
                                     <button type="button" class="btn btn-danger btn-xs mr-1"
@@ -109,16 +107,23 @@
     </div>
 
 <!-- Confirmation Modal -->
-@includeWhen($selectedID, 'components.modals.confirmation-modal', ['id' => $selectedID, 'routeName' => 'users.destroy'])
+@includeWhen($selectedID, 'components.modals.confirmation-modal', ['id' => $selectedID, 'routeName'=> 'users.delete'])
 
-<script>
-    function confirmDelete(id) {
-        $('#deleteConfirmationModal').modal('show');
-        // $('#deleteForm').attr('action', '/acs/delete/' + id);
-    }
+    @push('scripts')
+        <script>
+            function confirmDelete(id) {
+                $('#deleteConfirmationModal').modal('show');
+                // $('#deleteForm').attr('action', '/polytrauma/delete/' + id);
+            }
 
-    $().ready(function() {
-
-    });
-</script>
+            $(document).ready(function() {
+                // Add this code to handle the form submission success
+                // $('#deleteForm').on('submit', function() {
+                //     $('#deleteConfirmationModal').modal('hide');
+                //     history.go(-1); // Redirect back to the previous page
+                //     return true; // Allow the form to submit
+                // });
+            });
+        </script>
+    @endpush
 @endsection

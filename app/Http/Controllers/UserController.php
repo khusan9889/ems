@@ -28,20 +28,14 @@ class UserController extends Controller
         return view('dashboard.pages.users', compact('data', 'branches', 'roles'));
     }
 
-    public function create(Request $request)
+    public function create()
     {
-        //
+        $branches = Branch::all(['id', 'name']);
+        $roles = Role::all(['id', 'name']);
+
+        return view('dashboard.pages.users-create-page', compact('branches', 'roles'));
     }
 
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(Request $request, User $user)
-    {
-        //
-    }
 
     public function update(Request $request, User $user)
     {
@@ -50,13 +44,36 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
-    // public function update(Request $request, User $user)
-    // {
-    //     $user->update($request->only('name', 'branch_id', 'role_id', 'email', 'phone_number'));
+    public function store(Request $request)
+    {
+        // Validate the input data
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'branch_id' => 'required',
+            'role_id' => 'required',
+            'email' => 'required|email|unique:users',
+            'phone_number' => 'required',
+            'password' => 'required|min:8', // Add validation rule for the password
+        ]);
 
-    //     return redirect()->route('users-edit', $user->id)->with('success', 'User updated successfully');
-    // }
+        // Create a new user
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->branch_id = $request->input('branch_id');
+        $user->role_id = $request->input('role_id');
+        $user->email = $request->input('email');
+        $user->phone_number = $request->input('phone_number');
 
+        // Hash the password using bcrypt
+        $user->password = bcrypt($request->input('password'));
+
+        // Save the user
+        $user->save();
+
+        // Redirect to the users index page or perform any other necessary actions
+        return redirect()->route('users.index')->with('success', 'User created successfully.');
+
+    }
     public function edit(Request $request, User $user)
     {
         // dd($user);
@@ -68,12 +85,11 @@ class UserController extends Controller
         return view('dashboard.pages.users-edit-page', compact('data', 'branches', 'roles'));
     }
 
-    public function destroy(Request $request, User $user)
+    public function destroy($id)
     {
-        dd($user);
-        // $user = User::findOrFail($id);
-        // $user->delete();
+        $user = User::findOrFail($id);
+        $user->delete();
 
-        // return redirect()->route('users.index')->with('success', 'Record deleted successfully');
+        return redirect()->back()->with('success', 'User deleted successfully');
     }
 }
