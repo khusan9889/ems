@@ -3,9 +3,9 @@
 @section('content')
 
     <h1 class="page-header">ОКС-Статистика</h1>
-
+    <x-form.date-range-filter/>
     <x-panel>
-        <div class="table-responsive ">
+        <div class="table-responsive">
             <table class="table table-striped table-bordered">
                 <thead>
                 <tr>

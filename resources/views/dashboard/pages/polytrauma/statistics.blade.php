@@ -3,6 +3,7 @@
 @section('content')
 
     <h1 class="page-header">Политравма-Статистика</h1>
+    <x-form.date-range-filter/>
 
     <x-panel>
         <div class="table-responsive ">
