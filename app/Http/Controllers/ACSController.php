@@ -93,7 +93,7 @@ class ACSController extends Controller
     {
         $acs = ACS::findOrFail($id);
         $acs->update($request->all());
-        return redirect('/')->with('success', 'Record updated successfully');
+        return redirect('acs/list')->with('success', 'Record updated successfully');
     }
 
     public function statistics(Request $request, ACSServiceInterface $service)

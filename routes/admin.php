@@ -12,7 +12,7 @@ use App\Models\Polytrauma;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/acs/list', [ACSController::class, 'index']);
+    Route::get('/acs/list', [ACSController::class, 'index'])->name('acs-index');
 
     Route::get('/polytrauma/list', [PolytraumaController::class, 'index']);
 

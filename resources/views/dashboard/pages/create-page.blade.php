@@ -28,7 +28,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="department">Выбрать отделение</label>
-                        <select class="form-control" id="department" name="department">
+                        <select class="form-control" id="department" name="department_id">
                             <option value="" hidden>Выберите отделение</option>
                         </select>
                         @error('department')

@@ -29,6 +29,10 @@
                                     <td>{{$data->branch->name}}</td>
                                 </tr>
                                 <tr>
+                                    <th>Отделение</th>
+                                    <td>{{$data->department->name}}</td>
+                                </tr>
+                                <tr>
                                     <th>№ Истории болезни</th>
                                     <td>{{$data->history_disease}}</td>
                                 </tr>
