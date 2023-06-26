@@ -10,29 +10,31 @@
                 <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
             </div>
 
-            <div class="col-6">
-                <div class="form-group">
-                    <label for="branch">Выбрать субъект СЭМП</label>
-                    <select class="form-control" id="branch" name="branch_id">
-                        <option value="" hidden>Выберите субъект</option>
-                        @foreach ($branches as $branch)
-                            <option value="{{ $branch->id }}">{{ $branch->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('branch_id')
-                        <span class="text-danger">{{ $message }}</span>
-                    @enderror
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="branch">Выбрать субъект СЭМП</label>
+                        <select class="form-control" id="branch" name="branch_id">
+                            <option value="" hidden>Выберите субъект</option>
+                            @foreach ($branches as $branch)
+                                <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('branch_id')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
-            </div>
-            <div class="col-6">
-                <div class="form-group">
-                    <label for="department">Выбрать отделение</label>
-                    <select class="form-control" id="department" name="department_id">
-                        <option value="" hidden>Выберите отделение</option>
-                    </select>
-                    @error('department_id')
-                        <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="department">Выбрать отделение</label>
+                        <select class="form-control" id="department" name="department_id">
+                            <option value="" hidden>Выберите отделение</option>
+                        </select>
+                        @error('department_id')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
             </div>
 
