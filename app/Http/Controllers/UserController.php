@@ -18,6 +18,7 @@ class UserController extends Controller
             'email' => $request->input('email'),
             'phone_number' => $request->input('phone_number'),
             'branch' => $request->input('branch'),
+            'department' => $request->input('department'),
             'role' => $request->input('role'),
             'sort' => $request->input('sort') ?? 'DESC',
         ];
@@ -25,8 +26,9 @@ class UserController extends Controller
         $data = $userService->customFilter($filters);
         $branches = Branch::pluck('name', 'id'); // Get branch names with their IDs
         $roles = Role::pluck('name', 'id');
+        $departments = Department::pluck('name', 'id');
 
-        return view('dashboard.pages.users', compact('data', 'branches', 'roles'));
+        return view('dashboard.pages.users', compact('data', 'branches', 'roles', 'departments'));
     }
 
     public function create()
@@ -51,7 +53,7 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'branch_id' => 'required',
-            'department_id' => 'required', // Add validation rule for the department ID
+            'department_id' => 'required',
             'role_id' => 'required',
             'email' => 'required|email|unique:users',
             'phone_number' => 'required',
@@ -73,7 +75,7 @@ class UserController extends Controller
 
         return redirect()->route('users.index')->with('success', 'User created successfully.');
     }
-    
+
     public function edit(Request $request, User $user)
     {
         // dd($user);
@@ -100,4 +102,5 @@ class UserController extends Controller
 
         return response()->json(['departments' => $departments]);
     }
+
 }

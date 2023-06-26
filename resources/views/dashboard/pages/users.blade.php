@@ -17,6 +17,7 @@
                     <tr>
                         <th>№</th>
                         <th>Субъект СЭМП</th>
+                        <th>Отделение</th>
                         <th>ФИО пользователя</th>
                         <th>Номер телефона</th>
                         <th>Электронная почта</th>
@@ -42,7 +43,16 @@
                                             @if ($id == request('branch')) selected @endif>{{ $name }}</option>
                                     @endforeach
                                 </select>
-
+                            </td>
+                            <td>
+                                <select class="form-control form-control-sm" name="department">
+                                    <option value="" style="font-size: 12px;">Все</option>
+                                    @foreach ($departments as $id => $name)
+                                        @if ($id == request('department'))
+                                            <option value="{{ $id }}" style="font-size: 12px;" @if ($id == request('department')) selected @endif>{{ $name }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </td>
                             <td>
                                 <input class="form-control form-control-sm" type="text" name="name"
@@ -78,6 +88,7 @@
                         <tr>
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->branch->name }}</td>
+                            <td>{{ $item->department->name }}</td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->phone_number }}</td>
                             <td>{{ $item->email }}</td>
@@ -111,14 +122,35 @@
 
     @push('scripts')
         <script>
-            function confirmDelete(id) {
-                $('#deleteConfirmationModal').modal('show');
-                // $('#deleteForm').attr('action', '/polytrauma/delete/' + id);
-            }
+        let departments = [];
+            const branch = document.getElementById('branch')
+            branch.addEventListener('change', async function(event) {
+                try {
+                    const target = event.target
 
-            $(document).ready(function() {
+                    const res = await axios({
+                        url: '/departments/branch',
+                        params: {
+                            branch_id: Number(target.value)
+                        }
+                    })
 
-            });
+                    departments = res.data
+
+                    const department = document.getElementById('department')
+
+                    department.innerHTML = '<option value="" hidden>Выберите отделение</option>'
+                    departments.forEach(dep => {
+                        const optEl = document.createElement('option')
+                        optEl.value = dep.id
+                        optEl.innerHTML = dep.name
+                        department.insertAdjacentElement('beforeend', optEl)
+                    })
+                } catch (error) {
+                    alert(error.message)
+                }
+
+            })
         </script>
     @endpush
 @endsection

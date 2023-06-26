@@ -42,7 +42,13 @@ class UserService implements UserServiceInterface
         );
 
         if ($filters['branch']) {
-            $query->where('branch_id', $filters['branch']);
+            $query->whereHas('branch', function ($query) use ($filters) {
+                $query->where('id', $filters['branch']);
+            });
+        }
+
+        if ($filters['department']) {
+            $query->where('department_id', $filters['department']);
         }
 
         if ($filters['role']) {
