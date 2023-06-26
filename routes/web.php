@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\ACSController;
-use App\Http\Controllers\TableController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +21,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-
+Route::get('/', function () {
+    return redirect('/acs');
+});
 
 // Route::get('/acs/full-table', [ACSController::class, 'fullTable'])->name('acs.full-table');
 
