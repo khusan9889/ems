@@ -51,30 +51,29 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'branch_id' => 'required',
+            'department_id' => 'required', // Add validation rule for the department ID
             'role_id' => 'required',
             'email' => 'required|email|unique:users',
             'phone_number' => 'required',
-            'password' => 'required|min:8', // Add validation rule for the password
+            'password' => 'required|min:8',
         ]);
 
         // Create a new user
         $user = new User();
         $user->name = $request->input('name');
         $user->branch_id = $request->input('branch_id');
+        $user->department_id = $request->input('department_id'); // Save the selected department ID
         $user->role_id = $request->input('role_id');
         $user->email = $request->input('email');
         $user->phone_number = $request->input('phone_number');
-
-        // Hash the password using bcrypt
         $user->password = bcrypt($request->input('password'));
 
         // Save the user
         $user->save();
 
-        // Redirect to the users index page or perform any other necessary actions
         return redirect()->route('users.index')->with('success', 'User created successfully.');
-
     }
+    
     public function edit(Request $request, User $user)
     {
         // dd($user);
