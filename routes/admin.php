@@ -77,7 +77,9 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::group(['prefix' => 'departments'], function () {
-        Route::get('/', [DepartmentController::class, 'index']);
+        Route::get('/', [DepartmentController::class, 'index'])->name('departments.index');
+        Route::get('/edit/{department}', [DepartmentController::class, 'edit'])->name('departments.edit');
+        Route::put('/update/{department}', [DepartmentController::class, 'update'])->name('department.update');
         Route::get('/branch', [BranchController::class, 'fetchDepartments']);
 
     });

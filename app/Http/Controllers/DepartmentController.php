@@ -23,5 +23,24 @@ class DepartmentController extends Controller
 
         return view('dashboard.pages.departments', compact('departments', 'branches', 'data'));
     }
-    
+
+    public function edit($id)
+    {
+        $data = Department::findOrFail($id);
+        $branches = Branch::all();
+
+        return view('dashboard.pages.department-edit-page', [
+            'department' => $data,
+            'branches' => $branches
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $polytrauma = Department::findOrFail($id);
+        $polytrauma->update($request->all());
+
+        return redirect()->route('departments.index')->with('success', 'Record updated successfully');
+    }
+
 }

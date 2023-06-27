@@ -31,9 +31,10 @@
                             <td>
                                 <select class="form-control form-control-sm" name="department">
                                     <option value="" style="font-size: 12px;">Все</option>
-                                    @foreach ($departments as $id => $name)
-                                        <option value="{{ $id }}" style="font-size: 12px;"
-                                            @if ($id == request('department')) selected @endif>{{ $name }}</option>
+                                    @foreach ($departments as $department)
+                                        <option value="{{ $department->id }}" style="font-size: 12px;"
+                                            @if ($department->id == request('department')) selected @endif>{{ $department->name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </td>
@@ -58,17 +59,16 @@
                     @foreach ($data as $key => $item)
                         <tr>
                             <td>{{ $item->id }}</td>
-                            <td>{{ $item->department->name }}</td>
+                            <td>{{ $item->name }}</td>
                             <td>{{ $item->branch->name }}</td>
                             <td class="align-middle">
                                 <div class="d-flex">
-                                    <a href="{{ route('', ['id' => $item->id]) }}"
+                                    {{-- <a href="{{ route('', ['id' => $item->id]) }}"
                                         class="btn btn-primary btn-xs mr-1">
                                         <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('', ['id' => $item->id]) }}"
-                                        class="btn btn-warning btn-xs mr-1">
-                                        <i class="fas fa-pencil-alt"></i>
+                                    </a> --}}
+                                    <a href="{{ route('departments.edit', $item->id) }}" class="btn btn-warning btn-xs mr-1">
+                                        <i class="fas fa-pen"></i>
                                     </a>
                                     <button type="button" class="btn btn-danger btn-xs mr-1"
                                         onclick="{{ $selectedID = $item->id }}; confirmDelete({{ $item->id }})">
