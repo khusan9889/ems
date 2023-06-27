@@ -33,8 +33,9 @@ class UserController extends Controller
 
     public function create()
     {
-        $branches = Branch::all(['id', 'name']);
-        $roles = Role::all(['id', 'name']);
+        $branches = Branch::all();
+        $roles = Role::all();
+//        dd($roles);
         $departments = Department::all(['id', 'name']);
         return view('dashboard.pages.users-create-page', compact('branches', 'roles', 'departments'));
     }
