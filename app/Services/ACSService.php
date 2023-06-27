@@ -65,15 +65,15 @@ class ACSService implements ACSServiceInterface
     {
         $query = $this->modelClass::when(
             $filters['sort'],
-            fn ($query, $value) => $query->orderBy('id', $value)
+            fn($query, $value) => $query->orderBy('id', $value)
         )
             ->when(
                 $filters['hospitalization_channels'],
-                fn ($query, $value) => $query->where('hospitalization_channels', $value)
+                fn($query, $value) => $query->where('hospitalization_channels', $value)
             )
             ->when(
                 $filters['branch'],
-                fn ($query, $value) => $query->where('branch_id', $value)
+                fn($query, $value) => $query->where('branch_id', $value)
             );
         // ->get();
 
@@ -202,10 +202,11 @@ class ACSService implements ACSServiceInterface
 
         $tmp = $data;
         $tmp1 = $data;
+        $denominator = $tmp1->where('cta_invasive_angiography')->count() ?? 1;
         $result[] = [
             'title' => 'Доля пациентов, которым выполнено экстренное ЧКВ',
-            // 'value' => $tmp->where('cta_90min', 'Да')->where('cta_invasive_angiography', 'Да')->count() / $tmp1->where('cta_invasive_angiography')->count() * 100
-            'value' => 'check'
+            'value' => $tmp->where('cta_90min', 'Да')->where('cta_invasive_angiography', 'Да')->count() / $denominator * 100
+//            'value' => 'check'
         ];
         // 13 gacha tayyor
         $tmp = $data;
