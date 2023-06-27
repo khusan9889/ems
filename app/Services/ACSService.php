@@ -65,15 +65,15 @@ class ACSService implements ACSServiceInterface
     {
         $query = $this->modelClass::when(
             $filters['sort'],
-            fn($query, $value) => $query->orderBy('id', $value)
+            fn ($query, $value) => $query->orderBy('id', $value)
         )
             ->when(
                 $filters['hospitalization_channels'],
-                fn($query, $value) => $query->where('hospitalization_channels', $value)
+                fn ($query, $value) => $query->where('hospitalization_channels', $value)
             )
             ->when(
                 $filters['branch'],
-                fn($query, $value) => $query->where('branch_id', $value)
+                fn ($query, $value) => $query->where('branch_id', $value)
             );
         // ->get();
 
@@ -201,215 +201,310 @@ class ACSService implements ACSServiceInterface
         ];
 
         $tmp = $data;
+        $tmp1 = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым выполнено экстренное ЧКВ',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $tmp->where('cta_invasive_angiography', 'Да')->count() * 100
+            // 'value' => $tmp->where('cta_90min', 'Да')->where('cta_invasive_angiography', 'Да')->count() / $tmp1->where('cta_invasive_angiography')->count() * 100
+            'value' => 'check'
         ];
-// 13 gacha tayyor
+        // 13 gacha tayyor
         $tmp = $data;
+        $tmp1 = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым выполнено отсроченное ЧКВ',
-            'value' => $tmp->where('deferred_cta_invasive', 'Да')->count() / $n * 100
+            'value' => $tmp1->where('deferred_cta_invasive', 'Да')->count() > 0 ? $tmp->where('deferred_cta_completed', 'Да')->count() / $tmp1->where('deferred_cta_invasive', 'Да')->count() * 100 : 0
         ];
-
+        //14
         $tmp = $data;
+        $tmp1 = $data;
+        $tmp2 = $data;
+        $tmp3 = $data;
+
+        $numerator = $tmp->where('cta_90min', 'Да')->count() + $tmp2->where('deferred_cta_completed', 'Да')->count();
+        $denominator = $tmp1->where('deferred_cta_completed', 'Да')->count() + $tmp3->where('cta_invasive_angiography', 'Да')->count();
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым выполнено ЧКВ',
-            'value' => $tmp->where('cta_90min' + 'deferred_cta_invasive', 'Да')->count() / $n * 100
+            'value' => $value
         ];
-
+        //15
         $tmp = $data;
+        $tmp1 = $data;
+        $tmp2 = $data;
+        $tmp3 = $data;
+
+        $numerator = $tmp->where('cta_90min', 'Нет')->count() + $tmp1->where('deferred_cta_completed', 'Нет')->count();
+        $denominator = $tmp2->where('cta_invasive_angiography', 'Да')->count() + $tmp3->where('deferred_cta_invasive', 'Да')->count();
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым не выполнено ЧКВ',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
-
+        //16
         $tmp = $data;
+        $tmp1 = $data;
+        $tmp2 = $data;
+
+        $numerator = $tmp->where('reasons_not_performing_cta', 'медицинские противопоказания')->count();
+        $denominator = $tmp1->where('cta_90min', 'Нет')->count() + $tmp2->where('deferred_cta_completed', 'Нет')->count();
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым ЧКВ не выполнено по медицинским противопоказаниям',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
-
+        //17
         $tmp = $data;
+        $tmp1 = $data;
+        $tmp2 = $data;
+
+        $numerator = $tmp->where('reasons_not_performing_cta', 'отсутствие специалиста')->count();
+        $denominator = $tmp1->where('cta_90min', 'Нет')->count() + $tmp2->where('deferred_cta_completed', 'Нет')->count();
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым ЧКВ не выполнено по причине отсутствия специалиста',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
-
+        //18
         $tmp = $data;
+        $tmp1 = $data;
+        $tmp2 = $data;
+
+        $numerator = $tmp->where('reasons_not_performing_cta', 'отсутствие оборудования')->count();
+        $denominator = $tmp1->where('cta_90min', 'Нет')->count() + $tmp2->where('deferred_cta_completed', 'Нет')->count();
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым ЧКВ не выполнено по причине отсутствия оборудования',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
-
+        //19
         $tmp = $data;
+        $tmp1 = $data;
+        $tmp2 = $data;
+
+        $numerator = $tmp->where('reasons_not_performing_cta', 'занятость оборудования')->count();
+        $denominator = $tmp1->where('cta_90min', 'Нет')->count() + $tmp2->where('deferred_cta_completed', 'Нет')->count();
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым ЧКВ не выполнено по причине занятости оборудования',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
-
+        //20
         $tmp = $data;
+        $tmp1 = $data;
+        $tmp2 = $data;
+
+        $numerator = $tmp->where('reasons_not_performing_cta', 'отсутствие расходных материалов')->count();
+        $denominator = $tmp1->where('cta_90min', 'Нет')->count() + $tmp2->where('deferred_cta_completed', 'Нет')->count();
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым ЧКВ не выполнено по причине отсутствия расходных материалов',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
-
+        //21
         $tmp = $data;
+        $tmp1 = $data;
+        $tmp2 = $data;
+
+        $numerator = $tmp->where('reasons_not_performing_cta', 'отказ больного')->count();
+        $denominator = $tmp1->where('cta_90min', 'Нет')->count() + $tmp2->where('deferred_cta_completed', 'Нет')->count();
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым ЧКВ не выполнено по причине отказа больного',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
-
+        //22
         $tmp = $data;
+
+        $numerator = $tmp->where('thrombolytic_therapy', 'Да')->count();
+        $denominator = $n;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым показана ТЛТ',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
-
+        //23
         $tmp = $data;
+        $tmp1 = $data;
+
+        $numerator = $tmp->where('thrombolytic_therapy_administered', 'Да')->count();
+        $denominator = $tmp1->where('thrombolytic_therapy', 'Да')->count();
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым выполнена ТЛТ',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
-
+        //24
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым не выполнена ТЛТ',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //25
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым ТЛТ не проведена по причине наличия медицинских противопоказаний',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //26
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым ТЛТ не проведена по причине отсутствия препарата',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //27
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым ТЛТ не проведена по причине отказа больного',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //28
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым выполнена ЭКГ',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //29
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым не выполнена ЭКГ',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //30
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов с подъемом сегмента ST',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //31
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым проведено измерение ФВ',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //32
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым измерение ФВ выполнено в сроки ≤3 суток',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //33
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым измерение ФВ выполнено в сроки > 3 суток',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //34
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым проведены анализы на ЛПНП',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //35
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым не проведены анализы на ЛПНП',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //36
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым проведены анализ на АЧТВ',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //37
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым не проведены анализ на АЧТВ',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //38
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым проведена антикоагулянтная терапия',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //39
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым не проведена антикоагулянтная терапия',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //40
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которые принимали аспирин',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //41
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которые не принимали аспирин',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //42
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которые принимали ингибиторы P2Y12',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //43
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которые не принимали ингибиторы P2Y12',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //44
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которые принимали статины высокой интенсивности',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //45
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которые не принимали статины высокой интенсивности',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //46
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которые принимали ингибиторы АПФ или БРАII',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
-
+        //47
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которые не принимали ингибиторы АПФ или БРАII',

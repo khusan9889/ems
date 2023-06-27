@@ -23,4 +23,5 @@ class DepartmentController extends Controller
 
         return view('dashboard.pages.departments', compact('departments', 'branches', 'data'));
     }
+    
 }

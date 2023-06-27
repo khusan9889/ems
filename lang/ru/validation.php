@@ -170,6 +170,7 @@ return [
 
     'attributes' => [
         'branch_id' => 'Отделение',
+        'department_id' => 'Отделение',
         'history_disease' => 'Номер ИБ',
         'full_name' => 'Пациент ФИО',
         'hospitalization_date' => 'Дата поступления',
