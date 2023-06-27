@@ -21,7 +21,7 @@
                         <tbody>
                             <tbody>
                                 <tr>
-                                    <th>id</th>
+                                    <th>№</th>
                                     <td>{{$data->id}}</td>
                                 </tr>
                                 <tr>

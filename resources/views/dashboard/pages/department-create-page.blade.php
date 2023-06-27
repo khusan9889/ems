@@ -7,12 +7,6 @@
             <table class="table table-striped table-bordered align-middle">
                 <tbody>
                     <tr>
-                        <th>Название отделения</th>
-                        <td>
-                            <input type="text" name="name" class="form-control" required>
-                        </td>
-                    </tr>
-                    <tr>
                         <th>Субъект</th>
                         <td>
                             <select class="form-control" name="branch_id" required>
@@ -24,6 +18,13 @@
                             </select>
                         </td>
                     </tr>
+                    <tr>
+                        <th>Название отделения</th>
+                        <td>
+                            <input type="text" name="name" class="form-control" required>
+                        </td>
+                    </tr>
+
                 </tbody>
             </table>
             <button type="submit" class="btn btn-primary">Создать</button>

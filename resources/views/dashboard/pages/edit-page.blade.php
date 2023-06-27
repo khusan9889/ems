@@ -18,12 +18,16 @@
                         <table class="table table-striped table-bordered align-middle">
                             <tbody>
                                 <tr>
-                                    <th>id</th>
+                                    <th>№</th>
                                     <td>{{$data->id}}</td>
                                 </tr>
                                 <tr>
-                                    <th>Отделение</th>
+                                    <th>Субъект</th>
                                     <td>{{$data->branch->name}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Отделение</th>
+                                    <td>{{$data->department->name}}</td>
                                 </tr>
                                 <tr>
                                     <th>Номер ИБ</th>
