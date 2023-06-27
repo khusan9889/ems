@@ -1,13 +1,13 @@
 @extends('dashboard.layouts.default')
 @section('content')
-    <h1 class="page-header">ОКС-таблица для изменений</h1>
+    <h1 class="page-header">ОКС - таблица для изменений</h1>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h5 class="card-title">Форма {{$data->id}}</h5>
-                        <a href="{{ url('/') }}" class="btn btn-secondary btn-sm">
+                        <a href="{{ url('/acs/list') }}" class="btn btn-secondary btn-sm">
                             <i class="fas fa-arrow-left"></i>
                         </a>
                     </div>

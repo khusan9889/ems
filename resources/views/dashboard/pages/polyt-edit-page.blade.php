@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h5 class="card-title">Форма {{$data->id}}</h5>
-                        <a href="{{ url('/polytrauma') }}" class="btn btn-secondary btn-sm">
+                        <a href="{{ url('/polytrauma/list') }}" class="btn btn-secondary btn-sm">
                             <i class="fas fa-arrow-left"></i>
                         </a>
                     </div>

@@ -30,6 +30,7 @@ class DepartmentController extends Controller
         $branches = Branch::all();
 
         return view('dashboard.pages.department-edit-page', [
+            'data' => $data, // Add this line to pass the $data variable to the view
             'department' => $data,
             'branches' => $branches
         ]);

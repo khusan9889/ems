@@ -12,7 +12,7 @@
                             <a href="{{ route('polyt-edit-page', ['id' => $data->id]) }}" class="btn btn-primary btn-sm">
                                 <i class="fas fa-pen"></i>
                             </a>
-                            <a href="{{ url('/polytrauma') }}" class="btn btn-secondary me-2 btn-sm">
+                            <a href="{{ url('/polytrauma/list') }}" class="btn btn-secondary me-2 btn-sm">
                                 <i class="fas fa-arrow-left"></i>
                             </a>
                         </div>
