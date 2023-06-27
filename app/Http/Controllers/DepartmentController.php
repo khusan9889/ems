@@ -30,18 +30,36 @@ class DepartmentController extends Controller
         $branches = Branch::all();
 
         return view('dashboard.pages.department-edit-page', [
-            'data' => $data, // Add this line to pass the $data variable to the view
+            'data' => $data,
             'department' => $data,
             'branches' => $branches
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function create()
     {
-        $polytrauma = Department::findOrFail($id);
-        $polytrauma->update($request->all());
+        $branches = Branch::all();
 
-        return redirect()->route('departments.index')->with('success', 'Record updated successfully');
+        return view('dashboard.pages.department-create-page', compact('branches'));
     }
 
+    public function store(Request $request)
+    {
+        $department = new Department();
+        $department->name = $request->name;
+        $department->branch_id = $request->branch_id;
+        $department->save();
+
+        return redirect()->route('departments.index')->with('success', 'Department created successfully');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $department = Department::findOrFail($id);
+        $department->name = $request->name;
+        $department->branch_id = $request->branch_id;
+        $department->save();
+
+        return redirect()->route('departments.index')->with('success', 'Department updated successfully');
+    }
 }

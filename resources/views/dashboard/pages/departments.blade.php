@@ -8,6 +8,9 @@
 @section('content')
     <h1 class="page-header">Отделения</h1>
     <x-panel>
+        <div class="d-flex justify-content-end mb-3">
+            <a href="{{ route('department.create-page') }}" class="btn btn-success">Добавить</a>
+        </div>
         <div class="table-responsive">
             <table id="data-table-default" class="table table-striped table-bordered align-middle">
                 <thead>
