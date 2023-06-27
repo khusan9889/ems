@@ -368,147 +368,323 @@ class ACSService implements ACSServiceInterface
         ];
         //24
         $tmp = $data;
+        $tmp1 = $data;
+
+        $numerator = $tmp->where('thrombolytic_therapy_administered', 'Нет')->count();
+        $denominator = $tmp1->where('thrombolytic_therapy', 'Да')->count();
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым не выполнена ТЛТ',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //25
         $tmp = $data;
+        $tmp1 = $data;
+
+        $numerator = $tmp->where('not_administering_tlt', 'медицинские противопоказания')->count();
+        $denominator = $tmp1->where('thrombolytic_therapy_administered', 'Нет')->count();
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым ТЛТ не проведена по причине наличия медицинских противопоказаний',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //26
         $tmp = $data;
+        $tmp1 = $data;
+
+        $numerator = $tmp->where('reasons_not_performing_cta', 'отсутствие препарата')->count();
+        $denominator = $tmp1->where('thrombolytic_therapy_administered', 'Нет')->count();
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым ТЛТ не проведена по причине отсутствия препарата',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //27
         $tmp = $data;
+        $tmp1 = $data;
+
+        $numerator = $tmp->where('reasons_not_performing_cta', 'отказ больного')->count();
+        $denominator = $tmp1->where('thrombolytic_therapy_administered', 'Нет')->count();
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым ТЛТ не проведена по причине отказа больного',
             'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
         ];
         //28
         $tmp = $data;
+        $tmp1 = $data;
+
+        $numerator = $tmp->where('ecg_during_hospitalization', 'Да')->count();
+        $denominator = $n;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым выполнена ЭКГ',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //29
         $tmp = $data;
+
+        $numerator = $tmp->where('ecg_during_hospitalization', 'Нет')->count();
+        $denominator = $n;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым не выполнена ЭКГ',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //30
         $tmp = $data;
+        $tmp1 = $data;
+
+        $numerator = $tmp->where('st_segment', 'Да')->count();
+        $denominator = $tmp1->where('ecg_during_hospitalization', 'Да')->count();
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов с подъемом сегмента ST',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //31
         $tmp = $data;
+
+        $numerator = $tmp->where('echocardiogram', 'Да')->count();
+        $denominator = $n;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым проведено измерение ФВ',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //32
         $tmp = $data;
+        $tmp1 = $data;
+
+        $numerator = $tmp->where('first_measurement', '≤3 сутки')->count();
+        $denominator = $tmp1->where('echocardiogram', 'Да')->count();
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым измерение ФВ выполнено в сроки ≤3 суток',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //33
         $tmp = $data;
+        $tmp1 = $data;
+
+        $numerator = $tmp->where('first_measurement', '>3 суток')->count();
+        $denominator = $tmp1->where('ecg_during_hospitalization', 'Да')->count();
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым измерение ФВ выполнено в сроки > 3 суток',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //34
         $tmp = $data;
+
+        $numerator = $tmp->where('cholestero_levels', 'Да')->count();
+        $denominator = $n;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым проведены анализы на ЛПНП',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //35
         $tmp = $data;
+
+        $numerator = $tmp->where('cholestero_levels', 'Нет')->count();
+        $denominator = $n;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым не проведены анализы на ЛПНП',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //36
         $tmp = $data;
+
+        $numerator = $tmp->where('aptt', 'Да')->count();
+        $denominator = $n;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым проведены анализ на АЧТВ',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //37
         $tmp = $data;
+
+        $numerator = $tmp->where('aptt', 'Нет')->count();
+        $denominator = $n;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым не проведены анализ на АЧТВ',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //38
         $tmp = $data;
+
+        $numerator = $tmp->where('anticoagulant', 'Да')->count();
+        $denominator = $n;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым проведена антикоагулянтная терапия',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //39
         $tmp = $data;
+
+        $numerator = $tmp->where('anticoagulant', 'Нет')->count();
+        $denominator = $n;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которым не проведена антикоагулянтная терапия',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //40
         $tmp = $data;
+
+        $numerator = $tmp->where('aspirin', 'Да')->count();
+        $denominator = $n;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которые принимали аспирин',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //41
         $tmp = $data;
+
+        $numerator = $tmp->where('aspirin', 'Нет')->count();
+        $denominator = $n;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которые не принимали аспирин',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //42
         $tmp = $data;
+
+        $numerator = $tmp->where('p2y12', 'Да')->count();
+        $denominator = $n;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которые принимали ингибиторы P2Y12',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //43
         $tmp = $data;
+
+        $numerator = $tmp->where('p2y12', 'Нет')->count();
+        $denominator = $n;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которые не принимали ингибиторы P2Y12',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //44
         $tmp = $data;
+
+        $numerator = $tmp->where('high_intensity_statins', 'Да')->count();
+        $denominator = $n;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которые принимали статины высокой интенсивности',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //45
         $tmp = $data;
+
+        $numerator = $tmp->where('high_intensity_statins', 'Нет')->count();
+        $denominator = $n;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которые не принимали статины высокой интенсивности',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //46
         $tmp = $data;
+
+        $numerator = $tmp->where('ACE_inhibitors_ARBs', 'Да')->count();
+        $denominator = $n;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которые принимали ингибиторы АПФ или БРАII',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //47
         $tmp = $data;
+
+        $numerator = $tmp->where('ACE_inhibitors_ARBs', 'Нет')->count();
+        $denominator = $n;
+
+        $isDenominatorPositive = $denominator > 0;
+        $value = $isDenominatorPositive ? ($numerator / $denominator) * 100 : 0;
+
         $result[] = [
             'title' => 'Доля пациентов, которые не принимали ингибиторы АПФ или БРАII',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
 
 
