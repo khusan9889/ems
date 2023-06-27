@@ -202,10 +202,11 @@ class ACSService implements ACSServiceInterface
 
         $tmp = $data;
         $tmp1 = $data;
-        $denominator = $tmp1->where('cta_invasive_angiography')->count() ?? 1;
+        $denominator = $tmp1->where('cta_invasive_angiography')->count();
+
         $result[] = [
             'title' => 'Доля пациентов, которым выполнено экстренное ЧКВ',
-            'value' => $tmp->where('cta_90min', 'Да')->where('cta_invasive_angiography', 'Да')->count() / $denominator * 100
+            'value' => $denominator ? $tmp->where('cta_90min', 'Да')->where('cta_invasive_angiography', 'Да')->count() / $denominator * 100 : 0
 //            'value' => 'check'
         ];
         // 13 gacha tayyor
