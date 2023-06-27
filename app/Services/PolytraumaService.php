@@ -140,10 +140,182 @@ class PolytraumaService implements PolytraumaServiceInterface
         if (!$n) $n = 1;
         $result = [];
         $tmp = $data;
-
+        //1
         $result[] = [
             'title' => 'Доля пациентов, которые выписаны',
             'value' => $tmp->where('treatment_result', 'Выписан')->count() / $n * 100
+        ];
+        //2
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов, которые умерли',
+            'value' => $tmp->where('treatment_result', 'Летальный исход')->count() / $n * 100
+        ];
+        //3
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов с тяжестью состояния TS <4',
+            'value' => $tmp->where('severity_of_ts', '<', 4)->count() / $n * 100
+        ];
+        // 4
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов с тяжестью состояния TS ≥ 4',
+            'value' => $tmp->where('severity_of_ts', '>=', 4)->count() / $n * 100
+        ];
+        // 5
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов с тяжестью повреждения "незначительные (ISS <9 баллов)"',
+            'value' => $tmp->where('injury_of_iss', '<', 9)->count() / $n * 100
+        ];
+        // 6
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов с тяжестью повреждения "умеренные (ISS 9–15 баллов)"',
+            'value' => $tmp->whereBetween('injury_of_iss', [9,15])->count() / $n * 100
+        ];
+        // 7
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов с тяжестью повреждения "тяжелые (ISS 16–25 баллов)"',
+            'value' => $tmp->whereBetween('injury_of_iss', [16,25])->count() / $n * 100
+        ];
+        // 8
+        $tmp = $data;
+        $result[] = [
+            'title' => 'Доля пациентов с тяжестью повреждения "крайне тяжелые (ISS >25 баллов)"',
+            'value' => $tmp->where('injury_of_iss', '>', 25)->count() / $n * 100
+        ];
+        // 9
+        $result[] = [
+            'title' => 'Доля пациентов, поступивших в сроки до 1 часа',
+            'value' => $tmp->where('arrival_after_injury', 'до 1ч.')->count() / $n * 100
+        ];
+        // 10
+        $result[] = [
+            'title' => 'Доля пациентов, поступивших в сроки 1-3 ч.',
+            'value' => $tmp->where('arrival_after_injury', '1-3ч.')->count() / $n * 100
+        ];
+        // 11
+        $result[] = [
+            'title' => 'Доля пациентов, поступивших в сроки 6-12 ч.',
+            'value' => $tmp->where('arrival_after_injury', '6-12ч.')->count() / $n * 100
+        ];
+        // 12
+        $result[] = [
+            'title' => 'Доля пациентов, поступивших в сроки 12-24 ч.',
+            'value' => $tmp->where('arrival_after_injury', '12-24ч.')->count() / $n * 100
+        ];
+        // 13
+        $result[] = [
+            'title' => 'Доля пациентов, поступивших в сроки позже 24 ч.',
+            'value' => $tmp->where('arrival_after_injury', 'позже 24ч.')->count() / $n * 100
+        ];
+        // 14
+        $result[] = [
+            'title' => 'Доля пациентов с механизмом травмы "ДТП"',
+            'value' => $tmp->where('mechanism_of_injury', 'ДТП')->count() / $n * 100
+        ];
+        // 15
+        $result[] = [
+            'title' => 'Доля пациентов с механизмом травмы "Кататравма"',
+            'value' => $tmp->where('mechanism_of_injury', 'Кататравма')->count() / $n * 100
+        ];
+        // 16
+        $result[] = [
+            'title' => 'Доля пациентов с механизмом травмы "Производственная"',
+            'value' => $tmp->where('mechanism_of_injury', 'Производственная')->count() / $n * 100
+        ];
+        // 17
+        $result[] = [
+            'title' => 'Доля пациентов с механизмом травмы "Прочие"',
+            'value' => $tmp->where('mechanism_of_injury', 'Прочие')->count() / $n * 100
+        ];
+        // 18
+        $result[] = [
+            'title' => 'Доля пациентов, которые осмотрены хирургом',
+            'value' => $tmp->where('survey_of_surgeon', ' Да')->count() / $n * 100
+        ];
+        // 19
+        $result[] = [
+            'title' => 'Доля пациентов, которые осмотрены нейрохирургом',
+            'value' => $tmp->where('survey_of_neurosurgeon', 'Да')->count() / $n * 100
+        ];
+        // 20
+        $result[] = [
+            'title' => 'Доля пациентов, которые осмотрены травматологом',
+            'value' => $tmp->where('survey_of_traumatologist', 'Да')->count() / $n * 100
+        ];
+        // 21
+        $result[] = [
+            'title' => 'Доля пациентов, которые осмотрены другими узкими специалистами',
+            'value' => $tmp->where('narrow_specialists', 'Да')->count() / $n * 100
+        ];
+        // 22
+        $result[] = [
+            'title' => 'Доля пациентов, кому проведена R-графия (черепа, грудной клетки, костей таза, конечностей)',
+            'value' => $tmp->where('r_graphy', 'Да')->count() / $n * 100
+        ];
+        // 23
+        $result[] = [
+            'title' => 'Доля пациентов, которым проведено УЗС (плевральных и брюшной полостей, забрюшинного пространства)',
+            'value' => $tmp->where('conducted_ultrasound', 'Да')->count() / $n * 100
+        ];
+        // 24
+        $result[] = [
+            'title' => 'Доля пациентов, которым проведена МСКТ (всего тела “full body”)',
+            'value' => $tmp->where('msct', 'Да')->count() / $n * 100
+        ];
+        // 25
+        $result[] = [
+            'title' => 'Доля пациентов, которым Проведена МСКТ (отдельных частей тела)',
+            'value' => $tmp->where('msct_individual_parts', 'Да')->count() / $n * 100
+        ];
+        // 26
+        $result[] = [
+            'title' => 'Доля пациентов, у которых имеются нейтральные жиры в крови и моче',
+            'value' => $tmp->where('neutral_fats', 'Да')->count() / $n * 100
+        ];
+        // 27
+        $result[] = [
+            'title' => 'Доля пациентов, которым проведен анализ  Нв, Ht в динамике',
+            'value' => $tmp->where('analysis_of_hb_ht', 'Да')->count() / $n * 100
+        ];
+        // 28
+        $result[] = [
+            'title' => 'Доля пациентов, которым проведено УЗС в динамике',
+            'value' => $tmp->where('dynamic_uzs', 'Да')->count() / $n * 100
+        ];
+        // 29
+        $result[] = [
+            'title' => 'Доля пациентов, которым выполнена диагностическая лапароскопия',
+            'value' => $tmp->where('diagnostic_laparoscopy', 'Да')->count() / $n * 100
+        ];
+        // 30
+        $result[] = [
+            'title' => 'Доля пациентов, которым выполнен Торакоцентез',
+            'value' => $tmp->where('thoracocentesis', 'Да')->count() / $n * 100
+        ];
+        // 31
+        $result[] = [
+            'title' => 'Доля пациентов, которым выполнена Лапаратомия',
+            'value' => $tmp->where('laparotomy', 'Да')->count() / $n * 100
+        ];
+        // 32
+        $result[] = [
+            'title' => 'Доля пациентов, которым выполнена Торакоскопия (торакотомия)',
+            'value' => $tmp->where('thoracoscopy_thoracotomy', 'Да')->count() / $n * 100
+        ];
+        // 33
+        $result[] = [
+            'title' => 'Доля пациентов, которым выполнена остеосинтез переломов',
+            'value' => $tmp->where('osteosynthesis_of_fractures', 'Да')->count() / $n * 100
+        ];
+        //34
+        $result[] = [
+            'title' => 'Доля пациентов, которым выполнена Трепанация черепа',
+            'value' => $tmp->where('skull_trepanation', 'Да')->count() / $n * 100
         ];
 
 
