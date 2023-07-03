@@ -38,20 +38,14 @@ class DepartmentService implements DepartmentServiceInterface
             $filters['sort'],
             fn($query, $value) => $query->orderBy('id', $value)
         )
-            ->when(
-                $filters['name'],
-                fn($query, $value) => $query->where('department', $value)
-            );
-            // ->when(
-            //     $filters['branch'],
-            //     fn($query, $value) => $query->where('branch_id', $value)
-            // );
-
-        if (isset($filters['branch'])) {
-            $branchId = $filters['branch'];
-            $query->where('branch_id', $branchId);
-        }
-
+        ->when(
+            $filters['department'],
+            fn($query, $value) => $query->where('id', $value)
+        )
+        ->when(
+            $filters['branch'],
+            fn($query, $value) => $query->where('branch_id', $value)
+        );
 
         $perPage = 10;
         $results = $query->paginate($perPage);

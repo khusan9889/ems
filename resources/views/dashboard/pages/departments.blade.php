@@ -33,10 +33,10 @@
                             </td>
                             <td>
                                 <select class="form-control form-control-sm" name="department">
-                                    <option value="" style="font-size: 12px;">Все</option>
+                                    <option value="">Все</option>
                                     @foreach ($departments as $department)
-                                        <option value="{{ $department->id }}" style="font-size: 12px;"
-                                            @if ($department->id == request('department')) selected @endif>{{ $department->name }}
+                                        <option value="{{ $department->id }}" {{ request('department') == $department->id ? 'selected' : '' }}>
+                                            {{ $department->name }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -44,9 +44,11 @@
                             <td>
                                 <select class="form-control form-control-sm" name="branch">
                                     <option value="" style="font-size: 12px;">Все</option>
-                                    @foreach ($branches as $id => $name)
-                                        <option value="{{ $id }}" style="font-size: 12px;"
-                                            @if ($id == request('branch')) selected @endif>{{ $name->name }}</option>
+                                    @foreach ($branches as $key => $branch)
+                                        <option value="{{ $branch->id }}" style="font-size: 12px;"
+                                            @if ($branch->id == request('branch')) selected @endif>
+                                            {{ $branch->name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </td>
@@ -66,11 +68,12 @@
                             <td>{{ $item->branch->name }}</td>
                             <td class="align-middle">
                                 <div class="d-flex">
-                                    <a href="{{ route('departments.edit', $item->id) }}" class="btn btn-warning btn-xs mr-1">
+                                    <a href="{{ route('departments.edit', $item->id) }}"
+                                        class="btn btn-warning btn-xs mr-1">
                                         <i class="fas fa-pen"></i>
                                     </a>
                                     <button type="button" class="btn btn-danger btn-xs mr-1"
-                                        onclick="{{ $selectedID = $item->id }}; confirmDelete({{ $item->id }})">
+                                        onclick="confirmDelete({{ $item->id }})">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </div>
@@ -82,28 +85,25 @@
         </div>
     </x-panel>
 
-
-
-
-
     <div class="d-flex justify-content-center">
         {{ $data->links() }}
     </div>
 
     <!-- Confirmation Modal -->
-    @includeWhen($selectedID, 'components.modals.confirmation-modal', ['id' => $selectedID, 'routeName' => 'department.delete'])
+    @include('components.modals.confirmation-modal')
+    {{-- @includeWhen($selectedID, 'components.modals.confirmation-modal', [
+        'id' => $selectedID,
+        'routeName' => 'department.delete',
+    ]) --}}
 
     <script>
         function confirmDelete(id) {
             $('#deleteConfirmationModal').modal('show');
-
+            $('#deleteForm').attr('action', `/departments/delete/${id}`);
         }
 
         $().ready(function() {
-         
+
         });
     </script>
-
 @endsection
-
-

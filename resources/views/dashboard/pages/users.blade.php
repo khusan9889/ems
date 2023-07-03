@@ -123,6 +123,14 @@
 
     @push('scripts')
         <script>
+            function confirmDelete(id) {
+                $('#deleteConfirmationModal').modal('show');
+            }
+
+            $().ready(function() {
+            });
+
+
             let departments = [];
             const branch = document.getElementById('branch')
             branch.addEventListener('change', async function (event) {

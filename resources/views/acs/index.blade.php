@@ -125,12 +125,14 @@
 </div>
 
 <!-- Confirmation Modal -->
-@includeWhen($selectedID, 'components.modals.confirmation-modal', ['id' => $selectedID, 'routeName' => 'acs.delete'])
+@include('components.modals.confirmation-modal')
+{{-- @includeWhen($selectedID, 'components.modals.confirmation-modal', ['id' => $selectedID, 'routeName' => 'acs.delete']) --}}
 
 <script>
     function confirmDelete(id) {
         $('#deleteConfirmationModal').modal('show');
         // $('#deleteForm').attr('action', '/acs/delete/' + id);
+        $('#deleteForm').attr('action', `/acs/delete/${id}`);
     }
 
     $().ready(function() {
