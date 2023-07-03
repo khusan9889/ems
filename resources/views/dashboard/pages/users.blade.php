@@ -117,7 +117,7 @@
         {{ $data->links() }}
     </div>
 
-    <!-- Confirmation Modal -->
+
     @include('components.modals.confirmation-modal')
 
     @push('scripts')
@@ -128,36 +128,6 @@
 
             }
 
-            // let departments = [];
-            // const branch = document.getElementById('branch')
-            // if (branch)
-            //     branch.addEventListener('change', async function(event) {
-            //         try {
-            //             const target = event.target
-
-            //             const res = await axios({
-            //                 url: '/departments/branch',
-            //                 params: {
-            //                     branch_id: Number(target.value)
-            //                 }
-            //             })
-
-            //             departments = res.data
-
-            //             const department = document.getElementById('department')
-
-            //             department.innerHTML = '<option value="" hidden>Выберите отделение</option>'
-            //             departments.forEach(dep => {
-            //                 const optEl = document.createElement('option')
-            //                 optEl.value = dep.id
-            //                 optEl.innerHTML = dep.name
-            //                 department.insertAdjacentElement('beforeend', optEl)
-            //             })
-            //         } catch (error) {
-            //             alert(error.message)
-            //         }
-
-            //     })
         </script>
     @endpush
 @endsection

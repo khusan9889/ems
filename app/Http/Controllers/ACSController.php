@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreACSRequest;
 use App\Models\ACS;
 use App\Models\Branch;
+use App\Models\Department;
 use App\Services\Contracts\ACSServiceInterface;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class ACSController extends Controller
             'hospitalization_date' => $request->input('hospitalization_date'),
             'discharge_date' => $request->input('discharge_date'),
             'physician_full_name' => $request->input('physician_full_name'),
-            'stat_department_full_name' => $request->input('stat_department_full_name'),
+            'department' => $request->input('department'),
             'hospitalization_channels' => $request->input('hospitalization_channels'),
             'sort' => $request->input('sort') ?? 'DESC',
         ];
@@ -29,8 +30,8 @@ class ACSController extends Controller
 
         $data = $acsService->customFilter($filters);
         $branches = Branch::pluck('name', 'id'); // Get branch names with their IDs
-
-        return view('dashboard.pages.home', compact('data', 'branches', 'hospitalization_channels'));
+        $departments = Department::pluck('name', 'id');
+        return view('dashboard.pages.home', compact('data', 'branches', 'hospitalization_channels', 'departments'));
     }
 
     public function fullTable(Request $request)

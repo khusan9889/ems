@@ -83,6 +83,11 @@ class ACSService implements ACSServiceInterface
             $query->where('branch_id', $branchId);
         }
 
+        if (isset($filters['department'])) {
+            $departmentId = $filters['department']; // Assuming the value is the branch ID
+            $query->where('department_id', $departmentId);
+        }
+
         // Filter by history disease
         if (isset($filters['history_disease'])) {
             $query->where('history_disease', 'like', "%{$filters['history_disease']}%");
@@ -107,9 +112,7 @@ class ACSService implements ACSServiceInterface
             $query->where('physician_full_name', 'like', "%{$filters['physician_full_name']}%");
         }
 
-        if (isset($filters['stat_department_full_name'])) {
-            $query->where('stat_department_full_name', 'like', "%{$filters['stat_department_full_name']}%");
-        }
+
 
         $perPage = 10; // Adjust the number of records per page as needed
         $results = $query->paginate($perPage);

@@ -89,12 +89,8 @@
         {{ $data->links() }}
     </div>
 
-    <!-- Confirmation Modal -->
+
     @include('components.modals.confirmation-modal')
-    {{-- @includeWhen($selectedID, 'components.modals.confirmation-modal', [
-        'id' => $selectedID,
-        'routeName' => 'department.delete',
-    ]) --}}
 
     <script>
         function confirmDelete(id) {
