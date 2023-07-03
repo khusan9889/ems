@@ -55,6 +55,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::group(['prefix' => 'users'], function () {
+        Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('users.delete');
         Route::get('/', [UserController::class, 'index'])->name('users.index');
 
         Route::get('users-create-page', [UserController::class, 'create'])->name('users.create-page');
@@ -64,16 +65,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit-page/{user}', [UserController::class, 'edit'])->name('users.edit-page');
 
         Route::put('/update-data/{user}', [UserController::class, 'update'])->name('users.update');
-
-        Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('users.delete');
-
     });
 
     Route::post('/departments/fetch', [DepartmentController::class, 'fetchDepartments'])->name('departments.fetch');
 
     Route::group(['prefix' => 'branch'], function () {
         Route::get('/', [BranchController::class, 'index']);
-
     });
 
     Route::group(['prefix' => 'departments'], function () {
@@ -88,5 +85,4 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/acs/statistics', [ACSController::class, 'statistics']);
     Route::get('/polytrauma/statistics', [PolytraumaController::class, 'statistics']);
-
 });

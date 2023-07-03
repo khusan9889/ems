@@ -126,8 +126,5 @@
             $('#deleteConfirmationModal').modal('show');
             $('#deleteForm').attr('action', `/polytrauma/delete/${id}`);
         }
-
-        $(document).ready(function() {
-        });
     </script>
 @endpush

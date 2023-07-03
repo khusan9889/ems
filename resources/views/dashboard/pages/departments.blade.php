@@ -101,9 +101,5 @@
             $('#deleteConfirmationModal').modal('show');
             $('#deleteForm').attr('action', `/departments/delete/${id}`);
         }
-
-        $().ready(function() {
-
-        });
     </script>
 @endsection
