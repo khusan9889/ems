@@ -83,6 +83,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/create-page', [DepartmentController::class, 'create'])->name('department.create-page');
         Route::post('/store', [DepartmentController::class, 'store'])->name('department.store');
         Route::get('/branch', [BranchController::class, 'fetchDepartments']);
+        Route::delete('/delete/{id}', [DepartmentController::class, 'destroy'])->name('department.delete');
     });
 
     Route::get('/acs/statistics', [ACSController::class, 'statistics']);

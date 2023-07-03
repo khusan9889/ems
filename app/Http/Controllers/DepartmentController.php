@@ -4,22 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Branch;
 use App\Models\Department;
+use App\Services\Contracts\DepartmentServiceInterface;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, DepartmentServiceInterface $service)
     {
+        $filters = [
+            'branch' => $request->input('branch'),
+            'name' => $request->input('history_disease'),
+            'sort' => $request->input('sort') ?? 'DESC',
+        ];
+
         $departments = Department::all(['id', 'name']);
         $branches = Branch::all(['id', 'name']);
-        $data = Department::when($request->department, function ($query, $value) {
-            $query->where('department', $value);
-        })
-        ->when($request->branch, function ($query, $value) {
-            $query->where('branch', $value);
-        })
-        ->orderBy('id', $request->sort ?? 'ASC')
-        ->get();
+        $data = $service->customFilter($filters);
 
         return view('dashboard.pages.departments', compact('departments', 'branches', 'data'));
     }
@@ -61,5 +61,13 @@ class DepartmentController extends Controller
         $department->save();
 
         return redirect()->route('departments.index')->with('success', 'Department updated successfully');
+    }
+
+    public function destroy($id)
+    {
+        $department = Department::findOrFail($id);
+        $department->delete();
+
+        return redirect()->back()->with('success', 'Record deleted successfully');
     }
 }

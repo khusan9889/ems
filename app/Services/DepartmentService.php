@@ -31,4 +31,33 @@ class DepartmentService implements DepartmentServiceInterface
     {
         return $this->update($id, $request);
     }
+
+    public function customFilter(array $filters)
+    {
+        $query = $this->modelClass::when(
+            $filters['sort'],
+            fn($query, $value) => $query->orderBy('id', $value)
+        )
+            ->when(
+                $filters['name'],
+                fn($query, $value) => $query->where('department', $value)
+            );
+            // ->when(
+            //     $filters['branch'],
+            //     fn($query, $value) => $query->where('branch_id', $value)
+            // );
+
+        if (isset($filters['branch'])) {
+            $branchId = $filters['branch'];
+            $query->where('branch_id', $branchId);
+        }
+
+
+        $perPage = 10;
+        $results = $query->paginate($perPage);
+
+        return $results;
+    }
+
+
 }

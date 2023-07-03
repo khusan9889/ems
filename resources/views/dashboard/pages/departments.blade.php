@@ -66,10 +66,6 @@
                             <td>{{ $item->branch->name }}</td>
                             <td class="align-middle">
                                 <div class="d-flex">
-                                    {{-- <a href="{{ route('', ['id' => $item->id]) }}"
-                                        class="btn btn-primary btn-xs mr-1">
-                                        <i class="fas fa-eye"></i>
-                                    </a> --}}
                                     <a href="{{ route('departments.edit', $item->id) }}" class="btn btn-warning btn-xs mr-1">
                                         <i class="fas fa-pen"></i>
                                     </a>
@@ -85,4 +81,29 @@
             </table>
         </div>
     </x-panel>
+
+
+
+
+
+    <div class="d-flex justify-content-center">
+        {{ $data->links() }}
+    </div>
+
+    <!-- Confirmation Modal -->
+    @includeWhen($selectedID, 'components.modals.confirmation-modal', ['id' => $selectedID, 'routeName' => 'department.delete'])
+
+    <script>
+        function confirmDelete(id) {
+            $('#deleteConfirmationModal').modal('show');
+
+        }
+
+        $().ready(function() {
+         
+        });
+    </script>
+
 @endsection
+
+
