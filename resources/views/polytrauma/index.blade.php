@@ -118,13 +118,13 @@
 </div>
 
 <!-- Confirmation Modal -->
-@includeWhen($selectedID, 'components.modals.confirmation-modal', ['id' => $selectedID, 'routeName'=> 'polytrauma.delete'])
+@include('components.modals.confirmation-modal')
 
 @push('scripts')
     <script>
         function confirmDelete(id) {
             $('#deleteConfirmationModal').modal('show');
-            // $('#deleteForm').attr('action', '/polytrauma/delete/' + id);
+            $('#deleteForm').attr('action', `/polytrauma/delete/${id}`);
         }
 
         $(document).ready(function() {

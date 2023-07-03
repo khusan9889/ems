@@ -12,6 +12,4 @@ interface UserServiceInterface
 
     public function customfilter(array $filters);
 
-    public function delete($id);
-
 }

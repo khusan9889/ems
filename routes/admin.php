@@ -65,7 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::put('/update-data/{user}', [UserController::class, 'update'])->name('users.update');
 
-        Route::delete('/delete/{user}', [UserController::class, 'destroy'])->name('users.delete');
+        Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('users.delete');
 
     });
 

@@ -48,10 +48,8 @@
                             <select class="form-control form-control-sm" name="department">
                                 <option value="" style="font-size: 12px;">Все</option>
                                 @foreach ($departments as $id => $name)
-                                    @if ($id == request('department'))
                                         <option value="{{ $id }}" style="font-size: 12px;"
-                                                @if ($id == request('department')) selected @endif>{{ $name }}</option>
-                                    @endif
+                                            @if ($id == request('department')) selected @endif>{{ $name }}</option>
                                 @endforeach
                             </select>
                         </td>
@@ -100,7 +98,7 @@
                                     <i class="fas fa-pen"></i>
                                 </a>
                                 <button type="button" class="btn btn-danger btn-xs mr-1"
-                                        onclick="{{ $selectedID = $item->id }}; confirmDelete({{ $item->id }})">
+                                        onclick="confirmDelete({{ $item->id }})">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
                             </div>
@@ -119,17 +117,18 @@
     </div>
 
     <!-- Confirmation Modal -->
-    @includeWhen($selectedID, 'components.modals.confirmation-modal', ['id' => $selectedID, 'routeName'=> 'users.delete'])
+    @include('components.modals.confirmation-modal')
 
     @push('scripts')
         <script>
             function confirmDelete(id) {
                 $('#deleteConfirmationModal').modal('show');
+                $('#deleteForm').attr('action', `/users/delete/${id}`);
             }
 
             $().ready(function() {
-            });
 
+            });
 
             let departments = [];
             const branch = document.getElementById('branch')
