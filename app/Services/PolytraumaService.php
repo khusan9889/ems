@@ -81,6 +81,11 @@ class PolytraumaService implements PolytraumaServiceInterface
             $query->where('history_disease', 'like', "%{$filters['history_disease']}%");
         }
 
+        if (isset($filters['department'])) {
+            $departmentId = $filters['department']; 
+            $query->where('department_id', $departmentId);
+        }
+
         // Filter by full name
         if (isset($filters['full_name'])) {
             $query->where('full_name', 'like', "%{$filters['full_name']}%");

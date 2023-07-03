@@ -19,7 +19,6 @@
                 <th>Дата выписки</th>
                 <th>Канал госпитализации</th>
                 <th>ФИО лечащего врача</th>
-                {{-- <th>ФИО специалиста стат.отдела</th> --}}
                 <th>Действия</th>
             </tr>
             <tr>
@@ -42,7 +41,6 @@
                             @endforeach
                         </select>
                     </td>
-
                     <td>
                         <select class="form-control form-control-sm" name="department">
                             <option value="" style="font-size: 12px;">Все</option>
@@ -52,7 +50,6 @@
                             @endforeach
                         </select>
                     </td>
-
                     <td>
                         <input class="form-control form-control-sm" type="text" name="history_disease"
                             value="{{ request('history_disease') }}">
@@ -81,7 +78,7 @@
                     <td>
                         <input class="form-control form-control-sm" name="physician_full_name" value="{{ request('physician_full_name') }}"></input>
                     </td>
-                   
+
                     <td class="align-middle d-flex justify-content-center">
                         <div>
                             <button type="submit" class="btn btn-sm btn-primary">Применить</button>

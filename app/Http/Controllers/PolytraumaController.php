@@ -18,12 +18,12 @@ class PolytraumaController extends Controller
     {
         $filters = [
             'branch' => $request->input('branch'),
+            'department' => $request->input('department'),
             'history_disease' => $request->input('history_disease'),
             'full_name' => $request->input('full_name'),
             'hospitalization_date' => $request->input('hospitalization_date'),
             'discharge_date' => $request->input('discharge_date'),
             'physician_full_name' => $request->input('physician_full_name'),
-            'stat_department_full_name' => $request->input('stat_department_full_name'),
             'hospitalization_channels' => $request->input('hospitalization_channels'),
             'sort' => $request->input('sort') ?? 'DESC',
         ];

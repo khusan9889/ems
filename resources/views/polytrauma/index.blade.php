@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>№</th>
+                <th>Субъект</th>
                 <th>Отделение</th>
                 <th>Номер ИБ</th>
                 <th>Пациент ФИО</th>
@@ -16,7 +17,6 @@
                 <th>Дата выписки</th>
                 <th>Канал госпитализации</th>
                 <th>ФИО лечащего врача</th>
-                <th>ФИО специалиста стат.отдела</th>
                 <th>Действия</th>
             </tr>
             <tr>
@@ -36,6 +36,15 @@
                         @foreach ($branches as $id => $name)
                             <option value="{{ $id }}" style="font-size: 12px;"
                                 @if ($id == request('branch')) selected @endif>{{ $name }}</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control form-control-sm" name="department">
+                        <option value="" style="font-size: 12px;">Все</option>
+                        @foreach ($departments as $id => $name)
+                            <option value="{{ $id }}" style="font-size: 12px;"
+                                @if ($id == request('department')) selected @endif>{{ $name }}</option>
                         @endforeach
                     </select>
                 </td>
@@ -66,9 +75,7 @@
                 <td>
                     <input class="form-control form-control-sm" name="physician_full_name" value="{{ request('physician_full_name') }}"></input>
                 </td>
-                <td>
-                    <input class="form-control form-control-sm" name="stat_department_full_name" value="{{ request('stat_department_full_name') }}"></input>
-                </td>
+
                 <td class="align-middle d-flex justify-content-center">
                     <div>
                         <button type="submit" class="btn btn-sm btn-primary">Применить</button>
@@ -83,13 +90,14 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->branch->name }}</td>
+                    <td>{{ $item->department->name }}</td>
                     <td>{{ $item->history_disease }}</td>
                     <td>{{ $item->full_name }}</td>
                     <td>{{ $item->hospitalization_date }}</td>
                     <td>{{ $item->discharge_date }}</td>
                     <td>{{ $item->hospitalization_channels }}</td>
                     <td>{{ $item->physician_full_name }}</td>
-                    <td>{{ $item->stat_department_full_name }}</td>
+                    {{-- <td>{{ $item->stat_department_full_name }}</td> --}}
                     <td class="align-middle">
                         <div class="d-flex">
                             <a href="{{ route('full-table-polyt', ['id' => $item->id]) }}"
