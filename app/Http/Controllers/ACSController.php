@@ -78,7 +78,7 @@ class ACSController extends Controller
 
         ACS::create($validatedData);
 
-        return redirect('/')->with('success', 'Record updated successfully');
+        return redirect('/acs/list')->with('success', 'Record updated successfully');
     }
 
     public function edit($id)

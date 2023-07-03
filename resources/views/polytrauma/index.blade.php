@@ -128,12 +128,6 @@
         }
 
         $(document).ready(function() {
-            // Add this code to handle the form submission success
-            // $('#deleteForm').on('submit', function() {
-            //     $('#deleteConfirmationModal').modal('hide');
-            //     history.go(-1); // Redirect back to the previous page
-            //     return true; // Allow the form to submit
-            // });
         });
     </script>
 @endpush
