@@ -33,8 +33,7 @@
                         <select class="form-control" id="department" name="department_id">
                             <option value="" hidden>Выберите отделение</option>
                             @foreach ($departments as $department)
-                                <option value="{{ $department->id }}"
-                                    @selected(old('department_id') == $department->id)>
+                                <option value="{{ $department->id }}" @selected(old('department_id') == $department->id)>
                                     {{ $department->name }}
                                 </option>
                             @endforeach
@@ -692,14 +691,14 @@
 
         let departments = [];
         const branch = document.getElementById('branch')
-        const fetchDepartmentsByBranchId = async function(event) {
+        const fetchDepartmentsByBranchId = async function(value) {
             try {
-                const target = event.target
+                // const target = event.target
 
                 const res = await axios({
                     url: '/departments/branch',
                     params: {
-                        branch_id: Number(target.value)
+                        branch_id: Number(value)
                     }
                 })
 
@@ -718,8 +717,14 @@
                 alert(error.message)
             }
 
+
+
         }
-        
-        branch.addEventListener('change', fetchDepartmentsByBranchId)
+        branch.addEventListener('change', (event) => fetchDepartmentsByBranchId(event.target.value))
+        window.addEventListener('DOMContentLoaded', function(event) {
+            const selectedBranch = document.getElementById('branch')
+            console.log('selectedBranch id: ', selectedBranch.value);
+            fetchDepartmentsByBranchId(selectedBranch.value)
+        })
     </script>
 @endpush
