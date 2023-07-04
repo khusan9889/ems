@@ -12,7 +12,7 @@
             </div>
 
             <div class="form-group">
-                <label for="branch_id">Отделение</label>
+                <label for="branch_id">Субъект</label>
                 <select class="form-control" id="branch_id" name="branch_id" required>
                     @foreach ($branches as $branch)
                         <option value="{{ $branch->id }}" {{ $branch->id == $data->branch_id ? 'selected' : '' }}>

@@ -717,8 +717,6 @@
                 alert(error.message)
             }
 
-
-
         }
         branch.addEventListener('change', (event) => fetchDepartmentsByBranchId(event.target.value))
         window.addEventListener('DOMContentLoaded', function(event) {
