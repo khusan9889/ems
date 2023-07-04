@@ -12,7 +12,7 @@ class DepartmentController extends Controller
     public function index(Request $request, DepartmentServiceInterface $service)
     {
         $filters = [
-            'department' => $request->input('department'),
+            'name' => $request->input('name'),
             'branch' => $request->input('branch'),
             'sort' => $request->input('sort') ?? 'DESC',
         ];
