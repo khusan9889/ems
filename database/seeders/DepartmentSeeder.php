@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Branch;
 use App\Models\Department;
 use Illuminate\Database\Seeder;
 
@@ -12,11 +13,14 @@ class DepartmentSeeder extends Seeder
      */
     public function run(): void
     {
-        Department::updateOrCreate([
-            'id' => 1,
-        ], [
-            'branch_id' => 1,
-            'name' => 'Департмент (тестовой)'
-        ]);
+        $branches = Branch::all();
+        foreach ($branches as $index => $item) {
+            Department::updateOrCreate([
+                'id' => $index + 1,
+            ], [
+                'branch_id' => $item->id,
+                'name' => 'Департмент'
+            ]);
+        }
     }
 }

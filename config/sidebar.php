@@ -48,6 +48,7 @@ return [
                 [
                     'url' => '/users',
                     'title' => 'Пользователи',
+                    'role' => 'admin'
                 ],
                 [
                     'url' => '/branch',
