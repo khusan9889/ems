@@ -15,7 +15,7 @@
                 <span class="icon-bar"></span>
             </button>
         @endif
-        <a href="/" class="navbar-brand"><span class="navbar-logo"></span> <b>Dash</b>Board</a>
+        <a href="/" class="navbar-brand"><span class="navbar-logo"></span> <b>EMS</b>Индикаторы</a>
         @if ($headerMegaMenu)
             <button type="button" class="navbar-toggle pt-0 pb-0 mr-0" data-toggle="collapse" data-target="#top-navbar">
 			<span class="fa-stack fa-lg text-inverse">
