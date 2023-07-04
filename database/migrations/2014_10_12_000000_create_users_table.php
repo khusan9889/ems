@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('department_id')->nullable();
             $table->unsignedBigInteger('role_id')->nullable();
             $table->string('name');
-            $table->string('phone_number')->unique();
+            $table->string('phone_number');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
