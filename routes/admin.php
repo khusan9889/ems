@@ -11,7 +11,7 @@ use App\Models\Department;
 use App\Models\Polytrauma;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'custom']], function () {
     Route::get('/acs/list', [ACSController::class, 'index']);
 
     Route::get('/polytrauma/list', [PolytraumaController::class, 'index']);
