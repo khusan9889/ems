@@ -63,31 +63,16 @@
                             <td>{{ $item->branch->name }}</td>
                             <td class="align-middle">
                                 <div class="d-flex">
-                                    @if ($userBranchID === 0 || $userBranchID === 1)
+                                    @if ($userBranchID === 0 || $userBranchID === 1 || $userBranchID === $item->branch->id)
                                         <a href="{{ route('departments.edit', $item->id) }}"
                                             class="btn btn-warning btn-xs mr-1">
                                             <i class="fas fa-pen"></i>
                                         </a>
                                         <button type="button" class="btn btn-danger btn-xs mr-1"
-                                            onclick="confirmDelete({{ $item->id }})">
+                                            onclick="confirmDelete({{ $item->id }})"
+                                            {{ $userBranchID !== $item->branch->id && $userBranchID !== 1 ? 'disabled' : '' }}>
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
-                                    @elseif ($userBranchID === $item->branch->id)
-                                        <a href="{{ route('departments.edit', $item->id) }}"
-                                            class="btn btn-warning btn-xs mr-1">
-                                            <i class="fas fa-pen"></i>
-                                        </a>
-                                        <button type="button" class="btn btn-danger btn-xs mr-1"
-                                            onclick="confirmDelete({{ $item->id }})">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    @else
-                                        <span class="btn btn-warning btn-xs mr-1 disabled">
-                                            <i class="fas fa-pen"></i>
-                                        </span>
-                                        <span class="btn btn-danger btn-xs mr-1 disabled">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </span>
                                     @endif
                                 </div>
                             </td>
