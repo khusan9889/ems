@@ -4,7 +4,7 @@
     <x-panel title="Создать пользователя">
         <form method="POST" action="{{ route('users.store') }}">
             @csrf
-
+            
             <div class="form-group">
                 <label for="name">ФИО Пользователя</label>
                 <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
@@ -14,17 +14,19 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="branch">Выбрать субъект СЭМП</label>
-                        <select class="form-control" id="branch" name="branch_id" @disabled(auth()->user()->branch_id !== 1 && auth()->user()->branch_id !== null)>
+                        <select class="form-control" id="branch"
+                                name="branch_id" @disabled(auth()->user()->branch_id !== 1 && auth()->user()->branch_id !== null)>
                             <option value="" hidden>Выберите субъект</option>
                             @foreach ($branches as $key => $branch)
-                                <option value="{{ $branch->id }}" {{ old('branch_id') == $branch->id ? 'selected' : '' }}
+                                <option
+                                    value="{{ $branch->id }}" {{ old('branch_id') == $branch->id ? 'selected' : '' }}
                                     @selected(auth()->user()->branch_id == $branch->id)>
                                     {{ $branch->name }}
                                 </option>
                             @endforeach
                         </select>
                         @error('branch_id')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
@@ -34,13 +36,14 @@
                         <select class="form-control" id="department" name="department_id">
                             <option value="" hidden>Выберите отделение</option>
                             @foreach ($departments as $department)
-                                <option value="{{ $department->id }}" @selected(old('department_id') == $department->id)>
+                                <option
+                                    value="{{ $department->id }}" @selected(old('department_id') == $department->id)>
                                     {{ $department->name }}
                                 </option>
                             @endforeach
                         </select>
                         @error('department_id')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
@@ -61,11 +64,14 @@
             <div class="form-group">
                 <label for="email">Почта</label>
                 <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
+                @error('email')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
-
             <div class="form-group">
                 <label for="phone_number">Номер телефона</label>
-                <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ old('phone_number') }}" required>
+                <input type="text" class="form-control" id="phone_number" name="phone_number"
+                       value="{{ old('phone_number') }}" required>
             </div>
 
             <div class="form-group">
@@ -80,9 +86,9 @@
 
 @push('scripts')
     <script>
-       let departments = [];
+        let departments = [];
         const branch = document.getElementById('branch')
-        const fetchDepartmentsByBranchId = async function(value) {
+        const fetchDepartmentsByBranchId = async function (value) {
             try {
                 // const target = event.target
 
@@ -110,7 +116,7 @@
 
         }
         branch.addEventListener('change', (event) => fetchDepartmentsByBranchId(event.target.value))
-        window.addEventListener('DOMContentLoaded', function(event) {
+        window.addEventListener('DOMContentLoaded', function (event) {
             const selectedBranch = document.getElementById('branch')
             console.log('selectedBranch id: ', selectedBranch.value);
             fetchDepartmentsByBranchId(selectedBranch.value)
