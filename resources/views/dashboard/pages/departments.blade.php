@@ -3,6 +3,7 @@
 @php
     $selectedID = null;
     $order = request()->sort;
+    $userBranchID = auth()->user()->branch_id;
 @endphp
 
 @section('content')
@@ -62,14 +63,32 @@
                             <td>{{ $item->branch->name }}</td>
                             <td class="align-middle">
                                 <div class="d-flex">
-                                    <a href="{{ route('departments.edit', $item->id) }}"
-                                        class="btn btn-warning btn-xs mr-1">
-                                        <i class="fas fa-pen"></i>
-                                    </a>
-                                    <button type="button" class="btn btn-danger btn-xs mr-1"
-                                        onclick="confirmDelete({{ $item->id }})">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
+                                    @if ($userBranchID === 0 || $userBranchID === 1)
+                                        <a href="{{ route('departments.edit', $item->id) }}"
+                                            class="btn btn-warning btn-xs mr-1">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-danger btn-xs mr-1"
+                                            onclick="confirmDelete({{ $item->id }})">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    @elseif ($userBranchID === $item->branch->id)
+                                        <a href="{{ route('departments.edit', $item->id) }}"
+                                            class="btn btn-warning btn-xs mr-1">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-danger btn-xs mr-1"
+                                            onclick="confirmDelete({{ $item->id }})">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    @else
+                                        <span class="btn btn-warning btn-xs mr-1 disabled">
+                                            <i class="fas fa-pen"></i>
+                                        </span>
+                                        <span class="btn btn-danger btn-xs mr-1 disabled">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </span>
+                                    @endif
                                 </div>
                             </td>
                         </tr>

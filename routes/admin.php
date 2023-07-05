@@ -31,7 +31,6 @@ Route::group(['middleware' => ['auth', 'permission']], function () {
         Route::post('add', [ACSController::class, 'store'])->name('acs.add');
         Route::get('/edit-page/{id}', [ACSController::class, 'edit'])->name('edit-page');
         Route::put('/update-data/{id}', [ACSController::class, 'update'])->name('update-data');
-
         Route::delete('/delete/{id}', [ACSController::class, 'destroy'])->name('acs.delete');
     });
 
