@@ -15,9 +15,8 @@
                 <label for="branch_id">Субъект</label>
                 <select class="form-control" id="branch" name="branch_id" @disabled(auth()->user()->branch_id !== 1 && auth()->user()->branch_id !== null)>
                     <option value="" hidden>Выберите субъект</option>
-                    @foreach ($branches as $key => $branch)
-                        <option value="{{ $branch->id }}" {{ old('branch_id') == $branch->id ? 'selected' : '' }}
-                            @selected(auth()->user()->branch_id == $branch->id)>
+                    @foreach ($branches as $branch)
+                        <option value="{{ $branch->id }}" {{ $branch->id == $data->branch_id ? 'selected' : '' }}>
                             {{ $branch->name }}
                         </option>
                     @endforeach
@@ -26,9 +25,10 @@
 
             <div class="form-group">
                 <label for="department_id">Отделение</label>
-                <select class="form-control" id="department_id" name="department_id" required>
+                <select class="form-control" id="department" name="department_id">
+                    <option value="" hidden>Выберите отделение</option>
                     @foreach ($departments as $department)
-                        <option value="{{ $department->id }}" {{ $department->id == $data->department_id ? 'selected' : '' }} >
+                        <option value="{{ $department->id }}" @selected(old('department_id') == $department->id)>
                             {{ $department->name }}
                         </option>
                     @endforeach
@@ -56,7 +56,53 @@
                 <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ $data->phone_number }}" required>
             </div>
 
+            <div class="form-group">
+                <label for="password">Изменить пароль</label>
+                <input type="text" class="form-control" id="password" name="password" >
+            </div>
+
             <button type="submit" class="btn btn-primary">Изменить</button>
         </form>
     </x-panel>
 @endsection
+
+@push('custom_js')
+<script>
+    let departments = [];
+        const branch = document.getElementById('branch')
+        const fetchDepartmentsByBranchId = async function(value) {
+            try {
+                // const target = event.target
+
+                const res = await axios({
+                    url: '/departments/branch',
+                    params: {
+                        branch_id: Number(value)
+                    }
+                })
+
+                departments = res.data
+
+                const department = document.getElementById('department')
+
+                department.innerHTML = '<option value="" hidden>Выберите отделение</option>'
+                departments.forEach(dep => {
+                    const optEl = document.createElement('option')
+                    optEl.value = dep.id
+                    optEl.innerHTML = dep.name
+                    department.insertAdjacentElement('beforeend', optEl)
+                })
+            } catch (error) {
+                alert(error.message)
+            }
+
+        }
+        branch.addEventListener('change', (event) => fetchDepartmentsByBranchId(event.target.value))
+        window.addEventListener('DOMContentLoaded', function(event) {
+            const selectedBranch = document.getElementById('branch')
+            console.log('selectedBranch id: ', selectedBranch.value);
+            fetchDepartmentsByBranchId(selectedBranch.value)
+        })
+</script>
+
+@endpush

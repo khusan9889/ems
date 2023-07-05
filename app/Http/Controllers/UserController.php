@@ -8,6 +8,7 @@ use App\Models\Role;
 use App\Models\User;
 use App\Services\Contracts\UserServiceInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -42,7 +43,13 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $user->update($request->only('name', 'branch_id', 'role_id', 'email', 'phone_number'));
+        $userData = $request->only('name', 'branch_id', 'department_id', 'role_id', 'email', 'phone_number');
+
+        if ($request->filled('password')) {
+            $userData['password'] = Hash::make($request->input('password'));
+        }
+
+        $user->update($userData);
 
         return redirect()->route('users.index');
     }
@@ -63,7 +70,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->input('name');
         $user->branch_id = $request->input('branch_id');
-        $user->department_id = $request->input('department_id'); // Save the selected department ID
+        $user->department_id = $request->input('department_id');
         $user->role_id = $request->input('role_id');
         $user->email = $request->input('email');
         $user->phone_number = $request->input('phone_number');
@@ -76,7 +83,6 @@ class UserController extends Controller
 
     public function edit(Request $request, User $user)
     {
-
         $data = $user;
         $branches = Branch::all();
         $departments = Department::all();
