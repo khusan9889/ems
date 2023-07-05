@@ -36,4 +36,11 @@ class ACS extends Model
     {
         return $this->belongsTo(Department::class);
     }
+
+    // //logging only the changed attributes
+    // protected static $logOnlyDirty = true;
+
+    // //the deleted event wouldn't get logged
+    // protected static $recordEvents = ['created', 'updated'];
+
 }

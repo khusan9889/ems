@@ -82,4 +82,6 @@ Route::group(['middleware' => ['auth', 'permission']], function () {
         Route::get('/{name}', [PermissionController::class, 'index'])->name('role.permission');
         Route::post('/update', [PermissionController::class, 'update'])->name('permission.update');
     });
+
+    Route::get('/activities', );
 });

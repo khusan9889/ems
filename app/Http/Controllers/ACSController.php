@@ -110,14 +110,5 @@ class ACSController extends Controller
         $data = $service->statistics($request);
         return view('dashboard.pages.acs.statistics', compact('data'));
     }
+
 }
-
-
-// $userBranchId = auth()->user()->branch_id;
-
-//         // Retrieve the branches based on user's branch ID
-//         if ($userBranchId == 1 || $userBranchId == null) {
-//             $branches = Branch::pluck('name', 'id');
-//         } else {
-//             $branches = Branch::where('id', $userBranchId)->pluck('name', 'id');
-//         }
