@@ -12,11 +12,22 @@
             </div>
 
             <div class="form-group">
-                <label for="branch_id">Отделение</label>
+                <label for="branch_id">Субъект</label>
                 <select class="form-control" id="branch_id" name="branch_id" required>
                     @foreach ($branches as $branch)
                         <option value="{{ $branch->id }}" {{ $branch->id == $data->branch_id ? 'selected' : '' }}>
                             {{ $branch->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="department_id">Отделение</label>
+                <select class="form-control" id="department_id" name="department_id" required>
+                    @foreach ($departments as $department)
+                        <option value="{{ $department->id }}" {{ $department->id == $data->department_id ? 'selected' : '' }} >
+                            {{ $department->name }}
                         </option>
                     @endforeach
                 </select>

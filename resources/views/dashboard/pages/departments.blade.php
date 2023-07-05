@@ -32,14 +32,8 @@
                                 </div>
                             </td>
                             <td>
-                                <select class="form-control form-control-sm" name="department">
-                                    <option value="">Все</option>
-                                    @foreach ($departments as $department)
-                                        <option value="{{ $department->id }}" {{ request('department') == $department->id ? 'selected' : '' }}>
-                                            {{ $department->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <input class="form-control form-control-sm" type="text" name="name"
+                                    value="{{ request('name') }}">
                             </td>
                             <td>
                                 <select class="form-control form-control-sm" name="branch">

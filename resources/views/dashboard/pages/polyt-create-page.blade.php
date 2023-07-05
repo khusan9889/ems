@@ -13,11 +13,11 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="branch">Выбрать субъект СЭМП</label>
-                        <select class="form-control" id="branch" name="branch_id">
-                            <!-- Add options for department -->
+                        <select class="form-control" id="branch" name="branch_id" @disabled(auth()->user()->branch_id !== 1 && auth()->user()->branch_id !== null)>
                             <option value="" hidden>Выберите субъект</option>
-                            @foreach ($branches as $branch)
-                                <option value="{{ $branch->id }}" {{ old('branch_id') == $branch->id ? 'selected' : '' }}>
+                            @foreach ($branches as $key => $branch)
+                                <option value="{{ $branch->id }}" {{ old('branch_id') == $branch->id ? 'selected' : '' }}
+                                    @selected(auth()->user()->branch_id == $branch->id)>
                                     {{ $branch->name }}
                                 </option>
                             @endforeach
@@ -33,7 +33,7 @@
                         <select class="form-control" id="department" name="department_id">
                             <option value="" hidden>Выберите отделение</option>
                             @foreach ($departments as $department)
-                                <option value="{{ $department->id }}" {{ old('department_id') == $department->id ? 'selected' : '' }}>
+                                <option value="{{ $department->id }}" @selected(old('department_id') == $department->id)>
                                     {{ $department->name }}
                                 </option>
                             @endforeach
@@ -46,7 +46,8 @@
                 <div class="col-6">
                     <div class="form-group ml-auto">
                         <label for="history_disease">Номер Истории Болезни</label>
-                        <input type="text" class="form-control" id="history_disease" name="history_disease" value="{{ old('history_disease') }}">
+                        <input type="text" class="form-control" id="history_disease" name="history_disease"
+                            value="{{ old('history_disease') }}">
                         @error('history_disease')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -70,10 +71,11 @@
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </div>
                             </div>
-                            <input class="form-control" id="hospitalization_calendar" type="text" name="hospitalization_date" value="{{ old('hospitalization_date') }}">
+                            <input class="form-control" id="hospitalization_calendar" type="text"
+                                name="hospitalization_date" value="{{ old('hospitalization_date') }}">
                         </div>
                         @error('hospitalization_date')
-                        <span class="text-danger">{{ $message }}</span>
+                            <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
@@ -87,10 +89,11 @@
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </div>
                             </div>
-                            <input class="form-control" id="discharge_calendar" type="text" name="discharge_date" value="{{ old('discharge_date') }}">
+                            <input class="form-control" id="discharge_calendar" type="text" name="discharge_date"
+                                value="{{ old('discharge_date') }}">
                         </div>
                         @error('discharge_date')
-                        <span class="text-danger">{{ $message }}</span>
+                            <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
@@ -100,17 +103,20 @@
                 <label for="hospitalization_channels"><b>Канал госпитализации</b></label><br>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="hospitalization_channels"
-                        id="hospitalizationOption1" value="Скорая" {{ old('hospitalization_channels') == 'Скорая' ? 'checked' : '' }}>
+                        id="hospitalizationOption1" value="Скорая"
+                        {{ old('hospitalization_channels') == 'Скорая' ? 'checked' : '' }}>
                     <label class="form-check-label" for="hospitalizationOption1">Скорая</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="hospitalization_channels"
-                        id="hospitalizationOption2" value="Самотек" {{ old('hospitalization_channels') == 'Самотек' ? 'checked' : '' }}>
+                        id="hospitalizationOption2" value="Самотек"
+                        {{ old('hospitalization_channels') == 'Самотек' ? 'checked' : '' }}>
                     <label class="form-check-label" for="hospitalizationOption2">Самотек</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="hospitalization_channels"
-                        id="hospitalizationOption3" value="Направление" {{ old('hospitalization_channels') == 'Направление' ? 'checked' : '' }}>
+                        id="hospitalizationOption3" value="Направление"
+                        {{ old('hospitalization_channels') == 'Направление' ? 'checked' : '' }}>
                     <label class="form-check-label" for="hospitalizationOption3">Направление</label>
                 </div>
                 @error('hospitalization_channels')
@@ -123,7 +129,8 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="days_amount"><b>Кол-во к/дней</b></label>
-                        <input type="text" class="form-control" id="days_amount" name="days_amount" value="{{ old('days_amount') }}">
+                        <input type="text" class="form-control" id="days_amount" name="days_amount"
+                            value="{{ old('days_amount') }}">
                         @error('days_amount')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -133,7 +140,8 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="days_in_intensive_care"><b>Кол-во к/дней в отд. Реанимации</b></label>
-                        <input type="text" class="form-control" id="days_in_intensive_care" name="days_in_intensive_care" value="{{ old('days_in_intensive_care') }}">
+                        <input type="text" class="form-control" id="days_in_intensive_care"
+                            name="days_in_intensive_care" value="{{ old('days_in_intensive_care') }}">
                         @error('days_in_intensive_care')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -162,7 +170,8 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="severity_of_ts"><b>Тяжесть состояния по TS (баллов)</b></label>
-                        <input type="text" class="form-control" id="severity_of_ts" name="severity_of_ts" value="{{ old('severity_of_ts') }}">
+                        <input type="text" class="form-control" id="severity_of_ts" name="severity_of_ts"
+                            value="{{ old('severity_of_ts') }}">
                         @error('severity_of_ts')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -171,7 +180,8 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="injury_of_iss"><b>Тяжесть состояния по ISS (баллов)</b></label>
-                        <input type="text" class="form-control" id="injury_of_iss" name="injury_of_iss" value="{{ old('injury_of_iss') }}">
+                        <input type="text" class="form-control" id="injury_of_iss" name="injury_of_iss"
+                            value="{{ old('injury_of_iss') }}">
                         @error('injury_of_iss')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -182,28 +192,33 @@
             <div class="form-group">
                 <label for="arrival_after_injury"><b>Время поступления после получения травмы:</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="arrival_after_injury" id="arrival_after_injuryOption1"
-                        value="до 1ч." {{ old('arrival_after_injury') == 'до 1ч.' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="arrival_after_injury"
+                        id="arrival_after_injuryOption1" value="до 1ч."
+                        {{ old('arrival_after_injury') == 'до 1ч.' ? 'checked' : '' }}>
                     <label class="form-check-label" for="arrival_after_injuryOption1">до 1ч.</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="arrival_after_injury" id="arrival_after_injuryOption2"
-                        value="1-3ч." {{ old('arrival_after_injury') == '1-3ч.' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="arrival_after_injury"
+                        id="arrival_after_injuryOption2" value="1-3ч."
+                        {{ old('arrival_after_injury') == '1-3ч.' ? 'checked' : '' }}>
                     <label class="form-check-label" for="arrival_after_injuryOption2">1-3ч.</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="arrival_after_injury" id="arrival_after_injuryOption3"
-                        value="6-12ч." {{ old('arrival_after_injury') == '6-12ч.' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="arrival_after_injury"
+                        id="arrival_after_injuryOption3" value="6-12ч."
+                        {{ old('arrival_after_injury') == '6-12ч.' ? 'checked' : '' }}>
                     <label class="form-check-label" for="arrival_after_injuryOption3">6-12ч.</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="arrival_after_injury" id="arrival_after_injuryOption4"
-                        value="12-24ч." {{ old('arrival_after_injury') == '12-24ч.' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="arrival_after_injury"
+                        id="arrival_after_injuryOption4" value="12-24ч."
+                        {{ old('arrival_after_injury') == '12-24ч.' ? 'checked' : '' }}>
                     <label class="form-check-label" for="arrival_after_injuryOption4">12-24ч.</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="arrival_after_injury" id="arrival_after_injuryOption5"
-                        value="позже 24ч." {{ old('arrival_after_injury') == 'позже 24ч.' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="arrival_after_injury"
+                        id="arrival_after_injuryOption5" value="позже 24ч."
+                        {{ old('arrival_after_injury') == 'позже 24ч.' ? 'checked' : '' }}>
                     <label class="form-check-label" for="arrival_after_injuryOption5">позже 24ч.</label>
                 </div>
                 @error('arrival_after_injury')
@@ -213,23 +228,27 @@
             <div class="form-group">
                 <label for="mechanism_of_injury"><b>Механизм травмы</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="mechanism_of_injury" id="mechanism_of_injuryOption1"
-                        value="ДТП" {{ old('mechanism_of_injury') == 'ДТП' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="mechanism_of_injury"
+                        id="mechanism_of_injuryOption1" value="ДТП"
+                        {{ old('mechanism_of_injury') == 'ДТП' ? 'checked' : '' }}>
                     <label class="form-check-label" for="mechanism_of_injuryOption1">ДТП</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="mechanism_of_injury" id="mechanism_of_injuryOption2"
-                        value="Кататравма" {{ old('mechanism_of_injury') == 'Кататравма' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="mechanism_of_injury"
+                        id="mechanism_of_injuryOption2" value="Кататравма"
+                        {{ old('mechanism_of_injury') == 'Кататравма' ? 'checked' : '' }}>
                     <label class="form-check-label" for="mechanism_of_injuryOption2">Кататравма</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="mechanism_of_injury" id="mechanism_of_injuryOption3"
-                        value="Производственная" {{ old('mechanism_of_injury') == 'Производственная' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="mechanism_of_injury"
+                        id="mechanism_of_injuryOption3" value="Производственная"
+                        {{ old('mechanism_of_injury') == 'Производственная' ? 'checked' : '' }}>
                     <label class="form-check-label" for="mechanism_of_injuryOption3">Производственная</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="mechanism_of_injury" id="mechanism_of_injuryOption4"
-                        value="Прочие" {{ old('mechanism_of_injury') == 'Прочие' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="mechanism_of_injury"
+                        id="mechanism_of_injuryOption4" value="Прочие"
+                        {{ old('mechanism_of_injury') == 'Прочие' ? 'checked' : '' }}>
                     <label class="form-check-label" for=mechanism_of_injuryOption4">Прочие</label>
                 </div>
                 @error('mechanism_of_injury')
@@ -240,13 +259,15 @@
             <div class="form-group">
                 <label for="survey_of_surgeon"><b>Осмотр хирурга:</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="survey_of_surgeon" id="urgesurvey_of_surgeonOption1ntOption1"
-                        value="Да" {{ old('survey_of_surgeon') == 'Да' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="survey_of_surgeon"
+                        id="urgesurvey_of_surgeonOption1ntOption1" value="Да"
+                        {{ old('survey_of_surgeon') == 'Да' ? 'checked' : '' }}>
                     <label class="form-check-label" for="survey_of_surgeonOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="survey_of_surgeon" id="survey_of_surgeonOption2"
-                        value="Нет" {{ old('survey_of_surgeon') == 'Нет' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="survey_of_surgeon"
+                        id="survey_of_surgeonOption2" value="Нет"
+                        {{ old('survey_of_surgeon') == 'Нет' ? 'checked' : '' }}>
                     <label class="form-check-label" for="survey_of_surgeonOption2">Нет</label>
                 </div>
                 @error('survey_of_surgeon')
@@ -256,13 +277,15 @@
             <div class="form-group">
                 <label for="survey_of_neurosurgeon"><b>Осмотр нейрохирурга:</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="survey_of_neurosurgeon" id="survey_of_neurosurgeonOption1"
-                        value="Да" {{ old('survey_of_neurosurgeon') == 'Да' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="survey_of_neurosurgeon"
+                        id="survey_of_neurosurgeonOption1" value="Да"
+                        {{ old('survey_of_neurosurgeon') == 'Да' ? 'checked' : '' }}>
                     <label class="form-check-label" for="survey_of_neurosurgeonOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="survey_of_neurosurgeon" id="survey_of_neurosurgeonOption2"
-                        value="Нет" {{ old('survey_of_neurosurgeon') == 'Нет' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="survey_of_neurosurgeon"
+                        id="survey_of_neurosurgeonOption2" value="Нет"
+                        {{ old('survey_of_neurosurgeon') == 'Нет' ? 'checked' : '' }}>
                     <label class="form-check-label" for="survey_of_neurosurgeonOption2">Нет</label>
                 </div>
                 @error('survey_of_neurosurgeon')
@@ -273,13 +296,15 @@
             <div class="form-group">
                 <label for="survey_of_traumatologist"><b>Осмотр травматолога:</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="survey_of_traumatologist" id="survey_of_traumatologistOption1"
-                        value="Да" {{ old('survey_of_traumatologist') == 'Да' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="survey_of_traumatologist"
+                        id="survey_of_traumatologistOption1" value="Да"
+                        {{ old('survey_of_traumatologist') == 'Да' ? 'checked' : '' }}>
                     <label class="form-check-label" for="survey_of_traumatologistOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="survey_of_traumatologist" id="survey_of_traumatologistOption2"
-                        value="Нет" {{ old('survey_of_traumatologist') == 'Нет' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="survey_of_traumatologist"
+                        id="survey_of_traumatologistOption2" value="Нет"
+                        {{ old('survey_of_traumatologist') == 'Нет' ? 'checked' : '' }}>
                     <label class="form-check-label" for="survey_of_traumatologistOption2">Нет</label>
                 </div>
                 @error('survey_of_traumatologist')
@@ -290,13 +315,15 @@
             <div class="form-group">
                 <label for="narrow_specialists"><b>Осмотр других узких специалистов:</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="narrow_specialists" id="narrow_specialistsOption1"
-                        value="Да" {{ old('narrow_specialists') == 'Да' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="narrow_specialists"
+                        id="narrow_specialistsOption1" value="Да"
+                        {{ old('narrow_specialists') == 'Да' ? 'checked' : '' }}>
                     <label class="form-check-label" for="narrow_specialistsOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="narrow_specialists" id="narrow_specialistsOption2"
-                        value="Нет" {{ old('narrow_specialists') == 'Нет' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="narrow_specialists"
+                        id="narrow_specialistsOption2" value="Нет"
+                        {{ old('narrow_specialists') == 'Нет' ? 'checked' : '' }}>
                     <label class="form-check-label" for="narrow_specialistsOption2">Нет</label>
                 </div>
                 @error('narrow_specialists')
@@ -305,15 +332,16 @@
             </div>
             <hr>
             <div class="form-group">
-                <label for="r_graphy"><b>Проведена R-графия: </b><span>(черепа, грудной клетки, костей таза, конечностей):</span></label><br>
+                <label for="r_graphy"><b>Проведена R-графия: </b><span>(черепа, грудной клетки, костей таза,
+                        конечностей):</span></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="r_graphy" id="r_graphyOption1"
-                        value="Да" {{ old('r_graphy') == 'Да' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="r_graphy" id="r_graphyOption1" value="Да"
+                        {{ old('r_graphy') == 'Да' ? 'checked' : '' }}>
                     <label class="form-check-label" for="r_graphyOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="r_graphy" id="r_graphyOption2"
-                        value="Нет" {{ old('r_graphy') == 'Нет' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="r_graphy" id="r_graphyOption2" value="Нет"
+                        {{ old('r_graphy') == 'Нет' ? 'checked' : '' }}>
                     <label class="form-check-label" for="r_graphyOption2">Нет</label>
                 </div>
                 @error('r_graphy')
@@ -322,15 +350,18 @@
             </div>
             <hr>
             <div class="form-group">
-                <label for="conducted_ultrasound"><b>Проведено УЗС </b><span>(плевральных и брюшной полостей, забрюшинного пространства):</span></label><br>
+                <label for="conducted_ultrasound"><b>Проведено УЗС </b><span>(плевральных и брюшной полостей, забрюшинного
+                        пространства):</span></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="conducted_ultrasound" id="conducted_ultrasoundOption1"
-                        value="Да" {{ old('conducted_ultrasound') == 'Да' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="conducted_ultrasound"
+                        id="conducted_ultrasoundOption1" value="Да"
+                        {{ old('conducted_ultrasound') == 'Да' ? 'checked' : '' }}>
                     <label class="form-check-label" for="conducted_ultrasoundOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="conducted_ultrasound" id="conducted_ultrasoundOption2"
-                        value="Нет" {{ old('conducted_ultrasound') == 'Нет' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="conducted_ultrasound"
+                        id="conducted_ultrasoundOption2" value="Нет"
+                        {{ old('conducted_ultrasound') == 'Нет' ? 'checked' : '' }}>
                     <label class="form-check-label" for="conducted_ultrasoundOption2">Нет</label>
                 </div>
                 @error('conducted_ultrasound')
@@ -339,15 +370,15 @@
             </div>
             <hr>
             <div class="form-group">
-                <label for="msct"><b>Проведено МКСТ </b><span>(всего тела "full body"):</span></label><br>
+                <label for="msct"><b>Проведено МКСТ </b><span>(всего тела):</span></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="msct" id="msctOption1"
-                        value="Да" {{ old('msct') == 'Да' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="msct" id="msctOption1" value="Да"
+                        {{ old('msct') == 'Да' ? 'checked' : '' }}>
                     <label class="form-check-label" for="msctOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="msct" id="msctOption2"
-                        value="Нет" {{ old('msct') == 'Нет' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="msct" id="msctOption2" value="Нет"
+                        {{ old('msct') == 'Нет' ? 'checked' : '' }}>
                     <label class="form-check-label" for="msctOption2">Нет</label>
                 </div>
                 @error('msct')
@@ -358,13 +389,15 @@
             <div class="form-group">
                 <label for="msct_individual_parts"><b>Проведено МКСТ </b><span>(отдельных частей тела):</span></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="msct_individual_parts" id="msct_individual_partsOption1"
-                        value="Да" {{ old('msct_individual_parts') == 'Да' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="msct_individual_parts"
+                        id="msct_individual_partsOption1" value="Да"
+                        {{ old('msct_individual_parts') == 'Да' ? 'checked' : '' }}>
                     <label class="form-check-label" for="msct_individual_partsOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="msct_individual_parts" id="msct_individual_partsOption2"
-                        value="Нет" {{ old('msct_individual_parts') == 'Нет' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="msct_individual_parts"
+                        id="msct_individual_partsOption2" value="Нет"
+                        {{ old('msct_individual_parts') == 'Нет' ? 'checked' : '' }}>
                     <label class="form-check-label" for="msct_individual_partsOption2">Нет</label>
                 </div>
                 @error('msct_individual_parts')
@@ -392,13 +425,15 @@
             <div class="form-group">
                 <label for="analysis_of_hb_ht"><b>Проведен анализ Нв, Ht в динамике:</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="analysis_of_hb_ht" id="analysis_of_hb_htOption1"
-                        value="Да" {{ old('analysis_of_hb_ht') == 'Да' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="analysis_of_hb_ht"
+                        id="analysis_of_hb_htOption1" value="Да"
+                        {{ old('analysis_of_hb_ht') == 'Да' ? 'checked' : '' }}>
                     <label class="form-check-label" for="analysis_of_hb_htOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="analysis_of_hb_ht" id="analysis_of_hb_htOption2"
-                        value="Нет" {{ old('analysis_of_hb_ht') == 'Нет' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="analysis_of_hb_ht"
+                        id="analysis_of_hb_htOption2" value="Нет"
+                        {{ old('analysis_of_hb_ht') == 'Нет' ? 'checked' : '' }}>
                     <label class="form-check-label" for="analysis_of_hb_htOption2">Нет</label>
                 </div>
                 @error('analysis_of_hb_ht')
@@ -426,13 +461,15 @@
             <div class="form-group">
                 <label for="diagnostic_laparoscopy"><b>Диагностическая лапароскопия</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="diagnostic_laparoscopy" id="diagnostic_laparoscopyOption1"
-                        value="Да" {{ old('diagnostic_laparoscopy') == 'Да' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="diagnostic_laparoscopy"
+                        id="diagnostic_laparoscopyOption1" value="Да"
+                        {{ old('diagnostic_laparoscopy') == 'Да' ? 'checked' : '' }}>
                     <label class="form-check-label" for="diagnostic_laparoscopyOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="diagnostic_laparoscopy" id="diagnostic_laparoscopyOption2"
-                        value="Нет" {{ old('diagnostic_laparoscopy') == 'Нет' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="diagnostic_laparoscopy"
+                        id="diagnostic_laparoscopyOption2" value="Нет"
+                        {{ old('diagnostic_laparoscopy') == 'Нет' ? 'checked' : '' }}>
                     <label class="form-check-label" for="diagnostic_laparoscopyOption2">Нет</label>
                 </div>
                 @error('diagnostic_laparoscopy')
@@ -478,13 +515,15 @@
             <div class="form-group">
                 <label for="thoracoscopy_thoracotomy"><b>Торакоскопия (торакотомия):</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="thoracoscopy_thoracotomy" id="thoracoscopy_thoracotomyOption1"
-                        value="Да" {{ old('thoracoscopy_thoracotomy') == 'Да' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="thoracoscopy_thoracotomy"
+                        id="thoracoscopy_thoracotomyOption1" value="Да"
+                        {{ old('thoracoscopy_thoracotomy') == 'Да' ? 'checked' : '' }}>
                     <label class="form-check-label" for="thoracoscopy_thoracotomyOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="thoracoscopy_thoracotomy" id="thoracoscopy_thoracotomyOption2"
-                        value="Нет" {{ old('thoracoscopy_thoracotomy') == 'Нет' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="thoracoscopy_thoracotomy"
+                        id="thoracoscopy_thoracotomyOption2" value="Нет"
+                        {{ old('thoracoscopy_thoracotomy') == 'Нет' ? 'checked' : '' }}>
                     <label class="form-check-label" for="thoracoscopy_thoracotomyOption2">Нет</label>
                 </div>
                 @error('thoracoscopy_thoracotomy')
@@ -495,13 +534,15 @@
             <div class="form-group">
                 <label for="osteosynthesis_of_fractures"><b>Остеосинтез переломов:</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="osteosynthesis_of_fractures" id="osteosynthesis_of_fracturesOption1"
-                        value="Да" {{ old('osteosynthesis_of_fractures') == 'Да' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="osteosynthesis_of_fractures"
+                        id="osteosynthesis_of_fracturesOption1" value="Да"
+                        {{ old('osteosynthesis_of_fractures') == 'Да' ? 'checked' : '' }}>
                     <label class="form-check-label" for="osteosynthesis_of_fracturesOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="osteosynthesis_of_fractures" id="osteosynthesis_of_fracturesOption2"
-                        value="Нет" {{ old('osteosynthesis_of_fractures') == 'Нет' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="osteosynthesis_of_fractures"
+                        id="osteosynthesis_of_fracturesOption2" value="Нет"
+                        {{ old('osteosynthesis_of_fractures') == 'Нет' ? 'checked' : '' }}>
                     <label class="form-check-label" for="osteosynthesis_of_fracturesOption2">Нет</label>
                 </div>
                 @error('osteosynthesis_of_fractures')
@@ -512,13 +553,15 @@
             <div class="form-group">
                 <label for="skull_trepanation"><b>Трепанация черепа:</b></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="skull_trepanation" id="skull_trepanationOption1"
-                        value="Да" {{ old('skull_trepanation') == 'Да' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="skull_trepanation"
+                        id="skull_trepanationOption1" value="Да"
+                        {{ old('skull_trepanation') == 'Да' ? 'checked' : '' }}>
                     <label class="form-check-label" for="skull_trepanationOption1">Да</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="skull_trepanation" id="skull_trepanationOption2"
-                        value="Нет" {{ old('skull_trepanation') == 'Нет' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="skull_trepanation"
+                        id="skull_trepanationOption2" value="Нет"
+                        {{ old('skull_trepanation') == 'Нет' ? 'checked' : '' }}>
                     <label class="form-check-label" for="skull_trepanationOption2">Нет</label>
                 </div>
                 @error('skull_trepanation')
@@ -528,8 +571,8 @@
             <hr>
             <div class="form-group">
                 <label for="physician_full_name">ФИО лечащего врача:</label><br>
-                <input type="text" class="form-control" id="physician_full_name"
-                    name="physician_full_name" value="{{ old('physician_full_name') }}">
+                <input type="text" class="form-control" id="physician_full_name" name="physician_full_name"
+                    value="{{ old('physician_full_name') }}">
                 @error('physician_full_name')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
@@ -544,7 +587,7 @@
                 @enderror
             </div>
 
-                <button type="submit" class="btn btn-primary">Сохранить</button>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
         </form>
     </x-panel>
 @endsection
@@ -643,14 +686,14 @@
 
         let departments = [];
         const branch = document.getElementById('branch')
-        branch.addEventListener('change', async function(event) {
+        const fetchDepartmentsByBranchId = async function(value) {
             try {
-                const target = event.target
+                // const target = event.target
 
                 const res = await axios({
                     url: '/departments/branch',
                     params: {
-                        branch_id: Number(target.value)
+                        branch_id: Number(value)
                     }
                 })
 
@@ -669,6 +712,12 @@
                 alert(error.message)
             }
 
+        }
+        branch.addEventListener('change', (event) => fetchDepartmentsByBranchId(event.target.value))
+        window.addEventListener('DOMContentLoaded', function(event) {
+            const selectedBranch = document.getElementById('branch')
+            console.log('selectedBranch id: ', selectedBranch.value);
+            fetchDepartmentsByBranchId(selectedBranch.value)
         })
     </script>
 @endpush

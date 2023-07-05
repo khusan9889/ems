@@ -35,7 +35,6 @@ class UserController extends Controller
     {
         $branches = Branch::all();
         $roles = Role::all();
-//        dd($roles);
         $departments = Department::all(['id', 'name']);
         return view('dashboard.pages.users-create-page', compact('branches', 'roles', 'departments'));
     }
@@ -50,7 +49,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        // Validate the input data
+
         $validatedData = $request->validate([
             'name' => 'required',
             'branch_id' => 'required',
@@ -61,7 +60,6 @@ class UserController extends Controller
             'password' => 'required|min:8',
         ]);
 
-        // Create a new user
         $user = new User();
         $user->name = $request->input('name');
         $user->branch_id = $request->input('branch_id');
@@ -71,7 +69,6 @@ class UserController extends Controller
         $user->phone_number = $request->input('phone_number');
         $user->password = bcrypt($request->input('password'));
 
-        // Save the user
         $user->save();
 
         return redirect()->route('users.index')->with('success', 'User created successfully.');
@@ -79,13 +76,13 @@ class UserController extends Controller
 
     public function edit(Request $request, User $user)
     {
-        // dd($user);
-        // $data = User::findOrFail($id);
+
         $data = $user;
         $branches = Branch::all();
+        $departments = Department::all();
         $roles = Role::all();
 
-        return view('dashboard.pages.users-edit-page', compact('data', 'branches', 'roles'));
+        return view('dashboard.pages.users-edit-page', compact('data', 'branches', 'departments', 'roles'));
     }
 
     public function destroy($id)
