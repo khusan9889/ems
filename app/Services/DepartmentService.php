@@ -54,5 +54,4 @@ class DepartmentService implements DepartmentServiceInterface
         return $results;
     }
 
-
 }
