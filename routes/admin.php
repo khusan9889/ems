@@ -3,15 +3,15 @@
 use App\Http\Controllers\ACSController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\Permissions\PermissionController;
+use App\Http\Controllers\Permissions\RoleController;
 use App\Http\Controllers\PolytraumaController;
 use App\Http\Controllers\UserController;
 use App\Models\ACS;
-use App\Models\Branch;
-use App\Models\Department;
 use App\Models\Polytrauma;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware' => ['auth', 'custom']], function () {
+Route::group(['middleware' => ['auth', 'permission']], function () {
     Route::get('/acs/list', [ACSController::class, 'index']);
 
     Route::get('/polytrauma/list', [PolytraumaController::class, 'index']);
@@ -27,12 +27,7 @@ Route::group(['middleware' => ['auth', 'custom']], function () {
     // Add the route for the create-page
 
     Route::group(['prefix' => 'acs'], function () {
-        Route::get('create-page', function () {
-            $branches = Branch::all(['id', 'name']);
-            $departments = Department::all(['id', 'name']);
-            return view('dashboard.pages.create-page', compact('branches', 'departments'));
-        })->name('acs.create-page');
-
+        Route::get('create-page', [ACSController::class, 'create'])->name('acs.create-page');
         Route::post('add', [ACSController::class, 'store'])->name('acs.add');
         Route::get('/edit-page/{id}', [ACSController::class, 'edit'])->name('edit-page');
         Route::put('/update-data/{id}', [ACSController::class, 'update'])->name('update-data');
@@ -41,12 +36,7 @@ Route::group(['middleware' => ['auth', 'custom']], function () {
     });
 
     Route::group(['prefix' => 'polytrauma'], function () {
-        Route::get('polyt-create-page', function () {
-            $branches = Branch::all(['id', 'name']);
-            $departments = Department::all(['id', 'name']);
-            return view('dashboard.pages.polyt-create-page', compact('branches', 'departments'));
-        })->name('polytrauma.polyt-create-page');
-
+        Route::get('polyt-create-page', [PolytraumaController::class, 'create'])->name('polytrauma.polyt-create-page');
         Route::post('add', [PolytraumaController::class, 'store'])->name('polytrauma.add');
         Route::get('/polyt-edit-page/{id}', [PolytraumaController::class, 'edit'])->name('polyt-edit-page');
         Route::put('/update-data/{id}', [PolytraumaController::class, 'update'])->name('polyt-update-data');
@@ -85,4 +75,12 @@ Route::group(['middleware' => ['auth', 'custom']], function () {
 
     Route::get('/acs/statistics', [ACSController::class, 'statistics']);
     Route::get('/polytrauma/statistics', [PolytraumaController::class, 'statistics']);
+
+    Route::prefix('/roles')->group(function () {
+        Route::get('/', [RoleController::class, 'index'])->name('role.list');
+    });
+    Route::prefix('/permissions')->group(function () {
+        Route::get('/{name}', [PermissionController::class, 'index'])->name('role.permission');
+        Route::post('/update', [PermissionController::class, 'update'])->name('permission.update');
+    });
 });

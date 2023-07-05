@@ -32,32 +32,33 @@
 @endphp
 
 <body class="{{ $bodyClass }}">
-    @include('dashboard.includes.component.page-loader')
+@include('dashboard.includes.component.page-loader')
 
-    <div id="page-container" class="page-container fade page-sidebar-fixed page-header-fixed {{ $pageContainerClass }}">
+<div id="page-container" class="page-container fade page-sidebar-fixed page-header-fixed {{ $pageContainerClass }}">
 
-        @include('dashboard.includes.header')
+    @include('dashboard.includes.header')
 
-        @includeWhen($topMenu, 'dashboard.includes.top-menu')
+    @includeWhen($topMenu, 'dashboard.includes.top-menu')
 
-        @includeWhen(!$sidebarHide, 'dashboard.includes.sidebar')
+    @includeWhen(!$sidebarHide, 'dashboard.includes.sidebar')
 
-        @includeWhen($sidebarTwo, 'dashboard.includes.sidebar-right')
+    @includeWhen($sidebarTwo, 'dashboard.includes.sidebar-right')
 
-        <div id="content" class="content {{ $contentClass }}">
-            @yield('content')
-        </div>
-
-        @includeWhen($footer, 'dashboard.includes.footer')
-
-        {{-- @include('dashboard.includes.component.theme-panel') --}}
-
-        @include('dashboard.includes.component.scroll-top-btn')
-
+    <div id="content" class="content {{ $contentClass }}">
+        <x-alert/>
+        @yield('content')
     </div>
 
-    @stack('custom_js')
-    @include('dashboard.includes.page-js')
+    @includeWhen($footer, 'dashboard.includes.footer')
+
+    {{-- @include('dashboard.includes.component.theme-panel') --}}
+
+    @include('dashboard.includes.component.scroll-top-btn')
+
+</div>
+
+@stack('custom_js')
+@include('dashboard.includes.page-js')
 
 </body>
 

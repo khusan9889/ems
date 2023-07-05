@@ -84,6 +84,13 @@ class PolytraumaController extends Controller
         return redirect('/polytrauma/list')->with('success', 'Record updated successfully');
     }
 
+    public function create()
+    {
+        $branches = Branch::all(['id', 'name']);
+        $departments = Department::all(['id', 'name']);
+        return view('dashboard.pages.polyt-create-page', compact('branches', 'departments'));
+    }
+
     public function edit($id)
     {
         $data = Polytrauma::findOrFail($id);

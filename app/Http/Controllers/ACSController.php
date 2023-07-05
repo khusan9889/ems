@@ -83,6 +83,13 @@ class ACSController extends Controller
         return redirect('/acs/list')->with('success', 'Record updated successfully');
     }
 
+    public function create()
+    {
+        $branches = Branch::all(['id', 'name']);
+        $departments = Department::all(['id', 'name']);
+        return view('dashboard.pages.create-page', compact('branches', 'departments'));
+    }
+
     public function edit($id)
     {
         $data = ACS::findOrFail($id);

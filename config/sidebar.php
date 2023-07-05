@@ -46,17 +46,29 @@ return [
             'caret' => true,
             'sub_menu' => [
                 [
-                    'url' => '/users',
-                    'title' => 'Пользователи',
-                    'role' => 'admin'
-                ],
-                [
                     'url' => '/branch',
                     'title' => 'Субъекты'
                 ],
                 [
                     'url' => '/departments',
                     'title' => 'Отделения'
+                ],
+            ]
+        ],
+        [
+            'icon' => 'fa fa-cog',
+            'title' => 'Настройки',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => '/users',
+                    'title' => 'Пользователи',
+                    'role' => 'admin'
+                ],
+                [
+                    'url' => '/roles',
+                    'title' => 'Роли'
                 ],
             ]
         ]

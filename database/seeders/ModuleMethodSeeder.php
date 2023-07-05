@@ -22,7 +22,7 @@ class ModuleMethodSeeder extends Seeder
         $data = [];
         foreach (Route::getRoutes()->getRoutes() as $route) {
 //      if (strpos($action, 'Admin') !== false) {
-            if (in_array('custom', $route->middleware()) && str_contains($route->getActionName(), '@')) {
+            if (in_array('permission', $route->middleware()) && str_contains($route->getActionName(), '@')) {
                 $action = $route->getActionName();
                 $action = explode('\\', $action);
                 $method = end($action);
