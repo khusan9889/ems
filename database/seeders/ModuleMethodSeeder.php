@@ -21,20 +21,22 @@ class ModuleMethodSeeder extends Seeder
         $i = 0;
         $data = [];
         foreach (Route::getRoutes()->getRoutes() as $route) {
-            $action = $route->getActionName();
 //      if (strpos($action, 'Admin') !== false) {
-            $action = explode('\\', $action);
-            $method = end($action);
+            if (in_array('custom', $route->middleware()) && str_contains($route->getActionName(), '@')) {
+                $action = $route->getActionName();
+                $action = explode('\\', $action);
+                $method = end($action);
 //            if ($method != 'IndexController@bad') {
-            $action = explode('@', $method);
-            $module = $action[0];
-            $title = end($action);
-            $data[] = [
-                'module' => $module,
-                'method' => $method,
-                'title' => $title,
-                'number' => $i++
-            ];
+                $action = explode('@', $method);
+                $module = $action[0];
+                $title = end($action);
+                $data[] = [
+                    'module' => $module,
+                    'method' => $method,
+                    'title' => $title,
+                    'number' => ++$i
+                ];
+            }
         }
 //        }
 //    }
