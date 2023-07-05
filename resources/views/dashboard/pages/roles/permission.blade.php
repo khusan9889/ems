@@ -14,7 +14,7 @@
                     @foreach ($modules as $i => $el)
                         <li class="nav-item">
                             <a href="#nav-tab-{{ $el }}" data-toggle="tab"
-                               class="nav-link {{ $i == 0 ? 'active' : ''}}">{{ trans('messages.' . $el) }}</a>
+                                class="nav-link {{ $i == 0 ? 'active' : '' }}">{{ trans('messages.' . $el) }}</a>
                         </li>
                     @endforeach
 
@@ -33,36 +33,35 @@
             <input type="hidden" name="role_id" value="{{ $id }}">
             @csrf
             <div class="panel-body tab-content">
-                @foreach($modules as $i => $el)
+                @foreach ($modules as $i => $el)
                     <div class="tab-pane fade {{ $i == 0 ? 'active show' : '' }}" id="nav-tab-{{ $el }}">
                         <table class="table table-striped table-bordered">
                             <tbody>
-                            @foreach($data[$el] as $method)
-                                <tr>
-                                    <td>{{ trans('messages.' . $method['title']) }}</td>
-                                    <td style="width: 20%">
-                                        <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input"
-                                                   name="methods[{{ $method['role_methods'][0]['method_id'] }}]"
-                                                   {{ $method['role_methods'][0]['value'] == 1 ? 'checked' : '' }} id="{{ $method['method'] }}">
-                                            <label class="custom-control-label" for="{{ $method['method'] }}"></label>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                @foreach ($data[$el] as $method)
+                                    <tr>
+                                        <td>{{ trans('messages.' . $method['title']) }}</td>
+                                        <td style="width: 20%">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input"
+                                                    name="methods[{{ $method['role_methods'][0]['method_id'] }}]"
+                                                    {{ $method['role_methods'][0]['value'] == 1 ? 'checked' : '' }}
+                                                    id="{{ $method['method'] }}">
+                                                <label class="custom-control-label" for="{{ $method['method'] }}"></label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                 @endforeach
                 <div class="modal-footer">
                     <a href="{{ route('role.list') }}" class="btn btn-sm btn-inverse pull-left"
-                       data-dismiss="modal">Назад</a>
-                    <button type="submit"
-                            class="btn btn-sm btn-success pull-right">Сохранить
+                        data-dismiss="modal">Назад</a>
+                    <button type="submit" class="btn btn-sm btn-success pull-right">Сохранить
                     </button>
                 </div>
             </div>
         </form>
     </div>
 @endsection
-

@@ -2,6 +2,7 @@
 @php
     $selectedID = null;
     $order = request()->sort;
+    $userBranchID = auth()->user()->branch_id;
 @endphp
 
 
@@ -95,14 +96,17 @@
                             <td> {{ $item->role?->name }} </td>
                             <td class="align-middle">
                                 <div class="d-flex">
-                                    <a href="{{ route('users.edit-page', $item->id) }}"
-                                        class="btn btn-warning btn-xs mr-1">
-                                        <i class="fas fa-pen"></i>
-                                    </a>
-                                    <button type="button" class="btn btn-danger btn-xs mr-1"
-                                        onclick="confirmDelete({{ $item->id }})">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
+                                    @if ($userBranchID === 0 || $userBranchID === 1 || $userBranchID === $item->branch->id)
+                                        <a href="{{ route('users.edit-page', $item->id) }}"
+                                            class="btn btn-warning btn-xs mr-1">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-danger btn-xs mr-1"
+                                            onclick="confirmDelete({{ $item->id }})"
+                                            {{ $userBranchID !== $item->branch->id && $userBranchID !== 1 ? 'disabled' : '' }}>
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    @endif
                                 </div>
                             </td>
                         </tr>
