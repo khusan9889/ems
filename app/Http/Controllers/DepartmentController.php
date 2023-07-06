@@ -50,7 +50,7 @@ class DepartmentController extends Controller
         $department->branch_id = $request->branch_id;
         $department->save();
 
-        return redirect()->route('departments.index')->with('success', 'Department created successfully');
+        return redirect()->route('departments.index')->with('success', 'Отделение успешно создано');
     }
 
     public function update(Request $request, $id)
@@ -60,7 +60,7 @@ class DepartmentController extends Controller
         $department->branch_id = $request->branch_id;
         $department->save();
 
-        return redirect()->route('departments.index')->with('success', 'Department updated successfully');
+        return redirect()->route('departments.index')->with('success', 'Отделение успешно обновлено');
     }
 
     public function destroy($id)
@@ -68,6 +68,6 @@ class DepartmentController extends Controller
         $department = Department::findOrFail($id);
         $department->delete();
 
-        return redirect()->back()->with('success', 'Record deleted successfully');
+        return redirect()->back()->with('success', 'Запись успешно обновлена');
     }
 }

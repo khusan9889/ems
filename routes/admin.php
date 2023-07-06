@@ -48,7 +48,7 @@ Route::group(['middleware' => ['auth', 'permission']], function () {
         Route::put('/update-data/{user}', [UserController::class, 'update'])->name('users.update');
     });
 
-    Route::post('/departments/fetch', [DepartmentController::class, 'fetchDepartments'])->name('departments.fetch');
+    // Route::post('/departments/fetch', [DepartmentController::class, 'fetchDepartments'])->name('departments.fetch');
 
     Route::group(['prefix' => 'branch'], function () {
         Route::get('/', [BranchController::class, 'index']);
@@ -75,5 +75,5 @@ Route::group(['middleware' => ['auth', 'permission']], function () {
         Route::post('/update', [PermissionController::class, 'update'])->name('permission.update');
     });
 
-    Route::get('/activities', );
+    // Route::get('/activities', );
 });
