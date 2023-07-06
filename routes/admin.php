@@ -47,7 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::put('/update-data/{user}', [UserController::class, 'update'])->name('users.update');
         });
 
-        Route::post('/departments/fetch', [DepartmentController::class, 'fetchDepartments'])->name('departments.fetch');
+//        Route::post('/departments/fetch', [DepartmentController::class, 'fetchDepartments'])->name('departments.fetch');
 
         Route::group(['prefix' => 'branch'], function () {
             Route::get('/', [BranchController::class, 'index']);
