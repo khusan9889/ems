@@ -28,8 +28,13 @@ class PolytraumaController extends Controller
             'sort' => $request->input('sort') ?? 'DESC',
         ];
 
-        $hospitalization_channels = Polytrauma::HOSPITALIZATION_CHANNELS;
+        $userBranchId = auth()->user()->branch_id;
 
+        if ($userBranchId !== 1) {
+            $filters['branch'] = $userBranchId;
+        }
+
+        $hospitalization_channels = Polytrauma::HOSPITALIZATION_CHANNELS;
         $data = $polytraumaService->customFilter($filters);
         $branches = Branch::pluck('name', 'id'); // Get branch names with their IDs
         $departments = Department::pluck('name', 'id');
