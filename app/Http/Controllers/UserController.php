@@ -25,7 +25,7 @@ class UserController extends Controller
         ];
 
         $data = $userService->customFilter($filters);
-        $branches = Branch::pluck('name', 'id'); // Get branch names with their IDs
+        $branches = Branch::pluck('name', 'id'); 
         $roles = Role::pluck('name', 'id');
         $departments = Department::pluck('name', 'id');
 

@@ -26,8 +26,13 @@ class ACSController extends Controller
             'sort' => $request->input('sort') ?? 'DESC',
         ];
 
-        $hospitalization_channels = ACS::HOSPITALIZATION_CHANNELS;
+        $userBranchId = auth()->user()->branch_id;
 
+        if ($userBranchId !== 1) {
+            $filters['branch'] = $userBranchId;
+        }
+
+        $hospitalization_channels = ACS::HOSPITALIZATION_CHANNELS;
         $data = $acsService->customFilter($filters);
         $branches = Branch::pluck('name', 'id');
         $departments = Department::pluck('name', 'id');

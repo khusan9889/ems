@@ -169,7 +169,7 @@ return [
     */
 
     'attributes' => [
-        'branch_id' => 'Отделение',
+        'branch_id' => 'Субъект',
         'department_id' => 'Отделение',
         'history_disease' => 'Номер ИБ',
         'full_name' => 'Пациент ФИО',
