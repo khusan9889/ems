@@ -44,7 +44,6 @@ class ACSController extends Controller
     {
         $query = ACS::query();
 
-        // Filter by department
         if ($request->has('branch')) {
             $branch = $request->input('branch');
             $query->where('branch', $branch);

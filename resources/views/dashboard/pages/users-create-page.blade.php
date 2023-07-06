@@ -4,7 +4,7 @@
     <x-panel title="Создать пользователя">
         <form method="POST" action="{{ route('users.store') }}">
             @csrf
-            
+
             <div class="form-group">
                 <label for="name">ФИО Пользователя</label>
                 <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
@@ -14,19 +14,17 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="branch">Выбрать субъект СЭМП</label>
-                        <select class="form-control" id="branch"
-                                name="branch_id" @disabled(auth()->user()->branch_id !== 1 && auth()->user()->branch_id !== null)>
+                        <select class="form-control" id="branch" name="branch_id" readonly>
                             <option value="" hidden>Выберите субъект</option>
                             @foreach ($branches as $key => $branch)
-                                <option
-                                    value="{{ $branch->id }}" {{ old('branch_id') == $branch->id ? 'selected' : '' }}
-                                    @selected(auth()->user()->branch_id == $branch->id)>
+                                <option value="{{ $branch->id }}" {{ old('branch_id') == $branch->id ? 'selected' : '' }}
+                                    @if (auth()->user()->branch_id == $branch->id) selected @endif>
                                     {{ $branch->name }}
                                 </option>
                             @endforeach
                         </select>
                         @error('branch_id')
-                        <span class="text-danger">{{ $message }}</span>
+                            <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>

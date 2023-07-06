@@ -24,8 +24,14 @@ class UserController extends Controller
             'sort' => $request->input('sort') ?? 'DESC',
         ];
 
+        $userBranchId = auth()->user()->branch_id;
+
+        if ($userBranchId !== 1) {
+            $filters['branch'] = $userBranchId;
+        }
+
         $data = $userService->customFilter($filters);
-        $branches = Branch::pluck('name', 'id'); 
+        $branches = Branch::pluck('name', 'id');
         $roles = Role::pluck('name', 'id');
         $departments = Department::pluck('name', 'id');
 
