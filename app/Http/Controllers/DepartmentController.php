@@ -17,8 +17,14 @@ class DepartmentController extends Controller
             'sort' => $request->input('sort') ?? 'DESC',
         ];
 
+        $userBranchId = auth()->user()->branch_id;
+
+        if ($userBranchId !== 1) {
+            $filters['branch'] = $userBranchId;
+        }
+
         $departments = Department::all(['id', 'name']);
-        $branches = Branch::all(['id', 'name']);
+        $branches = Branch::pluck('name', 'id');
         $data = $service->customFilter($filters);
 
         return view('dashboard.pages.departments', compact('departments', 'branches', 'data'));
@@ -68,6 +74,6 @@ class DepartmentController extends Controller
         $department = Department::findOrFail($id);
         $department->delete();
 
-        return redirect()->back()->with('success', 'Запись успешно обновлена');
+        return redirect()->back()->with('success', 'Запись успешно удалена');
     }
 }

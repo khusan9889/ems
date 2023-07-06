@@ -37,13 +37,11 @@
                                     value="{{ request('name') }}">
                             </td>
                             <td>
-                                <select class="form-control form-control-sm" name="branch">
+                                <select class="form-control form-control-sm" name="branch" @if (auth()->user()->branch_id != 1) disabled @endif>
                                     <option value="" style="font-size: 12px;">Все</option>
-                                    @foreach ($branches as $key => $branch)
-                                        <option value="{{ $branch->id }}" style="font-size: 12px;"
-                                            @if ($branch->id == request('branch')) selected @endif>
-                                            {{ $branch->name }}
-                                        </option>
+                                    @foreach ($branches as $id => $name)
+                                        <option value="{{ $id }}" style="font-size: 12px;"
+                                            @if ($id == request('branch') || (auth()->user()->branch_id == $id && auth()->user()->branch_id != 1)) selected @endif>{{ $name }}</option>
                                     @endforeach
                                 </select>
                             </td>
