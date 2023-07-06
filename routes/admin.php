@@ -76,55 +76,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/activities',);
     });
-<<<<<<< HEAD
-
-    Route::group(['prefix' => 'polytrauma'], function () {
-        Route::get('polyt-create-page', [PolytraumaController::class, 'create'])->name('polytrauma.polyt-create-page');
-        Route::post('add', [PolytraumaController::class, 'store'])->name('polytrauma.add');
-        Route::get('/polyt-edit-page/{id}', [PolytraumaController::class, 'edit'])->name('polyt-edit-page');
-        Route::put('/update-data/{id}', [PolytraumaController::class, 'update'])->name('polyt-update-data');
-
-        Route::delete('/delete/{id}', [PolytraumaController::class, 'destroy'])->name('polytrauma.delete');
-    });
-
-    Route::group(['prefix' => 'users'], function () {
-        Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('users.delete');
-        Route::get('/', [UserController::class, 'index'])->name('users.index');
-
-        Route::get('users-create-page', [UserController::class, 'create'])->name('users.create-page');
-
-        Route::post('/users', [UserController::class, 'store'])->name('users.store');
-
-        Route::get('/edit-page/{user}', [UserController::class, 'edit'])->name('users.edit-page');
-
-        Route::put('/update-data/{user}', [UserController::class, 'update'])->name('users.update');
-    });
-
-    // Route::post('/departments/fetch', [DepartmentController::class, 'fetchDepartments'])->name('departments.fetch');
-
-    Route::group(['prefix' => 'branch'], function () {
-        Route::get('/', [BranchController::class, 'index']);
-    });
-
-=======
->>>>>>> 57c56fa24bcafae2262a9bb6a09e9d5a68321c30
     Route::group(['prefix' => 'departments'], function () {
         Route::get('/branch', [BranchController::class, 'fetchDepartments']);
     });
-<<<<<<< HEAD
-
-    Route::get('/acs/statistics', [ACSController::class, 'statistics']);
-    Route::get('/polytrauma/statistics', [PolytraumaController::class, 'statistics']);
-
-    Route::prefix('/roles')->group(function () {
-        Route::get('/', [RoleController::class, 'index'])->name('role.list');
-    });
-    Route::prefix('/permissions')->group(function () {
-        Route::get('/{name}', [PermissionController::class, 'index'])->name('role.permission');
-        Route::post('/update', [PermissionController::class, 'update'])->name('permission.update');
-    });
-
-    // Route::get('/activities', );
-=======
->>>>>>> 57c56fa24bcafae2262a9bb6a09e9d5a68321c30
 });
