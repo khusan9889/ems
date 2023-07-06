@@ -13,18 +13,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth', 'permission']], function () {
     Route::get('/acs/list', [ACSController::class, 'index']);
+    Route::get('fullform-acs/{id}', [ACSController::class, 'fullform'])->name('full-table');
 
     Route::get('/polytrauma/list', [PolytraumaController::class, 'index']);
-
-    Route::get('/fullform-acs/{id}', function ($id) {
-        $data = ACS::findOrFail($id);
-        return view('dashboard.pages.full-table', compact('data'));
-    })->name('full-table');
-    Route::get('/fullform-polyt/{id}', function ($id) {
-        $data = Polytrauma::findOrFail($id);
-        return view('dashboard.pages.full-table-polyt', compact('data'));
-    })->name('full-table-polyt');
-    // Add the route for the create-page
+    Route::get('/fullform-polyt/{id}', [PolytraumaController::class, 'fulltable'])->name('full-table-polyt');
 
     Route::group(['prefix' => 'acs'], function () {
         Route::get('create-page', [ACSController::class, 'create'])->name('acs.create-page');

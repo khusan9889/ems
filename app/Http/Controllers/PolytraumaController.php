@@ -37,25 +37,10 @@ class PolytraumaController extends Controller
         return view('dashboard.pages.home', compact('data', 'branches', 'departments', 'hospitalization_channels'));
     }
 
-    public function fullTable(Request $request)
+    public function fullTable($id)
     {
-        $query = Polytrauma::query();
-
-        // Filter by department
-        if ($request->has('branch')) {
-            $branch = $request->input('branch');
-            $query->where('branch', $branch);
-        }
-
-        // Search by full name
-        if ($request->has('search')) {
-            $search = $request->input('search');
-            $query->where('full_name', 'like', "%$search%");
-        }
-
-        $data = $query->get();
-
-        return view('polytrauma.full-table', compact('data'));
+        $data = Polytrauma::findOrFail($id);
+        return view('dashboard.pages.full-table-polyt', compact('data'));
     }
 
     public function destroy($id)
@@ -63,7 +48,7 @@ class PolytraumaController extends Controller
         $polytrauma = Polytrauma::findOrFail($id);
         $polytrauma->delete();
 
-        return redirect()->back()->with('success', 'Record deleted successfully');
+        return redirect()->back()->with('success', 'Запись успешно удалена');
     }
 
     public function store(StorePolytraumaRequest $request)
@@ -81,7 +66,7 @@ class PolytraumaController extends Controller
 
         Polytrauma::create($validatedData);
 
-        return redirect('/polytrauma/list')->with('success', 'Record updated successfully');
+        return redirect('/polytrauma/list')->with('success', 'Запись успешно сохранена');
     }
 
     public function create()
@@ -104,7 +89,7 @@ class PolytraumaController extends Controller
         $polytrauma = Polytrauma::findOrFail($id);
         $polytrauma->update($request->all());
 
-        return redirect('/polytrauma/list')->with('success', 'Record updated successfully');
+        return redirect('/polytrauma/list')->with('success', 'Запись успешно обновлена');
     }
 
     public function statistics(Request $request, PolytraumaServiceInterface $service)

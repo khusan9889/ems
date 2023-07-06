@@ -45,7 +45,6 @@ class ACSController extends Controller
             $query->where('branch', $branch);
         }
 
-        // Search by full name
         if ($request->has('search')) {
             $search = $request->input('search');
             $query->where('full_name', 'like', "%$search%");
@@ -61,7 +60,13 @@ class ACSController extends Controller
         $acs = ACS::findOrFail($id);
         $acs->delete();
 
-        return redirect()->back()->with('success', 'Record deleted successfully');
+        return redirect()->back()->with('success', 'Запись успешно удалена');
+    }
+
+    public function fullform($id)
+    {
+        $data = ACS::findOrFail($id);
+        return view('dashboard.pages.full-table', compact('data'));
     }
 
     public function store(StoreACSRequest $request)
@@ -80,7 +85,7 @@ class ACSController extends Controller
 
         ACS::create($validatedData);
 
-        return redirect('/acs/list')->with('success', 'Record updated successfully');
+        return redirect('/acs/list')->with('success', 'Запись успешно сохранена');
     }
 
     public function create()
@@ -102,7 +107,7 @@ class ACSController extends Controller
     {
         $acs = ACS::findOrFail($id);
         $acs->update($request->all());
-        return redirect('acs/list')->with('success', 'Record updated successfully');
+        return redirect('acs/list')->with('success', 'Запись успешно обновлена');
     }
 
     public function statistics(Request $request, ACSServiceInterface $service)

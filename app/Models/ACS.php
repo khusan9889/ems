@@ -6,11 +6,12 @@ use App\Traits\Scopes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class ACS extends Model
 {
-    use HasFactory, Scopes;
+    use HasFactory, Scopes, LogsActivity;
 
     protected $table = 'acs';
 
@@ -21,6 +22,17 @@ class ACS extends Model
         'Самотек' => 'Самотек',
         'Скорая' => 'Скорая',
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnlyDirty()
+            ->dontSubmitEmptyLogs()
+            ->logFillable()
+            ->logOnly(['create', 'update']); // Optional: Specify the attributes you want to log
+
+        // You can customize the log options based on your requirements
+    }
 
     public function branch(): BelongsTo
     {
