@@ -44,7 +44,12 @@ class DepartmentController extends Controller
 
     public function create()
     {
-        $branches = Branch::all();
+        $userBranchId = auth()->user()->branch_id;
+        if ($userBranchId === 1) {
+            $branches = Branch::all(['id', 'name']);
+        } else {
+            $branches = Branch::where('id', $userBranchId)->get(['id', 'name']);
+        }
 
         return view('dashboard.pages.department-create-page', compact('branches'));
     }

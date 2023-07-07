@@ -18,7 +18,7 @@
                         <table class="table table-striped table-bordered align-middle">
                             <tbody>
                                 <tr>
-                                    <th>id</th>
+                                    <th>№</th>
                                     <td>{{ $department->id }}</td>
                                 </tr>
                                 <tr>

@@ -76,7 +76,12 @@ class PolytraumaController extends Controller
 
     public function create()
     {
-        $branches = Branch::all(['id', 'name']);
+        $userBranchId = auth()->user()->branch_id;
+        if ($userBranchId === 1) {
+            $branches = Branch::all(['id', 'name']);
+        } else {
+            $branches = Branch::where('id', $userBranchId)->get(['id', 'name']);
+        }
         $departments = Department::all(['id', 'name']);
         return view('dashboard.pages.polyt-create-page', compact('branches', 'departments'));
     }
