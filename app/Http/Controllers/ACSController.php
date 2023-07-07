@@ -40,24 +40,24 @@ class ACSController extends Controller
         return view('dashboard.pages.home', compact('data', 'branches', 'hospitalization_channels', 'departments'));
     }
 
-    public function fullTable(Request $request)
-    {
-        $query = ACS::query();
+    // public function fullTable(Request $request)
+    // {
+    //     $query = ACS::query();
 
-        if ($request->has('branch')) {
-            $branch = $request->input('branch');
-            $query->where('branch', $branch);
-        }
+    //     if ($request->has('branch')) {
+    //         $branch = $request->input('branch');
+    //         $query->where('branch', $branch);
+    //     }
 
-        if ($request->has('search')) {
-            $search = $request->input('search');
-            $query->where('full_name', 'like', "%$search%");
-        }
+    //     if ($request->has('search')) {
+    //         $search = $request->input('search');
+    //         $query->where('full_name', 'like', "%$search%");
+    //     }
 
-        $data = $query->get();
+    //     $data = $query->get();
 
-        return view('acs.full-table', compact('data'));
-    }
+    //     return view('acs.full-table', compact('data'));
+    // }
 
     public function destroy($id)
     {
@@ -94,8 +94,14 @@ class ACSController extends Controller
 
     public function create()
     {
-        $branches = Branch::all(['id', 'name']);
+        $userBranchId = auth()->user()->branch_id;
+        if ($userBranchId === 1) {
+            $branches = Branch::all(['id', 'name']);
+        } else {
+            $branches = Branch::where('id', $userBranchId)->get(['id', 'name']);
+        }
         $departments = Department::all(['id', 'name']);
+
         return view('dashboard.pages.create-page', compact('branches', 'departments'));
     }
 
