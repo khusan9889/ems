@@ -19,7 +19,7 @@
                     <tr>
                         <td>{{ $index+1 }}</td>
                         <td>{{ $item['title'] }}</td>
-                        <td>{{ $item['value'] }}</td>
+                        <td>{{ $item['value'] }}%</td>
                     </tr>
                 @endforeach
             </table>
