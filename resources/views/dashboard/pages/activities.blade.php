@@ -26,9 +26,12 @@
         </table>
     </div>
 
-    <!-- Pagination links -->
-    <div class="d-flex justify-content-center">
-        {{ $data->links() }}
-    </div>
+
 </x-panel>
+<!-- Pagination links -->
+<div class="d-flex justify-content-center">
+    {{ $data->links() }}
+</div>
 @endsection
+
+
