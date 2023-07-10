@@ -133,4 +133,6 @@ return [
     "Not_allowed" => "У вас нет доступа!",
     'statistics' => 'Статистика',
     'create' => 'Создать',
+    'fulltable' => 'Детальный обзор',
+    'activity' => 'Активность'
 ];
