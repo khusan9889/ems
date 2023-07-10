@@ -9,19 +9,21 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 class BranchesImport implements ToCollection
 {
     /**
-    * @param Collection $collection
-    */
+     * @param Collection $collection
+     */
     public function collection(Collection $rows)
     {
         foreach ($rows as $row) {
             // Assuming your Excel file columns are in the following order:
-            $name = $row[0]; // Replace with the actual column index
+            $id = $row[0]; // Replace with the actual column index
+            $name = $row[1]; // Replace with the actual column index
 
 
             // Create a new Branch record with the extracted data
-            Branch::create([
+            Branch::updateOrCreate([
+                'id' => $id
+            ], [
                 'name' => $name,
-
             ]);
         }
     }
