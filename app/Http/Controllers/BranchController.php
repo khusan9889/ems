@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Branch;
 use App\Models\Department;
-use App\Services\Contracts\BranchServiceInterface;
 use Illuminate\Http\Request;
 
 class BranchController extends Controller

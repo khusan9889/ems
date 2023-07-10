@@ -41,29 +41,15 @@ class ACSController extends Controller
         return view('dashboard.pages.home', compact('data', 'branches', 'hospitalization_channels', 'departments'));
     }
 
-    // public function fullTable(Request $request)
-    // {
-    //     $query = ACS::query();
-
-    //     if ($request->has('branch')) {
-    //         $branch = $request->input('branch');
-    //         $query->where('branch', $branch);
-    //     }
-
-    //     if ($request->has('search')) {
-    //         $search = $request->input('search');
-    //         $query->where('full_name', 'like', "%$search%");
-    //     }
-
-    //     $data = $query->get();
-
-    //     return view('acs.full-table', compact('data'));
-    // }
-
     public function destroy($id)
     {
         $acs = ACS::findOrFail($id);
         $acs->delete();
+        //logs
+        $activity = new ActionsLog();
+        $activity->name = 'ОКС запись удалена: ' . $acs->id;
+        $activity->user_id = auth()->id();
+        $activity->save();
 
         return redirect()->back()->with('success', 'Запись успешно удалена');
     }

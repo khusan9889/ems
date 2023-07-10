@@ -119,6 +119,11 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
+        $activity = new ActionsLog();
+        $activity->name = 'Пользователь удален: ' . $user->id;
+        $activity->user_id = auth()->id();
+        $activity->save();
+
         return redirect()->back()->with('success', 'User deleted successfully');
     }
 
@@ -128,6 +133,12 @@ class UserController extends Controller
         $departments = Department::where('branch_id', $branchId)->get();
 
         return response()->json(['departments' => $departments]);
+    }
+
+    public function activity()
+    {
+        $data = ActionsLog::with('user')->get();
+        return view('dashboard.pages.activities', ['data' => $data]);
     }
 
 }

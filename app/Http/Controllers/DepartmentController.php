@@ -91,6 +91,11 @@ class DepartmentController extends Controller
         $department = Department::findOrFail($id);
         $department->delete();
 
+        $activity = new ActionsLog();
+        $activity->name = 'Отделение удалено: ' . $department->id;
+        $activity->user_id = auth()->id();
+        $activity->save();
+
         return redirect()->back()->with('success', 'Запись успешно удалена');
     }
 }

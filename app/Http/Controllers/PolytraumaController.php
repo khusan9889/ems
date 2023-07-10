@@ -54,6 +54,11 @@ class PolytraumaController extends Controller
         $polytrauma = Polytrauma::findOrFail($id);
         $polytrauma->delete();
 
+        $activity = new ActionsLog();
+        $activity->name = 'Политравма запись удалена: ' . $polytrauma->id;
+        $activity->user_id = auth()->id();
+        $activity->save();
+
         return redirect()->back()->with('success', 'Запись успешно удалена');
     }
 

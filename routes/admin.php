@@ -74,9 +74,10 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/update', [PermissionController::class, 'update'])->name('permission.update');
         });
 
-        Route::get('/activities',);
-    });
-    Route::group(['prefix' => 'departments'], function () {
-        Route::get('/branch', [BranchController::class, 'fetchDepartments']);
-    });
+        Route::get('/activities',[UserController::class, 'activity'])->name('activity');
+        });
+
+        Route::group(['prefix' => 'departments'], function () {
+            Route::get('/branch', [BranchController::class, 'fetchDepartments']);
+        });
 });
