@@ -21,7 +21,7 @@ class StoreACSRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'branch_id' => 'required',
             'department_id' => 'required',
             'history_disease' => 'required',
@@ -35,7 +35,6 @@ class StoreACSRequest extends FormRequest
             'final_result' => 'required',
             'anginal_attack_date' => 'required',
             'cta_invasive_angiography' => 'required',
-            'cta_90min' => 'required',
             'deferred_cta_invasive' => 'required',
             'deferred_cta_completed' => 'required',
             'reasons_not_performing_cta' => 'required',
@@ -54,5 +53,28 @@ class StoreACSRequest extends FormRequest
             'high_intensity_statins' => 'required',
             'ACE_inhibitors_ARBs' => 'required',
         ];
+
+        if ($this->input('cta_invasive_angiography') === 'Нет') {
+            $rules['cta_90min'] = 'nullable';
+        } else {
+            $rules['cta_90min'] = 'required';
+        }
+
+        if ($this->input('deferred_cta_invasive') === 'Нет') {
+            $rules['deferred_cta_completed'] = 'nullable';
+        } else {
+            $rules['deferred_cta_completed'] = 'required';
+        }
+
+        if ($this->input('thrombolytic_therapy') === 'Нет') {
+            $rules['thrombolytic_therapy_administered'] = 'nullable';
+        } elseif ($this->input('thrombolytic_therapy') === 'Да'){
+            $rules['not_administering_tlt'] = 'nullable';
+        } else {
+            $rules['thrombolytic_therapy'] = 'required';
+        }
+
+
+        return $rules;
     }
 }
