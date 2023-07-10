@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActionsLog;
 use App\Models\Branch;
 use App\Models\Department;
 use App\Models\Role;
@@ -48,6 +49,12 @@ class UserController extends Controller
         }
         $roles = Role::all();
         $departments = Department::all(['id', 'name']);
+
+        $activity = new ActionsLog();
+        $activity->name = 'Пользователь создан';
+        $activity->user_id = auth()->id();
+        $activity->save();
+
         return view('dashboard.pages.users-create-page', compact('branches', 'roles', 'departments'));
     }
 
@@ -98,6 +105,11 @@ class UserController extends Controller
         $branches = Branch::all();
         $departments = Department::all();
         $roles = Role::all();
+
+        $activity = new ActionsLog();
+        $activity->name = 'Пользователь изменен: ' . $data->id;
+        $activity->user_id = auth()->id();
+        $activity->save();
 
         return view('dashboard.pages.users-edit-page', compact('data', 'branches', 'departments', 'roles'));
     }

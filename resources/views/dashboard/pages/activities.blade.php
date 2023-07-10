@@ -14,7 +14,13 @@
                 </tr>
             </thead>
             <tbody>
-               {{--  --}}
+               @foreach ($data as $key => $item)
+                <tr>
+                    <td>{{ $item->id }}</td>
+                    <td>{{ $item->name }}</td>
+                </tr>
+
+               @endforeach
             </tbody>
         </table>
     </div>

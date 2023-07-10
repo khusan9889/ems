@@ -70,10 +70,10 @@ return [
                     'url' => '/roles',
                     'title' => 'Роли'
                 ],
-                // [
-                //     'url' => '/activities',
-                //     'title' => 'Активности'
-                // ],
+                [
+                    'url' => '/activities',
+                    'title' => 'Активности'
+                ],
             ]
         ]
     ]

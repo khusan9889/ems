@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePolytraumaRequest;
+use App\Models\ActionsLog;
 use App\Models\Branch;
 use App\Models\Department;
 use App\Models\Polytrauma;
@@ -83,6 +84,13 @@ class PolytraumaController extends Controller
             $branches = Branch::where('id', $userBranchId)->get(['id', 'name']);
         }
         $departments = Department::all(['id', 'name']);
+
+        // Log the creation activity
+        $activity = new ActionsLog();
+        $activity->name = 'Таблица Политравмы создана'; // The text you want to save in the log
+        $activity->user_id = auth()->id();
+        $activity->save();
+
         return view('dashboard.pages.polyt-create-page', compact('branches', 'departments'));
     }
 
@@ -90,6 +98,11 @@ class PolytraumaController extends Controller
     {
         $data = Polytrauma::findOrFail($id);
         $branches = Branch::all();
+
+        $activity = new ActionsLog();
+        $activity->name = 'Политравма запись изменена: ' . $data->id;
+        $activity->user_id = auth()->id();
+        $activity->save();
 
         return view('dashboard.pages.polyt-edit-page', compact('data', 'branches'));
     }

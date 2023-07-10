@@ -11,7 +11,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class ACS extends Model
 {
-    use HasFactory, Scopes, LogsActivity;
+    use HasFactory, Scopes;
 
     protected $table = 'acs';
 

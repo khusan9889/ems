@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreACSRequest;
 use App\Models\ACS;
+use App\Models\ActionsLog;
 use App\Models\Branch;
 use App\Models\Department;
 use App\Services\Contracts\ACSServiceInterface;
@@ -102,6 +103,12 @@ class ACSController extends Controller
         }
         $departments = Department::all(['id', 'name']);
 
+        // Log the creation activity
+        $activity = new ActionsLog();
+        $activity->name = 'Таблица ОКС создана';
+        $activity->user_id = auth()->id();
+        $activity->save();
+
         return view('dashboard.pages.create-page', compact('branches', 'departments'));
     }
 
@@ -109,6 +116,12 @@ class ACSController extends Controller
     {
         $data = ACS::findOrFail($id);
         $branches = Branch::all();
+
+        // Log the edit activity
+        $activity = new ActionsLog();
+        $activity->name = 'ОКС запись изменена: ' . $data->id;
+        $activity->user_id = auth()->id();
+        $activity->save();
 
         return view('dashboard.pages.edit-page', compact('data', 'branches'));
     }

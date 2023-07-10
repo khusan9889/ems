@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActionsLog;
 use App\Models\Branch;
 use App\Models\Department;
 use App\Services\Contracts\DepartmentServiceInterface;
@@ -35,6 +36,11 @@ class DepartmentController extends Controller
         $data = Department::findOrFail($id);
         $branches = Branch::all();
 
+        $activity = new ActionsLog();
+        $activity->name = 'Отделение изменено: ' . $data->id;
+        $activity->user_id = auth()->id();
+        $activity->save();
+
         return view('dashboard.pages.department-edit-page', [
             'data' => $data,
             'department' => $data,
@@ -50,6 +56,12 @@ class DepartmentController extends Controller
         } else {
             $branches = Branch::where('id', $userBranchId)->get(['id', 'name']);
         }
+
+        // Log the creation activity
+        $activity = new ActionsLog();
+        $activity->name = 'Отделение создано'; // The text you want to save in the log
+        $activity->user_id = auth()->id();
+        $activity->save();
 
         return view('dashboard.pages.department-create-page', compact('branches'));
     }
