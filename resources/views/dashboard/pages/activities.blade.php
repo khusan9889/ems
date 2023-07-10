@@ -21,11 +21,14 @@
                     <td>{{ $item->user->name }}</td>
                     <td>{{ $item->created_at }}</td>
                 </tr>
-
                @endforeach
             </tbody>
         </table>
     </div>
-</x-panel>
 
+    <!-- Pagination links -->
+    <div class="d-flex justify-content-center">
+        {{ $data->links() }}
+    </div>
+</x-panel>
 @endsection
