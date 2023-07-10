@@ -74,6 +74,19 @@ class StoreACSRequest extends FormRequest
             $rules['thrombolytic_therapy'] = 'required';
         }
 
+        if ($this->input('ecg_during_hospitalization') === 'Нет') {
+            $rules['st_segment'] = 'nullable';
+        } else {
+            $rules['st_segment'] = 'required';
+        }
+
+        if ($this->input('echocardiogram') === 'Нет') {
+            $rules['first_measurement'] = 'nullable';
+        } else {
+            $rules['first_measurement'] = 'required';
+        }
+
+
 
         return $rules;
     }
