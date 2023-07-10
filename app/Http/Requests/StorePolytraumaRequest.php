@@ -57,5 +57,7 @@ class StorePolytraumaRequest extends FormRequest
             'stat_department_full_name' => 'required',
 
         ];
+
+        
     }
 }

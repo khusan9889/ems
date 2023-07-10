@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\ActionsLog;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,12 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+
+        $user = auth()->user();
+        $activity = new ActionsLog();
+        $activity->name = 'Пользователь вошел в сеть: ' . $user->name;
+        $activity->user_id = $user->id;
+        $activity->save();
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

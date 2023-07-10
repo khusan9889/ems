@@ -86,8 +86,6 @@ class StoreACSRequest extends FormRequest
             $rules['first_measurement'] = 'required';
         }
 
-
-
         return $rules;
     }
 }
