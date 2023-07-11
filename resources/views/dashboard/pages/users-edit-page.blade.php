@@ -13,7 +13,7 @@
 
             <div class="form-group">
                 <label for="branch_id">Субъект</label>
-                <select class="form-control" id="branch" name="branch_id" @disabled(auth()->user()->branch_id !== 1 && auth()->user()->branch_id !== null)>
+                <select class="form-control" id="branch" name="branch_id">
                     <option value="" hidden>Выберите субъект</option>
                     @foreach ($branches as $branch)
                         <option value="{{ $branch->id }}" {{ $branch->id == $data->branch_id ? 'selected' : '' }}>

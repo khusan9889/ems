@@ -102,9 +102,15 @@ class UserController extends Controller
     public function edit(Request $request, User $user)
     {
         $data = $user;
-        $branches = Branch::all();
         $departments = Department::all();
         $roles = Role::all();
+
+        $userBranchId = auth()->user()->branch_id;
+        if ($userBranchId === 1) {
+            $branches = Branch::all(['id', 'name']);
+        } else {
+            $branches = Branch::where('id', $userBranchId)->get(['id', 'name']);
+        }
 
         $activity = new ActionsLog();
         $activity->name = 'Пользователь изменен: ' . $data->id;
