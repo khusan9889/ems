@@ -30,7 +30,7 @@
                                 <tr>
                                     <th>Субъект</th>
                                     <td>
-                                        <select class="form-control" id="branch" name="branch_id" @disabled(auth()->user()->branch_id !== 1 && auth()->user()->branch_id !== null)>
+                                        <select class="form-control" id="branch" name="branch_id">
                                             <option value="" hidden>Выберите субъект</option>
                                             @foreach ($branches as $key => $branch)
                                                 <option value="{{ $branch->id }}" {{ old('branch_id') == $branch->id ? 'selected' : '' }}

@@ -93,7 +93,7 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->branch?->name }}</td>
-                    <td>{{ $item->department->name }}</td>
+                    <td>{{ $item->department?->name }}</td>
                     <td>{{ $item->history_disease }}</td>
                     <td>{{ $item->full_name }}</td>
                     <td>{{ $item->hospitalization_date }}</td>

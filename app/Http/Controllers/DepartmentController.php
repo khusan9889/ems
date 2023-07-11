@@ -34,7 +34,14 @@ class DepartmentController extends Controller
     public function edit($id)
     {
         $data = Department::findOrFail($id);
-        $branches = Branch::all();
+
+
+        $userBranchId = auth()->user()->branch_id;
+        if ($userBranchId === 1) {
+            $branches = Branch::all(['id', 'name']);
+        } else {
+            $branches = Branch::where('id', $userBranchId)->get(['id', 'name']);
+        }
 
         $activity = new ActionsLog();
         $activity->name = 'Отделение изменено: ' . $data->id;
@@ -47,7 +54,7 @@ class DepartmentController extends Controller
             'branches' => $branches
         ]);
     }
-
+    
     public function create()
     {
         $userBranchId = auth()->user()->branch_id;
