@@ -18,7 +18,7 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
-                    <td>{{ $item->user->name }}</td>
+                    <td>{{ $item->user->name }}, {{ $item->user->email }}</td>
                     <td>{{ $item->created_at }}</td>
                 </tr>
                @endforeach
