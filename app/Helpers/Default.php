@@ -4,6 +4,7 @@ use App\Models\Language;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
+use Carbon\Carbon;
 
 function requestOrder()
 {
@@ -105,4 +106,11 @@ function paginate($items, $perPage = 15, $page = null, $options = [])
     $items = $items instanceof Collection ? $items : Collection::make($items);
 
     return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+}
+
+function localDatetime($date, $timezone = 'Asia/Tashkent')
+{
+    if ($date)
+        $date = Carbon::parse($date)->setTimezone($timezone)->format('Y-m-d H:i:s');
+    return $date;
 }
