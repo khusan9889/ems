@@ -27,7 +27,7 @@
                                 </tr>
                                 <tr>
                                     <th>Отделение</th>
-                                    <td>{{$data->department->name}}</td>
+                                    <td>{{$data->department?->name}}</td>
                                 </tr>
                                 <tr>
                                     <th>Номер ИБ</th>
