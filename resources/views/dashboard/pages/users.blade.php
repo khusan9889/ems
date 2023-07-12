@@ -46,13 +46,7 @@
                                 </select>
                             </td>
                             <td>
-                                <select class="form-control form-control-sm" name="department">
-                                    <option value="" style="font-size: 12px;">Все</option>
-                                    @foreach ($departments as $id => $name)
-                                        <option value="{{ $id }}" style="font-size: 12px;"
-                                            @if ($id == request('department')) selected @endif>{{ $name }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" class="form-control form-control-sm" name="department" value="{{ request('department') }}">
                             </td>
                             <td>
                                 <input class="form-control form-control-sm" type="text" name="name"

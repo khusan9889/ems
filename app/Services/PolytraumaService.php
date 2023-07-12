@@ -82,8 +82,10 @@ class PolytraumaService implements PolytraumaServiceInterface
         }
 
         if (isset($filters['department'])) {
-            $departmentId = $filters['department'];
-            $query->where('department_id', $departmentId);
+            $departmentName = $filters['department'];
+            $query->whereHas('department', function ($subQuery) use ($departmentName) {
+                $subQuery->where('name', 'like', '%' . $departmentName . '%');
+            });
         }
 
         // Filter by full name

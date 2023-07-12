@@ -47,8 +47,11 @@ class UserService implements UserServiceInterface
             });
         }
 
-        if ($filters['department']) {
-            $query->where('department_id', $filters['department']);
+        if (isset($filters['department'])) {
+            $departmentName = $filters['department'];
+            $query->whereHas('department', function ($subQuery) use ($departmentName) {
+                $subQuery->where('name', 'like', '%' . $departmentName . '%');
+            });
         }
 
         if ($filters['role']) {

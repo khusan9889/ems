@@ -71,11 +71,12 @@ class ACSService implements ACSServiceInterface
                 $filters['hospitalization_channels'],
                 fn($query, $value) => $query->where('hospitalization_channels', $value)
             )
+
             ->when(
                 $filters['branch'],
                 fn($query, $value) => $query->where('branch_id', $value)
             );
-        // ->get();
+
 
         // Filter by department
         if (isset($filters['branch'])) {
@@ -84,10 +85,16 @@ class ACSService implements ACSServiceInterface
         }
 
         if (isset($filters['department'])) {
-            $departmentId = $filters['department']; // Assuming the value is the branch ID
-            $query->where('department_id', $departmentId);
+            $departmentName = $filters['department'];
+            $query->whereHas('department', function ($subQuery) use ($departmentName) {
+                $subQuery->where('name', 'like', '%' . $departmentName . '%');
+            });
         }
 
+        // if (isset($filters['department'])) {
+        //     $departmentId = $filters['department'];
+        //     $query->where('department_id', $departmentId);
+        // }
         // Filter by history disease
         if (isset($filters['history_disease'])) {
             $query->where('history_disease', 'like', "%{$filters['history_disease']}%");
