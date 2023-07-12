@@ -37,7 +37,7 @@ class Branch extends Model
         return $this->hasMany(User::class);
     }
 
-    public function department(): HasMany
+    public function departments(): HasMany
     {
         return $this->hasMany(Department::class);
     }

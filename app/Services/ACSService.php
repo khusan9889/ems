@@ -91,10 +91,6 @@ class ACSService implements ACSServiceInterface
             });
         }
 
-        // if (isset($filters['department'])) {
-        //     $departmentId = $filters['department'];
-        //     $query->where('department_id', $departmentId);
-        // }
         // Filter by history disease
         if (isset($filters['history_disease'])) {
             $query->where('history_disease', 'like', "%{$filters['history_disease']}%");
