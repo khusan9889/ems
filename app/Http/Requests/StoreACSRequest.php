@@ -66,14 +66,6 @@ class StoreACSRequest extends FormRequest
             $rules['deferred_cta_completed'] = 'required';
         }
 
-        // if ($this->input('thrombolytic_therapy') === 'Нет') {
-        //     $rules['thrombolytic_therapy_administered'] = 'nullable';
-        // } elseif ($this->input('thrombolytic_therapy') === 'Да'){
-        //     $rules['not_administering_tlt'] = 'nullable';
-        // } else {
-        //     $rules['thrombolytic_therapy'] = 'required';
-        // }
-
         if ($this->input('thrombolytic_therapy') === 'Да') {
             $rules['thrombolytic_therapy_administered'] = 'nullable';
             $rules['not_administering_tlt'] = 'nullable';
