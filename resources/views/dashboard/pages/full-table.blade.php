@@ -9,6 +9,11 @@
                     <div class="d-flex justify-content-between">
                         <h5 class="card-title">Форма {{$data->id}}</h5>
                         <div>
+
+                            <a href="{{ route('save-and-visualize', ['id' => $data->id]) }}" class="btn btn-primary btn-sm">
+                                <i class="fas fa-save"></i> Save
+                            </a>
+
                             <a href="{{ route('edit-page', ['id' => $data->id]) }}" class="btn btn-primary btn-sm">
                                 <i class="fas fa-pen"></i>
                             </a>

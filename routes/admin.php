@@ -6,6 +6,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\Permissions\PermissionController;
 use App\Http\Controllers\Permissions\RoleController;
 use App\Http\Controllers\PolytraumaController;
+use App\Http\Controllers\PrintController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -80,4 +81,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::group(['prefix' => 'departments'], function () {
             Route::get('/branch', [BranchController::class, 'fetchDepartments']);
         });
+
+        Route::get('print/', [PrintController::class, 'create_pdf']);
 });
