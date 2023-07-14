@@ -186,7 +186,8 @@ return [
         /*
          * Package Service Providers...
          */
-        Mccarlosen\LaravelMpdf\LaravelMpdfServiceProvider::class,
+        // McCarlosen\LaravelMpdf\LaravelMpdfServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -215,7 +216,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-        'PDF' => Mccarlosen\LaravelMpdf\Facades\LaravelMpdf::class, 
+        // 'PDF' => Mccarlosen\LaravelMpdf\Facades\LaravelMpdf::class,
     ])->toArray(),
 
 ];

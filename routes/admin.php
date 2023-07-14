@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::put('/update-data/{user}', [UserController::class, 'update'])->name('users.update');
         });
 
-//        Route::post('/departments/fetch', [DepartmentController::class, 'fetchDepartments'])->name('departments.fetch');
+        //        Route::post('/departments/fetch', [DepartmentController::class, 'fetchDepartments'])->name('departments.fetch');
 
         Route::group(['prefix' => 'branch'], function () {
             Route::get('/', [BranchController::class, 'index']);
@@ -60,7 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::put('/update/{department}', [DepartmentController::class, 'update'])->name('department.update');
             Route::get('/create-page', [DepartmentController::class, 'create'])->name('department.create-page');
             Route::post('/store', [DepartmentController::class, 'store'])->name('department.store');
-//            Route::get('/branch', [BranchController::class, 'fetchDepartments']);
+            //            Route::get('/branch', [BranchController::class, 'fetchDepartments']);
             Route::delete('/delete/{id}', [DepartmentController::class, 'destroy'])->name('department.delete');
         });
 
@@ -75,12 +75,12 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/update', [PermissionController::class, 'update'])->name('permission.update');
         });
 
-        Route::get('/activities',[UserController::class, 'activity'])->name('activity');
-        });
+        Route::get('/activities', [UserController::class, 'activity'])->name('activity');
+    });
 
-        Route::group(['prefix' => 'departments'], function () {
-            Route::get('/branch', [BranchController::class, 'fetchDepartments']);
-        });
+    Route::group(['prefix' => 'departments'], function () {
+        Route::get('/branch', [BranchController::class, 'fetchDepartments']);
+    });
 
-        Route::get('print/', [PrintController::class, 'create_pdf']);
+    Route::get('print/', [PrintController::class, 'create_pdf'])->name('save');
 });
