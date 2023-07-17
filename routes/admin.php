@@ -5,6 +5,7 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\Permissions\PermissionController;
 use App\Http\Controllers\Permissions\RoleController;
+use App\Http\Controllers\PolytPrintController;
 use App\Http\Controllers\PolytraumaController;
 use App\Http\Controllers\PrintController;
 use App\Http\Controllers\UserController;
@@ -83,4 +84,5 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::get('print/{id}', [PrintController::class, 'create_pdf'])->name('save');
+    Route::get('polyt-print/{id}', [PolytPrintController::class, 'create_pdf'])->name('polyt-save');
 });

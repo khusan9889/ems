@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ACS;
+use App\Models\Polytrauma;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Mpdf\Mpdf;
 
 
-class PrintController extends Controller
+class PolytPrintController extends Controller
 {
     public function create_pdf(Request $request, $id)
     {
-        $acs = ACS::findOrFail($id);
+        $polyt = Polytrauma::findOrFail($id);
 
         $mpdf_uz = new Mpdf();
         $application_file_uz = 'uztest.pdf';
 
-        $view_uz = View::make('dashboard.pages.print', compact('acs'));
+        $view_uz = View::make('dashboard.pages.polyt-print', compact('polyt'));
 
         $html_content_uz = $view_uz->render();
         $mpdf_uz->WriteHTML($html_content_uz);
