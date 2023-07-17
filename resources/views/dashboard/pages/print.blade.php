@@ -6,29 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ОКС</title>
-    <style>
-        .d-flex {
-            display: flex;
-        }
-    </style>
 
 </head>
 
 <body>
-    <div class="container">
-        <div class="d-flex justify-content-center">
-            <h6>КАРТА СОБЛЮДЕНИЯ КЛИНИЧЕСКИХ ПРОТОКОЛОВ при ОКС (STEMI/NSTEMI)</h6>
-        </div>
-        <div style="display: flex;justify-content:space-between">
-            <p
-                style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:center;'>
-                <strong><span style="font-size:11px;">КАРТА СОБЛЮДЕНИЯ КЛИНИЧЕСКИХ ПРОТОКОЛОВ&nbsp;<br>&nbsp;при
-                        ОКС</span></strong><strong><span style="font-size:11px;">&nbsp;</span></strong><strong><span
-                        style="font-size:11px;">(</span></strong><strong><span
-                        style="font-size:11px;">STEMI</span></strong><strong><span
-                        style="font-size:11px;">/</span></strong><strong><span
-                        style="font-size:11px;">NSTEMI</span></strong><strong><span
-                        style="font-size:11px;">)</span></strong></p>
+            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:40.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:center;' align="center">
+                <strong><span style="font-size:11px;">КАРТА СОБЛЮДЕНИЯ КЛИНИЧЕСКИХ ПРОТОКОЛОВ&nbsp;<br>&nbsp;при ОКС</span></strong><strong><span style="font-size:11px;">&nbsp;</span></strong><strong><span style="font-size:11px;">(</span></strong><strong><span style="font-size:11px;">STEMI</span></strong><strong><span style="font-size:11px;">/</span></strong><strong><span style="font-size:11px;">NSTEMI</span></strong><strong><span style="font-size:11px;">)</span></strong>
+            </p>
             <p
                 style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Отделение: &nbsp;{{ $acs->department->name }}&nbsp;&nbsp; &nbsp;
@@ -170,41 +154,41 @@
                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;□ НЕТ</strong></span></p>
             </div>
             <p
-                style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+                style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Проведено <strong>ЭхоКГ (с&nbsp;</strong></span><strong><span
                         style="font-size:11px;">оценкой ФВ ЛЖ%)</span></strong><span style="font-size:11px;">: &nbsp;
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;□ <strong>ДА&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;□ НЕТ</strong></span></p>
             <p
-                style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border-bottom:.5pt solid windowtext;'>
+                style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border-bottom:.5pt solid windowtext;'>
                 <span style="font-size:11px;">Если &laquo;Да&raquo;, то время первого измерения ФВ ЛЖ% &nbsp; &nbsp;
                     &nbsp;<strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>□
                     <strong>&le;3 сутки&nbsp;&nbsp;</strong>□ <strong>&gt; 3 суток</strong></span></p>
             <p
-                style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border-bottom:.5pt solid windowtext;'>
+                style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border-bottom:.5pt solid windowtext;'>
                 <span style="font-size:11px;">Проведены анализы на <strong>ЛПНП</strong>: &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;□
                     <strong>ДА&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp; &nbsp;&nbsp;□ НЕТ</strong></span></p>
             <p
-                style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border-bottom:.5pt solid windowtext;'>
+                style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border-bottom:.5pt solid windowtext;'>
                 <strong><span style="font-size:11px;">Проведены анализ на АЧТВ (25-36сек)</span></strong><span
                     style="font-size:11px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;□
                     <strong>ДА&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp; &nbsp;&nbsp; □ НЕТ</strong></span></p>
             <p
-                style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+                style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Проведена <strong>антикоагулянтная терапия</strong>: &nbsp; &nbsp; &nbsp;
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;□ <strong>ДА&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;□ НЕТ</strong></span></p>
             <div
-                style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border-top:solid windowtext 1.0pt;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:none;padding:1.0pt 0cm 1.0pt 0cm;'>
+                style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border-top:solid windowtext 1.0pt;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:none;padding:1.0pt 0cm 1.0pt 0cm;'>
                 <p
-                    style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0cm;'>
+                    style='margin-top:0cm;margin-right:0cm;margin-bottom:5.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0cm;'>
                     <span style="font-size:11px;">Принимал&nbsp;</span><strong><span
                             style="font-size:11px;">аспирин</span></strong><span
                         style="font-size:11px;">:&nbsp;&nbsp;</span><span style="font-size:11px;">&nbsp; &nbsp; &nbsp;
@@ -215,7 +199,7 @@
                             &nbsp;&nbsp;□ НЕТ</strong></span></p>
             </div>
             <p
-                style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+                style='margin-top:0cm;margin-right:0cm;margin-bottom:5.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Принимал&nbsp;</span><strong><span
                         style="font-size:11px;">ингибиторы&nbsp;</span></strong><strong><span
                         style="font-size:11px;">P2Y12</span></strong><span style="font-size:11px;">:&nbsp;</span><span
@@ -224,13 +208,13 @@
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;□ <strong>ДА&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;□ НЕТ</strong></span></p>
             <p
-                style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+                style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <em><span style="font-size:11px;">(</span></em><em><span style="font-size:11px;">prasugrel,
                         ticagrelor, или clopidogrel)</span></em></p>
             <div
-                style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border-top:solid windowtext 1.0pt;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:none;padding:1.0pt 0cm 1.0pt 0cm;'>
+                style='margin-top:0cm;margin-right:0cm;margin-bottom:5.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border-top:solid windowtext 1.0pt;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:none;padding:1.0pt 0cm 1.0pt 0cm;'>
                 <p
-                    style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0cm;'>
+                    style='margin-top:0cm;margin-right:0cm;margin-bottom:5.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0cm;'>
                     <span style="font-size:11px;">Принимал&nbsp;</span><strong><span style="font-size:11px;">статины
                             высокой интенсивности</span></strong><span style="font-size:11px;">:&nbsp;</span><span
                         style="font-size:11px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -238,17 +222,17 @@
                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;□
                             НЕТ</strong></span></p>
                 <p
-                    style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0cm;'>
+                    style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0cm;'>
                     <em><span style="font-size:11px;">(</span></em><em><span
                             style="font-size:11px;">atorvastatin&nbsp;</span></em><em><span
-                            style='font-size:11px;font-family:"Cambria Math",serif;'>⩾</span></em><em><span
+                            style='font-size:11px;font-family:"Cambria Math",serif;'>≥</span></em><em><span
                             style="font-size:11px;">40 mg or rosuvastatin&nbsp;</span></em><em><span
-                            style='font-size:11px;font-family:"Cambria Math",serif;'>⩾</span></em><em><span
+                            style='font-size:11px;font-family:"Cambria Math",serif;'>≥</span></em><em><span
                             style="font-size:11px;">20 mg)</span></em></p>
             </div>
             <p
-                style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
-                <span style="font-size:11px;">Принимал и</span><span style="font-size:11px;">нгибиторы <strong>АПФ
+                style='margin-top:0cm;margin-right:0cm;margin-bottom:40.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+                <span style="font-size:11px;">Принимал </span><span style="font-size:11px;">ингибиторы <strong>АПФ
                         или&nbsp;</strong></span><strong><span style="font-size:11px;">БРА</span></strong><strong><span
                         style="font-size:11px;">II</span></strong><span style="font-size:11px;">:&nbsp; &nbsp;
                     &nbsp;&nbsp;</span><span style="font-size:11px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -262,9 +246,6 @@
                     <strong><span style="font-size:11px;">ФИО лечащего врача:&nbsp;{{ $acs->physician_full_name }} &nbsp; &nbsp; &nbsp; &nbsp;
                             &nbsp; &nbsp; &nbsp;ФИО специалиста стат.отдела:&nbsp;{{ $acs->stat_department_full_name }}&nbsp;</span></strong></p>
             </div>
-        </div>
-
-    </div>
 </body>
 
 </html>
