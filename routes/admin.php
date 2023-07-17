@@ -82,5 +82,5 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/branch', [BranchController::class, 'fetchDepartments']);
     });
 
-    Route::get('print/', [PrintController::class, 'create_pdf'])->name('save');
+    Route::get('print/{id}', [PrintController::class, 'create_pdf'])->name('save');
 });
