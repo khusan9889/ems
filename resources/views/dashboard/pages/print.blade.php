@@ -198,59 +198,178 @@
     <div
         style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;background:#F2F2F2;'>
         <div style="border: 1px solid #000; padding: 5px;">
-            <p
-                style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;background:#F2F2F2;border:none;padding:0cm;'>
+            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Показана <strong>отсроченная</strong> ЧКВ/инвазивная ангиография:
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    &nbsp;
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><strong><span
-                        style="font-size:11px;">□</span></strong><strong><span
-                        style="font-size:11px;">&nbsp;</span></strong><strong><span style="font-size:11px;">ДА
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;□ НЕТ</span></strong>
-            </p>
-            <p
-                style='margin-top:12.0pt;margin-right:0cm;margin-bottom:6.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;background:#F2F2F2;border:none;padding:0cm;'>
-                <span style="font-size:11px;">Отсроченная ЧКВ выполнена:<strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <strong style='font-family:helvetica'>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                        &nbsp;&nbsp;□</strong></span><strong><span
-                        style="font-size:11px;">&nbsp;</span></strong><strong><span style="font-size:11px;">ДА
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;□ НЕТ</span></strong>
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        @if (mb_strtolower(trim($acs->deferred_cta_invasive)) == mb_strtolower('ДА'))
+                            &#10004;
+                        @else
+                            &#9634;
+                        @endif
+                        ДА
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        @if (mb_strtolower(trim($acs->deferred_cta_invasive)) == mb_strtolower('НЕТ'))
+                            &#10004;
+                        @else
+                            &#9634;
+                        @endif
+                        НЕТ
+                    </strong>
+                </span>
+            </p>
+            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+                <span style="font-size:11px;">Отсроченная ЧКВ выполнена:
+                    <strong style='font-family:helvetica'>
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp;&nbsp; &nbsp; &nbsp;
+                        @if (mb_strtolower(trim($acs->deferred_cta_completed)) == mb_strtolower('ДА'))
+                            &#10004;
+                        @else
+                            &#9634;
+                        @endif
+                        ДА
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        @if (mb_strtolower(trim($acs->deferred_cta_completed)) == mb_strtolower('НЕТ'))
+                            &#10004;
+                        @else
+                            &#9634;
+                        @endif
+                        НЕТ
+                    </strong>
+                </span>
             </p>
         </div>
     </div>
-    <p
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'>
+    <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Если&nbsp;</span><span style="font-size:11px;">не проведена
-            ЧКВ</span><span style="font-size:11px;">, отметьте причину: <strong>□ медицинские противопоказания,
-                □ отсутствие специалиста, □ отсутствие оборудования, □ занятость оборудования, □ отсутствие
-                расходных материалов, □ отказ больного.</strong></span>
+            ЧКВ</span><span style="font-size:11px;">, отметьте причину: <strong>
+            <strong style='font-family:helvetica'>
+                &nbsp;
+                @if (mb_strtolower(trim($acs->reasons_not_performing_cta)) == mb_strtolower('медицинские противопоказания'))
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                медицинские противопоказания
+                &nbsp; &nbsp;
+                @if (mb_strtolower(trim($acs->reasons_not_performing_cta)) == mb_strtolower('отсутствие специалиста'))
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                отсутствие специалиста
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                @if (mb_strtolower(trim($acs->reasons_not_performing_cta)) == mb_strtolower('отсутствие оборудования'))
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                отсутствие оборудования
+                &nbsp;
+                @if (mb_strtolower(trim($acs->reasons_not_performing_cta)) == mb_strtolower('занятость оборудования'))
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                занятость оборудования
+                &nbsp;
+                @if (mb_strtolower(trim($acs->reasons_not_performing_cta)) == mb_strtolower('отсутствие расходных материалов'))
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                отсутствие расходных материалов
+                &nbsp;
+                @if (mb_strtolower(trim($acs->reasons_not_performing_cta)) == mb_strtolower('отказ больного'))
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                отказ больного
+            </strong>
+        </span>
     </p>
     <div
         style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;background:#F2F2F2;'>
         <div style="border: 1px solid #000; padding: 5px;">
-            <p
-                style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;background:#F2F2F2;border:none;padding:0cm;'>
-                <span style="font-size:11px;">Показана ли тромболитическая терапия (ТЛТ): :&nbsp; &nbsp; &nbsp;
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>□ ДА&nbsp; &nbsp; &nbsp;
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;□
-                        НЕТ</strong></span>
+            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+                <span style="font-size:11px;">Показана ли тромболитическая терапия (ТЛТ):
+                    <strong style='font-family:helvetica'>
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        @if (mb_strtolower(trim($acs->thrombolytic_therapy)) == mb_strtolower('ДА'))
+                            &#10004;
+                        @else
+                            &#9634;
+                        @endif
+                        ДА
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        @if (mb_strtolower(trim($acs->thrombolytic_therapy)) == mb_strtolower('НЕТ'))
+                            &#10004;
+                        @else
+                            &#9634;
+                        @endif
+                        НЕТ
+                    </strong>
+                </span>
             </p>
-            <p
-                style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;background:#F2F2F2;border:none;padding:0cm;'>
-                <span style="font-size:11px;">Если &laquo;Да&raquo;, то проведена ли ТЛТ: &nbsp; &nbsp; &nbsp;
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>□ ДА&nbsp; &nbsp; &nbsp;
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;□
-                        НЕТ</strong></span>
+            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+                <span style="font-size:11px;">Если &laquo;Да&raquo;, то проведена ли ТЛТ:
+                    <strong style='font-family:helvetica'>
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        @if (mb_strtolower(trim($acs->thrombolytic_therapy_administered)) == mb_strtolower('ДА'))
+                            &#10004;
+                        @else
+                            &#9634;
+                        @endif
+                        ДА
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        @if (mb_strtolower(trim($acs->thrombolytic_therapy_administered)) == mb_strtolower('НЕТ'))
+                            &#10004;
+                        @else
+                            &#9634;
+                        @endif
+                        НЕТ
+                    </strong>
+                </span>
             </p>
-            <p
-                style='margin-top:0cm;margin-right:0cm;margin-bottom:.0001pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;background:#F2F2F2;border:none;padding:0cm;'>
-                <span style="font-size:11px;">Если &laquo;НЕТ&raquo;, отметьте причину: <strong>□ медицинские
-                        противопоказания, □ отсутствие препарата, □ отказ больного.</strong></span>
+            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+                <span style="font-size:11px;">Если &laquo;НЕТ&raquo;, отметьте причину:
+                    <strong style='font-family:helvetica'>
+                        &nbsp;
+                        @if (mb_strtolower(trim($acs->not_administering_tlt)) == mb_strtolower('медицинские противопоказания'))
+                            &#10004;
+                        @else
+                            &#9634;
+                        @endif
+                        медицинские противопоказания
+                        &nbsp; &nbsp;
+                        @if (mb_strtolower(trim($acs->not_administering_tlt)) == mb_strtolower('отсутствие препарата'))
+                            &#10004;
+                        @else
+                            &#9634;
+                        @endif
+                        отсутствие препарата
+                        &nbsp; &nbsp;
+                        @if (mb_strtolower(trim($acs->not_administering_tlt)) == mb_strtolower('отказ больного'))
+                            &#10004;
+                        @else
+                            &#9634;
+                        @endif
+                        отказ больного
+                    </strong>
+                </span>
             </p>
         </div>
     </div>
