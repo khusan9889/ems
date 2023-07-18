@@ -9,8 +9,8 @@
                     <div class="d-flex justify-content-between">
                         <h5 class="card-title">Форма {{$data->id}}</h5>
                         <div>
-                            <a href="{{ route('polyt-save', ['id' => $data->id]) }}" class="btn btn-primary btn-sm">
-                                <i class="fas fa-save"></i> Сохранить
+                            <a href="{{ route('polyt-save', ['id' => $data->id]) }}" class="btn btn-dark btn-sm">
+                                <i class="fas fa-save"></i> Печатать
                             </a>
                             <a href="{{ route('polyt-edit-page', ['id' => $data->id]) }}" class="btn btn-primary btn-sm">
                                 <i class="fas fa-pen"></i>
