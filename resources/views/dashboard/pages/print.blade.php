@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <p style='margin-top:0cm;margin-right:0cm;margin-bottom:40.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:center;'
+    <p style='margin-top:0cm;margin-right:0cm;margin-bottom:20.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:center;'
         align="center">
         <strong><span style="font-size:11px;">КАРТА СОБЛЮДЕНИЯ КЛИНИЧЕСКИХ ПРОТОКОЛОВ&nbsp;<br>&nbsp;при
                 ОКС</span></strong><strong><span style="font-size:11px;">&nbsp;</span></strong><strong><span
@@ -20,18 +20,18 @@
                 style="font-size:11px;">NSTEMI</span></strong><strong><span style="font-size:11px;">)</span></strong>
     </p>
     <p
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+        style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Отделение: &nbsp;{{ $acs->department->name }}&nbsp;&nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Номер ИБ:
             &nbsp;{{ $acs->history_disease }}&nbsp;</span>
     </p>
     <p
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+        style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Пациент&nbsp;</span><span style="font-size:11px;">(ФИО)</span><span
             style="font-size:11px;">&nbsp;{{ $acs->full_name }}&nbsp;</span>
     </p>
     <p
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+        style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">
             Канал госпитализации:
             <strong style='font-family:helvetica'>
@@ -59,7 +59,7 @@
         </span>
     </p>
     <p
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+        style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Исход лечения:
             <strong style='font-family:helvetica'>
                 &nbsp;
@@ -86,7 +86,7 @@
             </strong>
         </span>
     </p>
-    <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+    <p style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Исход:
             <strong style='font-family:helvetica'>
                 &nbsp;
@@ -114,24 +114,24 @@
         </span>
     </p>
     <p
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+        style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Срок ангинального приступа при поступлении:
             <strong style='font-family:helvetica'>
-                @if (mb_strtolower(trim($acs->anginal_attack_date)) == mb_strtolower('до 6 ч.'))
+                @if (mb_strtolower(trim($acs->anginal_attack_date)) == mb_strtolower('до 6ч.'))
                     &#10004;
                 @else
                     &#9634;
                 @endif
                 до 6 ч.
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                @if (mb_strtolower(trim($acs->anginal_attack_date)) == mb_strtolower('6-12 ч.'))
+                @if (mb_strtolower(trim($acs->anginal_attack_date)) == mb_strtolower('6-12ч.'))
                     &#10004;
                 @else
                     &#9634;
                 @endif
                 6-12 ч.
                 &nbsp; &nbsp;&nbsp;
-                @if (mb_strtolower(trim($acs->anginal_attack_date)) == mb_strtolower('позже 12 ч.'))
+                @if (mb_strtolower(trim($acs->anginal_attack_date)) == mb_strtolower('позже 12ч.'))
                     &#10004;
                 @else
                     &#9634;
@@ -142,9 +142,9 @@
         </span>
     </p>
     <div
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;background:#F2F2F2;'>
+        style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;background:#F2F2F2;'>
         <div style="border: 1px solid #000; padding: 5px;">
-            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Показана экстренная ЧКВ/инвазивная ангиография:
                     <strong style='font-family:helvetica'>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -167,7 +167,7 @@
                 </span>
             </p>
 
-            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Экстренная ЧКВ выполнена <strong>в течение 90 мин:</strong>
                     <strong style='font-family:helvetica'>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -192,13 +192,13 @@
         </div>
     </div>
     <p
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:.0001pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+        style='margin-top:0cm;margin-right:0cm;margin-bottom:.3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">&nbsp;</span>
     </p>
     <div
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;background:#F2F2F2;'>
+        style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;background:#F2F2F2;'>
         <div style="border: 1px solid #000; padding: 5px;">
-            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Показана <strong>отсроченная</strong> ЧКВ/инвазивная ангиография:
                     <strong style='font-family:helvetica'>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -219,7 +219,7 @@
                     </strong>
                 </span>
             </p>
-            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Отсроченная ЧКВ выполнена:
                     <strong style='font-family:helvetica'>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -245,7 +245,7 @@
             </p>
         </div>
     </div>
-    <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+    <p style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Если&nbsp;</span><span style="font-size:11px;">не проведена
             ЧКВ</span><span style="font-size:11px;">, отметьте причину: <strong>
             <strong style='font-family:helvetica'>
@@ -295,9 +295,9 @@
         </span>
     </p>
     <div
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;background:#F2F2F2;'>
+        style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;background:#F2F2F2;'>
         <div style="border: 1px solid #000; padding: 5px;">
-            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Показана ли тромболитическая терапия (ТЛТ):
                     <strong style='font-family:helvetica'>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -320,7 +320,7 @@
                     </strong>
                 </span>
             </p>
-            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Если &laquo;Да&raquo;, то проведена ли ТЛТ:
                     <strong style='font-family:helvetica'>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -344,7 +344,7 @@
                     </strong>
                 </span>
             </p>
-            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+            <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Если &laquo;НЕТ&raquo;, отметьте причину:
                     <strong style='font-family:helvetica'>
                         &nbsp;
@@ -377,106 +377,279 @@
         style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <strong><span style="font-size:11px;">Во время госпитализации больному (-ой):</span></strong>
     </p>
-    <div
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm;'>
+    <div style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm;'>
         <p
             style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0cm;border-bottom:.5pt solid windowtext;'>
             <span style="font-size:11px;">Проведено <strong>ЭКГ</strong>: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;□
-                <strong>ДА&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    &nbsp; &nbsp; &nbsp;&nbsp;□ НЕТ</strong></span>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                <strong style='font-family:helvetica'>
+                    &nbsp;
+                    @if (mb_strtolower(trim($acs->ecg_during_hospitalization)) == mb_strtolower('Да'))
+                        &#10004;
+                    @else
+                        &#9634;
+                    @endif
+                    Да
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    @if (mb_strtolower(trim($acs->ecg_during_hospitalization)) == mb_strtolower('Нет'))
+                        &#10004;
+                    @else
+                        &#9634;
+                    @endif
+                    Нет
+                    &nbsp; &nbsp;
+                </strong>
+            </span>
         </p>
-        <p
-            style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0cm;'>
+        <hr style="border: 0; height: 1px; background-color: black; margin-bottom: 2px;">
+
+        <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0cm;'>
             <span style="font-size:11px;">Если проведено ЭКГ, <strong>СТ сегмента повышен</strong>: &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;□ <strong>ДА&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                <strong style='font-family:helvetica'>
                     &nbsp;
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;□ НЕТ</strong></span>
+                    @if (mb_strtolower(trim($acs->st_segment)) == mb_strtolower('Да'))
+                        &#10004;
+                    @else
+                        &#9634;
+                    @endif
+                    Да
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    @if (mb_strtolower(trim($acs->st_segment)) == mb_strtolower('Нет'))
+                        &#10004;
+                    @else
+                        &#9634;
+                    @endif
+                    Нет
+                </strong>
+            </span>
         </p>
+        <hr style="border: 0; height: 1px; background-color: black; margin-bottom: 2px;">
     </div>
-    <p
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+    <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Проведено <strong>ЭхоКГ (с&nbsp;</strong></span><strong><span
-                style="font-size:11px;">оценкой ФВ ЛЖ%)</span></strong><span style="font-size:11px;">: &nbsp;
+                style="font-size:11px;">оценкой ФВ ЛЖ%)</span></strong>
+                <span style="font-size:11px;">: &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;□ <strong>ДА&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;□ НЕТ</strong></span>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+            <strong style='font-family:helvetica'>
+                &nbsp;
+                @if (mb_strtolower(trim($acs->echocardiogram)) == mb_strtolower('Да'))
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                Да
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                @if (mb_strtolower(trim($acs->echocardiogram)) == mb_strtolower('Нет'))
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                Нет
+            </strong>
+        </span>
     </p>
-    <p
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border-bottom:.5pt solid windowtext;'>
-        <span style="font-size:11px;">Если &laquo;Да&raquo;, то время первого измерения ФВ ЛЖ% &nbsp; &nbsp;
-            &nbsp;<strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>□
-            <strong>&le;3 сутки&nbsp;&nbsp;</strong>□ <strong>&gt; 3 суток</strong></span>
+    <hr style="border: 0; height: 1px; background-color: black; margin-bottom: 2px;">
+
+    <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border-bottom:.5pt solid windowtext;'>
+        <span style="font-size:11px;">Если &laquo;Да&raquo;, то время первого измерения ФВ ЛЖ%
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <strong style='font-family:helvetica'>
+                &nbsp;
+                @if (strcasecmp(trim($acs->first_measurement), '≤3 сутки') === 0)
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                &le;3 сутки
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                @if (strcasecmp(trim($acs->first_measurement), '>3 суток') === 0)
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                &gt; 3 суток
+            </strong>
+        </span>
     </p>
-    <p
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border-bottom:.5pt solid windowtext;'>
+    <hr style="border: 0; height: 1px; background-color: black; margin-bottom: 2px;">
+    <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border-bottom:.5pt solid windowtext;'>
         <span style="font-size:11px;">Проведены анализы на <strong>ЛПНП</strong>: &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;□
-            <strong>ДА&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp;&nbsp;□ НЕТ</strong></span>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <strong style='font-family:helvetica'>
+                &nbsp;
+                @if (mb_strtolower(trim($acs->cholestero_levels)) == mb_strtolower('Да'))
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                Да
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                @if (mb_strtolower(trim($acs->cholestero_levels)) == mb_strtolower('Нет'))
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                Нет
+            </strong>
+        </span>
     </p>
-    <p
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border-bottom:.5pt solid windowtext;'>
-        <strong><span style="font-size:11px;">Проведены анализ на АЧТВ (25-36сек)</span></strong><span
+    <hr style="border: 0; height: 1px; background-color: black; margin-bottom: 2px;">
+    <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border-bottom:.5pt solid windowtext;'>
+        <strong><span style="font-size:11px;">Проведены анализ на АЧТВ (25-36сек)</span></strong>
+        <span
             style="font-size:11px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;□
-            <strong>ДА&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp;&nbsp; □ НЕТ</strong></span>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <strong style='font-family:helvetica'>
+                &nbsp;
+                @if (mb_strtolower(trim($acs->aptt)) == mb_strtolower('Да'))
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                Да
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                @if (mb_strtolower(trim($acs->aptt)) == mb_strtolower('Нет'))
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                Нет
+            </strong>
+        </span>
     </p>
-    <p
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+    <hr style="border: 0; height: 1px; background-color: black; margin-bottom: 2px;">
+    <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Проведена <strong>антикоагулянтная терапия</strong>: &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;□ <strong>ДА&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;□ НЕТ</strong></span>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <strong style='font-family:helvetica'>
+                &nbsp;
+                @if (mb_strtolower(trim($acs->anticoagulant)) == mb_strtolower('Да'))
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                Да
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                @if (mb_strtolower(trim($acs->anticoagulant)) == mb_strtolower('Нет'))
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                Нет
+            </strong>
+        </span>
     </p>
-    <div
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border-top:solid windowtext 1.0pt;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:none;padding:1.0pt 0cm 1.0pt 0cm;'>
+    <hr style="border: 0; height: 1px; background-color: black; margin-bottom: 2px;">
+    <div style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border-top:solid windowtext 1.0pt;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:none;padding:1.0pt 0cm 1.0pt 0cm;'>
         <p
-            style='margin-top:0cm;margin-right:0cm;margin-bottom:5.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0cm;'>
+            style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0cm;'>
             <span style="font-size:11px;">Принимал&nbsp;</span><strong><span
                     style="font-size:11px;">аспирин</span></strong><span
-                style="font-size:11px;">:&nbsp;&nbsp;</span><span style="font-size:11px;">&nbsp; &nbsp; &nbsp;
+                style="font-size:11px;">:&nbsp;&nbsp;</span>
+                <span style="font-size:11px;">&nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;□ <strong>ДА&nbsp;
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    &nbsp;&nbsp;□ НЕТ</strong></span>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                <strong style='font-family:helvetica'>
+                    &nbsp;
+                    @if (mb_strtolower(trim($acs->aspirin)) == mb_strtolower('Да'))
+                        &#10004;
+                    @else
+                        &#9634;
+                    @endif
+                    Да
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    @if (mb_strtolower(trim($acs->aspirin)) == mb_strtolower('Нет'))
+                        &#10004;
+                    @else
+                        &#9634;
+                    @endif
+                    Нет
+                </strong>
+            </span>
         </p>
+        <hr style="border: 0; height: 1px; background-color: black; margin-bottom: 2px;">
     </div>
-    <p
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:5.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+    <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Принимал&nbsp;</span><strong><span
                 style="font-size:11px;">ингибиторы&nbsp;</span></strong><strong><span
-                style="font-size:11px;">P2Y12</span></strong><span style="font-size:11px;">:&nbsp;</span><span
+                style="font-size:11px;">P2Y12</span></strong><span style="font-size:11px;">:&nbsp;</span>
+                <span
             style="font-size:11px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;□ <strong>ДА&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;□ НЕТ</strong></span>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <strong style='font-family:helvetica'>
+                &nbsp;
+                @if (mb_strtolower(trim($acs->p2y12)) == mb_strtolower('Да'))
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                Да
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                @if (mb_strtolower(trim($acs->p2y12)) == mb_strtolower('Нет'))
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                Нет
+            </strong>
+        </span>
     </p>
+
+
     <p
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+        style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <em><span style="font-size:11px;">(</span></em><em><span style="font-size:11px;">prasugrel,
                 ticagrelor, или clopidogrel)</span></em>
     </p>
+    <hr style="border: 0; height: 1px; background-color: black; margin-bottom: 2px;">
     <div
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:5.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border-top:solid windowtext 1.0pt;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:none;padding:1.0pt 0cm 1.0pt 0cm;'>
+        style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border-top:solid windowtext 1.0pt;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:none;padding:1.0pt 0cm 1.0pt 0cm;'>
         <p
-            style='margin-top:0cm;margin-right:0cm;margin-bottom:5.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0cm;'>
+            style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0cm;'>
             <span style="font-size:11px;">Принимал&nbsp;</span><strong><span style="font-size:11px;">статины
                     высокой интенсивности</span></strong><span style="font-size:11px;">:&nbsp;</span><span
                 style="font-size:11px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;□ <strong>ДА&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;□
-                    НЕТ</strong></span>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                <strong style='font-family:helvetica'>
+                    &nbsp;
+                    @if (mb_strtolower(trim($acs->high_intensity_statins)) == mb_strtolower('Да'))
+                        &#10004;
+                    @else
+                        &#9634;
+                    @endif
+                    Да
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    @if (mb_strtolower(trim($acs->high_intensity_statins)) == mb_strtolower('Нет'))
+                        &#10004;
+                    @else
+                        &#9634;
+                    @endif
+                    Нет
+                </strong>
+            </span>
         </p>
         <p
-            style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0cm;'>
+            style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0cm;'>
             <em><span style="font-size:11px;">(</span></em><em><span
                     style="font-size:11px;">atorvastatin&nbsp;</span></em><em><span
                     style='font-size:11px;font-family:"Cambria Math",serif;'>≥</span></em><em><span
@@ -484,19 +657,37 @@
                     style='font-size:11px;font-family:"Cambria Math",serif;'>≥</span></em><em><span
                     style="font-size:11px;">20 mg)</span></em>
         </p>
+        <hr style="border: 0; height: 1px; background-color: black; margin-bottom: 2px;">
     </div>
     <p
-        style='margin-top:0cm;margin-right:0cm;margin-bottom:40.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+        style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Принимал </span><span style="font-size:11px;">ингибиторы <strong>АПФ
                 или&nbsp;</strong></span><strong><span style="font-size:11px;">БРА</span></strong><strong><span
                 style="font-size:11px;">II</span></strong><span style="font-size:11px;">:&nbsp; &nbsp;
             &nbsp;&nbsp;</span><span style="font-size:11px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;□
-            <strong>ДА&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp;&nbsp;□ НЕТ</strong></span>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <strong style='font-family:helvetica'>
+                &nbsp;
+                @if (mb_strtolower(trim($acs->ACE_inhibitors_ARBs)) == mb_strtolower('Да'))
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                Да
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                @if (mb_strtolower(trim($acs->ACE_inhibitors_ARBs)) == mb_strtolower('Нет'))
+                    &#10004;
+                @else
+                    &#9634;
+                @endif
+                Нет
+            </strong>
+        </span>
     </p>
+    <hr style="border: 0; height: 1px; background-color: black; margin-bottom: 2px;">
     <div
-        style='margin-top:0cm;margin-right:6.1pt;margin-bottom:8.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border:none;border-top:solid windowtext 1.0pt;padding:1.0pt 0cm 0cm 0cm;'>
+        style='margin-top:1cm;margin-right:6.1pt;margin-bottom:7.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border:none;border-top:solid windowtext 1.0pt;padding:1.0pt 0cm 0cm 0cm;'>
         <p
             style='margin-top:0cm;margin-right:0cm;margin-bottom:.0001pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0cm;'>
             <strong><span style="font-size:11px;">ФИО лечащего врача:&nbsp;{{ $acs->physician_full_name }} &nbsp;
