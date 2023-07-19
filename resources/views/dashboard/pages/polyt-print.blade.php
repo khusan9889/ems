@@ -27,7 +27,7 @@
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Дата поступления: {{ $polyt->hospitalization_date }}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Дата выписки:
-            {{ $polyt->discharge_date }},&nbsp;</span></p>
+            {{ $polyt->discharge_date }}&nbsp;</span></p>
     <p
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Канал госпитализации:

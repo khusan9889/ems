@@ -31,6 +31,11 @@
             style="font-size:11px;">&nbsp;{{ $acs->full_name }}&nbsp;</span>
     </p>
     <p
+        style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
+        <span style="font-size:11px;">Дата поступления: {{ $acs->hospitalization_date }}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Дата выписки:
+            {{ $acs->discharge_date }}&nbsp;</span></p>
+    <p
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">
             Канал госпитализации:
