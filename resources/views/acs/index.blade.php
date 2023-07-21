@@ -1,10 +1,12 @@
 @php
     $selectedID = null;
     $order = request()->sort;
-
+    
 @endphp
 
-
+@php
+    phpinfo();
+@endphp
 <div class="table-responsive">
     <table id="data-table-default" class="table table-striped table-bordered align-middle">
 
@@ -33,7 +35,8 @@
                         </div>
                     </td>
                     <td>
-                        <select class="form-control form-control-sm" name="branch" @if (auth()->user()->branch_id != 1) disabled @endif>
+                        <select class="form-control form-control-sm" name="branch"
+                            @if (auth()->user()->branch_id != 1) disabled @endif>
                             <option value="" style="font-size: 12px;">Все</option>
                             @foreach ($branches as $id => $name)
                                 <option value="{{ $id }}" style="font-size: 12px;"
@@ -42,7 +45,8 @@
                         </select>
                     </td>
                     <td>
-                        <input type="text" class="form-control form-control-sm" name="department" value="{{ request('department') }}">
+                        <input type="text" class="form-control form-control-sm" name="department"
+                            value="{{ request('department') }}">
                     </td>
                     <td>
                         <input class="form-control form-control-sm" type="text" name="history_disease"
@@ -70,7 +74,8 @@
                         </select>
                     </td>
                     <td>
-                        <input class="form-control form-control-sm" name="physician_full_name" value="{{ request('physician_full_name') }}"></input>
+                        <input class="form-control form-control-sm" name="physician_full_name"
+                            value="{{ request('physician_full_name') }}"></input>
                     </td>
 
                     <td class="align-middle d-flex justify-content-center">
@@ -133,6 +138,4 @@
         $('#deleteConfirmationModal').modal('show');
         $('#deleteForm').attr('action', `/acs/delete/${id}`);
     }
-
-
 </script>
