@@ -1,12 +1,9 @@
 @php
     $selectedID = null;
     $order = request()->sort;
-    
+
 @endphp
 
-@php
-    phpinfo();
-@endphp
 <div class="table-responsive">
     <table id="data-table-default" class="table table-striped table-bordered align-middle">
 
