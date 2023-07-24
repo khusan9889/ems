@@ -20,6 +20,7 @@ $ cd repository
 
 3) Install Dependencies:
 $ composer install
+$ npm install
 
 4) Create Environment File:
 * Laravel uses an .env file to manage environment-specific configuration. Duplicate the .env.example file and rename it to .env:
