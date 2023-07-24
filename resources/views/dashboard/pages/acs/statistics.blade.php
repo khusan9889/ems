@@ -11,7 +11,7 @@
                 <tr>
                     <th>№</th>
                     <th>Индикаторы</th>
-                    <th>Резултат (%)</th>
+                    <th>Результат (%)</th>
                 </tr>
                 </thead>
                 @foreach($data as $index=>$item)
