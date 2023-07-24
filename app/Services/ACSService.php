@@ -428,7 +428,7 @@ class ACSService implements ACSServiceInterface
 
         $result[] = [
             'title' => 'Доля пациентов, которым ТЛТ не проведена по причине отказа больного',
-            'value' => $tmp->where('cta_90min', 'Да')->count() / $n * 100
+            'value' => $value
         ];
         //28
         $tmp = $data;
