@@ -14,7 +14,7 @@ P.S: In this project php -v(8.1.18), Composer -v(2.5.5) are used.
 1) Clone the GitHub Repository:
 $ git clone [https://github.com/username/repository.git](https://github.com/khusan9889/ems.git)
 
-2)    Navigate to the Project Directory:
+2)Navigate to the Project Directory:
 * Change your current directory to the newly cloned project:
 $ cd repository
 
