@@ -8,6 +8,7 @@ use App\Models\Branch;
 use App\Models\Department;
 use App\Models\Polytrauma;
 use App\Services\Contracts\PolytraumaServiceInterface;
+use App\Services\PolytraumaService;
 use Illuminate\Http\Request;
 
 class PolytraumaController extends Controller
@@ -122,7 +123,20 @@ class PolytraumaController extends Controller
 
     public function statistics(Request $request, PolytraumaServiceInterface $service)
     {
-        $data = $service->statistics($request);
+        $data = $service->statistics($request, false);
         return view('dashboard.pages.polytrauma.statistics', compact('data'));
     }
+
+    public function less16(Request $request, PolytraumaServiceInterface $service)
+    {
+        $data = $service->statistics($request, 16);
+        return view('dashboard.pages.polytrauma.statistics', compact('data'));
+    }
+
+    public function more25(Request $request, PolytraumaServiceInterface $service)
+    {
+        $data = $service->statistics($request, 25);
+        return view('dashboard.pages.polytrauma.statistics', compact('data'));
+    }
+    
 }

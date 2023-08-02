@@ -9,6 +9,7 @@ use App\Http\Controllers\PolytPrintController;
 use App\Http\Controllers\PolytraumaController;
 use App\Http\Controllers\PrintController;
 use App\Http\Controllers\UserController;
+use App\Models\Polytrauma;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {
@@ -66,7 +67,13 @@ Route::group(['middleware' => 'auth'], function () {
         });
 
         Route::get('/acs/statistics', [ACSController::class, 'statistics']);
-        Route::get('/polytrauma/statistics', [PolytraumaController::class, 'statistics']);
+        // Route::get('/polytrauma/statistics', [PolytraumaController::class, 'statistics']);
+
+        Route::prefix('/polytrauma/statistics')->group(function () {
+            Route::get('/', [PolytraumaController::class, 'statistics'])->name('statistics');
+            Route::get('/less16', [PolytraumaController::class, 'less16'])->name('less16');
+            Route::get('/more25', [PolytraumaController::class, 'more25'])->name('more25');
+        });
 
         Route::prefix('/roles')->group(function () {
             Route::get('/', [RoleController::class, 'index'])->name('role.list');

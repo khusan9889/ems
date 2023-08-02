@@ -65,15 +65,15 @@ class PolytraumaService implements PolytraumaServiceInterface
     {
         $query = $this->modelClass::when(
             $filters['sort'],
-            fn($query, $value) => $query->orderBy('id', $value)
+            fn ($query, $value) => $query->orderBy('id', $value)
         )
             ->when(
                 $filters['hospitalization_channels'],
-                fn($query, $value) => $query->where('hospitalization_channels', $value)
+                fn ($query, $value) => $query->where('hospitalization_channels', $value)
             )
             ->when(
                 $filters['branch'],
-                fn($query, $value) => $query->where('branch_id', $value)
+                fn ($query, $value) => $query->where('branch_id', $value)
             );
 
         // Filter by history disease
@@ -136,60 +136,77 @@ class PolytraumaService implements PolytraumaServiceInterface
             ->get();
     }
 
-    public function statistics($request)
+    public function less16()
+    {
+        return $this->modelClass::where('injury_of_iss', '<=', 16)->get();
+    }
+
+    public function statistics($request, $filterInjuryOfIss = null)
     {
         $date_end = $request->date_end ?? date('Y-m-d');
         $date_start = $request->date_start ?? date('Y-m-d', strtotime($date_end . ' -30 days'));
 
         $data = $this->modelClass::whereDate('created_at', '>=', $date_start)
-            ->wheredate('created_at', '<=', $date_end)->get();
+            ->whereDate('created_at', '<=', $date_end)
+            ->when($filterInjuryOfIss === 16, function ($query, $value) {
+                $query->whereRaw("CAST(injury_of_iss AS INTEGER) < ?", 16);
+            })
+            ->when($filterInjuryOfIss === 25, function ($query, $value) {
+                $query->whereRaw("CAST(injury_of_iss AS INTEGER) > ?", 25);
+            })
+            ->get();
+
+
         $n = $data->count() ?? 1;
         if (!$n) $n = 1;
         $result = [];
+
+        // Calculate statistics based on filtered data
         $tmp = $data;
+
         //1
         $result[] = [
             'title' => 'Доля пациентов, которые выписаны',
             'value' => round($tmp->where('treatment_result', 'Выписан')->count() / $n * 100)
         ];
         //2
-        $tmp = $data;
+        // $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которые умерли',
             'value' => round($tmp->where('treatment_result', 'Летальный исход')->count() / $n * 100)
         ];
         //3
-        $tmp = $data;
+        // $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов с тяжестью состояния TS <4',
             'value' => round($tmp->where('severity_of_ts', '<', 4)->count() / $n * 100)
         ];
         // 4
-        $tmp = $data;
+        // $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов с тяжестью состояния TS ≥ 4',
             'value' => round($tmp->where('severity_of_ts', '>=', 4)->count() / $n * 100)
         ];
         // 5
-        $tmp = $data;
+        // $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов с тяжестью повреждения "незначительные (ISS <9 баллов)"',
             'value' => round($tmp->where('injury_of_iss', '<', 9)->count() / $n * 100)
         ];
         // 6
-        $tmp = $data;
+        // $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов с тяжестью повреждения "умеренные (ISS 9–15 баллов)"',
-            'value' => round($tmp->whereBetween('injury_of_iss', [9,15])->count() / $n * 100)
+            'value' => round($tmp->whereBetween('injury_of_iss', [9, 15])->count() / $n * 100)
         ];
         // 7
-        $tmp = $data;
+        // $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов с тяжестью повреждения "тяжелые (ISS 16–25 баллов)"',
-            'value' => round($tmp->whereBetween('injury_of_iss', [16,25])->count() / $n * 100)
+            'value' => round($tmp->whereBetween('injury_of_iss', [16, 25])->count() / $n * 100)
         ];
         // 8
-        $tmp = $data;
+        // $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов с тяжестью повреждения "крайне тяжелые (ISS >25 баллов)"',
             'value' => round($tmp->where('injury_of_iss', '>', 25)->count() / $n * 100)

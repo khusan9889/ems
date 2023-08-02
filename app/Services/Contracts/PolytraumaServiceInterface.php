@@ -8,6 +8,8 @@ interface PolytraumaServiceInterface
 
     public function apiData();
 
+    public function less16();
+
     public function statistics($request);
 
     public function customStore($request);
@@ -19,4 +21,5 @@ interface PolytraumaServiceInterface
     public function createRecord(array $data);
 
     public function customFilter(array $filters);
+
 }
