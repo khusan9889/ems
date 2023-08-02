@@ -187,30 +187,54 @@ class PolytraumaService implements PolytraumaServiceInterface
             'title' => 'Доля пациентов с тяжестью состояния TS ≥ 4',
             'value' => round($tmp->where('severity_of_ts', '>=', 4)->count() / $n * 100)
         ];
-        // 5
-        // $tmp = $data;
-        $result[] = [
-            'title' => 'Доля пациентов с тяжестью повреждения "незначительные (ISS <9 баллов)"',
-            'value' => round($tmp->where('injury_of_iss', '<', 9)->count() / $n * 100)
-        ];
-        // 6
-        // $tmp = $data;
-        $result[] = [
-            'title' => 'Доля пациентов с тяжестью повреждения "умеренные (ISS 9–15 баллов)"',
-            'value' => round($tmp->whereBetween('injury_of_iss', [9, 15])->count() / $n * 100)
-        ];
-        // 7
-        // $tmp = $data;
-        $result[] = [
-            'title' => 'Доля пациентов с тяжестью повреждения "тяжелые (ISS 16–25 баллов)"',
-            'value' => round($tmp->whereBetween('injury_of_iss', [16, 25])->count() / $n * 100)
-        ];
-        // 8
-        // $tmp = $data;
-        $result[] = [
-            'title' => 'Доля пациентов с тяжестью повреждения "крайне тяжелые (ISS >25 баллов)"',
-            'value' => round($tmp->where('injury_of_iss', '>', 25)->count() / $n * 100)
-        ];
+
+        // Check $filterInjuryOfIss and add rows conditionally
+        if ($filterInjuryOfIss !== 25) {
+            $result[] = [
+                'title' => 'Доля пациентов с тяжестью повреждения "незначительные (ISS <9 баллов)"',
+                'value' => round($tmp->where('injury_of_iss', '<', 9)->count() / $n * 100)
+            ];
+            $result[] = [
+                'title' => 'Доля пациентов с тяжестью повреждения "умеренные (ISS 9–15 баллов)"',
+                'value' => round($tmp->whereBetween('injury_of_iss', [9, 15])->count() / $n * 100)
+            ];
+        }
+
+        if ($filterInjuryOfIss !== 16) {
+            $result[] = [
+                'title' => 'Доля пациентов с тяжестью повреждения "тяжелые (ISS 16–25 баллов)"',
+                'value' => round($tmp->whereBetween('injury_of_iss', [16, 25])->count() / $n * 100)
+            ];
+            $result[] = [
+                'title' => 'Доля пациентов с тяжестью повреждения "крайне тяжелые (ISS >25 баллов)"',
+                'value' => round($tmp->where('injury_of_iss', '>', 25)->count() / $n * 100)
+            ];
+        }
+
+        // // 5
+        // // $tmp = $data;
+        // $result[] = [
+        //     'title' => 'Доля пациентов с тяжестью повреждения "незначительные (ISS <9 баллов)"',
+        //     'value' => round($tmp->where('injury_of_iss', '<', 9)->count() / $n * 100)
+        // ];
+        // // 6
+        // // $tmp = $data;
+        // $result[] = [
+        //     'title' => 'Доля пациентов с тяжестью повреждения "умеренные (ISS 9–15 баллов)"',
+        //     'value' => round($tmp->whereBetween('injury_of_iss', [9, 15])->count() / $n * 100)
+        // ];
+        // // 7
+        // // $tmp = $data;
+        // $result[] = [
+        //     'title' => 'Доля пациентов с тяжестью повреждения "тяжелые (ISS 16–25 баллов)"',
+        //     'value' => round($tmp->whereBetween('injury_of_iss', [16, 25])->count() / $n * 100)
+        // ];
+        // // 8
+        // // $tmp = $data;
+        // $result[] = [
+        //     'title' => 'Доля пациентов с тяжестью повреждения "крайне тяжелые (ISS >25 баллов)"',
+        //     'value' => round($tmp->where('injury_of_iss', '>', 25)->count() / $n * 100)
+        // ];
         // 9
         $result[] = [
             'title' => 'Доля пациентов, поступивших в сроки до 1 часа',
