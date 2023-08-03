@@ -149,7 +149,7 @@ class PolytraumaService implements PolytraumaServiceInterface
         $data = $this->modelClass::whereBetween('created_at', [$date_start, $date_end])
             ->when($filterInjuryOfIss, function ($query, $value) {
                 if ($value <= 16) $query->whereRaw("CASE WHEN injury_of_iss ~ '^[0-9\.]+$' THEN CAST(injury_of_iss AS INTEGER) ELSE 0 END <= ?", 16);
-                else $query->whereRaw("CASE WHEN injury_of_iss ~ '^[a-zA-Z]+$' THEN 0 ELSE CAST(injury_of_iss AS INTEGER) END > ?", 16);
+                else $query->whereRaw("CASE WHEN injury_of_iss ~ '^[0-9\.]+$' THEN CAST(injury_of_iss AS INTEGER) ELSE 0 END > ?", 16);
             })->get();
 
         // if ($filterInjuryOfIss) {
