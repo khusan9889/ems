@@ -129,7 +129,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="days_amount"><b>Кол-во к/дней</b></label>
-                        <input type="text" class="form-control" id="days_amount" name="days_amount"
+                        <input type="number" class="form-control" id="days_amount" name="days_amount"
                             value="{{ old('days_amount') }}">
                         @error('days_amount')
                             <span class="text-danger">{{ $message }}</span>
@@ -140,7 +140,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="days_in_intensive_care"><b>Кол-во к/дней в отд. Реанимации</b></label>
-                        <input type="text" class="form-control" id="days_in_intensive_care"
+                        <input type="number" class="form-control" id="days_in_intensive_care"
                             name="days_in_intensive_care" value="{{ old('days_in_intensive_care') }}">
                         @error('days_in_intensive_care')
                             <span class="text-danger">{{ $message }}</span>
@@ -170,7 +170,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="severity_of_ts"><b>Тяжесть состояния по TS (баллов)</b></label>
-                        <input type="text" class="form-control" id="severity_of_ts" name="severity_of_ts"
+                        <input type="number" class="form-control" id="severity_of_ts" name="severity_of_ts"
                             value="{{ old('severity_of_ts') }}">
                         @error('severity_of_ts')
                             <span class="text-danger">{{ $message }}</span>
