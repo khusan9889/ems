@@ -180,7 +180,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="injury_of_iss"><b>Тяжесть состояния по ISS (баллов)</b></label>
-                        <input type="text" class="form-control" id="injury_of_iss" name="injury_of_iss"
+                        <input type="number" class="form-control" id="injury_of_iss" name="injury_of_iss"
                             value="{{ old('injury_of_iss') }}">
                         @error('injury_of_iss')
                             <span class="text-danger">{{ $message }}</span>
