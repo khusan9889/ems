@@ -15,12 +15,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link{{ Request::route()->getName() == 'less16' ? ' active' : '' }}" href="{{ route('less16') }}">
-                            < 16
+                           ISS < 16
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link{{ Request::route()->getName() == 'more25' ? ' active' : '' }}" href="{{ route('more25') }}">
-                            > 25
+                        <a class="nav-link{{ Request::route()->getName() == 'more16' ? ' active' : '' }}" href="{{ route('more16') }}">
+                           ISS > 16
                         </a>
                     </li>
                 </ul>

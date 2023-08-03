@@ -123,7 +123,7 @@ class PolytraumaController extends Controller
 
     public function statistics(Request $request, PolytraumaServiceInterface $service)
     {
-        $data = $service->statistics($request, false);
+        $data = $service->statistics($request);
         return view('dashboard.pages.polytrauma.statistics', compact('data'));
     }
 
@@ -133,10 +133,10 @@ class PolytraumaController extends Controller
         return view('dashboard.pages.polytrauma.statistics', compact('data'));
     }
 
-    public function more25(Request $request, PolytraumaServiceInterface $service)
+    public function more16(Request $request, PolytraumaServiceInterface $service)
     {
-        $data = $service->statistics($request, 25);
+        $data = $service->statistics($request, 17); // Use 17 here to get data greater than 16
         return view('dashboard.pages.polytrauma.statistics', compact('data'));
     }
-    
+
 }
