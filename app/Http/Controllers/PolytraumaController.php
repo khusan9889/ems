@@ -135,15 +135,8 @@ class PolytraumaController extends Controller
 
     public function more16(Request $request, PolytraumaServiceInterface $service)
     {
-        $filterInjuryOfIss = is_numeric($request->filterInjuryOfIss) ? (int) $request->filterInjuryOfIss : 17;
-        $data = $service->statistics($request, $filterInjuryOfIss);
+        $data = $service->statistics($request, 17); // Use 17 here to get data greater than 16
         return view('dashboard.pages.polytrauma.statistics', compact('data'));
     }
-
-
-
-
-
-
 
 }

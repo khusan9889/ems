@@ -146,17 +146,37 @@ class PolytraumaService implements PolytraumaServiceInterface
         $date_end = $request->date_end ?? date('Y-m-d');
         $date_start = $request->date_start ?? date('Y-m-d', strtotime($date_end . ' -30 days'));
 
-        $query = $this->modelClass::whereDate('created_at', '>=', $date_start)
-            ->whereDate('created_at', '<=', $date_end);
+        $data = $this->modelClass::whereBetween('created_at', [$date_start, $date_end])
+            ->when($filterInjuryOfIss, function ($query, $value) {
+                if ($value <= 16) $query->whereRaw("CASE WHEN injury_of_iss ~ '^[0-9\.]+$' THEN CAST(injury_of_iss AS INTEGER) ELSE 0 END <= ?", 16);
+                else $query->whereRaw("CASE WHEN injury_of_iss ~ '^[a-zA-Z]+$' THEN 0 ELSE CAST(injury_of_iss AS INTEGER) END > ?", 16);
+            })->get();
 
-        if ($filterInjuryOfIss !== null) {
-            $query->where(function ($query) use ($filterInjuryOfIss) {
-                $query->where('injury_of_iss', 'NOT LIKE', '%[^0-9]%');
-                $query->orWhereRaw("CAST(injury_of_iss AS INTEGER) <= ?", $filterInjuryOfIss);
-            });
-        }
+        // if ($filterInjuryOfIss) {
+        //     $query->where(function ($query) use ($filterInjuryOfIss) {
+        //         $query->when($filterInjuryOfIss > 16, function ($query) {
+        //             $query->whereRaw("CASE WHEN injury_of_iss ~ E'^\\\\d+$' THEN CAST(injury_of_iss AS INTEGER) <= ? ELSE 0 END", 16);
+        //         });
+        //     });
 
-        $data = $query->get();
+        // $query->where(function ($query) use ($filterInjuryOfIss) {
+        //     $query->whereRaw("CASE WHEN injury_of_iss~E'^\\d+$' THEN injury_of_iss::integer ELSE 0 END", '<=', 16)
+        //           ->when($filterInjuryOfIss > 16, function ($query) {
+        //               $query->orWhereRaw("CASE WHEN injury_of_iss ~ E'^\\\\d+$' THEN CAST(injury_of_iss AS INTEGER) ELSE 0 END", '>', 16);
+        //           });
+        // });
+        // }
+
+        // if ($filterInjuryOfIss !== null) {
+        //     $query->when($filterInjuryOfIss <= 16, function ($query) {
+        //         $query->whereRaw("CAST(injury_of_iss AS INTEGER) <= ?", 16);
+        //     })
+        //     ->when($filterInjuryOfIss > 16, function ($query) {
+        //         $query->whereRaw("CAST(injury_of_iss AS INTEGER) > ?", 16);
+        //     });
+        // }
+
+        // $data = $query->get();
 
         $n = $data->count() ?? 1;
         if (!$n) $n = 1;
