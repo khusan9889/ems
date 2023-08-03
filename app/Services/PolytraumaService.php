@@ -150,11 +150,9 @@ class PolytraumaService implements PolytraumaServiceInterface
             ->whereDate('created_at', '<=', $date_end);
 
         if ($filterInjuryOfIss !== null) {
-            $query->when($filterInjuryOfIss <= 16, function ($query) {
-                $query->whereRaw("CAST(injury_of_iss AS INTEGER) <= ?", 16);
-            })
-            ->when($filterInjuryOfIss > 16, function ($query) {
-                $query->whereRaw("CAST(injury_of_iss AS INTEGER) > ?", 16);
+            $query->where(function ($query) use ($filterInjuryOfIss) {
+                $query->where('injury_of_iss', 'NOT LIKE', '%[^0-9]%');
+                $query->orWhereRaw("CAST(injury_of_iss AS INTEGER) <= ?", $filterInjuryOfIss);
             });
         }
 
