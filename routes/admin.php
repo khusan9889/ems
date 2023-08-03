@@ -72,7 +72,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::prefix('/polytrauma/statistics')->group(function () {
             Route::get('/', [PolytraumaController::class, 'statistics'])->name('statistics');
             Route::get('/less16', [PolytraumaController::class, 'less16'])->name('less16');
-            Route::get('/more25', [PolytraumaController::class, 'more16'])->name('more16');
+            Route::get('/more16', [PolytraumaController::class, 'more16'])->name('more16');
         });
 
         Route::prefix('/roles')->group(function () {
