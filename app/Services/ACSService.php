@@ -141,7 +141,7 @@ class ACSService implements ACSServiceInterface
             ->when($request->branch, function ($query, $value) {
                 $selectedBranchName = $value;
                 if ($selectedBranchName !== 'РНЦЭМП') {
-                    $selectedBranch = Branch::where('name', $selectedBranchName)->first(); // Retrieve the branch using the name
+                    $selectedBranch = Branch::where('name', $selectedBranchName)->first(); 
                     $query->where('branch_id', $selectedBranch->id);
                 }
             })

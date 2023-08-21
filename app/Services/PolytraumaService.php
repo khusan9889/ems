@@ -147,6 +147,13 @@ class PolytraumaService implements PolytraumaServiceInterface
         $date_start = $request->date_start ?? date('Y-m-d', strtotime($date_end . ' -30 days'));
 
         $data = $this->modelClass::whereBetween('created_at', [$date_start, $date_end])
+            ->when($request->branch, function ($query, $value) {
+                $selectedBranchName = $value;
+                if ($selectedBranchName !== 'РНЦЭМП') {
+                    $selectedBranch = Branch::where('name', $selectedBranchName)->first();
+                    $query->where('branch_id', $selectedBranch->id);
+                }
+            })
             ->when($filterInjuryOfIss, function ($query, $value) {
                 if ($value <= 16) $query->whereRaw("CASE WHEN injury_of_iss ~ '^[0-9\.]+$' THEN CAST(injury_of_iss AS INTEGER) ELSE 0 END <= ?", 16);
                 else $query->whereRaw("CASE WHEN injury_of_iss ~ '^[0-9\.]+$' THEN CAST(injury_of_iss AS INTEGER) ELSE 0 END > ?", 16);

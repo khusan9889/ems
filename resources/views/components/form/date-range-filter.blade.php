@@ -14,34 +14,6 @@
                     <div class="col-md-12">
                         <label>Выберите субъект: </label>
                         <div class="d-flex flex-wrap" style="gap:1rem;">
-                            {{-- <button type="button" class="btn btn btn-light region-button"
-                                data-region="РНЦЭМП">РНЦЭМП</button>
-                            <button type="button" class="btn btn btn-light region-button"
-                                data-region="Андижанский">Андижанский</button>
-                            <button type="button" class="btn btn btn-light region-button"
-                                data-region="Наманганский">Наманганский</button>
-                            <button type="button" class="btn btn btn-light region-button"
-                                data-region="Ферганский">Ферганский</button>
-                            <button type="button" class="btn btn btn-light region-button"
-                                data-region="Ташкентский">Ташкентский</button>
-                            <button type="button" class="btn btn btn-light region-button"
-                                data-region="Сырдарьинский">Сырдарьинский</button>
-                            <button type="button" class="btn btn btn-light region-button"
-                                data-region="Джизакский">Джизакский</button>
-                            <button type="button" class="btn btn btn-light region-button"
-                                data-region="Самаркандский">Самаркандский</button>
-                            <button type="button" class="btn btn btn-light region-button"
-                                data-region="Кашкадарьинский">Кашкадарьинский</button>
-                            <button type="button" class="btn btn btn-light region-button"
-                                data-region="Сурхандарьинский">Сурхандарьинский</button>
-                            <button type="button" class="btn btn btn-light region-button"
-                                data-region="Навоийский">Навоийский</button>
-                            <button type="button" class="btn btn btn-light region-button"
-                                data-region="Бухарский">Бухарский</button>
-                            <button type="button" class="btn btn btn-light region-button"
-                                data-region="Хорезмский">Хорезмский</button>
-                            <button type="button" class="btn btn btn-light region-button"
-                                data-region="Каракалпакстанский">Каракалпакстанский</button> --}}
                             @foreach ($branches as $branch)
                                 <button type="button"
                                     class="btn btn btn-light region-button {{ $branch->name === request()->branch ? 'active' : '' }}"
@@ -62,19 +34,6 @@
 </x-panel>
 
 <script>
-    // document.addEventListener("DOMContentLoaded", function() {
-    //     const branchButtons = document.querySelectorAll(".region-button");
-    //     const startDate = document.querySelector("input[name=date_start]");
-
-    //     console.log({startDate});
-
-    //     branchButtons.forEach(button => {
-    //         button.addEventListener("click", function() {
-    //             const selectedBranch = this.getAttribute("data-region");
-    //             window.location.href = `/acs/statistics?branch=${selectedBranch}`;
-    //         });
-    //     });
-    // });
 
     function fetchDataByBranch(event) {
         const branchName = event.target.dataset.region;
@@ -82,8 +41,21 @@
         const endDate = document.querySelector("input[name=date_end]");
         console.log(startDate.value);
 
-        window.location.href =
-            `/acs/statistics?branch=${branchName}&date_start=${startDate.value}&date_end=${endDate.value}`;
+        const currentPage = window.location.pathname;
+        let redirectUrl;
 
+        if (currentPage.includes('/polytrauma')) {
+            // If current page is in the "polytrauma" section
+            redirectUrl = `/polytrauma/statistics?branch=${branchName}&date_start=${startDate.value}&date_end=${endDate.value}`;
+        } else if (currentPage.includes('/acs')) {
+            // If current page is in the "acs" section
+            redirectUrl = `/acs/statistics?branch=${branchName}&date_start=${startDate.value}&date_end=${endDate.value}`;
+        } else {
+            // Default redirection, e.g., if not in polytrauma or acs section
+            redirectUrl = `/acs/statistics?branch=${branchName}&date_start=${startDate.value}&date_end=${endDate.value}`;
+        }
+
+        window.location.href = redirectUrl;
     }
+       
 </script>

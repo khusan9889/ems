@@ -124,7 +124,8 @@ class PolytraumaController extends Controller
     public function statistics(Request $request, PolytraumaServiceInterface $service)
     {
         $data = $service->statistics($request);
-        return view('dashboard.pages.polytrauma.statistics', compact('data'));
+        $branches = Branch::all(['id', 'name']);
+        return view('dashboard.pages.polytrauma.statistics', compact('data', 'branches'));
     }
 
     public function less16(Request $request, PolytraumaServiceInterface $service)
