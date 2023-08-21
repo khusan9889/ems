@@ -122,7 +122,8 @@ class ACSController extends Controller
     public function statistics(Request $request, ACSServiceInterface $service)
     {
         $data = $service->statistics($request);
-        return view('dashboard.pages.acs.statistics', compact('data'));
+        $branches = Branch::all(['id', 'name']);
+        return view('dashboard.pages.acs.statistics', compact('data', 'branches'));
     }
 
 }

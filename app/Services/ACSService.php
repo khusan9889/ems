@@ -65,16 +65,16 @@ class ACSService implements ACSServiceInterface
     {
         $query = $this->modelClass::when(
             $filters['sort'],
-            fn($query, $value) => $query->orderBy('id', $value)
+            fn ($query, $value) => $query->orderBy('id', $value)
         )
             ->when(
                 $filters['hospitalization_channels'],
-                fn($query, $value) => $query->where('hospitalization_channels', $value)
+                fn ($query, $value) => $query->where('hospitalization_channels', $value)
             )
 
             ->when(
                 $filters['branch'],
-                fn($query, $value) => $query->where('branch_id', $value)
+                fn ($query, $value) => $query->where('branch_id', $value)
             );
 
 
@@ -135,8 +135,18 @@ class ACSService implements ACSServiceInterface
         $date_end = $request->date_end ?? date('Y-m-d');
         $date_start = $request->date_start ?? date('Y-m-d', strtotime($date_end . ' -30 days'));
 
+        // dd($request->all());
         $data = $this->modelClass::whereDate('created_at', '>=', $date_start)
-            ->wheredate('created_at', '<=', $date_end)->get();
+            ->wheredate('created_at', '<=', $date_end)
+            ->when($request->branch, function ($query, $value) {
+                $selectedBranchName = $value;
+                if ($selectedBranchName !== 'РНЦЭМП') {
+                    $selectedBranch = Branch::where('name', $selectedBranchName)->first(); // Retrieve the branch using the name
+                    $query->where('branch_id', $selectedBranch->id);
+                }
+            })
+            ->get();
+
         $n = $data->count() ?? 1;
         if (!$n) $n = 1;
         $result = [];
@@ -213,7 +223,7 @@ class ACSService implements ACSServiceInterface
         $result[] = [
             'title' => 'Доля пациентов, которым выполнено экстренное ЧКВ',
             'value' => round($denominator ? $tmp->where('cta_90min', 'Да')->where('cta_invasive_angiography', 'Да')->count() / $denominator * 100 : 0)
-//            'value' => 'check'
+            //            'value' => 'check'
         ];
         // 13 gacha tayyor
         $tmp = $data;

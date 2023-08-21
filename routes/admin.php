@@ -66,7 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::delete('/delete/{id}', [DepartmentController::class, 'destroy'])->name('department.delete');
         });
 
-        Route::get('/acs/statistics', [ACSController::class, 'statistics']);
+        Route::get('/acs/statistics', [ACSController::class, 'statistics'])->name('acs.statistics');
         // Route::get('/polytrauma/statistics', [PolytraumaController::class, 'statistics']);
 
         Route::prefix('/polytrauma/statistics')->group(function () {
