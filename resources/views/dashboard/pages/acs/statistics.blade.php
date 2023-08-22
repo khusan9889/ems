@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.default')
 
 @section('content')
-    <h1 class="page-header">ОКС Статистика - {{ request()->branch }}</h1>
+    <h1 class="page-header">ОКС Статистика {{ request()->branch }}</h1>
     <x-form.date-range-filter :branches="$branches" />
     <x-panel>
         <div class="table-responsive">

@@ -15,14 +15,20 @@
                         <label>Выберите субъект: </label>
                         <div class="d-flex flex-wrap" style="gap:1rem;">
                             @foreach ($branches as $branch)
+                                @php
+                                    $isActive = request()->branch ? request()->branch === $branch->name : auth()->user()->branch_id === $branch->id;
+                                    $isVisible = auth()->user()->branch_id === 1 || auth()->user()->branch_id === $branch->id;
+                                @endphp
+
                                 <button type="button"
-                                    class="btn btn btn-light region-button {{ $branch->name === request()->branch ? 'active' : '' }}"
-                                    data-region="{{ $branch->name }}" onclick="fetchDataByBranch(event)">
+                                    class="btn btn btn-light region-button {{ $isActive ? 'active' : '' }} {{ $isVisible ? 'visible' : 'hidden' }}"
+                                    data-region="{{ $branch->name }}"
+                                    onclick="fetchDataByBranch('{{ $branch->name }}')">
                                     {{ $branch->name }}
                                 </button>
                             @endforeach
                         </div>
-                        <input type="hidden" name="selected_regions" id="selected_regions">
+                        {{-- <input type="hidden" name="selected_regions" id="selected_regions" value="{{ auth()->user()->branch_id }}"> --}}
                     </div>
                 </div>
             </div>
@@ -34,28 +40,45 @@
 </x-panel>
 
 <script>
-
-    function fetchDataByBranch(event) {
-        const branchName = event.target.dataset.region;
+    // Function to update statistics based on the selected branch
+    function fetchDataByBranch(branchName) {
         const startDate = document.querySelector("input[name=date_start]");
         const endDate = document.querySelector("input[name=date_end]");
-        console.log(startDate.value);
 
         const currentPage = window.location.pathname;
         let redirectUrl;
 
         if (currentPage.includes('/polytrauma')) {
-            // If current page is in the "polytrauma" section
-            redirectUrl = `/polytrauma/statistics?branch=${branchName}&date_start=${startDate.value}&date_end=${endDate.value}`;
+            redirectUrl =
+                `/polytrauma/statistics?branch=${branchName}&date_start=${startDate.value}&date_end=${endDate.value}`;
         } else if (currentPage.includes('/acs')) {
-            // If current page is in the "acs" section
-            redirectUrl = `/acs/statistics?branch=${branchName}&date_start=${startDate.value}&date_end=${endDate.value}`;
+            redirectUrl =
+            `/acs/statistics?branch=${branchName}&date_start=${startDate.value}&date_end=${endDate.value}`;
         } else {
-            // Default redirection, e.g., if not in polytrauma or acs section
-            redirectUrl = `/acs/statistics?branch=${branchName}&date_start=${startDate.value}&date_end=${endDate.value}`;
+            redirectUrl =
+                `/default/statistics?branch=${branchName}&date_start=${startDate.value}&date_end=${endDate.value}`;
         }
 
         window.location.href = redirectUrl;
     }
-       
+
+    // Automatically choose the authenticated user's branch and update statistics
+    document.addEventListener("DOMContentLoaded", function() {
+        const userBranchId = '{{ auth()->user()->branch_id }}';
+        const selectedBranch = document.querySelector(`.region-button[data-region='${userBranchId}']`);
+
+        if (selectedBranch) {
+            selectedBranch.click();
+        }
+    });
 </script>
+
+<style>
+    .hidden {
+        display: none;
+    }
+
+    .visible {
+        display: block;
+    }
+</style>
