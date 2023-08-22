@@ -16,6 +16,8 @@ return [
     "RoleController" => "Роли",
     'ACSController' => 'ОКС',
     'PolytraumaController' => 'Политравма',
+    'less16' => 'Меньше 16',
+    'more16' => 'Больше 16',
     'DepartmentController' => 'Отделение',
     'BranchController' => 'Субъект',
     "roleList" => "Список ролей",
