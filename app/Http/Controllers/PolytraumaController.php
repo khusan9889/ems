@@ -131,13 +131,15 @@ class PolytraumaController extends Controller
     public function less16(Request $request, PolytraumaServiceInterface $service)
     {
         $data = $service->statistics($request, 16);
-        return view('dashboard.pages.polytrauma.statistics', compact('data'));
+        $branches = Branch::all(['id', 'name']);
+        return view('dashboard.pages.polytrauma.statistics', compact('data', 'branches'));
     }
 
     public function more16(Request $request, PolytraumaServiceInterface $service)
     {
-        $data = $service->statistics($request, 17); // Use 17 here to get data greater than 16
-        return view('dashboard.pages.polytrauma.statistics', compact('data'));
+        $data = $service->statistics($request, 17);
+        $branches = Branch::all(['id', 'name']);
+        return view('dashboard.pages.polytrauma.statistics', compact('data', 'branches'));
     }
 
 }
