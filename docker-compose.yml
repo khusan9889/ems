@@ -1,57 +1,55 @@
-version: '3'
-services:
-    laravel.test:
-        build:
-            context: ./vendor/laravel/sail/runtimes/8.2
-            dockerfile: Dockerfile
-            args:
-                WWWGROUP: '${WWWGROUP}'
-        image: sail-8.2/app
-        extra_hosts:
-            - 'host.docker.internal:host-gateway'
-        ports:
-            - '${APP_PORT:-80}:80'
-            - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
-        environment:
-            WWWUSER: '${WWWUSER}'
-            LARAVEL_SAIL: 1
-            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
-            XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
-            IGNITION_LOCAL_SITES_PATH: '${PWD}'
-        volumes:
-            - '.:/var/www/html'
-        networks:
-            - sail
-        depends_on:
-            - pgsql
-    pgsql:
-        image: 'postgres:15'
-        ports:
-            - '${FORWARD_DB_PORT:-5432}:5432'
-        environment:
-            PGPASSWORD: '${DB_PASSWORD:-secret}'
-            POSTGRES_DB: '${DB_DATABASE}'
-            POSTGRES_USER: '${DB_USERNAME}'
-            POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
-        volumes:
-            - 'sail-pgsql:/var/lib/postgresql/data'
-            - './vendor/laravel/sail/database/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql'
-        networks:
-            - sail
-        healthcheck:
-            test:
-                - CMD
-                - pg_isready
-                - '-q'
-                - '-d'
-                - '${DB_DATABASE}'
-                - '-U'
-                - '${DB_USERNAME}'
-            retries: 3
-            timeout: 5s
+version: "3.7"
+
 networks:
-    sail:
-        driver: bridge
-volumes:
-    sail-pgsql:
-        driver: local
+  app-network:
+    driver: bridge
+
+services:
+  db:
+    container_name: pgsql
+    build:
+        context: ./infra/pgsql
+        dockerfile: Dockerfile
+    image: pgsql-docker
+    restart: unless-stopped
+    expose:
+        - "5432"
+    ports:
+        - "5436:5432"
+    volumes:
+        - ./infra/pgsql/script:/docker-entrypoint-initdb.d
+        - ./infra/pgsql/data:/var/lib/postgresql/data
+    environment:
+        - POSTGRES_USER=${DB_USERNAME}
+        - POSTGRES_PASSWORD=${DB_PASSWORD}
+        - POSTGRES_DATABASE=${DB_DATABASE}
+    networks:
+        - app-network
+
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: php-laravel-7.0
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www
+    volumes:
+      - ./storage/logs:/var/www/storage/logs
+      - ./public/build:/var/www/public/build
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:1.19.8-alpine
+    container_name: nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+        - 8100:80
+    volumes:
+        - ./:/var/www
+        - ./infra/nginx/conf:/etc/nginx/conf.d
+    networks:
+        - app-network

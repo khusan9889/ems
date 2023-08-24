@@ -16,3 +16,4 @@ yarn-error.log
 /.vscode
 server.sh
 .htaccess
+/infra/pgsql/data
