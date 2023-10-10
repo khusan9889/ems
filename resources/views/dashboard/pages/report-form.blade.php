@@ -33,7 +33,8 @@
                             </div>
                         </td>
                         <td>
-                            <select class="form-control form-control-sm" name="branch" @if (auth()->user()->branch_id != 1) disabled @endif>
+                            <select class="form-control form-control-sm" name="branch"
+                                    @if (auth()->user()->branch_id != 1) disabled @endif>
                                 <option value="" style="font-size: 12px;">Все</option>
                                 @foreach ($branches as $id => $name)
                                     <option value="{{ $id }}" style="font-size: 12px;"
@@ -45,14 +46,14 @@
                             </select>
                         </td>
                         <td>
-                            <select class="form-control form-control-sm" name="branch" @if (auth()->user()->branch_id != 1) disabled @endif>
+                            <select class="form-control form-control-sm" name="week">
                                 <option value="" style="font-size: 12px;">Все</option>
-                                @foreach ($branches as $id => $name)
+                                @foreach ($weeks as $id => $week)
                                     <option value="{{ $id }}" style="font-size: 12px;"
-                                            @if ($id == request('branch') || (auth()->user()->branch_id == $id && auth()->user()->branch_id != 1))
-                                                selected
-                                        @endif>{{ $name }}
-                                    </option>
+                                        @if ($id == request('week') || (auth()->user()->branch_id == $id && auth()->user()->branch_id != 1))
+                                        selected
+                                        @endif
+                                    >{{ $week }}</option>
                                 @endforeach
                             </select>
                         </td>
@@ -68,17 +69,15 @@
                 @foreach ($data as $key => $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->name }}</td>
                         <td>{{ $item->branch->name }}</td>
+                        <td>{{ $item->week->name }}</td>
                         <td class="align-middle">
                             <div class="d-flex justify-content-center">
-                                    <a href="{{ route('sub.edit', $item->id) }}"
-                                       class="btn btn-warning btn-xs mr-1">
-                                        <i class="fas fa-pen"></i>
-                                    </a>
-                                    <button type="button" class="btn btn-danger btn-xs mr-1" onclick="confirmDelete({{ $item->id }})">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
+                                <a href="{{ route('sub.edit', $item->id) }}"
+                                   class="btn btn-warning btn-xs mr-1">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+
                             </div>
                         </td>
                     </tr>
@@ -92,13 +91,4 @@
         {{ $data->links() }}
     </div>
 
-
-    @include('components.modals.confirmation-modal')
-
-    <script>
-        function confirmDelete(id) {
-            $('#deleteConfirmationModal').modal('show');
-            $('#deleteForm').attr('action', `/sub-branch/delete/${id}`);
-        }
-    </script>
 @endsection

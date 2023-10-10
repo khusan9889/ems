@@ -10,6 +10,7 @@ use App\Models\Branch;
 use App\Models\Department;
 use App\Models\FilialSubWeek;
 use App\Models\SubFilial;
+use App\Models\Week;
 use App\Services\SubFilial\Contracts\SubFilialServiceInterface;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -24,15 +25,16 @@ class ReportFormController extends Controller
     {
 
         $filters = [
-            'name' => $request->input('name'),
+            'week' => $request->input('week'),
             'branch' => $request->input('branch'),
             'sort' => $request->input('sort') ?? 'DESC',
         ];
 
 
         $branches = Branch::pluck('name', 'id');
+        $weeks = Week::pluck('name', 'id');
         $data = $service->customFilter($filters);
-        return view('dashboard.pages.report-form', compact( 'branches', 'data'));
+        return view('dashboard.pages.report-form', compact('branches', 'data', 'weeks'));
     }
 
     public function create()
@@ -51,6 +53,7 @@ class ReportFormController extends Controller
         return redirect()->route('sub.index')->with('success', 'Отделение успешно создано');
 
     }
+
     public function edit($id)
     {
         $data = SubFilial::findOrFail($id);

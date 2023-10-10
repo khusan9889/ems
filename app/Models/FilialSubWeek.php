@@ -61,6 +61,6 @@ class FilialSubWeek extends Model
     }
     public function week(): BelongsTo
     {
-        return $this->belongsTo(SubFilial::class, 'week_id', 'id');
+        return $this->belongsTo(Week::class, 'week_id', 'id');
     }
 }

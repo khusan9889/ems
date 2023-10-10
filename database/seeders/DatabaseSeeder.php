@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
             ModuleMethodSeeder::class,
             AddDepartmentSeeder::class,
+            WeekSeeder::class,
         ]);
     }
 }

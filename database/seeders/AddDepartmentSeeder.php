@@ -15,7 +15,7 @@ class AddDepartmentSeeder extends Seeder
     public function run(): void
     {
         $branch = Branch::find(12);
-
+        Department::truncate();
         $department = new Department();
         $department->id = 17;
         $department->branch_id = 12;
