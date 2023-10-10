@@ -47,12 +47,28 @@ return [
             'sub_menu' => [
                 [
                     'url' => '/branch',
-                    'title' => 'Субъекты'
+                    'title' => 'Филиал'
+                ], [
+                    'url' => '/sub-branch',
+                    'title' => 'Суб филиал'
                 ],
                 [
                     'url' => '/departments',
                     'title' => 'Отделения'
                 ],
+            ]
+        ],
+        [
+            'icon' => 'fa fa-align-left',
+            'title' => 'Еженедельные отчеты',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => '/data',
+                    'title' => 'Формы отчетов'
+                ]
+
             ]
         ],
         [

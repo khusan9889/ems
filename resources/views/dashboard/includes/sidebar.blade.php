@@ -37,14 +37,15 @@
             @php
                 $currentUrl = (Request::path() != '/') ? '/'. Request::path() : '/';
 
+
                 function renderSubMenu($value, $currentUrl) {
                 $subMenu = '';
                 $GLOBALS['sub_level'] += 1 ;
                 $GLOBALS['active'][$GLOBALS['sub_level']] = '';
                 $currentLevel = $GLOBALS['sub_level'];
+
                 foreach ($value as $key => $menu) {
                 $GLOBALS['subparent_level'] = '';
-
                 $subSubMenu = '';
                 $hasSub = (!empty($menu['sub_menu'])) ? 'has-sub' : '';
                 $hasCaret = (!empty($menu['sub_menu'])) ? '<b class="caret pull-right"></b>' : '';

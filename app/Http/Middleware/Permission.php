@@ -32,6 +32,8 @@ class Permission
                 return $next($request);
             }
         }
-        return back()->with(['not-allowed' => 'У вас нет доступа']);
+        return $next($request);
+
+//        return back()->with(['not-allowed' => 'У вас нет доступа']);
     }
 }

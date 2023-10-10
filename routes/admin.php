@@ -8,6 +8,8 @@ use App\Http\Controllers\Permissions\RoleController;
 use App\Http\Controllers\PolytPrintController;
 use App\Http\Controllers\PolytraumaController;
 use App\Http\Controllers\PrintController;
+use App\Http\Controllers\ReportFormController;
+use App\Http\Controllers\SubFilialController;
 use App\Http\Controllers\UserController;
 use App\Models\Polytrauma;
 use Illuminate\Support\Facades\Route;
@@ -52,8 +54,17 @@ Route::group(['middleware' => 'auth'], function () {
 
         //        Route::post('/departments/fetch', [DepartmentController::class, 'fetchDepartments'])->name('departments.fetch');
 
+
         Route::group(['prefix' => 'branch'], function () {
             Route::get('/', [BranchController::class, 'index']);
+        });
+        Route::group(['prefix' => 'sub-branch'], function () {
+            Route::get('/', [SubFilialController::class, 'index'])->name('sub.index');
+            Route::get('/create-page', [SubFilialController::class, 'create'])->name('sub.create-page');
+            Route::get('/edit/{id}', [SubFilialController::class, 'edit'])->name('sub.edit');
+            Route::put('/update/{is}', [SubFilialController::class, 'update'])->name('sub.update');
+            Route::post('/store', [SubFilialController::class, 'store'])->name('sub.store');
+            Route::delete('/delete/{id}', [SubFilialController::class, 'destroy'])->name('sub.delete');
         });
 
         Route::group(['prefix' => 'departments'], function () {
@@ -63,7 +74,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/create-page', [DepartmentController::class, 'create'])->name('department.create-page');
             Route::post('/store', [DepartmentController::class, 'store'])->name('department.store');
             //            Route::get('/branch', [BranchController::class, 'fetchDepartments']);
-            Route::delete('/delete/{id}', [DepartmentController::class, 'destroy'])->name('department.delete');
+            Route::delete('/delete/{id}', [DepartmentController::class, 'de222222stroy'])->name('department.delete');
         });
 
         Route::get('/acs/statistics', [ACSController::class, 'statistics'])->name('acs.statistics');
@@ -92,4 +103,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('print/{id}', [PrintController::class, 'create_pdf'])->name('save');
     Route::get('polyt-print/{id}', [PolytPrintController::class, 'create_pdf'])->name('polyt-save');
+
+
+    Route::group(['prefix' => 'data'], function () {
+        Route::get('/', [ReportFormController::class, 'index'])->name('form.index');
+        Route::get('/create-page', [ReportFormController::class, 'create'])->name('form.create-page');
+        Route::get('/edit/{id}', [ReportFormController::class, 'edit'])->name('form.edit');
+        Route::put('/update/{is}', [ReportFormController::class, 'update'])->name('form.update');
+        Route::post('/store', [ReportFormController::class, 'store'])->name('form.store');
+    });
+
 });

@@ -1,13 +1,13 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <x-panel title="Отделения - создание нового отделения">
-        <form method="POST" action="{{ route('department.store') }}">
+    <x-panel title="Суб филиал - создание нового суб филиал">
+        <form method="POST" action="{{ route('sub.store') }}">
             @csrf
             <table class="table table-striped table-bordered align-middle">
                 <tbody>
                     <tr>
-                        <th>Субъект</th>
+                        <th>Филиал</th>
                         <td>
                             <select class="form-control" id="branch" name="branch_id" readonly>
                                 <option value="" hidden>Выберите субъект</option>
@@ -24,7 +24,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Название отделения</th>
+                        <th>Название суб филиал</th>
                         <td>
                             <input type="text" name="name" class="form-control" required>
                         </td>
@@ -32,7 +32,7 @@
 
                 </tbody>
             </table>
-            <button type="submit" class="btn btn-primary pull-right ">Создать</button>
+            <button type="submit" class="btn btn-primary pull-right">Создать</button>
         </form>
     </x-panel>
 @endsection
