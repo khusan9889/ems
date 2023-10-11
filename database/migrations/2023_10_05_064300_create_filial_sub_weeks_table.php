@@ -44,6 +44,7 @@ return new class extends Migration
             $table->integer('children_ambulator')->nullable();
             $table->integer('ambulatory_operas')->nullable();
             $table->integer('including_children')->nullable();
+            $table->string('status')->default('Не изменилось');
             $table->timestamps();
         });
     }

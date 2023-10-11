@@ -7,11 +7,13 @@
 @endphp
 
 @section('content')
-    <h1 class="page-header">Субфилиал</h1>
+
+    <ol class="breadcrumb float-xl-end pull-right">
+        <li class="breadcrumb-item active">Еженедельные отчеты</li>
+        <li class="breadcrumb-item active">Отчеты</li>
+    </ol>
+    <h1 class="page-header">Отчеты</h1>
     <x-panel>
-        <div class="d-flex justify-content-end mb-3">
-            <a href="{{ route('form.create-page') }}" class="btn btn-success">Добавить</a>
-        </div>
         <div class="table-responsive">
             <table id="data-table-default" class="table table-striped table-bordered align-middle">
                 <thead>
@@ -19,6 +21,7 @@
                     <th>№</th>
                     <th>Филиал</th>
                     <th>Неделя</th>
+                    <th>Статус</th>
                     <th>Действия</th>
                 </tr>
                 <tr>
@@ -50,11 +53,18 @@
                                 <option value="" style="font-size: 12px;">Все</option>
                                 @foreach ($weeks as $id => $week)
                                     <option value="{{ $id }}" style="font-size: 12px;"
-                                        @if ($id == request('week') || (auth()->user()->branch_id == $id && auth()->user()->branch_id != 1))
-                                        selected
+                                            @if ($id == request('week') || (auth()->user()->branch_id == $id && auth()->user()->branch_id != 1))
+                                                selected
                                         @endif
                                     >{{ $week }}</option>
                                 @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-control form-control-sm" name="status">
+                                <option value="" style="font-size: 12px;">Все</option>
+                                <option value="Измененный" style="font-size: 12px;">Измененный</option>
+                                <option value="Не изменилось" style="font-size: 12px;">Не изменилось</option>
                             </select>
                         </td>
                         <td class="align-middle d-flex justify-content-center">
@@ -71,10 +81,16 @@
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->branch->name }}</td>
                         <td>{{ $item->week->name }}</td>
+                        <td @if ($item->status=="Не изменилось")
+                                style="color: red"
+                            @else
+                                style="color: green"
+                            @endif
+                        >{{ $item->status }}</td>
                         <td class="align-middle">
                             <div class="d-flex justify-content-center">
-                                <a href="{{ route('sub.edit', $item->id) }}"
-                                   class="btn btn-warning btn-xs mr-1">
+                                <a href="{{ route('form.edit', $item->id) }}"
+                                   class="btn btn-primary btn-xs mr-1">
                                     <i class="fas fa-pen"></i>
                                 </a>
 

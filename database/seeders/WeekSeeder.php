@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Branch;
 use App\Models\FilialSubWeek;
+use App\Models\SubFilial;
 use App\Models\Week;
 use Illuminate\Database\Seeder;
 use Nette\Utils\DateTime;
@@ -16,6 +17,7 @@ class WeekSeeder extends Seeder
     public function run(): void
     {
         Week::truncate();
+        Week::truncate();
         FilialSubWeek::truncate();
 
         $date = new DateTime('2023-08-04');
@@ -26,7 +28,7 @@ class WeekSeeder extends Seeder
             $week= new Week();
             $week->start_date=$date->modify("+$i day")->format('Y-m-d');
             $week->end_date=$date->modify("+$i day")->format('Y-m-d');
-            $week->name=$week->start_date.','.$week->end_date;
+            $week->name=date('d.m.Y', strtotime($week->start_date)).'-'.date('d.m.Y', strtotime($week->end_date));
             $week->save();
             $date->modify("-$i day");
             $branches = Branch::all();
@@ -35,6 +37,15 @@ class WeekSeeder extends Seeder
                     'week_id' => $week->id,
                     'branch_id' => $item->id
                 ]);
+                $sub_filials=SubFilial::where('branch_id',$item->id)->get();
+                foreach ($sub_filials as $index => $data) {
+                    FilialSubWeek::create([
+                        'week_id' => $week->id,
+                        'branch_id' => $item->id,
+                        'sub_filial_id' => $data->id
+                    ]);
+                }
+
             }
 
         }

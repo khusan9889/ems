@@ -62,7 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/', [SubFilialController::class, 'index'])->name('sub.index');
             Route::get('/create-page', [SubFilialController::class, 'create'])->name('sub.create-page');
             Route::get('/edit/{id}', [SubFilialController::class, 'edit'])->name('sub.edit');
-            Route::put('/update/{is}', [SubFilialController::class, 'update'])->name('sub.update');
+            Route::put('/update/{id}', [SubFilialController::class, 'update'])->name('sub.update');
             Route::post('/store', [SubFilialController::class, 'store'])->name('sub.store');
             Route::delete('/delete/{id}', [SubFilialController::class, 'destroy'])->name('sub.delete');
         });
@@ -107,10 +107,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'data'], function () {
         Route::get('/', [ReportFormController::class, 'index'])->name('form.index');
-        Route::get('/create-page', [ReportFormController::class, 'create'])->name('form.create-page');
         Route::get('/edit/{id}', [ReportFormController::class, 'edit'])->name('form.edit');
-        Route::put('/update/{is}', [ReportFormController::class, 'update'])->name('form.update');
-        Route::post('/store', [ReportFormController::class, 'store'])->name('form.store');
+        Route::post('/update/{id}', [ReportFormController::class, 'update'])->name('form.update');
+
     });
 
 });

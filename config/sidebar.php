@@ -66,7 +66,7 @@ return [
             'sub_menu' => [
                 [
                     'url' => '/data',
-                    'title' => 'Формы отчетов'
+                    'title' => 'Отчеты'
                 ]
 
             ]

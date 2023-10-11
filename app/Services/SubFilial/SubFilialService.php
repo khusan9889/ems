@@ -3,7 +3,7 @@
 namespace App\Services\SubFilial;
 
 
-use App\Models\FilialSubWeek;
+use App\Models\SubFilial;
 use App\Services\SubFilial\Contracts\SubFilialServiceInterface;
 use App\Traits\Crud;
 use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ class SubFilialService implements SubFilialServiceInterface
 {
     use Crud;
 
-    public $modelClass = FilialSubWeek::class;
+    public $modelClass = SubFilial::class;
 
     public function filter(Request $request)
     {
@@ -21,7 +21,7 @@ class SubFilialService implements SubFilialServiceInterface
     }
     public function customFilter(array $filters)
     {
-        $query = $this->modelClass::with(['week','branch'])->whereNotNull('branch_id')
+        $query = $this->modelClass::with(['branch'])
             ->when(
             $filters['sort'],
             fn($query, $value) => $query->orderBy('id', $value)
@@ -30,10 +30,6 @@ class SubFilialService implements SubFilialServiceInterface
             ->when(
                 $filters['branch'],
                 fn($query, $value) => $query->where('branch_id', $value)
-            )
-            ->when(
-                $filters['week'],
-                fn($query, $value) => $query->where('week_id', $value)
             );
 
         $perPage = 10;

@@ -19,4 +19,30 @@ class FilialSubWeekService implements FilialSubWeekServiceInterface
         $result = $this->modelClass::sort()->customPaginate();
         return $result;
     }
+    public function customFilter(array $filters)
+    {
+        $query = $this->modelClass::with(['week','branch'])->whereNull('sub_filial_id')
+            ->when(
+                $filters['sort'],
+                fn($query, $value) => $query->orderBy('id', $value)
+            )
+
+            ->when(
+                $filters['branch'],
+                fn($query, $value) => $query->where('branch_id', $value)
+            )
+            ->when(
+                $filters['status'],
+                fn($query, $value) => $query->where('status', $value)
+            )
+            ->when(
+                $filters['week'],
+                fn($query, $value) => $query->where('week_id', $value)
+            );
+
+        $perPage = 10;
+        $results = $query->paginate($perPage);
+
+        return $results;
+    }
 }
