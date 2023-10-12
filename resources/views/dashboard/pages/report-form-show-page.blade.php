@@ -11,7 +11,7 @@
     <x-panel title="Форма отчета">
 
 
-            <h3>Филиал ва субфилиалларнинг қабул бўлимларини {{$week->week->name}} йил хафталик хисоботи</h3>
+            <h3 align="center">Филиал ва субфилиалларнинг қабул бўлимларини {{$week->week->name}} йил хафталик хисоботи</h3>
             <div class="d-flex">
                 <table  class="table table-bordered" style="width: 80%">
                 <thead>
