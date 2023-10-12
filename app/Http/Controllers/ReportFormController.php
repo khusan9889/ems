@@ -31,7 +31,11 @@ class ReportFormController extends Controller
             'status' => $request->input('status'),
             'sort' => $request->input('sort') ?? 'DESC',
         ];
+        $userBranchId = auth()->user()->branch_id;
 
+        if ($userBranchId != 1) {
+            $filters['branch'] = $userBranchId;
+        }
 
         $branches = Branch::pluck('name', 'id');
         $weeks = Week::pluck('name', 'id');

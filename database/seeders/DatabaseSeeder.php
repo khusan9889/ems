@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             AddDepartmentSeeder::class,
             SubFilialsTableSeeder::class,
             WeekSeeder::class,
+            UserRepostSeeder::class
         ]);
     }
 }

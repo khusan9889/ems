@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <x-panel title="Суб филиал - создание нового суб филиал">
+    <x-panel title="Субфилиал - создание нового субфилиал">
         <form method="POST" action="{{ route('sub.store') }}">
             @csrf
             <table class="table table-striped table-bordered align-middle">
@@ -24,7 +24,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Название суб филиал</th>
+                        <th>Название субфилиал</th>
                         <td>
                             <input type="text" name="name" class="form-control" required>
                         </td>

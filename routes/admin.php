@@ -11,7 +11,6 @@ use App\Http\Controllers\PrintController;
 use App\Http\Controllers\ReportFormController;
 use App\Http\Controllers\SubFilialController;
 use App\Http\Controllers\UserController;
-use App\Models\Polytrauma;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {
@@ -74,7 +73,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/create-page', [DepartmentController::class, 'create'])->name('department.create-page');
             Route::post('/store', [DepartmentController::class, 'store'])->name('department.store');
             //            Route::get('/branch', [BranchController::class, 'fetchDepartments']);
-            Route::delete('/delete/{id}', [DepartmentController::class, 'de222222stroy'])->name('department.delete');
+            Route::delete('/delete/{id}', [DepartmentController::class, 'destroy'])->name('department.delete');
         });
 
         Route::get('/acs/statistics', [ACSController::class, 'statistics'])->name('acs.statistics');
@@ -95,6 +94,14 @@ Route::group(['middleware' => 'auth'], function () {
         });
 
         Route::get('/activities', [UserController::class, 'activity'])->name('activity');
+
+        Route::group(['prefix' => 'data'], function () {
+            Route::get('/', [ReportFormController::class, 'index'])->name('form.index');
+            Route::get('/edit/{id}', [ReportFormController::class, 'edit'])->name('form.edit');
+            Route::get('/show/{id}', [ReportFormController::class, 'show'])->name('form.show');
+            Route::post('/update/{id}', [ReportFormController::class, 'update'])->name('form.update');
+
+        });
     });
 
     Route::group(['prefix' => 'departments'], function () {
@@ -105,12 +112,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('polyt-print/{id}', [PolytPrintController::class, 'create_pdf'])->name('polyt-save');
 
 
-    Route::group(['prefix' => 'data'], function () {
-        Route::get('/', [ReportFormController::class, 'index'])->name('form.index');
-        Route::get('/edit/{id}', [ReportFormController::class, 'edit'])->name('form.edit');
-        Route::get('/show/{id}', [ReportFormController::class, 'show'])->name('form.show');
-        Route::post('/update/{id}', [ReportFormController::class, 'update'])->name('form.update');
-
-    });
 
 });

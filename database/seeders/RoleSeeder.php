@@ -20,6 +20,10 @@ class RoleSeeder extends Seeder
             [
                 'id' => 2,
                 'name' => 'Оператор'
+            ],
+            [
+                'id' => 3,
+                'name' => 'Отчеты'
             ]
         ];
         foreach ($data as $item) {

@@ -50,7 +50,7 @@ return [
                     'title' => 'Филиал'
                 ], [
                     'url' => '/sub-branch',
-                    'title' => 'Суб филиал'
+                    'title' => 'Субфилиал'
                 ],
                 [
                     'url' => '/departments',
