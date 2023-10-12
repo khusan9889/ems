@@ -49,8 +49,9 @@ class ReportFormController extends Controller
 
     public function show($id)
     {
-        $result = new SubFilialResource($this->modelClass::findOrFail($id));
-        return $this->success($result);
+        $week = FilialSubWeek::findOrFail($id);
+        $filial_sub_weeks = FilialSubWeek::with(['week', 'branch', 'sub_filial'])->orderBy('id', 'ASC')->where('branch_id', $week->branch_id)->where('week_id', $week->week_id)->whereNotNull('sub_filial_id')->get();
+        return view('dashboard.pages.report-form-show-page', compact('filial_sub_weeks', 'week'));
     }
 
     public function update(Request $request, $id)

@@ -93,6 +93,10 @@
                                    class="btn btn-primary btn-xs mr-1">
                                     <i class="fas fa-pen"></i>
                                 </a>
+                                <a href="{{ route('form.show', $item->id) }}"
+                                   class="btn btn-primary btn-xs mr-1">
+                                    <i class="fas fa-eye"></i>
+                                </a>
 
                             </div>
                         </td>

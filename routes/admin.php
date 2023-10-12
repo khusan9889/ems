@@ -108,6 +108,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'data'], function () {
         Route::get('/', [ReportFormController::class, 'index'])->name('form.index');
         Route::get('/edit/{id}', [ReportFormController::class, 'edit'])->name('form.edit');
+        Route::get('/show/{id}', [ReportFormController::class, 'show'])->name('form.show');
         Route::post('/update/{id}', [ReportFormController::class, 'update'])->name('form.update');
 
     });
