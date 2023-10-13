@@ -61,11 +61,11 @@
                     <table class="table table-profile">
                         <tbody>
                         <tr class="highlight">
-                            <td class="field">ФИО Пользователя</td>
+                            <td class="field">ФИО</td>
                             <td>{{$user->name}}</td>
                         </tr>
                         <tr>
-                            <td class="field">Субъект СЭМП</td>
+                            <td class="field">Филиал</td>
                             <td><i class="fa fa-lg m-r-5"></i> {{$user->branch?->name}} </td>
                         </tr>
                         <tr>
