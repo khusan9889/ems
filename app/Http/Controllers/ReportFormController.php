@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActionsLog;
 use App\Models\Branch;
 use App\Models\FilialSubWeek;
 use App\Models\SubFilial;
+use App\Models\User;
 use App\Models\Week;
 use App\Services\FilialSubWeek\Contracts\FilialSubWeekServiceInterface;
 use App\Traits\ApiResponse;
@@ -22,8 +24,9 @@ class ReportFormController extends Controller
         $branches = Branch::all()->count();
         $sub = SubFilial::all()->count();
         $users = SubFilial::all()->count();
-
-        return view('dashboard', compact('branches','sub','users'));
+        $data = ActionsLog::with('user')->paginate(10);
+        $user=User::with('branch','department','role')->findOrFail(auth()->user()->id);
+        return view('dashboard', compact('branches','sub','users','data','user'));
     }
     public function index(Request $request, FilialSubWeekServiceInterface $service)
     {

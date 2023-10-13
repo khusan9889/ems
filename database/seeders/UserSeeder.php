@@ -12,7 +12,9 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::updateOrCreate(['id' => 1], [
+        User::truncate();
+        User::create(
+            [
             'name' => 'Админ',
             'phone_number' => '971003021',
             'email' => 'admin@gmail.com',
@@ -21,7 +23,8 @@ class UserSeeder extends Seeder
             'role_id' => 1
         ]);
 
-        User::updateOrCreate(['id' =>2], [
+        User::create(
+            [
             'name' => 'Республика',
             'phone_number' => '901003021',
             'email' => 'respublika@gmail.com',
@@ -30,7 +33,8 @@ class UserSeeder extends Seeder
             'role_id' => 2
         ]);
 
-        User::updateOrCreate(['id' =>3], [
+        User::create(
+            [
             'name' => 'Андижан',
             'phone_number' => '911003021',
             'email' => 'andijon@gmail.com',
@@ -39,7 +43,8 @@ class UserSeeder extends Seeder
             'role_id' => 2
         ]);
 
-        User::updateOrCreate(['id' =>4], [
+        User::create(
+            [
             'name' => 'Наманган',
             'phone_number' => '921003021',
             'email' => 'namangan@gmail.com',
@@ -48,7 +53,8 @@ class UserSeeder extends Seeder
             'role_id' => 2
         ]);
 
-        User::updateOrCreate(['id' =>5], [
+        User::create(
+            [
             'name' => 'Фергана',
             'phone_number' => '931003021',
             'email' => 'fergana@gmail.com',
@@ -57,7 +63,8 @@ class UserSeeder extends Seeder
             'role_id' => 2
         ]);
 
-        User::updateOrCreate(['id' =>6], [
+        User::create(
+            [
             'name' => 'Ташкент',
             'phone_number' => '941003021',
             'email' => 'tashkent@gmail.com',
@@ -66,7 +73,8 @@ class UserSeeder extends Seeder
             'role_id' => 2
         ]);
 
-        User::updateOrCreate(['id' =>7], [
+        User::create(
+            [
             'name' => 'Сырдарья',
             'phone_number' => '951003021',
             'email' => 'sirdarya@gmail.com',
@@ -75,7 +83,8 @@ class UserSeeder extends Seeder
             'role_id' => 2
         ]);
 
-        User::updateOrCreate(['id' =>8], [
+        User::create(
+            [
             'name' => 'Джизак',
             'phone_number' => '961003021',
             'email' => 'jizzakh@gmail.com',
@@ -84,7 +93,8 @@ class UserSeeder extends Seeder
             'role_id' => 2
         ]);
 
-        User::updateOrCreate(['id' =>9], [
+        User::create(
+            [
             'name' => 'Самарканд',
             'phone_number' => '981003021',
             'email' => 'samarkand@gmail.com',
@@ -93,7 +103,8 @@ class UserSeeder extends Seeder
             'role_id' => 2
         ]);
 
-        User::updateOrCreate(['id' =>10], [
+        User::create(
+            [
             'name' => 'Кашкадарья',
             'phone_number' => '991003021',
             'email' => 'kashkadarya@gmail.com',
@@ -102,7 +113,8 @@ class UserSeeder extends Seeder
             'role_id' => 2
         ]);
 
-        User::updateOrCreate(['id' =>11], [
+        User::create(
+            [
             'name' => 'Сурхандарья',
             'phone_number' => '992003021',
             'email' => 'surkhandarya@gmail.com',
@@ -111,7 +123,8 @@ class UserSeeder extends Seeder
             'role_id' => 2
         ]);
 
-        User::updateOrCreate(['id' =>12], [
+        User::create(
+            [
             'name' => 'Навои',
             'phone_number' => '902003021',
             'email' => 'navoi@gmail.com',
@@ -120,7 +133,8 @@ class UserSeeder extends Seeder
             'role_id' => 2
         ]);
 
-        User::updateOrCreate(['id' =>13], [
+        User::create(
+            [
             'name' => 'Бухара',
             'phone_number' => '912003021',
             'email' => 'bukhara@gmail.com',
@@ -129,7 +143,8 @@ class UserSeeder extends Seeder
             'role_id' => 2
         ]);
 
-        User::updateOrCreate(['id' =>14], [
+        User::create(
+            [
             'name' => 'Хорезм',
             'phone_number' => '922003021',
             'email' => 'khorezm@gmail.com',
@@ -138,7 +153,8 @@ class UserSeeder extends Seeder
             'role_id' => 2
         ]);
 
-        User::updateOrCreate(['id' =>15], [
+        User::create(
+            [
             'name' => 'Каракалпакстан',
             'phone_number' => '932003021',
             'email' => 'karakalpakstan@gmail.com',
@@ -146,5 +162,6 @@ class UserSeeder extends Seeder
             'branch_id' => 14,
             'role_id' => 2
         ]);
+
     }
 }
