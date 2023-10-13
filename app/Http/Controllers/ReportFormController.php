@@ -23,7 +23,7 @@ class ReportFormController extends Controller
 
         $branches = Branch::all()->count();
         $sub = SubFilial::all()->count();
-        $users = SubFilial::all()->count();
+        $users = User::all()->count();
         $data = ActionsLog::with('user')->paginate(5);
         $user=User::with('branch','department','role')->findOrFail(auth()->user()->id);
         return view('dashboard', compact('branches','sub','users','data','user'));

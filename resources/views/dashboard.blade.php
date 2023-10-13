@@ -17,9 +17,8 @@
                 <div class="stats-title">Пользователь в индикаторах</div>
                 <div class="stats-number">{{$users}}</div>
                 <div class="stats-progress progress">
-                    <div class="progress-bar" style="width: 70.1%;"></div>
+                    <div class="progress-bar" style="width: 100%;"></div>
                 </div>
-                <div class="stats-desc">Better than last week (70.1%)</div>
             </div>
         </div>
         <!-- end col-3 -->
@@ -30,9 +29,8 @@
                 <div class="stats-title">Филиал</div>
                 <div class="stats-number">{{$branches}}</div>
                 <div class="stats-progress progress">
-                    <div class="progress-bar" style="width: 40.5%;"></div>
+                    <div class="progress-bar" style="width: 100%;"></div>
                 </div>
-                <div class="stats-desc">Better than last week (40.5%)</div>
             </div>
         </div>
         <!-- end col-3 -->
@@ -44,9 +42,8 @@
                 <div class="stats-title">Субфилиал</div>
                 <div class="stats-number">{{$sub}}</div>
                 <div class="stats-progress progress">
-                    <div class="progress-bar" style="width: 54.9%;"></div>
+                    <div class="progress-bar" style="width: 100%;"></div>
                 </div>
-                <div class="stats-desc">Better than last week (54.9%)</div>
             </div>
         </div>
         <!-- end col-3 -->
