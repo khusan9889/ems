@@ -65,11 +65,11 @@
                             <td>{{$user->name}}</td>
                         </tr>
                         <tr>
-                            <td class="field">Выбрать субъект СЭМП</td>
+                            <td class="field">Субъект СЭМП</td>
                             <td><i class="fa fa-lg m-r-5"></i> {{$user->branch?->name}} </td>
                         </tr>
                         <tr>
-                            <td class="field">Выбрать отделение</td>
+                            <td class="field">Отделение</td>
                             <td><a href="#">{{$user->department?->name}}</a></td>
                         </tr>
                         <tr>
