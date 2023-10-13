@@ -21,7 +21,6 @@ class ModuleMethodSeeder extends Seeder
         $i = 0;
         $data = [];
         foreach (Route::getRoutes()->getRoutes() as $route) {
-            print_r($route);
 //      if (strpos($action, 'Admin') !== false) {
             if (in_array('permission', $route->middleware()) && str_contains($route->getActionName(), '@')) {
                 $action = $route->getActionName();
