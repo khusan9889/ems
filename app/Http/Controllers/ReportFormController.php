@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreSubFilialRequest;
-use App\Http\Requests\UpdateSubFilialRequest;
-use App\Http\Resources\SubFilialResource;
-use App\Models\ActionsLog;
 use App\Models\Branch;
-use App\Models\Department;
 use App\Models\FilialSubWeek;
 use App\Models\SubFilial;
 use App\Models\Week;
 use App\Services\FilialSubWeek\Contracts\FilialSubWeekServiceInterface;
-use App\Services\SubFilial\Contracts\SubFilialServiceInterface;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 
@@ -22,6 +16,15 @@ class ReportFormController extends Controller
 
     public $modelClass = FilialSubWeek::class;
 
+    public function dashboard(Request $request,)
+    {
+
+        $branches = Branch::all()->count();
+        $sub = SubFilial::all()->count();
+        $users = SubFilial::all()->count();
+
+        return view('dashboard', compact('branches','sub','users'));
+    }
     public function index(Request $request, FilialSubWeekServiceInterface $service)
     {
 

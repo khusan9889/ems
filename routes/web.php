@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReportFormController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,14 +19,11 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
+Route::get('/', [ReportFormController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-Route::get('/', function () {
-    return redirect('/acs/list');
-});
+//Route::get('/', function () {
+//    return redirect('/acs/list');
+//});
 
 // Route::get('/acs/full-table', [ACSController::class, 'fullTable'])->name('acs.full-table');
 
