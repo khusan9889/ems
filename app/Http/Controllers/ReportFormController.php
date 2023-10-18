@@ -20,12 +20,12 @@ class ReportFormController extends Controller
 
     public function dashboard(Request $request,)
     {
-
+        $user_id=auth()->user()->id;
         $branches = Branch::all()->count();
         $sub = SubFilial::all()->count();
         $users = User::all()->count();
-        $data = ActionsLog::with('user')->paginate(5);
-        $user=User::with('branch','department','role')->findOrFail(auth()->user()->id);
+        $data = ActionsLog::where('user_id',$user_id)->with('user')->orderBy('id','ASC')->paginate(5);
+        $user=User::with('branch','department','role')->findOrFail($user_id);
         return view('dashboard', compact('branches','sub','users','data','user'));
     }
     public function index(Request $request, FilialSubWeekServiceInterface $service)
