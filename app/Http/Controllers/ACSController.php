@@ -32,6 +32,7 @@ class ACSController extends Controller
         if ($userBranchId != 0) {
             $filters['branch'] = $userBranchId;
         }
+        dd($filters);
 
         $hospitalization_channels = ACS::HOSPITALIZATION_CHANNELS;
         $data = $acsService->customFilter($filters);
@@ -56,6 +57,7 @@ class ACSController extends Controller
 
     public function fullform($id)
     {
+
         $data = ACS::findOrFail($id);
         return view('dashboard.pages.full-table', compact('data'));
     }

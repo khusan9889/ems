@@ -36,9 +36,10 @@ class PolytraumaController extends Controller
             $filters['branch'] = $userBranchId;
         }
 
+
         $hospitalization_channels = Polytrauma::HOSPITALIZATION_CHANNELS;
         $data = $polytraumaService->customFilter($filters);
-        $branches = Branch::pluck('name', 'id'); // Get branch names with their IDs
+        $branches = Branch::pluck('name', 'id');
         $departments = Department::pluck('name', 'id');
 
         return view('dashboard.pages.home', compact('data', 'branches', 'departments', 'hospitalization_channels'));

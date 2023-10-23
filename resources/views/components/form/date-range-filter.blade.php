@@ -16,10 +16,9 @@
                         <div class="d-flex flex-wrap" style="gap:1rem;">
                             @foreach ($branches as $branch)
                                 @php
-                                    $isActive =  request()->branch ? request()->branch == $branch['name'] : auth()->user()->branch_id == $branch['id'];
+                                    $isActive =  request()->branch ? request()->branch == $branch['name'] : 0 == $branch['id'];
                                     $isVisible =  auth()->user()->branch_id == 1 || auth()->user()->branch_id == $branch['id'];
                                 @endphp
-
                                 <button type="button"
                                     class="btn btn btn-light region-button {{ $isActive ? 'active' : '' }} {{ $isVisible ? 'visible' : 'hidden' }}"
                                     data-region="{{ $branch['name'] }}"
