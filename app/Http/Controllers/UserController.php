@@ -27,7 +27,7 @@ class UserController extends Controller
 
         $userBranchId = auth()->user()->branch_id;
 
-        if ($userBranchId !== 1) {
+        if ($userBranchId != 1) {
             $filters['branch'] = $userBranchId;
         }
 

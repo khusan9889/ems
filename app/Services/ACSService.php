@@ -136,18 +136,18 @@ class ACSService implements ACSServiceInterface
         $date_start = $request->date_start ?? date('Y-m-d', strtotime($date_end . ' -30 days'));
 
         $authUserBranchID = auth()->user()->branch_id;
-        // dd($authUserBranchID !== 1);
+        // dd($authUserBranchID != 1);
         // dd($request->all());
         $data = $this->modelClass::whereDate('created_at', '>=', $date_start)
             ->wheredate('created_at', '<=', $date_end)
             ->when($request->branch, function ($query, $value) {
                 $selectedBranchName = $value;
-                if ($selectedBranchName !== 'РНЦЭМП') {
+                if ($selectedBranchName != 'Все') {
                     $selectedBranch = Branch::where('name', $selectedBranchName)->first();
                     $query->where('branch_id', $selectedBranch->id);
                 }
             })
-            ->when($authUserBranchID !== 1, function($query, $value) {
+            ->when($authUserBranchID != 0, function($query, $value) {
                 $query->where('branch_id', auth()->user()->branch_id);
             })
             ->get();

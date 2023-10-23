@@ -20,7 +20,7 @@ class DepartmentController extends Controller
 
         $userBranchId = auth()->user()->branch_id;
 
-        if ($userBranchId !== 1) {
+        if ($userBranchId != 1) {
             $filters['branch'] = $userBranchId;
         }
 
@@ -54,7 +54,7 @@ class DepartmentController extends Controller
             'branches' => $branches
         ]);
     }
-    
+
     public function create()
     {
         $userBranchId = auth()->user()->branch_id;

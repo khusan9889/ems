@@ -32,7 +32,7 @@ class PolytraumaController extends Controller
 
         $userBranchId = auth()->user()->branch_id;
 
-        if ($userBranchId !== 1) {
+        if ($userBranchId != 0) {
             $filters['branch'] = $userBranchId;
         }
 
@@ -125,6 +125,12 @@ class PolytraumaController extends Controller
     {
         $data = $service->statistics($request);
         $branches = Branch::all(['id', 'name']);
+        $a=collect([
+            "id"=> 0,
+            "name"=> "Все"
+        ]);
+        $branches->push($a);
+        $branches=$branches->sortBy('id');
         return view('dashboard.pages.polytrauma.statistics', compact('data', 'branches'));
     }
 

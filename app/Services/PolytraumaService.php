@@ -114,7 +114,7 @@ class PolytraumaService implements PolytraumaServiceInterface
         // Filter by hospitalization channels
         if (isset($filters['hospitalization_channels'])) {
             $hospitalizationChannels = $filters['hospitalization_channels'];
-            if ($hospitalizationChannels !== '') {
+            if ($hospitalizationChannels != '') {
                 if (!is_array($hospitalizationChannels)) {
                     $hospitalizationChannels = [$hospitalizationChannels];
                 }
@@ -151,12 +151,12 @@ class PolytraumaService implements PolytraumaServiceInterface
         $data = $this->modelClass::whereBetween('created_at', [$date_start, $date_end])
             ->when($request->branch, function ($query, $value) {
                 $selectedBranchName = $value;
-                if ($selectedBranchName !== 'РНЦЭМП') {
+                if ($selectedBranchName != 'Все') {
                     $selectedBranch = Branch::where('name', $selectedBranchName)->first();
                     $query->where('branch_id', $selectedBranch->id);
                 }
             })
-            ->when($authUserBranchID !== 1, function($query, $value) {
+            ->when($authUserBranchID != 0, function($query, $value) {
                 $query->where('branch_id', auth()->user()->branch_id);
             })
             ->when($filterInjuryOfIss, function ($query, $value) {
@@ -222,7 +222,7 @@ class PolytraumaService implements PolytraumaServiceInterface
         ];
 
         // Check $filterInjuryOfIss and add rows conditionally
-        if ($filterInjuryOfIss === null || $filterInjuryOfIss <= 16) {
+        if ($filterInjuryOfIss == null || $filterInjuryOfIss <= 16) {
             $result[] = [
                 'title' => 'Доля пациентов с тяжестью повреждения "незначительные (ISS <9 баллов)"',
                 'value' => round($tmp->where('injury_of_iss', '<', 9)->count() / $n * 100)
@@ -233,7 +233,7 @@ class PolytraumaService implements PolytraumaServiceInterface
             ];
         }
 
-        if ($filterInjuryOfIss === null || $filterInjuryOfIss > 16) {
+        if ($filterInjuryOfIss == null || $filterInjuryOfIss > 16) {
             $result[] = [
                 'title' => 'Доля пациентов с тяжестью повреждения "тяжелые (ISS 16–25 баллов)"',
                 'value' => round($tmp->whereBetween('injury_of_iss', [16, 25])->count() / $n * 100)

@@ -63,8 +63,16 @@
                         <td>
                             <select class="form-control form-control-sm" name="status">
                                 <option value="" style="font-size: 12px;">Все</option>
-                                <option value="Измененный" style="font-size: 12px;">Измененный</option>
-                                <option value="Не изменилось" style="font-size: 12px;">Не изменилось</option>
+                                <option value="Измененный"
+                                        @if ('Измененный' == request('status')))
+                                            selected
+                                        @endif
+                                        style="font-size: 12px;">Измененный</option>
+                                <option value="Не изменилось"
+                                        @if ('Не изменилось' == request('status')))
+                                        selected
+                                        @endif
+                                        style="font-size: 12px;">Не изменилось</option>
                             </select>
                         </td>
                         <td class="align-middle d-flex justify-content-center">
