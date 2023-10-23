@@ -32,7 +32,6 @@ class ACSController extends Controller
         if ($userBranchId != 0) {
             $filters['branch'] = $userBranchId;
         }
-        dd($filters);
 
         $hospitalization_channels = ACS::HOSPITALIZATION_CHANNELS;
         $data = $acsService->customFilter($filters);

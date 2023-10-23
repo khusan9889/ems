@@ -44,7 +44,7 @@ class ReportFormController extends Controller
         }
 
         $branches = Branch::pluck('name', 'id');
-        $weeks = Week::pluck('name', 'id');
+        $weeks = Week::orderBy('id','DESC')->pluck('name', 'id');
         $data = $service->customFilter($filters);
         return view('dashboard.pages.report-form', compact('branches', 'data', 'weeks'));
     }
