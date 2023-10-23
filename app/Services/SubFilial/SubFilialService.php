@@ -30,8 +30,11 @@ class SubFilialService implements SubFilialServiceInterface
             ->when(
                 $filters['branch'],
                 fn($query, $value) => $query->where('branch_id', $value)
+            )
+            ->when(
+                $filters['name'],
+                fn($query, $value) => $query->where('name', 'like', '%' . $filters['name'] . '%')
             );
-
         $perPage = 10;
         $results = $query->paginate($perPage);
 

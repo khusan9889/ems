@@ -21,7 +21,7 @@
                                             <option value="" hidden>Выберите субъект</option>
                                             @foreach ($branches as $key => $branch)
                                                 <option value="{{ $branch->id }}" {{ old('branch_id') == $branch->id ? 'selected' : '' }}
-                                                    @selected(auth()->user()->branch_id == $branch->id)>
+                                                    @selected($data->branch_id == $branch->id)>
                                                     {{ $branch->name }}
                                                 </option>
                                             @endforeach
