@@ -36,8 +36,7 @@
                             </div>
                         </td>
                         <td>
-                            <select class="form-control form-control-sm" name="branch"
-                                    @if (auth()->user()->branch_id != 1) disabled @endif>
+                            <select class="form-control form-control-sm" name="branch"  @if (auth()->user()->branch_id != 1) disabled @endif>
                                 <option value="" style="font-size: 12px;">Все</option>
                                 @foreach ($branches as $id => $name)
                                     <option value="{{ $id }}" style="font-size: 12px;"
@@ -49,16 +48,23 @@
                             </select>
                         </td>
                         <td>
-                            <select class="form-control form-control-sm" name="week">
-                                <option value="" style="font-size: 12px;">Все</option>
-                                @foreach ($weeks as $id => $week)
-                                    <option value="{{ $id }}" style="font-size: 12px;"
-                                            @if ($id == request('week') || (auth()->user()->branch_id == $id && auth()->user()->branch_id != 1))
-                                                selected
-                                        @endif
-                                    >{{ $week }}</option>
-                                @endforeach
-                            </select>
+                            <div class="d-flex justify-content-between">
+
+                                <input class="form-control form-control-sm  w-25 mr-1"  type="month" id="month" onchange="myFunction(this.value)">
+
+                                <select class="form-control form-control-sm w-75 " name="week" id="mySelect">
+                                    <option value="" style="font-size: 12px;">Все</option>
+                                    @foreach ($weeks as $id => $week)
+                                        <option value="{{ $id }}" style="font-size: 12px;"
+                                                @if ($id == request('week') || (auth()->user()->branch_id == $id && auth()->user()->branch_id != 1))
+                                                    selected
+                                            @endif
+                                        >{{ $week }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+
                         </td>
                         <td>
                             <select class="form-control form-control-sm" name="status">
@@ -118,8 +124,36 @@
     </x-panel>
 
     <div class="d-flex justify-content-center">
-        <div class="float-right">{{$datagit add->withQueryString()->links()}}</div>
+        <div class="float-right">{{$data->withQueryString()->links()}}</div>
 
     </div>
+    <script>
+        function myFunction(val) {
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `data/${val}`);
+        xhr.send();
+        xhr.responseType = "json";
+        xhr.onload = () => {
+        console.log(val);
+        if (xhr.readyState == 4 && xhr.status == 200) {
+        var x = document.getElementById("mySelect");
+        document.querySelectorAll('#mySelect option').forEach(option => option.remove())
+            for (const  object in xhr.response) {
+              var option = document.createElement("option");
+              option.text = xhr.response[object];
+              option.value=object;
+              x.add(option);
+             }
+             console.log(x)
+        } else {
+        console.log(`Error: ${xhr.status}`);
+        }
+        };
+        }
+
+
+
+    </script>
 
 @endsection

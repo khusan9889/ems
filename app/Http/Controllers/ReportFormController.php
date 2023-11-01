@@ -50,7 +50,11 @@ class ReportFormController extends Controller
     }
 
 
-    public function edit($id)
+    public function week_data($data)
+    {
+        $weeks = Week::whereYear('start_date', '=', substr($data, 0, 4))->whereMonth('start_date', '=', substr($data, 5, 2))->orderBy('id','DESC')->take(2)->pluck('name', 'id');
+        return $weeks;
+    }    public function edit($id)
     {
         $week = FilialSubWeek::findOrFail($id);
         $filial_sub_weeks = FilialSubWeek::with(['week', 'branch', 'sub_filial'])->orderBy('id', 'ASC')->where('branch_id', $week->branch_id)->where('week_id', $week->week_id)->whereNotNull('sub_filial_id')->get();
