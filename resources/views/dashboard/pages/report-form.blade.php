@@ -56,7 +56,7 @@
                                     <option value="" style="font-size: 12px;">Все</option>
                                     @foreach ($weeks as $id => $week)
                                         <option value="{{ $id }}" style="font-size: 12px;"
-                                                @if ($id == request('week') || (auth()->user()->branch_id == $id && auth()->user()->branch_id != 1))
+                                            @if ($id == request('week'))
                                                     selected
                                             @endif
                                         >{{ $week }}</option>
@@ -131,7 +131,7 @@
         function myFunction(val) {
 
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", `data/${val}`);
+        xhr.open("GET", `data/data/${val}`);
         xhr.send();
         xhr.responseType = "json";
         xhr.onload = () => {

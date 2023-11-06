@@ -52,7 +52,11 @@ class ReportFormController extends Controller
 
     public function week_data($data)
     {
-        $weeks = Week::whereYear('start_date', '=', substr($data, 0, 4))->whereMonth('start_date', '=', substr($data, 5, 2))->orderBy('id','DESC')->take(2)->pluck('name', 'id');
+        $weeks = Week::whereYear('start_date', '=', substr($data, 0, 4))
+            ->whereMonth('start_date', '=', substr($data, 5, 2))->orderBy('id','DESC')
+            ->OrwhereMonth('end_date', '=', substr($data, 5, 2))->orderBy('id','DESC')
+//            ->take(2)
+            ->pluck('name', 'id');
         return $weeks;
     }    public function edit($id)
     {

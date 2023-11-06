@@ -21,7 +21,7 @@ class FilialSubWeekService implements FilialSubWeekServiceInterface
     }
     public function customFilter(array $filters)
     {
-        $query = $this->modelClass::with(['week','branch'])->whereNull('sub_filial_id')
+        $query = $this->modelClass::with(['week','branch'])->orderBy('week_id', 'DESC')->whereNull('sub_filial_id')
             ->when(
                 $filters['sort'],
                 fn($query, $value) => $query->orderBy('id', $value)
