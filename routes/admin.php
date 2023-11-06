@@ -100,9 +100,9 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/edit/{id}', [ReportFormController::class, 'edit'])->name('form.edit');
             Route::get('/show/{id}', [ReportFormController::class, 'show'])->name('form.show');
             Route::post('/update/{id}', [ReportFormController::class, 'update'])->name('form.update');
-            Route::get('data/{data}', [ReportFormController::class, 'week_data'])->name('form.week_data');
 
         });
+            Route::get('week_data/{data}', [ReportFormController::class, 'week_data'])->name('form.week_data');
     });
 
     Route::group(['prefix' => 'departments'], function () {

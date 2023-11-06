@@ -131,7 +131,7 @@
         function myFunction(val) {
 
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", `data/data/${val}`);
+        xhr.open("GET", `week_data/${val}`);
         xhr.send();
         xhr.responseType = "json";
         xhr.onload = () => {
