@@ -135,7 +135,6 @@
         xhr.send();
         xhr.responseType = "json";
         xhr.onload = () => {
-        console.log(val);
         if (xhr.readyState == 4 && xhr.status == 200) {
         var x = document.getElementById("mySelect");
         document.querySelectorAll('#mySelect option').forEach(option => option.remove())
