@@ -102,8 +102,8 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/update/{id}', [ReportFormController::class, 'update'])->name('form.update');
 
         });
-            Route::get('week_data/{data}', [ReportFormController::class, 'week_data'])->name('form.week_data');
     });
+    Route::get('week_data/{data}', [ReportFormController::class, 'week_data'])->name('form.week_data');
 
     Route::group(['prefix' => 'departments'], function () {
         Route::get('/branch', [BranchController::class, 'fetchDepartments']);
