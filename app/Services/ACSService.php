@@ -707,7 +707,6 @@ class ACSService implements ACSServiceInterface
             'value' => $value
         ];
 
-
         return $result;
     }
 }

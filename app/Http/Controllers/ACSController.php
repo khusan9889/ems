@@ -29,7 +29,7 @@ class ACSController extends Controller
 
         $userBranchId = auth()->user()->branch_id;
 
-        if ($userBranchId != 0) {
+        if ($userBranchId != 1) {
             $filters['branch'] = $userBranchId;
         }
 

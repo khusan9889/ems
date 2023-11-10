@@ -77,8 +77,6 @@ Route::group(['middleware' => 'auth'], function () {
         });
 
         Route::get('/acs/statistics', [ACSController::class, 'statistics'])->name('acs.statistics');
-        // Route::get('/polytrauma/statistics', [PolytraumaController::class, 'statistics']);
-
         Route::prefix('/polytrauma/statistics')->group(function () {
             Route::get('/', [PolytraumaController::class, 'statistics'])->name('statistics');
             Route::get('/less16', [PolytraumaController::class, 'less16'])->name('less16');

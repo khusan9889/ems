@@ -18,7 +18,7 @@ class ReportFormController extends Controller
 
     public $modelClass = FilialSubWeek::class;
 
-    public function dashboard(Request $request,)
+    public function dashboard(Request $request)
     {
         $user_id=auth()->user()->id;
         $branches = Branch::all()->count();
