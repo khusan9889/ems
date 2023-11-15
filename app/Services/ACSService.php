@@ -144,7 +144,7 @@ class ACSService implements ACSServiceInterface
                     $query->where('branch_id', $selectedBranch->id);
                 }
             })
-            ->when($authUserBranchID != 0, function($query, $value) {
+            ->when($authUserBranchID != 1, function($query, $value) {
                 $query->where('branch_id', auth()->user()->branch_id);
             })
             ->get();

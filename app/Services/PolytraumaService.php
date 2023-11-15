@@ -156,7 +156,7 @@ class PolytraumaService implements PolytraumaServiceInterface
                     $query->where('branch_id', $selectedBranch->id);
                 }
             })
-            ->when($authUserBranchID != 0, function($query, $value) {
+            ->when($authUserBranchID != 1, function($query, $value) {
                 $query->where('branch_id', auth()->user()->branch_id);
             })
             ->when($filterInjuryOfIss, function ($query, $value) {
