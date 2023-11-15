@@ -56,6 +56,30 @@ return [
                     'url' => '/departments',
                     'title' => 'Отделения'
                 ],
+                [
+                    'url' => '/ambulance-regions',
+                    'title' => 'Скорая помощь регион'
+                ],
+                [
+                    'url' => '/ambulance-districts',
+                    'title' => 'Район скорой помощи'
+                ],
+                [
+                    'url' => '/ambulance-substations',
+                    'title' => 'Подстанция скорой помощи'
+                ],
+                [
+                    'url' => '/ambulance-brigades',
+                    'title' => 'Бригада скорой помощи'
+                ],
+                [
+                    'url' => '/ambulance-hospitals',
+                    'title' => 'Больница скорой помощи'
+                ],
+                [
+                    'url' => '/ambulance-references',
+                    'title' => 'Справочник скорой помощи'
+                ],
             ]
         ],
         [
@@ -66,6 +90,19 @@ return [
             'sub_menu' => [
                 [
                     'url' => '/data',
+                    'title' => 'Отчеты'
+                ]
+
+            ]
+        ],
+        [
+            'icon' => 'fa fa-align-left',
+            'title' => 'Медицинские данные',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => '/med-data',
                     'title' => 'Отчеты'
                 ]
 
