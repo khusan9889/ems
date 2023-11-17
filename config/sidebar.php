@@ -57,27 +57,27 @@ return [
                     'title' => 'Отделения'
                 ],
                 [
-                    'url' => '/ambulance-regions',
-                    'title' => 'Скорая помощь регион'
+                    'url' => '/region',
+                    'title' => 'Область скорой помощи'
                 ],
                 [
-                    'url' => '/ambulance-districts',
+                    'url' => '/district',
                     'title' => 'Район скорой помощи'
                 ],
                 [
-                    'url' => '/ambulance-substations',
+                    'url' => '/substation',
                     'title' => 'Подстанция скорой помощи'
                 ],
                 [
-                    'url' => '/ambulance-brigades',
+                    'url' => '/brigade',
                     'title' => 'Бригада скорой помощи'
                 ],
                 [
-                    'url' => '/ambulance-hospitals',
+                    'url' => '/hospital',
                     'title' => 'Больница скорой помощи'
                 ],
                 [
-                    'url' => '/ambulance-references',
+                    'url' => '/reference',
                     'title' => 'Справочник скорой помощи'
                 ],
             ]
@@ -102,7 +102,7 @@ return [
             'caret' => true,
             'sub_menu' => [
                 [
-                    'url' => '/med-data',
+                    'url' => '/indicator',
                     'title' => 'Отчеты'
                 ]
 

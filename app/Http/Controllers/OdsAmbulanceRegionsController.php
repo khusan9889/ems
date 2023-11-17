@@ -3,64 +3,64 @@
 namespace App\Http\Controllers;
 
 use App\Models\OdsAmbulanceRegions;
-use App\Http\Requests\StoreOdsAmbulanceRegionsRequest;
-use App\Http\Requests\UpdateOdsAmbulanceRegionsRequest;
+use App\Services\Region\Contracts\RegionServiceInterface;
+use Illuminate\Http\Request;
+use App\Traits\ApiResponse;
 
 class OdsAmbulanceRegionsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request, RegionServiceInterface $service)
     {
-        //
+        $filters = [
+            'name' => $request->input('name'),
+            'coato' => $request->input('coato'),
+            'sort' => $request->input('sort') ?? 'DESC',
+        ];
+
+
+        $data = $service->customFilter($filters);
+
+        return view('dashboard.pages.region', compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function edit($id)
+    {
+        $region = OdsAmbulanceRegions::findOrFail($id);
+        return view('dashboard.pages.region-edit-page', [
+            'region' => $region
+        ]);
+    }
+
     public function create()
     {
-        //
+        return view('dashboard.pages.region-create-page');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreOdsAmbulanceRegionsRequest $request)
+    public function store(Request $request)
     {
-        //
+        $department = new OdsAmbulanceRegions();
+        $department->name = $request->name;
+        $department->coato = $request->coato;
+        $department->save();
+
+        return redirect()->route('region.index')->with('success', 'Отделение успешно создано');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(OdsAmbulanceRegions $odsAmbulanceRegions)
+    public function update(Request $request, $id)
     {
-        //
+        $department = OdsAmbulanceRegions::findOrFail($id);
+        $department->name = $request->name;
+        $department->coato = $request->coato;
+        $department->save();
+
+        return redirect()->route('region.index')->with('success', 'Отделение успешно обновлено');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(OdsAmbulanceRegions $odsAmbulanceRegions)
+    public function destroy($id)
     {
-        //
-    }
+        $department = OdsAmbulanceRegions::findOrFail($id);
+        $department->delete();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateOdsAmbulanceRegionsRequest $request, OdsAmbulanceRegions $odsAmbulanceRegions)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(OdsAmbulanceRegions $odsAmbulanceRegions)
-    {
-        //
+        return redirect()->back()->with('success', 'Запись успешно удалена');
     }
 }

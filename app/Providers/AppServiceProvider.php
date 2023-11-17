@@ -3,8 +3,12 @@
 namespace App\Providers;
 
 
+use App\Services\District\Contracts\DistrictServiceInterface;
+use App\Services\District\DistrictService;
 use App\Services\FilialSubWeek\Contracts\FilialSubWeekServiceInterface;
 use App\Services\FilialSubWeek\FilialSubWeekService;
+use App\Services\Region\Contracts\RegionServiceInterface;
+use App\Services\Region\RegionService;
 use App\Services\SubFilial\Contracts\SubFilialServiceInterface;
 use App\Services\SubFilial\SubFilialService;
 use App\Services\Week\Contracts\WeekServiceInterface;
@@ -27,6 +31,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(WeekServiceInterface::class, WeekService::class);
         $this->app->bind(SubFilialServiceInterface::class, SubFilialService::class);
         $this->app->bind(FilialSubWeekServiceInterface::class, FilialSubWeekService::class);
+        $this->app->bind(RegionServiceInterface::class, RegionService::class);
+        $this->app->bind(DistrictServiceInterface::class, DistrictService::class);
     }
 
     /**

@@ -12,7 +12,6 @@ class OdsAmbulanceIndicators extends Model
     use HasFactory, Scopes;
 
     public $fillable = [
-        'indicator_id',
         'call_region_coato',
         'call_district_coato',
         'substation_id',
@@ -45,9 +44,42 @@ class OdsAmbulanceIndicators extends Model
         'call_place_id',
     ];
 
-    protected $table = 'ods_ambulance_hospitals';
+    protected $table = 'ods_ambulance_indicators';
     public function substation(): BelongsTo
     {
         return $this->belongsTo(OdsAmbulanceSubstations::class);
     }
+    public function brigade(): BelongsTo
+    {
+        return $this->belongsTo(OdsAmbulanceBrigades::class);
+    }
+    public function call_type(): BelongsTo
+    {
+        return $this->belongsTo(OdsAmbulanceReferences::class,'call_type_id');
+    }
+    public function reason(): BelongsTo
+    {
+        return $this->belongsTo(OdsAmbulanceReferences::class,'reason_id');
+    }
+    public function call_result(): BelongsTo
+    {
+        return $this->belongsTo(OdsAmbulanceReferences::class,'call_result_id');
+    }
+    public function hospital(): BelongsTo
+    {
+        return $this->belongsTo(OdsAmbulanceReferences::class,'hospital_id');
+    }
+    public function hospitalization_result(): BelongsTo
+    {
+        return $this->belongsTo(OdsAmbulanceReferences::class,'hospitalization_result_id');
+    }
+    public function called_person(): BelongsTo
+    {
+        return $this->belongsTo(OdsAmbulanceReferences::class,'called_person_id');
+    }
+    public function call_place(): BelongsTo
+    {
+        return $this->belongsTo(OdsAmbulanceReferences::class,'call_place_id');
+    }
+
 }

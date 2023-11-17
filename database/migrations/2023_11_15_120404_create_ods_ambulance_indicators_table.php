@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('ods_ambulance_indicators', function (Blueprint $table) {
             $table->id();
-            $table->integer('indicator_id');
             $table->string('call_region_coato');
             $table->string('call_district_coato');
             $table->integer('substation_id');

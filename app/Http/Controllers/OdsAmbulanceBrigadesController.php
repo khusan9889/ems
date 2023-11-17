@@ -5,62 +5,80 @@ namespace App\Http\Controllers;
 use App\Models\OdsAmbulanceBrigades;
 use App\Http\Requests\StoreOdsAmbulanceBrigadesRequest;
 use App\Http\Requests\UpdateOdsAmbulanceBrigadesRequest;
+use App\Models\OdsAmbulanceSubstations;
+use Illuminate\Http\Request;
 
 class OdsAmbulanceBrigadesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function index(Request $request)
     {
-        //
+        $filters = [
+            'brigade_number' => $request->input('brigade_number'),
+            'substation_id' => $request->input('substation_id'),
+            'sort' => $request->input('sort') ?? 'DESC',
+        ];
+
+        $query = OdsAmbulanceBrigades::when(
+            $filters['sort'],
+            fn($query, $value) => $query->orderBy('id', $value)
+        )
+            ->when(
+                $filters['substation_id'],
+                fn($query, $value) => $query->where('substation_id', $filters['substation_id'])
+            ) ->when(
+                $filters['brigade_number'],
+                fn($query, $value) => $query->where('brigade_number', 'like', '%' . $filters['brigade_number'] . '%')
+            );
+        $brigades = $query->paginate(10);
+        $substations=OdsAmbulanceSubstations::all();
+
+        return view('dashboard.pages.brigade', compact( 'brigades','substations'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function edit($id)
+    {
+        $substations=OdsAmbulanceSubstations::all();
+        $brigade = OdsAmbulanceBrigades::findOrFail($id);
+        return view('dashboard.pages.brigade-edit-page', [
+            'brigade' => $brigade,
+            'substations'=>$substations
+        ]);
+    }
+
     public function create()
     {
-        //
+        $substations=OdsAmbulanceSubstations::all();
+        return view('dashboard.pages.brigade-create-page',compact('substations'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreOdsAmbulanceBrigadesRequest $request)
+    public function store(Request $request)
     {
-        //
+        $brigade = new OdsAmbulanceBrigades();
+        $brigade->name = $request->name;
+        $brigade->substation_id = $request->substation_id;
+        $brigade->brigade_number = $request->brigade_number;
+        $brigade->save();
+
+        return redirect()->route('brigade.index')->with('success', 'Отделение успешно создано');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(OdsAmbulanceBrigades $odsAmbulanceBrigades)
+    public function update(Request $request, $id)
     {
-        //
+        $brigade = OdsAmbulanceBrigades::findOrFail($id);
+        $brigade->name = $request->name;
+        $brigade->brigade_number = $request->brigade_number;
+        $brigade->substation_id = $request->substation_id;
+        $brigade->save();
+
+        return redirect()->route('brigade.index')->with('success', 'Отделение успешно обновлено');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(OdsAmbulanceBrigades $odsAmbulanceBrigades)
+    public function destroy($id)
     {
-        //
-    }
+        $brigade = OdsAmbulanceBrigades::findOrFail($id);
+        $brigade->delete();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateOdsAmbulanceBrigadesRequest $request, OdsAmbulanceBrigades $odsAmbulanceBrigades)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(OdsAmbulanceBrigades $odsAmbulanceBrigades)
-    {
-        //
+        return redirect()->back()->with('success', 'Запись успешно удалена');
     }
 }

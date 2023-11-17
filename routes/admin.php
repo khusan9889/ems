@@ -3,6 +3,13 @@
 use App\Http\Controllers\ACSController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\OdsAmbulanceBrigadesController;
+use App\Http\Controllers\OdsAmbulanceDistrictsController;
+use App\Http\Controllers\OdsAmbulanceHospitalsController;
+use App\Http\Controllers\OdsAmbulanceIndicatorsController;
+use App\Http\Controllers\OdsAmbulanceReferencesController;
+use App\Http\Controllers\OdsAmbulanceRegionsController;
+use App\Http\Controllers\OdsAmbulanceSubstationsController;
 use App\Http\Controllers\Permissions\PermissionController;
 use App\Http\Controllers\Permissions\RoleController;
 use App\Http\Controllers\PolytPrintController;
@@ -11,6 +18,7 @@ use App\Http\Controllers\PrintController;
 use App\Http\Controllers\ReportFormController;
 use App\Http\Controllers\SubFilialController;
 use App\Http\Controllers\UserController;
+use App\Models\OdsAmbulanceRegions;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {
@@ -57,6 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::group(['prefix' => 'branch'], function () {
             Route::get('/', [BranchController::class, 'index']);
         });
+
         Route::group(['prefix' => 'sub-branch'], function () {
             Route::get('/', [SubFilialController::class, 'index'])->name('sub.index');
             Route::get('/create-page', [SubFilialController::class, 'create'])->name('sub.create-page');
@@ -101,6 +110,8 @@ Route::group(['middleware' => 'auth'], function () {
 
         });
     });
+
+
     Route::get('week_data/{data}', [ReportFormController::class, 'week_data'])->name('form.week_data');
 
     Route::group(['prefix' => 'departments'], function () {
@@ -110,6 +121,69 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('print/{id}', [PrintController::class, 'create_pdf'])->name('save');
     Route::get('polyt-print/{id}', [PolytPrintController::class, 'create_pdf'])->name('polyt-save');
 
+    Route::group(['prefix' => 'region'], function () {
+        Route::get('/', [OdsAmbulanceRegionsController::class, 'index'])->name('region.index');
+        Route::get('/create-page', [OdsAmbulanceRegionsController::class, 'create'])->name('region.create-page');
+        Route::delete('/delete/{id}', [OdsAmbulanceRegionsController::class, 'destroy'])->name('region.delete');
+        Route::post('/store', [OdsAmbulanceRegionsController::class, 'store'])->name('region.store');
+        Route::put('/update/{id}', [OdsAmbulanceRegionsController::class, 'update'])->name('region.update');
+        Route::get('/edit/{id}', [OdsAmbulanceRegionsController::class, 'edit'])->name('region.edit');
+
+    });
+
+    Route::group(['prefix' => 'district'], function () {
+        Route::get('/', [OdsAmbulanceDistrictsController::class, 'index'])->name('district.index');
+        Route::get('/create-page', [OdsAmbulanceDistrictsController::class, 'create'])->name('district.create-page');
+        Route::delete('/delete/{id}', [OdsAmbulanceDistrictsController::class, 'destroy'])->name('district.delete');
+        Route::post('/store', [OdsAmbulanceDistrictsController::class, 'store'])->name('district.store');
+        Route::put('/update/{id}', [OdsAmbulanceDistrictsController::class, 'update'])->name('district.update');
+        Route::get('/edit/{id}', [OdsAmbulanceDistrictsController::class, 'edit'])->name('district.edit');
+    });
+
+    Route::group(['prefix' => 'hospital'], function () {
+        Route::get('/', [OdsAmbulanceHospitalsController::class, 'index'])->name('hospital.index');
+        Route::get('/create-page', [OdsAmbulanceHospitalsController::class, 'create'])->name('hospital.create-page');
+        Route::delete('/delete/{id}', [OdsAmbulanceHospitalsController::class, 'destroy'])->name('hospital.delete');
+        Route::post('/store', [OdsAmbulanceHospitalsController::class, 'store'])->name('hospital.store');
+        Route::put('/update/{id}', [OdsAmbulanceHospitalsController::class, 'update'])->name('hospital.update');
+        Route::get('/edit/{id}', [OdsAmbulanceHospitalsController::class, 'edit'])->name('hospital.edit');
+    });
+
+    Route::group(['prefix' => 'substation'], function () {
+        Route::get('/', [OdsAmbulanceSubstationsController::class, 'index'])->name('substation.index');
+        Route::get('/create-page', [OdsAmbulanceSubstationsController::class, 'create'])->name('substation.create-page');
+        Route::delete('/delete/{id}', [OdsAmbulanceSubstationsController::class, 'destroy'])->name('substation.delete');
+        Route::post('/store', [OdsAmbulanceSubstationsController::class, 'store'])->name('substation.store');
+        Route::put('/update/{id}', [OdsAmbulanceSubstationsController::class, 'update'])->name('substation.update');
+        Route::get('/edit/{id}', [OdsAmbulanceSubstationsController::class, 'edit'])->name('substation.edit');
+    });
+
+    Route::group(['prefix' => 'brigade'], function () {
+        Route::get('/', [OdsAmbulanceBrigadesController::class, 'index'])->name('brigade.index');
+        Route::get('/create-page', [OdsAmbulanceBrigadesController::class, 'create'])->name('brigade.create-page');
+        Route::delete('/delete/{id}', [OdsAmbulanceBrigadesController::class, 'destroy'])->name('brigade.delete');
+        Route::post('/store', [OdsAmbulanceBrigadesController::class, 'store'])->name('brigade.store');
+        Route::put('/update/{id}', [OdsAmbulanceBrigadesController::class, 'update'])->name('brigade.update');
+        Route::get('/edit/{id}', [OdsAmbulanceBrigadesController::class, 'edit'])->name('brigade.edit');
+    });
+
+    Route::group(['prefix' => 'reference'], function () {
+        Route::get('/', [OdsAmbulanceReferencesController::class, 'index'])->name('reference.index');
+        Route::get('/create-page', [OdsAmbulanceReferencesController::class, 'create'])->name('reference.create-page');
+        Route::delete('/delete/{id}', [OdsAmbulanceReferencesController::class, 'destroy'])->name('reference.delete');
+        Route::post('/store', [OdsAmbulanceReferencesController::class, 'store'])->name('reference.store');
+        Route::put('/update/{id}', [OdsAmbulanceReferencesController::class, 'update'])->name('reference.update');
+        Route::get('/edit/{id}', [OdsAmbulanceReferencesController::class, 'edit'])->name('reference.edit');
+    });
+
+    Route::group(['prefix' => 'indicator'], function () {
+        Route::get('/', [OdsAmbulanceIndicatorsController::class, 'index'])->name('indicator.index');
+        Route::get('/create-page', [OdsAmbulanceIndicatorsController::class, 'create'])->name('indicator.create-page');
+        Route::delete('/delete/{id}', [OdsAmbulanceIndicatorsController::class, 'destroy'])->name('indicator.delete');
+        Route::post('/store', [OdsAmbulanceIndicatorsController::class, 'store'])->name('indicator.store');
+        Route::put('/update/{id}', [OdsAmbulanceIndicatorsController::class, 'update'])->name('indicator.update');
+        Route::get('/edit/{id}', [OdsAmbulanceIndicatorsController::class, 'edit'])->name('indicator.edit');
+    });
 
 
 });
