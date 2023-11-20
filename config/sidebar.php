@@ -97,7 +97,7 @@ return [
         ],
         [
             'icon' => 'fa fa-align-left',
-            'title' => 'Медицинские данные',
+            'title' => 'Скорой помощи данные',
             'url' => 'javascript:;',
             'caret' => true,
             'sub_menu' => [

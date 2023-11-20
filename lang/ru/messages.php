@@ -140,5 +140,20 @@ return [
 //    ------------------------------------
     'SubFilialController'=>'Субфилиал',
     'ReportFormController'=>'Отчеты',
-    'show'=>'Видение'
+    'show'=>'Видение',
+//    -------------------------
+    'call_types'=>'Тип вызова',
+    'reasons'=>'Причина вызова',
+    'call_results'=>'Результат выезда',
+    'hospitalization_results'=>'Результат госпитализации',
+    'called_persons'=>'Кто вызвал',
+    'call_places'=>'Место вызова',
+    'OdsAmbulanceRegionsController'=>'Регионы скорой помощи',
+    'OdsAmbulanceDistrictsController'=>'Районы скорой помощи',
+    'OdsAmbulanceHospitalsController'=>'Больницы скорой помощи',
+    'OdsAmbulanceSubstationsController'=>'Подстанции скорой помощи',
+    'OdsAmbulanceBrigadesController'=>'Бригады скорой помощи',
+    'OdsAmbulanceReferencesController'=>'Справочник скорой помощи',
+    'OdsAmbulanceIndicatorsController'=>'Скорой помощи данные',
+
 ];

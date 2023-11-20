@@ -9,11 +9,11 @@
                 <tr>
 
                     <td>
-                        <label>Область COATO</label>
+                        <label>Область вызова</label>
                         <input type="text" name="call_region_coato" class="form-control" required>
                     </td>
                     <td>
-                        <label>Район COATO</label>
+                        <label>Район вызова</label>
                         <input type="text" name="call_district_coato" class="form-control" required>
                     </td>
                     <td>
@@ -33,10 +33,10 @@
                         <label>Заполнение карты вызова</label>
                         <select class="form-control"  name="filling_call_card" readonly>
                                 <option value="1" {{ old('filling_call_card') == 1 ? 'selected' : '' }}>
-                                    True
+                                    Истинный
                                 </option>
                                 <option value="0" {{ old('filling_call_card') == 0 ? 'selected' : '' }}>
-                                    False
+                                    Ложный
                                 </option>
                         </select>
                     </td>
@@ -62,50 +62,50 @@
 
                     <td>
                         <label>Дата приема вызова</label>
-                        <input type="date" name="call_received" class="form-control" required>
+                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="call_received" class="form-control" required>
                     </td>
                     <td>
                         <label>Время приема вызова</label>
-                        <input type="date" name="call_reception" class="form-control" required>
+                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="call_reception" class="form-control" required>
                     </td>
                     <td>
                         <label>время началы формирования Карточки транспортировки (КТ)</label>
-                        <input type="date" name="beginning_formation_ct" class="form-control" required>
+                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="beginning_formation_ct" class="form-control" required>
                     </td>
                     <td>
                         <label>Время завершения формирования КТ</label>
-                        <input type="date" name="completion_formation_ct" class="form-control" required>
+                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="completion_formation_ct" class="form-control" required>
                     </td>
                     <td>
                         <label>Время передачи вызова Бригаде</label>
-                        <input type="date" name="transfer_brigade" class="form-control" required>
+                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="transfer_brigade" class="form-control" required>
                     </td>
                     <td>
                         <label>Время выезда Бригады</label>
-                        <input type="date" name="brigade_departure" class="form-control" required>
+                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="brigade_departure" class="form-control" required>
                     </td>
                 </tr>
                 <tr>
 
                     <td>
                         <label>Прибытие Бригады на место вызова</label>
-                        <input type="date" name="arrival_brigade_place" class="form-control" required>
+                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="arrival_brigade_place" class="form-control" required>
                     </td>
                     <td>
                         <label>Время началы транспортировки </label>
-                        <input type="date" name="transportation_start" class="form-control" required>
+                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="transportation_start" class="form-control" required>
                     </td>
                     <td>
                         <label>Время прибытия на мед. Учреждение</label>
-                        <input type="date" name="arrival_medical_center" class="form-control" required>
+                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="arrival_medical_center" class="form-control" required>
                     </td>
                     <td>
                         <label>время завершения вызова</label>
-                        <input type="date" name="call_end" class="form-control" required>
+                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="call_end" class="form-control" required>
                     </td>
                     <td>
                         <label>Время возврашения на подстанцию</label>
-                        <input type="date" name="return_substation" class="form-control" required>
+                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="return_substation" class="form-control" required>
                     </td>
                     <td>
                         <label>Название бригады</label>
@@ -142,7 +142,17 @@
                     </td>
                     <td>
                         <label>Пол пациента</label>
-                        <input type="text" name="gender" class="form-control" required>
+                        <select class="form-control"  name="gender" readonly>
+                            <option value="Э/М" {{ old('gender')== "Э/М" ? 'selected' : '' }}>
+                                Э/М
+                            </option>
+                            <option value="А/Ж" {{ old('gender')== "А/Ж" ? 'selected' : '' }}>
+                                А/Ж
+                            </option>
+                            <option value="Аникланмади/Не определен" {{ old('gender')== "Аникланмади/Не определен" ? 'selected' : '' }}>
+                                Аникланмади/Не определен
+                            </option>
+                        </select>
                     </td>
                     <td>
                         <label>Возраст пациента</label>

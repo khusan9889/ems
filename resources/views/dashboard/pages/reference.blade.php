@@ -44,25 +44,25 @@
                         <td>
                             <select class="form-control form-control-sm" name="table_name">
                                 <option value="" style="font-size: 12px;">Все</option>
-                                <option value="Тип вызова" style="font-size: 12px;"
-                                        @if ("Тип вызова" == request('table_name')) selected @endif>Тип вызова
+                                <option value="call_types" style="font-size: 12px;"
+                                        @if ("call_types" == request('table_name')) selected @endif>Тип вызова
                                 </option>
-                                <option value="Причина вызова" style="font-size: 12px;"
-                                        @if ("Причина вызова" == request('table_name')) selected @endif>Причина вызова
+                                <option value="reasons" style="font-size: 12px;"
+                                        @if ("reasons" == request('table_name')) selected @endif>Причина вызова
                                 </option>
-                                <option value="Результат выезда" style="font-size: 12px;"
-                                        @if ("Результат выезда" == request('table_name')) selected @endif>Результат
+                                <option value="call_results" style="font-size: 12px;"
+                                        @if ("call_results" == request('table_name')) selected @endif>Результат
                                     выезда
                                 </option>
-                                <option value="Результат госпитализации" style="font-size: 12px;"
-                                        @if ("Результат госпитализации" == request('table_name')) selected @endif>
+                                <option value="hospitalization_results" style="font-size: 12px;"
+                                        @if ("hospitalization_results" == request('table_name')) selected @endif>
                                     Результат госпитализации
                                 </option>
-                                <option value="Кто вызвал" style="font-size: 12px;"
-                                        @if ("Кто вызвал" == request('table_name')) selected @endif>Кто вызвал
+                                <option value="called_persons" style="font-size: 12px;"
+                                        @if ("called_persons" == request('table_name')) selected @endif>Кто вызвал
                                 </option>
                                 <option value="Место вызова" style="font-size: 12px;"
-                                        @if ("Место вызова" == request('table_name')) selected @endif>Место вызова
+                                        @if ("call_places" == request('table_name')) selected @endif>Место вызова
                                 </option>
                             </select>
                         </td>
@@ -80,7 +80,7 @@
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->item_id }}</td>
-                        <td>{{ $item->table_name }}</td>
+                        <td>{{ __("messages.".$item->table_name) }}</td>
                         <td class="align-middle">
                             <div class="d-flex justify-content-center">
                                 <a href="{{ route('reference.edit', $item->id) }}"

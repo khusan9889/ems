@@ -12,93 +12,184 @@
         <div class="d-flex justify-content-end mb-3">
             <a href="{{ route('indicator.create-page') }}" class="btn btn-success">Добавить</a>
         </div>
+        <div class="d-flex">
+            <table id="data-table-default" class="table table-striped table-bordered align-middle">
+                <tr>
+                    <form action="">
+                        <td class="text-nowrap">
+                            <label>Область вызова	</label>
+                            <input class="form-control form-control-sm" type="text" name="call_region_coato"
+                                   value="{{ request('call_region_coato') }}">
+                        </td>
+                        <td class="text-nowrap">
+                            <label>Район вызова</label>
+                            <input class="form-control form-control-sm" type="text" name="call_district_coato"
+                                   value="{{ request('call_district_coato') }}">
+                        </td>
+                        <td class="text-nowrap">
+                            <label>Подстанция принятия вызова</label>
+                            <select class="form-control"  name="substation_id" readonly>
+                                @foreach ($substations as $key => $substation)
+                                    <option value="{{ $substation->id }}" {{ old('substation_id') == $substation->id ? 'selected' : '' }}>
+                                        {{ $substation->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('substation_id')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </td>
+                        <td class="text-nowrap">
+                            <label>Тип вызова</label>
+                            <select class="form-control"  name="call_type_id" readonly>
+                                @foreach ($call_types as $key => $call_type)
+                                    <option value="{{ $call_type->id }}" {{ old('call_type_id') == $call_type->id ? 'selected' : '' }}>
+                                        {{ $call_type->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('call_type_id')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </td>
+                        <td class="text-nowrap">
+                            <label>Название бригады</label>
+                            <select class="form-control"  name="brigade_id" readonly>
+                                @foreach ($brigades as $key => $brigade)
+                                    <option value="{{ $brigade->id }}" {{ old('brigade_id') == $brigade->id ? 'selected' : '' }}>
+                                        {{ $brigade->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('brigade_id')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </td>
+                        <td class="text-nowrap">
+                            <label>Причина вызова</label>
+                            <select class="form-control"  name="reason_id" readonly>
+                                @foreach ($reasons as $key => $reason)
+                                    <option value="{{ $reason->id }}" {{ old('reason_id') == $reason->id ? 'selected' : '' }}>
+                                        {{ $reason->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('reason_id')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </td>
+                        <td class="text-nowrap">
+                            <label>Результат выезда</label>
+                            <select class="form-control"  name="call_result_id" readonly>
+                                @foreach ($call_results as $key => $call_result)
+                                    <option value="{{ $call_result->id }}" {{ old('call_result_id') == $call_result->id ? 'selected' : '' }}>
+                                        {{ $call_result->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('call_result_id')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </td>
+                        <td class="text-nowrap">
+                            <label>Место госпитализации</label>
+                            <select class="form-control"  name="hospital_id" readonly>
+                                @foreach ($hospitals as $key => $hospital)
+                                    <option value="{{ $hospital->id }}" {{ old('hospital_id') == $hospital->id ? 'selected' : '' }}>
+                                        {{ $hospital->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('hospital_id')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </td>
+                        <td class="text-nowrap">
+                            <label>Результат госпитализации</label>
+                            <select class="form-control"  name="hospitalization_result_id" readonly>
+                                @foreach ($hospitalization_results as $key => $hospitalization_result)
+                                    <option value="{{ $hospitalization_result->id }}" {{ old('hospitalization_result_id') == $hospitalization_result->id ? 'selected' : '' }}>
+                                        {{ $hospitalization_result->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('hospitalization_result_id')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </td>
+                        <td class="text-nowrap">
+                            <label>Кто вызвал</label>
+                            <select class="form-control"  name="called_person_id" readonly>
+                                @foreach ($called_persons as $key => $called_person)
+                                    <option value="{{ $called_person->id }}" {{ old('called_person_id') == $called_person->id ? 'selected' : '' }}>
+                                        {{ $called_person->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('called_person_id')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </td>
+                        <td class="text-nowrap">
+                            <label>Место вызова</label>
+                            <select class="form-control"  name="call_place_id" readonly>
+                                @foreach ($call_places as $key => $call_place)
+                                    <option value="{{ $call_place->id }}" {{ old('call_place_id') == $call_place->id ? 'selected' : '' }}>
+                                        {{ $call_place->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('call_place_id')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </td>
+                        <td class="align-middle">
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-sm btn-primary mb-2">Применить</button>
+                            </div>
+                        </td>
+                    </form>
+                </tr>
+
+            </table>
+        </div>
+
         <div class="table-responsive">
             <table id="data-table-default" class="table table-striped table-bordered align-middle">
                 <thead>
                 <tr>
-                    <th>№</th>
-                    <th>Область COATO</th>
-                    <th>Район COATO</th>
-                    <th>Подстанция принятия вызова</th>
-                    <th>Заполнение карты вызова</th>
-                    <th>Тип вызова</th>
-                    <th>Номер КВ</th>
-                    <th>Дата приема вызова</th>
-                    <th>Время приема вызова</th>
-                    <th>время началы формирования Карточки транспортировки (КТ)</th>
-                    <th>Время завершения формирования КТ</th>
-                    <th>Время передачи вызова Бригаде</th>
-                    <th>Время выезда Бригады</th>
-                    <th>Прибытие Бригады на место вызова</th>
-                    <th>Время началы транспортировки</th>
-                    <th>Время прибытия на мед. Учреждение</th>
-                    <th>время завершения вызова</th>
-                    <th>Время возврашения на подстанцию</th>
-                    <th>Название бригады</th>
-                    <th>Подробный адрес вызова</th>
-                    <th>Причина вызова</th>
-                    <th>Пол пациента</th>
-                    <th>Возраст пациента</th>
-                    <th>Область проживания пациента</th>
-                    <th>Район проживания пациента</th>
-                    <th>Диагноз по МКБ10</th>
-                    <th>Результат выезда</th>
-                    <th>Место госпитализации</th>
-                    <th>Результат госпитализации</th>
-                    <th>Кто вызвал</th>
-                    <th>Место вызова</th>
-                    <th>Действия</th>
-                </tr>
-                <tr>
-                    <form action="">
-                        <td class="align-middle">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <button class="btn btn-link btn-sm sort-btn" data-sort-by="id"
-                                        onclick="{{ $order = $order === 'ASC' ? 'DESC' : 'ASC' }}">
-                                    <i class="fas fa-sort fa-lg"></i>
-                                </button>
-                                <input type="hidden" name="sort" value="{{ $order }}">
-                            </div>
-                        </td>
-                        <td>
-                            <input class="form-control form-control-sm" type="text" name="name"
-                                   value="{{ request('name') }}">
-                        </td>
-                        <td>
-                            <input class="form-control form-control-sm" type="text" name="item_id"
-                                   value="{{ request('item_id') }}">
-                        </td>
-                        <td>
-                            <select class="form-control form-control-sm" name="table_name">
-                                <option value="" style="font-size: 12px;">Все</option>
-                                <option value="Тип вызова" style="font-size: 12px;"
-                                        @if ("Тип вызова" == request('table_name')) selected @endif>Тип вызова
-                                </option>
-                                <option value="Причина вызова" style="font-size: 12px;"
-                                        @if ("Причина вызова" == request('table_name')) selected @endif>Причина вызова
-                                </option>
-                                <option value="Результат выезда" style="font-size: 12px;"
-                                        @if ("Результат выезда" == request('table_name')) selected @endif>Результат
-                                    выезда
-                                </option>
-                                <option value="Результат госпитализации" style="font-size: 12px;"
-                                        @if ("Результат госпитализации" == request('table_name')) selected @endif>
-                                    Результат госпитализации
-                                </option>
-                                <option value="Кто вызвал" style="font-size: 12px;"
-                                        @if ("Кто вызвал" == request('table_name')) selected @endif>Кто вызвал
-                                </option>
-                                <option value="Место вызова" style="font-size: 12px;"
-                                        @if ("Место вызова" == request('table_name')) selected @endif>Место вызова
-                                </option>
-                            </select>
-                        </td>
-                        <td class="align-middle d-flex justify-content-center">
-                            <div>
-                                <button type="submit" class="btn btn-sm btn-primary">Применить</button>
-                            </div>
-                        </td>
-                    </form>
+                    <th class="text-nowrap">№</th>
+                    <th class="text-nowrap">Область COATO</th>
+                    <th class="text-nowrap">Район COATO</th>
+                    <th class="text-nowrap">Подстанция принятия вызова</th>
+                    <th class="text-nowrap">Заполнение карты вызова</th>
+                    <th class="text-nowrap">Тип вызова</th>
+                    <th class="text-nowrap">Номер КВ</th>
+                    <th class="text-nowrap">Дата приема вызова</th>
+                    <th class="text-nowrap">Время приема вызова</th>
+                    <th class="text-nowrap">время началы формирования Карточки транспортировки (КТ)</th>
+                    <th class="text-nowrap">Время завершения формирования КТ</th>
+                    <th class="text-nowrap">Время передачи вызова Бригаде</th>
+                    <th class="text-nowrap">Время выезда Бригады</th>
+                    <th class="text-nowrap">Прибытие Бригады на место вызова</th>
+                    <th class="text-nowrap">Время началы транспортировки</th>
+                    <th class="text-nowrap">Время прибытия на мед. Учреждение</th>
+                    <th class="text-nowrap">время завершения вызова</th>
+                    <th class="text-nowrap">Время возврашения на подстанцию</th>
+                    <th class="text-nowrap">Название бригады</th>
+                    <th class="text-nowrap">Подробный адрес вызова</th>
+                    <th class="text-nowrap">Причина вызова</th>
+                    <th class="text-nowrap">Пол пациента</th>
+                    <th class="text-nowrap">Возраст пациента</th>
+                    <th class="text-nowrap">Область проживания пациента</th>
+                    <th class="text-nowrap">Район проживания пациента</th>
+                    <th class="text-nowrap">Диагноз по МКБ10</th>
+                    <th class="text-nowrap">Результат выезда</th>
+                    <th class="text-nowrap">Место госпитализации</th>
+                    <th class="text-nowrap">Результат госпитализации</th>
+                    <th class="text-nowrap">Кто вызвал</th>
+                    <th class="text-nowrap">Место вызова</th>
+                    <th class="text-nowrap">Действия</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -107,34 +198,34 @@
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->call_region_coato }}</td>
                         <td>{{ $item->call_district_coato }}</td>
-                        <td>{{ $item->substation_id }}</td>
-                        <td>{{ $item->filling_call_card }}</td>
+                        <td>{{ $item?->substation?->name }}</td>
+                        <td>@if($item->filling_call_card)Истинный @else Ложный @endif</td>
                         <td>{{ $item->call_type->name }}</td>
                         <td>{{ $item->card_number }}</td>
-                        <td>{{ $item->call_received }}</td>
-                        <td>{{ $item->call_reception }}</td>
-                        <td>{{ $item->beginning_formation_ct }}</td>
-                        <td>{{ $item->completion_formation_ct }}</td>
-                        <td>{{ $item->transfer_brigade }}</td>
-                        <td>{{ $item->brigade_departure }}</td>
-                        <td>{{ $item->arrival_brigade_place }}</td>
-                        <td>{{ $item->transportation_start }}</td>
-                        <td>{{ $item->arrival_medical_center }}</td>
-                        <td>{{ $item->call_end }}</td>
-                        <td>{{ $item->return_substation }}</td>
-                        <td>{{ $item->brigade->name }}</td>
+                        <td>{{ \Carbon\Carbon::parse($item->call_received)->isoFormat('YYYY-MM-DD')}}</td>
+                        <td>{{ \Carbon\Carbon::parse($item->call_reception)->isoFormat('YYYY-MM-DD')}}</td>
+                        <td>{{ \Carbon\Carbon::parse($item->beginning_formation_ct)->isoFormat('YYYY-MM-DD')}}</td>
+                        <td>{{ \Carbon\Carbon::parse($item->completion_formation_ct)->isoFormat('YYYY-MM-DD')}}</td>
+                        <td>{{ \Carbon\Carbon::parse($item->transfer_brigade)->isoFormat('YYYY-MM-DD')}}</td>
+                        <td>{{ \Carbon\Carbon::parse($item->brigade_departure)->isoFormat('YYYY-MM-DD')}}</td>
+                        <td>{{ \Carbon\Carbon::parse($item->arrival_brigade_place)->isoFormat('YYYY-MM-DD')}}</td>
+                        <td>{{ \Carbon\Carbon::parse($item->transportation_start)->isoFormat('YYYY-MM-DD')}}</td>
+                        <td>{{ \Carbon\Carbon::parse($item->arrival_medical_center)->isoFormat('YYYY-MM-DD')}}</td>
+                        <td>{{ \Carbon\Carbon::parse($item->call_end)->isoFormat('YYYY-MM-DD')}}</td>
+                        <td>{{ \Carbon\Carbon::parse($item->return_substation)->isoFormat('YYYY-MM-DD')}}</td>
+                        <td>{{ $item?->brigade?->name }}</td>
                         <td>{{ $item->address }}</td>
-                        <td>{{ $item->reason->name }}</td>
+                        <td>{{ $item?->reason?->name }}</td>
                         <td>{{ $item->gender }}</td>
                         <td>{{ $item->age }}</td>
                         <td>{{ $item->residence_region_coato }}</td>
                         <td>{{ $item->residence_district_coato }}</td>
                         <td>{{ $item->diagnos }}</td>
-                        <td>{{ $item->call_result->name }}</td>
-                        <td>{{ $item->hospital->name }}</td>
-                        <td>{{ $item->hospitalization_result->name }}</td>
-                        <td>{{ $item->called_person->name }}</td>
-                        <td>{{ $item->call_place->name }}</td>
+                        <td>{{ $item?->call_result?->name }}</td>
+                        <td>{{ $item?->hospital?->name }}</td>
+                        <td>{{ $item?->hospitalization_result?->name }}</td>
+                        <td>{{ $item?->called_person?->name }}</td>
+                        <td>{{ $item?->call_place?->name }}</td>
                         <td class="align-middle">
                             <div class="d-flex justify-content-center">
                                 <a href="{{ route('indicator.edit', $item->id) }}"
