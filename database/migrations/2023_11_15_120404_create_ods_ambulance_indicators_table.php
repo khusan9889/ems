@@ -31,7 +31,7 @@ return new class extends Migration
             $table->dateTime('call_end');
             $table->dateTime('return_substation');
             $table->integer('brigade_id');
-            $table->text('address');
+            $table->text('address')->nullable();
             $table->integer('reason_id');
             $table->string('gender');
             $table->integer('age');
@@ -41,7 +41,7 @@ return new class extends Migration
             $table->integer('call_result_id');
             $table->integer('hospital_id');
             $table->integer('hospitalization_result_id');
-            $table->integer('called_person_id');
+            $table->integer('called_person_id')->nullable();
             $table->integer('call_place_id');
             $table->timestamps();
         });

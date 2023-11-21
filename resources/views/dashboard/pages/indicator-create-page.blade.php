@@ -10,9 +10,10 @@
 
                     <td>
                         <label>Область вызова</label>
-                        <select class="form-control"  name="call_region_coato" readonly>
+                        <select class="form-control" name="call_region_coato" readonly>
                             @foreach ($regions as $key => $region)
-                                <option value="{{ $region->coato }}" {{ old('call_region_coato') == $region->coato ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $region->coato }}" {{ old('call_region_coato') == $region->coato ? 'selected' : '' }}>
                                     {{ $region->name }}
                                 </option>
                             @endforeach
@@ -26,9 +27,10 @@
                     <td>
                         <label>Район вызова</label>
 
-                        <select class="form-control"  name="call_district_coato" readonly>
+                        <select class="form-control" name="call_district_coato" readonly>
                             @foreach ($districts as $key => $district)
-                                <option value="{{ $district->coato }}" {{ old('call_district_coato') == $district->coato ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $district->coato }}" {{ old('call_district_coato') == $district->coato ? 'selected' : '' }}>
                                     {{ $district->name }}
                                 </option>
                             @endforeach
@@ -41,9 +43,10 @@
                     </td>
                     <td>
                         <label>Подстанция принятия вызова</label>
-                        <select class="form-control"  name="substation_id" readonly>
+                        <select class="form-control" name="substation_id" readonly>
                             @foreach ($substations as $key => $substation)
-                                <option value="{{ $substation->id }}" {{ old('substation_id') == $substation->id ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $substation->id }}" {{ old('substation_id') == $substation->id ? 'selected' : '' }}>
                                     {{ $substation->name }}
                                 </option>
                             @endforeach
@@ -54,20 +57,21 @@
                     </td>
                     <td>
                         <label>Заполнение карты вызова</label>
-                        <select class="form-control"  name="filling_call_card" readonly>
-                                <option value="1" {{ old('filling_call_card') == 1 ? 'selected' : '' }}>
-                                    Истинный
-                                </option>
-                                <option value="0" {{ old('filling_call_card') == 0 ? 'selected' : '' }}>
-                                    Ложный
-                                </option>
+                        <select class="form-control" name="filling_call_card" readonly>
+                            <option value="1" {{ old('filling_call_card') == 1 ? 'selected' : '' }}>
+                                Истинный
+                            </option>
+                            <option value="0" {{ old('filling_call_card') == 0 ? 'selected' : '' }}>
+                                Ложный
+                            </option>
                         </select>
                     </td>
                     <td>
                         <label>Тип вызова</label>
-                        <select class="form-control"  name="call_type_id" readonly>
+                        <select class="form-control" name="call_type_id" readonly>
                             @foreach ($call_types as $key => $call_type)
-                                <option value="{{ $call_type->id }}" {{ old('call_type_id') == $call_type->id ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $call_type->id }}" {{ old('call_type_id') == $call_type->id ? 'selected' : '' }}>
                                     {{ $call_type->name }}
                                 </option>
                             @endforeach
@@ -132,9 +136,10 @@
                     </td>
                     <td>
                         <label>Название бригады</label>
-                        <select class="form-control"  name="brigade_id" readonly>
+                        <select class="form-control" name="brigade_id" readonly required>
                             @foreach ($brigades as $key => $brigade)
-                                <option value="{{ $brigade->id }}" {{ old('brigade_id') == $brigade->id ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $brigade->id }}" {{ old('brigade_id') == $brigade->id ? 'selected' : '' }}>
                                     {{ $brigade->name }}
                                 </option>
                             @endforeach
@@ -143,18 +148,18 @@
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </td>
-                </tr>
                 <tr>
 
                     <td>
                         <label>Подробный адрес вызова</label>
-                        <input type="text" name="address" class="form-control" required>
+                        <input type="text" name="address" class="form-control">
                     </td>
                     <td>
                         <label>Причина вызова</label>
-                        <select class="form-control"  name="reason_id" readonly>
+                        <select class="form-control" name="reason_id" required readonly>
                             @foreach ($reasons as $key => $reason)
-                                <option value="{{ $reason->id }}" {{ old('reason_id') == $reason->id ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $reason->id }}" {{ old('reason_id') == $reason->id ? 'selected' : '' }}>
                                     {{ $reason->name }}
                                 </option>
                             @endforeach
@@ -165,14 +170,15 @@
                     </td>
                     <td>
                         <label>Пол пациента</label>
-                        <select class="form-control"  name="gender" readonly>
+                        <select class="form-control" name="gender" readonly required>
                             <option value="Э/М" {{ old('gender')== "Э/М" ? 'selected' : '' }}>
                                 Э/М
                             </option>
                             <option value="А/Ж" {{ old('gender')== "А/Ж" ? 'selected' : '' }}>
                                 А/Ж
                             </option>
-                            <option value="Аникланмади/Не определен" {{ old('gender')== "Аникланмади/Не определен" ? 'selected' : '' }}>
+                            <option
+                                value="Аникланмади/Не определен" {{ old('gender')== "Аникланмади/Не определен" ? 'selected' : '' }}>
                                 Аникланмади/Не определен
                             </option>
                         </select>
@@ -184,9 +190,10 @@
                     <td>
                         <label>Область проживания пациента</label>
 
-                        <select class="form-control"  name="residence_region_coato" readonly>
+                        <select class="form-control" name="residence_region_coato" readonly required>
                             @foreach ($regions as $key => $region)
-                                <option value="{{ $region->coato }}" {{ old('residence_region_coato') == $region->coato ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $region->coato }}" {{ old('residence_region_coato') == $region->coato ? 'selected' : '' }}>
                                     {{ $region->name }}
                                 </option>
                             @endforeach
@@ -199,9 +206,10 @@
                     <td>
                         <label>Район проживания пациента</label>
 
-                        <select class="form-control"  name="residence_district_coato" readonly>
+                        <select class="form-control" name="residence_district_coato" readonly required>
                             @foreach ($districts as $key => $district)
-                                <option value="{{ $district->coato }}" {{ old('residence_district_coato') == $district->coato ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $district->coato }}" {{ old('residence_district_coato') == $district->coato ? 'selected' : '' }}>
                                     {{ $district->name }}
                                 </option>
                             @endforeach
@@ -219,9 +227,10 @@
                     </td>
                     <td>
                         <label>Результат выезда</label>
-                        <select class="form-control"  name="call_result_id" readonly>
+                        <select class="form-control" name="call_result_id" readonly required>
                             @foreach ($call_results as $key => $call_result)
-                                <option value="{{ $call_result->id }}" {{ old('call_result_id') == $call_result->id ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $call_result->id }}" {{ old('call_result_id') == $call_result->id ? 'selected' : '' }}>
                                     {{ $call_result->name }}
                                 </option>
                             @endforeach
@@ -232,9 +241,10 @@
                     </td>
                     <td>
                         <label>Место госпитализации</label>
-                        <select class="form-control"  name="hospital_id" readonly>
+                        <select class="form-control" name="hospital_id" readonly required>
                             @foreach ($hospitals as $key => $hospital)
-                                <option value="{{ $hospital->id }}" {{ old('hospital_id') == $hospital->id ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $hospital->id }}" {{ old('hospital_id') == $hospital->id ? 'selected' : '' }}>
                                     {{ $hospital->name }}
                                 </option>
                             @endforeach
@@ -245,9 +255,10 @@
                     </td>
                     <td>
                         <label>Результат госпитализации</label>
-                        <select class="form-control"  name="hospitalization_result_id" readonly>
+                        <select class="form-control" name="hospitalization_result_id" readonly required>
                             @foreach ($hospitalization_results as $key => $hospitalization_result)
-                                <option value="{{ $hospitalization_result->id }}" {{ old('hospitalization_result_id') == $hospitalization_result->id ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $hospitalization_result->id }}" {{ old('hospitalization_result_id') == $hospitalization_result->id ? 'selected' : '' }}>
                                     {{ $hospitalization_result->name }}
                                 </option>
                             @endforeach
@@ -258,9 +269,10 @@
                     </td>
                     <td>
                         <label>Кто вызвал</label>
-                        <select class="form-control"  name="called_person_id" readonly>
+                        <select class="form-control" name="called_person_id" readonly required>
                             @foreach ($called_persons as $key => $called_person)
-                                <option value="{{ $called_person->id }}" {{ old('called_person_id') == $called_person->id ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $called_person->id }}" {{ old('called_person_id') == $called_person->id ? 'selected' : '' }}>
                                     {{ $called_person->name }}
                                 </option>
                             @endforeach
@@ -271,9 +283,10 @@
                     </td>
                     <td>
                         <label>Место вызова</label>
-                        <select class="form-control"  name="call_place_id" readonly>
+                        <select class="form-control" name="call_place_id" readonly>
                             @foreach ($call_places as $key => $call_place)
-                                <option value="{{ $call_place->id }}" {{ old('call_place_id') == $call_place->id ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $call_place->id }}" {{ old('call_place_id') == $call_place->id ? 'selected' : '' }}>
                                     {{ $call_place->name }}
                                 </option>
                             @endforeach
