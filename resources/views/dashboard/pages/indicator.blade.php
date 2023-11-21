@@ -10,6 +10,7 @@
     <h1 class="page-header">Скорая помощь</h1>
     <x-panel>
         <div class="d-flex justify-content-end mb-3">
+            <a href="{{ route('indicator.create-page') }}" class="btn btn-success mr-3">Импорт</a>
             <a href="{{ route('indicator.create-page') }}" class="btn btn-success">Добавить</a>
         </div>
         <div class="d-flex">
@@ -32,7 +33,6 @@
                         </td>
                         <td class="text-nowrap">
                             <label>Район вызова</label>
-
                             <select class="form-control"  name="call_district_coato" readonly>
                             @foreach ($districts as $key => $district)
                                 <option value="{{ $district->coato }}" {{ old('call_district_coato') == $district->coato ? 'selected' : '' }}>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\OdsAmbulanceIndicatorsImport;
 use App\Models\OdsAmbulanceBrigades;
 use App\Models\OdsAmbulanceDistricts;
 use App\Models\OdsAmbulanceHospitals;
@@ -12,6 +13,8 @@ use App\Models\OdsAmbulanceReferences;
 use App\Models\OdsAmbulanceRegions;
 use App\Models\OdsAmbulanceSubstations;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OdsAmbulanceIndicatorsController extends Controller
 {
@@ -184,5 +187,14 @@ class OdsAmbulanceIndicatorsController extends Controller
         $brigade->delete();
 
         return redirect()->back()->with('success', 'Запись успешно удалена');
+    }
+    public function importExcel(Request $request)
+    {
+        $request->validate([
+            'import_file' => 'required'
+        ]);
+        Excel::queueImport(new OdsAmbulanceIndicatorsImport, request()->file('import_file'));
+        Session::flash('success','Успешно прошла валидацию! Данные скоро будут импортированы.');
+        return back();
     }
 }

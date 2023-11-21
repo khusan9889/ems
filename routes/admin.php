@@ -174,6 +174,8 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/store', [OdsAmbulanceIndicatorsController::class, 'store'])->name('indicator.store');
             Route::put('/update/{id}', [OdsAmbulanceIndicatorsController::class, 'update'])->name('indicator.update');
             Route::get('/edit/{id}', [OdsAmbulanceIndicatorsController::class, 'edit'])->name('indicator.edit');
+            Route::post('/import', [OdsAmbulanceIndicatorsController::class, 'importExcel'])->name('indicator.import');
+
         });
 
     });
