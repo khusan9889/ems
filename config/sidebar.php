@@ -58,23 +58,23 @@ return [
                 ],
                 [
                     'url' => '/region',
-                    'title' => 'Область скорой помощи'
+                    'title' => 'Область'
                 ],
                 [
                     'url' => '/district',
-                    'title' => 'Район скорой помощи'
+                    'title' => 'Район'
                 ],
                 [
                     'url' => '/substation',
-                    'title' => 'Подстанция скорой помощи'
+                    'title' => 'Подстанция'
                 ],
                 [
                     'url' => '/brigade',
-                    'title' => 'Бригада скорой помощи'
+                    'title' => 'Бригада'
                 ],
                 [
                     'url' => '/hospital',
-                    'title' => 'Больница скорой помощи'
+                    'title' => 'Больница'
                 ],
                 [
                     'url' => '/reference',
@@ -97,7 +97,7 @@ return [
         ],
         [
             'icon' => 'fa fa-align-left',
-            'title' => 'Скорой помощи данные',
+            'title' => 'Скорая помощь',
             'url' => 'javascript:;',
             'caret' => true,
             'sub_menu' => [

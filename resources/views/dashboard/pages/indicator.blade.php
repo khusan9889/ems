@@ -7,7 +7,7 @@
 @endphp
 
 @section('content')
-    <h1 class="page-header">Медицинские данные</h1>
+    <h1 class="page-header">Скорая помощь</h1>
     <x-panel>
         <div class="d-flex justify-content-end mb-3">
             <a href="{{ route('indicator.create-page') }}" class="btn btn-success">Добавить</a>
