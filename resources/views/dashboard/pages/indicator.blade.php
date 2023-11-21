@@ -10,17 +10,17 @@
     <h1 class="page-header">Скорая помощь</h1>
     <x-panel>
         <div class="d-flex justify-content-end mb-3">
-            <form method="POST" action="{{ route('indicator.import') }}">
-                @csrf
-                <td>
-                    <input class="form-control form-control-sm" type="file" name="import_file">
-                </td>
-                <td class="align-middle d-flex justify-content-center">
-                    <div>
-                        <button type="submit" class="btn btn-sm btn-primary">Импорт</button>
-                    </div>
-                </td>
-            </form>
+{{--            <form method="POST" action="{{ route('indicator.import') }}">--}}
+{{--                @csrf--}}
+{{--                <td>--}}
+{{--                    <input class="form-control form-control-sm" type="file" name="import_file">--}}
+{{--                </td>--}}
+{{--                <td class="align-middle d-flex justify-content-center">--}}
+{{--                    <div>--}}
+{{--                        <button type="submit" class="btn btn-sm btn-primary">Импорт</button>--}}
+{{--                    </div>--}}
+{{--                </td>--}}
+{{--            </form>--}}
 
             <a href="{{ route('indicator.create-page') }}" class="btn btn-success">Добавить</a>
         </div>
@@ -69,20 +69,7 @@
                             @enderror
                         </td>
                         <td class="text-nowrap">
-                            <label>Тип вызова</label>
-                            <select class="form-control"  name="call_type_id" readonly>
-                                @foreach ($call_types as $key => $call_type)
-                                    <option value="{{ $call_type->id }}" {{ old('call_type_id') == $call_type->id ? 'selected' : '' }}>
-                                        {{ $call_type->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('call_type_id')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </td>
-                        <td class="text-nowrap">
-                            <label>Название бригады</label>
+                            <label>Бригады</label>
                             <select class="form-control"  name="brigade_id" readonly>
                                 @foreach ($brigades as $key => $brigade)
                                     <option value="{{ $brigade->id }}" {{ old('brigade_id') == $brigade->id ? 'selected' : '' }}>
@@ -91,19 +78,6 @@
                                 @endforeach
                             </select>
                             @error('brigade_id')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </td>
-                        <td class="text-nowrap">
-                            <label>Причина вызова</label>
-                            <select class="form-control"  name="reason_id" readonly>
-                                @foreach ($reasons as $key => $reason)
-                                    <option value="{{ $reason->id }}" {{ old('reason_id') == $reason->id ? 'selected' : '' }}>
-                                        {{ $reason->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('reason_id')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </td>
@@ -120,58 +94,58 @@
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </td>
-                        <td class="text-nowrap">
-                            <label>Место госпитализации</label>
-                            <select class="form-control"  name="hospital_id" readonly>
-                                @foreach ($hospitals as $key => $hospital)
-                                    <option value="{{ $hospital->id }}" {{ old('hospital_id') == $hospital->id ? 'selected' : '' }}>
-                                        {{ $hospital->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('hospital_id')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </td>
-                        <td class="text-nowrap">
-                            <label>Результат госпитализации</label>
-                            <select class="form-control"  name="hospitalization_result_id" readonly>
-                                @foreach ($hospitalization_results as $key => $hospitalization_result)
-                                    <option value="{{ $hospitalization_result->id }}" {{ old('hospitalization_result_id') == $hospitalization_result->id ? 'selected' : '' }}>
-                                        {{ $hospitalization_result->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('hospitalization_result_id')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </td>
-                        <td class="text-nowrap">
-                            <label>Кто вызвал</label>
-                            <select class="form-control"  name="called_person_id" readonly>
-                                @foreach ($called_persons as $key => $called_person)
-                                    <option value="{{ $called_person->id }}" {{ old('called_person_id') == $called_person->id ? 'selected' : '' }}>
-                                        {{ $called_person->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('called_person_id')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </td>
-                        <td class="text-nowrap">
-                            <label>Место вызова</label>
-                            <select class="form-control"  name="call_place_id" readonly>
-                                @foreach ($call_places as $key => $call_place)
-                                    <option value="{{ $call_place->id }}" {{ old('call_place_id') == $call_place->id ? 'selected' : '' }}>
-                                        {{ $call_place->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('call_place_id')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </td>
+{{--                        <td class="text-nowrap">--}}
+{{--                            <label>Место госпитализации</label>--}}
+{{--                            <select class="form-control"  name="hospital_id" readonly>--}}
+{{--                                @foreach ($hospitals as $key => $hospital)--}}
+{{--                                    <option value="{{ $hospital->id }}" {{ old('hospital_id') == $hospital->id ? 'selected' : '' }}>--}}
+{{--                                        {{ $hospital->name }}--}}
+{{--                                    </option>--}}
+{{--                                @endforeach--}}
+{{--                            </select>--}}
+{{--                            @error('hospital_id')--}}
+{{--                            <span class="text-danger">{{ $message }}</span>--}}
+{{--                            @enderror--}}
+{{--                        </td>--}}
+{{--                        <td class="text-nowrap">--}}
+{{--                            <label>Результат госпитализации</label>--}}
+{{--                            <select class="form-control"  name="hospitalization_result_id" readonly>--}}
+{{--                                @foreach ($hospitalization_results as $key => $hospitalization_result)--}}
+{{--                                    <option value="{{ $hospitalization_result->id }}" {{ old('hospitalization_result_id') == $hospitalization_result->id ? 'selected' : '' }}>--}}
+{{--                                        {{ $hospitalization_result->name }}--}}
+{{--                                    </option>--}}
+{{--                                @endforeach--}}
+{{--                            </select>--}}
+{{--                            @error('hospitalization_result_id')--}}
+{{--                            <span class="text-danger">{{ $message }}</span>--}}
+{{--                            @enderror--}}
+{{--                        </td>--}}
+{{--                        <td class="text-nowrap">--}}
+{{--                            <label>Кто вызвал</label>--}}
+{{--                            <select class="form-control"  name="called_person_id" readonly>--}}
+{{--                                @foreach ($called_persons as $key => $called_person)--}}
+{{--                                    <option value="{{ $called_person->id }}" {{ old('called_person_id') == $called_person->id ? 'selected' : '' }}>--}}
+{{--                                        {{ $called_person->name }}--}}
+{{--                                    </option>--}}
+{{--                                @endforeach--}}
+{{--                            </select>--}}
+{{--                            @error('called_person_id')--}}
+{{--                            <span class="text-danger">{{ $message }}</span>--}}
+{{--                            @enderror--}}
+{{--                        </td>--}}
+{{--                        <td class="text-nowrap">--}}
+{{--                            <label>Место вызова</label>--}}
+{{--                            <select class="form-control"  name="call_place_id" readonly>--}}
+{{--                                @foreach ($call_places as $key => $call_place)--}}
+{{--                                    <option value="{{ $call_place->id }}" {{ old('call_place_id') == $call_place->id ? 'selected' : '' }}>--}}
+{{--                                        {{ $call_place->name }}--}}
+{{--                                    </option>--}}
+{{--                                @endforeach--}}
+{{--                            </select>--}}
+{{--                            @error('call_place_id')--}}
+{{--                            <span class="text-danger">{{ $message }}</span>--}}
+{{--                            @enderror--}}
+{{--                        </td>--}}
                         <td class="align-middle">
                             <div class="d-flex justify-content-center">
                                 <button type="submit" class="btn btn-sm btn-primary mb-2">Применить</button>
@@ -231,17 +205,17 @@
                         <td>@if($item->filling_call_card)Истинный @else Ложный @endif</td>
                         <td>{{ $item->call_type->name }}</td>
                         <td>{{ $item->card_number }}</td>
-                        <td>{{ \Carbon\Carbon::parse($item->call_received)->isoFormat('YYYY-MM-DD')}}</td>
-                        <td>{{ \Carbon\Carbon::parse($item->call_reception)->isoFormat('YYYY-MM-DD')}}</td>
-                        <td>{{ \Carbon\Carbon::parse($item->beginning_formation_ct)->isoFormat('YYYY-MM-DD')}}</td>
-                        <td>{{ \Carbon\Carbon::parse($item->completion_formation_ct)->isoFormat('YYYY-MM-DD')}}</td>
-                        <td>{{ \Carbon\Carbon::parse($item->transfer_brigade)->isoFormat('YYYY-MM-DD')}}</td>
-                        <td>{{ \Carbon\Carbon::parse($item->brigade_departure)->isoFormat('YYYY-MM-DD')}}</td>
-                        <td>{{ \Carbon\Carbon::parse($item->arrival_brigade_place)->isoFormat('YYYY-MM-DD')}}</td>
-                        <td>{{ \Carbon\Carbon::parse($item->transportation_start)->isoFormat('YYYY-MM-DD')}}</td>
-                        <td>{{ \Carbon\Carbon::parse($item->arrival_medical_center)->isoFormat('YYYY-MM-DD')}}</td>
-                        <td>{{ \Carbon\Carbon::parse($item->call_end)->isoFormat('YYYY-MM-DD')}}</td>
-                        <td>{{ \Carbon\Carbon::parse($item->return_substation)->isoFormat('YYYY-MM-DD')}}</td>
+                        <td>{{ $item->call_received}}</td>
+                        <td>{{ $item->call_reception}}</td>
+                        <td>{{ $item->beginning_formation_ct}}</td>
+                        <td>{{ $item->completion_formation_ct}}</td>
+                        <td>{{ $item->transfer_brigade}}</td>
+                        <td>{{ $item->brigade_departure}}</td>
+                        <td>{{ $item->arrival_brigade_place}}</td>
+                        <td>{{ $item->transportation_start}}</td>
+                        <td>{{ $item->arrival_medical_center}}</td>
+                        <td>{{ $item->call_end}}</td>
+                        <td>{{ $item->return_substation}}</td>
                         <td>{{ $item?->brigade?->name }}</td>
                         <td>{{ $item->address }}</td>
                         <td>{{ $item?->reason?->name }}</td>

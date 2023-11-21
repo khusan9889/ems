@@ -85,50 +85,50 @@
 
                     <td>
                         <label>Дата приема вызова</label>
-                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="call_received" class="form-control" required>
+                        <input type="datetime-local" name="call_received" class="form-control" required>
                     </td>
                     <td>
                         <label>Время приема вызова</label>
-                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="call_reception" class="form-control" required>
+                        <input type="datetime-local" name="call_reception" class="form-control" required>
                     </td>
                     <td>
                         <label>время началы формирования Карточки транспортировки (КТ)</label>
-                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="beginning_formation_ct" class="form-control" required>
+                        <input type="datetime-local" name="beginning_formation_ct" class="form-control" required>
                     </td>
                     <td>
                         <label>Время завершения формирования КТ</label>
-                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="completion_formation_ct" class="form-control" required>
+                        <input type="datetime-local" name="completion_formation_ct" class="form-control" required>
                     </td>
                     <td>
                         <label>Время передачи вызова Бригаде</label>
-                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="transfer_brigade" class="form-control" required>
+                        <input type="datetime-local" name="transfer_brigade" class="form-control" required>
                     </td>
                     <td>
                         <label>Время выезда Бригады</label>
-                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="brigade_departure" class="form-control" required>
+                        <input type="datetime-local" name="brigade_departure" class="form-control" required>
                     </td>
                 </tr>
                 <tr>
 
                     <td>
                         <label>Прибытие Бригады на место вызова</label>
-                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="arrival_brigade_place" class="form-control" required>
+                        <input type="datetime-local" name="arrival_brigade_place" class="form-control" required>
                     </td>
                     <td>
                         <label>Время началы транспортировки </label>
-                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="transportation_start" class="form-control" required>
+                        <input type="datetime-local" name="transportation_start" class="form-control" required>
                     </td>
                     <td>
                         <label>Время прибытия на мед. Учреждение</label>
-                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="arrival_medical_center" class="form-control" required>
+                        <input type="datetime-local" name="arrival_medical_center" class="form-control" required>
                     </td>
                     <td>
                         <label>время завершения вызова</label>
-                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="call_end" class="form-control" required>
+                        <input type="datetime-local" name="call_end" class="form-control" required>
                     </td>
                     <td>
                         <label>Время возврашения на подстанцию</label>
-                        <input type="date" value="<?php echo date('Y-m-d'); ?>" name="return_substation" class="form-control" required>
+                        <input type="datetime-local" name="return_substation" class="form-control" required>
                     </td>
                     <td>
                         <label>Название бригады</label>

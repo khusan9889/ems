@@ -98,37 +98,37 @@
                                 <td>
                                     <label>Дата приема вызова</label>
                                     <input type="date"
-                                           value="{{ Carbon::parse($indicator->call_received)->isoFormat('YYYY-MM-DD')}}"
+                                           value="{{ \Carbon\Carbon::parse($indicator->call_received)->isoFormat('YYYY-MM-DD')}}"
                                            name="call_received" class="form-control" required>
                                 </td>
                                 <td>
                                     <label>Время приема вызова</label>
-                                    <input type="date"
-                                           value="{{Carbon::parse($indicator->call_reception)->isoFormat("YYYY-MM-DD")}}"
+                                    <input type="datetime-local"
+                                           value="{{ $indicator->call_reception }}"
                                            name="call_reception" class="form-control" required>
                                 </td>
                                 <td>
-                                    <label>время началы формирования Карточки транспортировки (КТ)</label>
-                                    <input type="date"
-                                           value="{{Carbon::parse($indicator->beginning_formation_ct)->isoFormat("YYYY-MM-DD")}}"
+                                    <label>Время началы формирования Карточки транспортировки (КТ)</label>
+                                    <input type="datetime-local"
+                                           value="{{$indicator->beginning_formation_ct}}"
                                            name="beginning_formation_ct" class="form-control" required>
                                 </td>
                                 <td>
                                     <label>Время завершения формирования КТ</label>
-                                    <input type="date"
-                                           value="{{Carbon::parse($indicator->completion_formation_ct)->isoFormat("YYYY-MM-DD")}}"
+                                    <input type="datetime-local"
+                                           value="{{$indicator->completion_formation_ct}}"
                                            name="completion_formation_ct" class="form-control" required>
                                 </td>
                                 <td>
                                     <label>Время передачи вызова Бригаде</label>
-                                    <input type="date"
-                                           value="{{Carbon::parse($indicator->transfer_brigade)->isoFormat("YYYY-MM-DD")}}"
+                                    <input type="datetime-local"
+                                           value="{{$indicator->transfer_brigade}}"
                                            name="transfer_brigade" class="form-control" required>
                                 </td>
                                 <td>
                                     <label>Время выезда Бригады</label>
-                                    <input type="date"
-                                           value="{{Carbon::parse($indicator->brigade_departure)->isoFormat("YYYY-MM-DD")}}"
+                                    <input type="datetime-local"
+                                           value="{{$indicator->brigade_departure}}"
                                            name="brigade_departure" class="form-control" required>
                                 </td>
                             </tr>
@@ -136,32 +136,32 @@
 
                                 <td>
                                     <label>Прибытие Бригады на место вызова</label>
-                                    <input type="date"
-                                           value="{{Carbon::parse($indicator->arrival_brigade_place)->isoFormat("YYYY-MM-DD")}}"
+                                    <input type="datetime-local"
+                                           value="{{$indicator->arrival_brigade_place}}"
                                            name="arrival_brigade_place" class="form-control" required>
                                 </td>
                                 <td>
                                     <label>Время началы транспортировки </label>
-                                    <input type="date"
-                                           value="{{Carbon::parse($indicator->transportation_start)->isoFormat("YYYY-MM-DD")}}"
+                                    <input type="datetime-local"
+                                           value="{{$indicator->transportation_start}}"
                                            name="transportation_start" class="form-control" required>
                                 </td>
                                 <td>
                                     <label>Время прибытия на мед. Учреждение</label>
-                                    <input type="date"
-                                           value="{{Carbon::parse($indicator->arrival_medical_center)->isoFormat("YYYY-MM-DD")}}"
+                                    <input type="datetime-local"
+                                           value="{{$indicator->arrival_medical_center}}"
                                            name="arrival_medical_center" class="form-control" required>
                                 </td>
                                 <td>
                                     <label>время завершения вызова</label>
-                                    <input type="date"
-                                           value="{{Carbon::parse($indicator->call_end)->isoFormat("YYYY-MM-DD")}}"
+                                    <input type="datetime-local"
+                                           value="{{$indicator->call_end}}"
                                            name="call_end" class="form-control" required>
                                 </td>
                                 <td>
                                     <label>Время возврашения на подстанцию</label>
-                                    <input type="date"
-                                           value="{{Carbon::parse($indicator->return_substation)->isoFormat("YYYY-MM-DD")}}"
+                                    <input type="datetime-local"
+                                           value="{{$indicator->return_substation}}"
                                            name="return_substation" class="form-control" required>
                                 </td>
                                 <td>

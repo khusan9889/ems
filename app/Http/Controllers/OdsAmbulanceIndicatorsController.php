@@ -193,7 +193,6 @@ class OdsAmbulanceIndicatorsController extends Controller
         $request->validate([
             'import_file' => 'required'
         ]);
-        dd($request->all());
         Excel::queueImport(new OdsAmbulanceIndicatorsImport, request()->file('import_file'));
         Session::flash('success','Успешно прошла валидацию! Данные скоро будут импортированы.');
         return back();
