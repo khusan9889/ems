@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <x-panel title="Создание новой области">
+    <x-panel title="Создание новой больница">
         <form method="POST" action="{{ route('hospital.store') }}">
             @csrf
             <table class="table table-striped table-bordered align-middle">
@@ -13,15 +13,35 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>Область СОАТО</th>
+                    <th>Выберите область</th>
                     <td>
-                        <input type="text" name="region_coato" class="form-control" required>
+                        <select class="form-control"  name="region_coato" readonly>
+                            @foreach ($regions as $key => $region)
+                                <option value="{{ $region->coato }}" {{ old('region_coato') == $region->coato ? 'selected' : '' }}>
+                                    {{ $region->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('region_coato')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </td>
                 </tr>
+
+                </tr>
                 <tr>
-                    <th>Район СОАТО</th>
+                    <th>Выберите район</th>
                     <td>
-                        <input type="text" name="district_coato" class="form-control" required>
+                        <select class="form-control"  name="district_coato" readonly>
+                            @foreach ($districts as $key => $district)
+                                <option value="{{ $district->coato }}" {{ old('district_coato') == $district->coato ? 'selected' : '' }}>
+                                    {{ $district->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('district_coato')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </td>
                 </tr>
 

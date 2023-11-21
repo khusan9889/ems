@@ -82,4 +82,22 @@ class OdsAmbulanceIndicators extends Model
         return $this->belongsTo(OdsAmbulanceReferences::class,'call_place_id');
     }
 
+
+    public function call_region(): BelongsTo
+    {
+        return $this->belongsTo(OdsAmbulanceRegions::class,'call_region_coato','coato');
+    }
+    public function call_district(): BelongsTo
+    {
+        return $this->belongsTo(OdsAmbulanceDistricts::class,'call_district_coato','coato');
+    }
+
+    public function residence_region(): BelongsTo
+    {
+        return $this->belongsTo(OdsAmbulanceRegions::class,'residence_region_coato','coato');
+    }
+    public function residence_district(): BelongsTo
+    {
+        return $this->belongsTo(OdsAmbulanceDistricts::class,'residence_district_coato','coato');
+    }
 }

@@ -18,8 +18,8 @@
                 <tr>
                     <th>№</th>
                     <th>Название района</th>
-                    <th>Название область</th>
-                    <th>Регион СОАТО</th>
+                    <th>Область</th>
+                    <th>СОАТО</th>
                     <th>Действия</th>
                 </tr>
                 <tr>
@@ -42,7 +42,8 @@
                                 <option value="" style="font-size: 12px;">Все</option>
                                 @foreach ($regions as $region)
                                     <option value="{{ $region->id }}" style="font-size: 12px;"
-                                            @if ($region->id == request('branch') || (auth()->user()->branch_id == $region->id && auth()->user()->branch_id != 1)) selected @endif>{{ $region->name }}</option>
+                                            @if ($region->id == request('branch') || (auth()->user()->branch_id == $region->id && auth()->user()->branch_id != 1)) selected @endif>
+                                        {{ $region->name }}</option>
                                 @endforeach
                             </select>
                         </td>

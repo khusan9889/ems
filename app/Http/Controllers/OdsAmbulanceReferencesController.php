@@ -58,7 +58,7 @@ class OdsAmbulanceReferencesController extends Controller
         $reference->table_name = $request->table_name;
         $reference->save();
 
-        return redirect()->route('reference.index')->with('success', 'Отделение успешно создано');
+        return redirect()->route('reference.index')->with('success', 'Справочник успешно создано');
     }
 
     public function update(Request $request, $id)
@@ -69,7 +69,7 @@ class OdsAmbulanceReferencesController extends Controller
         $reference->table_name = $request->table_name;
         $reference->save();
 
-        return redirect()->route('reference.index')->with('success', 'Отделение успешно обновлено');
+        return redirect()->route('reference.index')->with('success', 'Справочник успешно обновлено');
     }
 
     public function destroy($id)

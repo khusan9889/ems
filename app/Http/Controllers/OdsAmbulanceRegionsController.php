@@ -43,7 +43,7 @@ class OdsAmbulanceRegionsController extends Controller
         $department->coato = $request->coato;
         $department->save();
 
-        return redirect()->route('region.index')->with('success', 'Отделение успешно создано');
+        return redirect()->route('region.index')->with('success', 'Область успешно создано');
     }
 
     public function update(Request $request, $id)
@@ -53,7 +53,7 @@ class OdsAmbulanceRegionsController extends Controller
         $department->coato = $request->coato;
         $department->save();
 
-        return redirect()->route('region.index')->with('success', 'Отделение успешно обновлено');
+        return redirect()->route('region.index')->with('success', 'Область успешно обновлено');
     }
 
     public function destroy($id)

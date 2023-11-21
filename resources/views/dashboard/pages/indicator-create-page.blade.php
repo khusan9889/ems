@@ -10,11 +10,34 @@
 
                     <td>
                         <label>Область вызова</label>
-                        <input type="text" name="call_region_coato" class="form-control" required>
+                        <select class="form-control"  name="call_region_coato" readonly>
+                            @foreach ($regions as $key => $region)
+                                <option value="{{ $region->coato }}" {{ old('call_region_coato') == $region->coato ? 'selected' : '' }}>
+                                    {{ $region->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('call_region_coato')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+
+
                     </td>
                     <td>
                         <label>Район вызова</label>
-                        <input type="text" name="call_district_coato" class="form-control" required>
+
+                        <select class="form-control"  name="call_district_coato" readonly>
+                            @foreach ($districts as $key => $district)
+                                <option value="{{ $district->coato }}" {{ old('call_district_coato') == $district->coato ? 'selected' : '' }}>
+                                    {{ $district->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('call_district_coato')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+
+
                     </td>
                     <td>
                         <label>Подстанция принятия вызова</label>
@@ -160,11 +183,32 @@
                     </td>
                     <td>
                         <label>Область проживания пациента</label>
-                        <input type="text" name="residence_region_coato" class="form-control" required>
+
+                        <select class="form-control"  name="residence_region_coato" readonly>
+                            @foreach ($regions as $key => $region)
+                                <option value="{{ $region->coato }}" {{ old('residence_region_coato') == $region->coato ? 'selected' : '' }}>
+                                    {{ $region->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('residence_region_coato')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+
                     </td>
                     <td>
                         <label>Район проживания пациента</label>
-                        <input type="text" name="residence_district_coato" class="form-control" required>
+
+                        <select class="form-control"  name="residence_district_coato" readonly>
+                            @foreach ($districts as $key => $district)
+                                <option value="{{ $district->coato }}" {{ old('residence_district_coato') == $district->coato ? 'selected' : '' }}>
+                                    {{ $district->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('residence_district_coato')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </td>
                 </tr>
                 <tr>

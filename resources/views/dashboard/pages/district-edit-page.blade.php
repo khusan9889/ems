@@ -21,7 +21,7 @@
                                 <td>{{ $district->id }}</td>
                             </tr>
                             <tr>
-                                <th>Выберите обновить</th>
+                                <th>Выберите область</th>
                                 <td>
                                     <select class="form-control"  name="region_id">
                                         @foreach ($regions as $key => $region)

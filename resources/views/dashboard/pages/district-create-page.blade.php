@@ -7,7 +7,7 @@
             <table class="table table-striped table-bordered align-middle">
                 <tbody>
                     <tr>
-                        <th>Выберите обновить</th>
+                        <th>Выберите область</th>
                         <td>
                             <select class="form-control"  name="region_id" readonly>
                                 @foreach ($regions as $key => $region)

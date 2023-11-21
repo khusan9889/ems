@@ -60,7 +60,7 @@ class OdsAmbulanceBrigadesController extends Controller
         $brigade->brigade_number = $request->brigade_number;
         $brigade->save();
 
-        return redirect()->route('brigade.index')->with('success', 'Отделение успешно создано');
+        return redirect()->route('brigade.index')->with('success', 'бригады успешно создано');
     }
 
     public function update(Request $request, $id)
@@ -71,7 +71,7 @@ class OdsAmbulanceBrigadesController extends Controller
         $brigade->substation_id = $request->substation_id;
         $brigade->save();
 
-        return redirect()->route('brigade.index')->with('success', 'Отделение успешно обновлено');
+        return redirect()->route('brigade.index')->with('success', 'бригады успешно обновлено');
     }
 
     public function destroy($id)

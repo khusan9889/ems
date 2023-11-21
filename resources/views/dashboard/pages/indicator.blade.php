@@ -18,13 +18,31 @@
                     <form action="">
                         <td class="text-nowrap">
                             <label>Область вызова	</label>
-                            <input class="form-control form-control-sm" type="text" name="call_region_coato"
-                                   value="{{ request('call_region_coato') }}">
+
+                             <select class="form-control"  name="call_region_coato" readonly>
+                            @foreach ($regions as $key => $region)
+                                <option value="{{ $region->coato }}" {{ old('call_region_coato') == $region->coato ? 'selected' : '' }}>
+                                    {{ $region->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('call_region_coato')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                         </td>
                         <td class="text-nowrap">
                             <label>Район вызова</label>
-                            <input class="form-control form-control-sm" type="text" name="call_district_coato"
-                                   value="{{ request('call_district_coato') }}">
+
+                            <select class="form-control"  name="call_district_coato" readonly>
+                            @foreach ($districts as $key => $district)
+                                <option value="{{ $district->coato }}" {{ old('call_district_coato') == $district->coato ? 'selected' : '' }}>
+                                    {{ $district->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('call_district_coato')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                         </td>
                         <td class="text-nowrap">
                             <label>Подстанция принятия вызова</label>
@@ -159,8 +177,8 @@
                 <thead>
                 <tr>
                     <th class="text-nowrap">№</th>
-                    <th class="text-nowrap">Область COATO</th>
-                    <th class="text-nowrap">Район COATO</th>
+                    <th class="text-nowrap">Область вызова</th>
+                    <th class="text-nowrap">Район вызова</th>
                     <th class="text-nowrap">Подстанция принятия вызова</th>
                     <th class="text-nowrap">Заполнение карты вызова</th>
                     <th class="text-nowrap">Тип вызова</th>
@@ -196,8 +214,8 @@
                 @foreach ($indicators as $key => $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->call_region_coato }}</td>
-                        <td>{{ $item->call_district_coato }}</td>
+                        <td>{{ $item?->call_region?->name }}</td>
+                        <td>{{ $item?->call_district?->name }}</td>
                         <td>{{ $item?->substation?->name }}</td>
                         <td>@if($item->filling_call_card)Истинный @else Ложный @endif</td>
                         <td>{{ $item->call_type->name }}</td>
@@ -218,8 +236,8 @@
                         <td>{{ $item?->reason?->name }}</td>
                         <td>{{ $item->gender }}</td>
                         <td>{{ $item->age }}</td>
-                        <td>{{ $item->residence_region_coato }}</td>
-                        <td>{{ $item->residence_district_coato }}</td>
+                        <td>{{ $item?->residence_region?->name }}</td>
+                        <td>{{ $item?->residence_district?->name }}</td>
                         <td>{{ $item->diagnos }}</td>
                         <td>{{ $item?->call_result?->name }}</td>
                         <td>{{ $item?->hospital?->name }}</td>

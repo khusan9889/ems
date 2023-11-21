@@ -18,8 +18,8 @@
                 <tr>
                     <th>№</th>
                     <th>Название больницы</th>
-                    <th>Область СОАТО</th>
-                    <th>Район СОАТО</th>
+                    <th>Область</th>
+                    <th>Район</th>
                     <th>Действия</th>
                 </tr>
                 <tr>
@@ -38,12 +38,24 @@
                                    value="{{ request('name') }}">
                         </td>
                         <td>
-                            <input class="form-control form-control-sm" type="text" name="region_coato"
-                                   value="{{ request('region_coato') }}">
+                            <select class="form-control"  name="region_coato" readonly>
+                                <option value="" style="font-size: 12px;">Все</option>
+                                @foreach ($regions as $key => $region)
+                                    <option value="{{ $region->coato }}" {{ request('region_coato') == $region->coato ? 'selected' : '' }}>
+                                        {{ $region->name }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </td>
                         <td>
-                            <input class="form-control form-control-sm" type="text" name="district_coato"
-                                   value="{{ request('region_coato') }}">
+                            <select class="form-control"  name="district_coato" readonly>
+                                <option value="" style="font-size: 12px;">Все</option>
+                                @foreach ($districts as $key => $district)
+                                    <option value="{{ $district->coato }}" {{ request('district_coato') == $district->coato ? 'selected' : '' }}>
+                                        {{ $district->name }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </td>
                         <td class="align-middle d-flex justify-content-center">
                             <div>
@@ -58,8 +70,8 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
-                        <td>{{ $item->region_coato }}</td>
-                        <td>{{ $item->district_coato }}</td>
+                        <td>{{ $item?->region?->name }}</td>
+                        <td>{{ $item?->district?->name }}</td>
                         <td class="align-middle">
                             <div class="d-flex justify-content-center">
                                 <a href="{{ route('hospital.edit', $item->id) }}"

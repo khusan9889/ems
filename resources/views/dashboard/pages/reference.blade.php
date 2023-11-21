@@ -18,7 +18,6 @@
                 <tr>
                     <th>№</th>
                     <th>Название</th>
-                    <th>Номер</th>
                     <th>Тип</th>
                     <th>Действия</th>
                 </tr>
@@ -36,10 +35,6 @@
                         <td>
                             <input class="form-control form-control-sm" type="text" name="name"
                                    value="{{ request('name') }}">
-                        </td>
-                        <td>
-                            <input class="form-control form-control-sm" type="text" name="item_id"
-                                   value="{{ request('item_id') }}">
                         </td>
                         <td>
                             <select class="form-control form-control-sm" name="table_name">
@@ -79,7 +74,6 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
-                        <td>{{ $item->item_id }}</td>
                         <td>{{ __("messages.".$item->table_name) }}</td>
                         <td class="align-middle">
                             <div class="d-flex justify-content-center">

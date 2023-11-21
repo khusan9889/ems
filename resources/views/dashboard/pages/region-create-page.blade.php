@@ -13,7 +13,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Область СОАТО</th>
+                        <th>СОАТО</th>
                         <td>
                             <input type="text" name="coato" class="form-control" required>
                         </td>

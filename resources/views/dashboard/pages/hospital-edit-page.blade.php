@@ -27,15 +27,33 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Область СОАТО</th>
+                                <th>Выберите область</th>
                                 <td>
-                                    <input type="text" name="region_coato" class="form-control" value="{{ $hospital->region_coato }}" required>
+                                    <select class="form-control"  name="region_coato" readonly>
+                                        @foreach ($regions as $key => $region)
+                                            <option value="{{ $region->coato }}" {{ $hospital->region_coato == $region->coato ? 'selected' : '' }}>
+                                                {{ $region->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('region_coato')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </td>
                             </tr>
                             <tr>
-                                <th>Район СОАТО</th>
+                                <th>Выберите район</th>
                                 <td>
-                                    <input type="text" name="district_coato" class="form-control" value="{{ $hospital->district_coato }}" required>
+                                    <select class="form-control"  name="district_coato" readonly>
+                                        @foreach ($districts as $key => $district)
+                                            <option value="{{ $district->coato }}" {{ $hospital->district_coato == $district->coato ? 'selected' : '' }}>
+                                                {{ $district->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('district_coato')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </td>
                             </tr>
                             </tbody>

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\OdsAmbulanceBrigades;
+use App\Models\OdsAmbulanceDistricts;
 use App\Models\OdsAmbulanceHospitals;
 use App\Models\OdsAmbulanceIndicators;
 use App\Http\Requests\StoreOdsAmbulanceIndicatorsRequest;
 use App\Http\Requests\UpdateOdsAmbulanceIndicatorsRequest;
 use App\Models\OdsAmbulanceReferences;
+use App\Models\OdsAmbulanceRegions;
 use App\Models\OdsAmbulanceSubstations;
 use Illuminate\Http\Request;
 
@@ -25,6 +27,10 @@ class OdsAmbulanceIndicatorsController extends Controller
         $query = OdsAmbulanceIndicators::with('call_type')
             ->with('substation')
             ->with('brigade')
+            ->with('call_region')
+            ->with('call_district')
+            ->with('residence_region')
+            ->with('residence_district')
             ->when(
             $filters['sort'],
             fn($query, $value) => $query->orderBy('id', $value)
@@ -40,6 +46,8 @@ class OdsAmbulanceIndicatorsController extends Controller
                 fn($query, $value) => $query->where('call_region_coato', 'like', '%' . $filters['call_region_coato'] . '%')
             );
         $indicators = $query->paginate(10);
+        $regions=OdsAmbulanceRegions::all();
+        $districts=OdsAmbulanceDistricts::all();
         $substations=OdsAmbulanceSubstations::all();
         $call_types=OdsAmbulanceReferences::where('table_name','call_types')->get();
         $reasons=OdsAmbulanceReferences::where('table_name','reasons')->get();
@@ -49,10 +57,10 @@ class OdsAmbulanceIndicatorsController extends Controller
         $call_places=OdsAmbulanceReferences::where('table_name','call_places')->get();
         $brigades=OdsAmbulanceBrigades::all();
         $hospitals=OdsAmbulanceHospitals::all();
-
         return view('dashboard.pages.indicator',
             compact( 'indicators','substations','call_types',
-                'brigades','reasons','call_results','hospitals','hospitalization_results','called_persons','call_places'));
+                'brigades','reasons','call_results','hospitals','hospitalization_results',
+                'called_persons','call_places','regions','districts'));
     }
 
     public function edit($id)
@@ -67,11 +75,18 @@ class OdsAmbulanceIndicatorsController extends Controller
         $call_places=OdsAmbulanceReferences::where('table_name','call_places')->get();
         $brigades=OdsAmbulanceBrigades::all();
         $hospitals=OdsAmbulanceHospitals::all();
-        return view('dashboard.pages.indicator-edit-page', compact('indicator','substations','call_types','brigades','reasons','call_results','hospitals','hospitalization_results','called_persons','call_places'));
+        $regions=OdsAmbulanceRegions::all();
+        $districts=OdsAmbulanceDistricts::all();
+        return view('dashboard.pages.indicator-edit-page',
+            compact('indicator','substations','call_types','brigades',
+                'reasons','call_results','hospitals','hospitalization_results',
+                'called_persons','call_places','regions','districts'));
     }
 
     public function create()
     {
+        $regions=OdsAmbulanceRegions::all();
+        $districts=OdsAmbulanceDistricts::all();
         $substations=OdsAmbulanceSubstations::all();
         $call_types=OdsAmbulanceReferences::where('table_name','call_types')->get();
         $reasons=OdsAmbulanceReferences::where('table_name','reasons')->get();
@@ -81,11 +96,15 @@ class OdsAmbulanceIndicatorsController extends Controller
         $call_places=OdsAmbulanceReferences::where('table_name','call_places')->get();
         $brigades=OdsAmbulanceBrigades::all();
         $hospitals=OdsAmbulanceHospitals::all();
-        return view('dashboard.pages.indicator-create-page',compact('substations','call_types','brigades','reasons','call_results','hospitals','hospitalization_results','called_persons','call_places'));
+        return view('dashboard.pages.indicator-create-page',
+            compact('substations','call_types','brigades',
+                'reasons','call_results','hospitals','hospitalization_results',
+                'called_persons','call_places','regions','districts'));
     }
 
     public function store(Request $request)
     {
+//        dd($request->all());
         $indicator = new OdsAmbulanceIndicators();
         $indicator->call_region_coato = $request->call_region_coato;
         $indicator->call_district_coato = $request->call_district_coato;
@@ -119,7 +138,7 @@ class OdsAmbulanceIndicatorsController extends Controller
         $indicator->call_place_id = $request->call_place_id;
         $indicator->save();
 
-        return redirect()->route('indicator.index')->with('success', 'Отделение успешно создано');
+        return redirect()->route('indicator.index')->with('success', 'Индикаторы успешно создано');
     }
 
     public function update(Request $request, $id)
@@ -156,7 +175,7 @@ class OdsAmbulanceIndicatorsController extends Controller
         $indicator->called_person_id = $request->called_person_id;
         $indicator->call_place_id = $request->call_place_id;
         $indicator->save();
-        return redirect()->route('indicator.index')->with('success', 'Отделение успешно обновлено');
+        return redirect()->route('indicator.index')->with('success', 'Индикаторы успешно обновлено');
     }
 
     public function destroy($id)

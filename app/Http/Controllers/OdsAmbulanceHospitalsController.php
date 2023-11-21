@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OdsAmbulanceDistricts;
 use App\Models\OdsAmbulanceHospitals;
 use App\Http\Requests\StoreOdsAmbulanceHospitalsRequest;
 use App\Http\Requests\UpdateOdsAmbulanceHospitalsRequest;
+use App\Models\OdsAmbulanceRegions;
 use App\Models\OdsAmbulanceSubstations;
 use Illuminate\Http\Request;
 
@@ -28,28 +30,36 @@ class OdsAmbulanceHospitalsController extends Controller
                 fn($query, $value) => $query->where('name', 'like', '%' . $filters['name'] . '%')
             ) ->when(
                 $filters['region_coato'],
-                fn($query, $value) => $query->where('region_coato', 'like', '%' . $filters['region_coato'] . '%')
+                fn($query, $value) => $query->where('region_coato', $filters['region_coato'] )
             )
             ->when(
                 $filters['district_coato'],
-                fn($query, $value) => $query->where('district_coato', 'like', '%' . $filters['district_coato'] . '%')
+                fn($query, $value) => $query->where('district_coato', $filters['district_coato'])
             );
         $hospitals = $query->paginate(10);
+        $regions=OdsAmbulanceRegions::all();
+        $districts=OdsAmbulanceDistricts::all();
 
-        return view('dashboard.pages.hospital', compact( 'hospitals'));
+        return view('dashboard.pages.hospital', compact( 'hospitals','regions','districts'));
     }
 
     public function edit($id)
     {
         $hospital = OdsAmbulanceHospitals::findOrFail($id);
+        $regions=OdsAmbulanceRegions::all();
+        $districts=OdsAmbulanceDistricts::all();
         return view('dashboard.pages.hospital-edit-page', [
-            'hospital' => $hospital
+            'hospital' => $hospital,
+            'regions'=>$regions,
+            'districts'=>$districts
         ]);
     }
 
     public function create()
     {
-        return view('dashboard.pages.hospital-create-page');
+        $regions=OdsAmbulanceRegions::all();
+        $districts=OdsAmbulanceDistricts::all();
+        return view('dashboard.pages.hospital-create-page',compact('regions','districts'));
     }
 
     public function store(Request $request)
@@ -60,7 +70,7 @@ class OdsAmbulanceHospitalsController extends Controller
         $hospital->district_coato = $request->district_coato;
         $hospital->save();
 
-        return redirect()->route('hospital.index')->with('success', 'Отделение успешно создано');
+        return redirect()->route('hospital.index')->with('success', 'Место госпитализации успешно создано');
     }
 
     public function update(Request $request, $id)
@@ -71,7 +81,7 @@ class OdsAmbulanceHospitalsController extends Controller
         $hospital->district_coato = $request->district_coato;
         $hospital->save();
 
-        return redirect()->route('hospital.index')->with('success', 'Отделение успешно обновлено');
+        return redirect()->route('hospital.index')->with('success', 'Место госпитализации успешно обновлено');
     }
 
     public function destroy($id)

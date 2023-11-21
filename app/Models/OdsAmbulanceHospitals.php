@@ -14,14 +14,17 @@ class OdsAmbulanceHospitals extends Model
     public $fillable = [
         'name',
         'region_coato',
-        'district_coato',
-        'hospital_id'
+        'district_coato'
     ];
 
     protected $table = 'ods_ambulance_hospitals';
 
-    public function hospital(): BelongsTo
+    public function region(): BelongsTo
     {
-        return $this->belongsTo(OdsAmbulanceHospitals::class);
+        return $this->belongsTo(OdsAmbulanceRegions::class,'region_coato','coato');
+    }
+    public function district(): BelongsTo
+    {
+        return $this->belongsTo(OdsAmbulanceDistricts::class,'district_coato','coato');
     }
 }
