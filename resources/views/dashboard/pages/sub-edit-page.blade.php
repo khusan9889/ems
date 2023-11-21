@@ -29,7 +29,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Название суб филиал</th>
+                                    <th>Название суб филиала</th>
                                     <td>
                                         <input type="text" name="name" class="form-control" value="{{ $department->name }}" required>
                                     </td>

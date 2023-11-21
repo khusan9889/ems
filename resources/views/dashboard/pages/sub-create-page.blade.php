@@ -24,7 +24,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Название субфилиал</th>
+                        <th>Название субфилиала</th>
                         <td>
                             <input type="text" name="name" class="form-control" required>
                         </td>

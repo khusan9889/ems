@@ -10,7 +10,18 @@
     <h1 class="page-header">Скорая помощь</h1>
     <x-panel>
         <div class="d-flex justify-content-end mb-3">
-            <a href="{{ route('indicator.create-page') }}" class="btn btn-success mr-3">Импорт</a>
+            <form method="POST" action="{{ route('indicator.import') }}">
+                @csrf
+                <td>
+                    <input class="form-control form-control-sm" type="file" name="import_file">
+                </td>
+                <td class="align-middle d-flex justify-content-center">
+                    <div>
+                        <button type="submit" class="btn btn-sm btn-primary">Импорт</button>
+                    </div>
+                </td>
+            </form>
+
             <a href="{{ route('indicator.create-page') }}" class="btn btn-success">Добавить</a>
         </div>
         <div class="d-flex">
