@@ -7,7 +7,7 @@
             <table class="table table-striped table-bordered align-middle">
                 <tbody>
                 <tr>
-                    <th>Название подстанция</th>
+                    <th>Название подстанции</th>
                     <td>
                         <input type="text" name="name" class="form-control" required>
                     </td>

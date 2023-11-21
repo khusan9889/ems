@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <x-panel title="Создание новой справочник">
+    <x-panel title="Создание нового справочника">
         <form method="POST" action="{{ route('reference.store') }}">
             @csrf
             <table class="table table-striped table-bordered align-middle">

@@ -19,7 +19,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Выберите подстанции</th>
+                        <th>Выберите подстанцию</th>
                         <td>
                             <select class="form-control"  name="substation_id" readonly>
                                 @foreach ($substations as $key => $substation)

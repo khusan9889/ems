@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <h1 class="page-header">Обновить область</h1>
+    <h1 class="page-header">Редактировать область</h1>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card mb-4">
@@ -21,7 +21,7 @@
                                 <td>{{ $region->id }}</td>
                             </tr>
                             <tr>
-                                <th>Название область</th>
+                                <th>Название области</th>
                                 <td>
                                     <input type="text" name="name" class="form-control" value="{{ $region->name }}" required>
                                 </td>

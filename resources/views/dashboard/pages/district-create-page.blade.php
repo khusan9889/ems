@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <x-panel title="Создание новой район">
+    <x-panel title="Создание нового района">
         <form method="POST" action="{{ route('district.store') }}">
             @csrf
             <table class="table table-striped table-bordered align-middle">

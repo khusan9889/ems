@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <h1 class="page-header">Бригада бригады</h1>
+    <h1 class="page-header">Редактировать бригаду</h1>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card mb-4">
@@ -21,7 +21,7 @@
                                 <td>{{ $brigade->id }}</td>
                             </tr>
                             <tr>
-                                <th>Выберите подстанции</th>
+                                <th>Выберите подстанцию</th>
                                 <td>
                                     <select class="form-control"  name="substation_id">
                                         @foreach ($substations as $key => $substation)
