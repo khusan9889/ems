@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <x-panel title="Создание новой больница">
+    <x-panel title="Создание новой больницы">
         <form method="POST" action="{{ route('hospital.store') }}">
             @csrf
             <table class="table table-striped table-bordered align-middle">

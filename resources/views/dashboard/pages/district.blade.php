@@ -7,7 +7,7 @@
 @endphp
 
 @section('content')
-    <h1 class="page-header">Район скорой помощи</h1>
+    <h1 class="page-header">Районы скорой помощи</h1>
     <x-panel>
         <div class="d-flex justify-content-end mb-3">
             <a href="{{ route('district.create-page') }}" class="btn btn-success">Добавить</a>

@@ -7,7 +7,7 @@
 @endphp
 
 @section('content')
-    <h1 class="page-header">Подстанция скорой помощи</h1>
+    <h1 class="page-header">Подстанции скорой помощи</h1>
     <x-panel>
         <div class="d-flex justify-content-end mb-3">
             <a href="{{ route('substation.create-page') }}" class="btn btn-success">Добавить</a>
@@ -17,7 +17,7 @@
                 <thead>
                 <tr>
                     <th>№</th>
-                    <th>Название подстанция</th>
+                    <th>Название подстанции</th>
                     <th>Область</th>
                     <th>Район</th>
                     <th>Действия</th>
