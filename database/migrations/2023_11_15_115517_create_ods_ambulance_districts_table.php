@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('ods_ambulance_districts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('coato');
+            $table->string('name')->nullable();
+            $table->string('coato')->nullable();
             $table->unsignedBigInteger('region_id')->nullable();
             $table->timestamps();
         });

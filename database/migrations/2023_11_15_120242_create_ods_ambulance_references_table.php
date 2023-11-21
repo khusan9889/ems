@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('ods_ambulance_references', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('table_name');
+            $table->string('name')->nullable();
+            $table->string('table_name')->nullable();
             $table->unsignedBigInteger('item_id')->nullable();
             $table->timestamps();
         });

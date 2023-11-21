@@ -2,7 +2,7 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <h1 class="page-header">Обновить справочник</h1>
+    <h1 class="page-header">Редактировать</h1>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card mb-4">
@@ -18,10 +18,10 @@
                         <table class="table table-striped table-bordered align-middle">
                             <tbody>
                             <tr>
-
                                 <td>
                                     <label>Область вызова</label>
-                                    <select class="form-control" name="call_region_coato" readonly>
+                                    <select class="form-control" required name="call_region_coato">
+                                        <option></option>
                                         @foreach ($regions as $key => $region)
                                             <option
                                                 value="{{ $region->coato }}" {{$indicator->call_region_coato==$region->coato ? 'selected' : '' }}>
@@ -35,9 +35,9 @@
                                 </td>
                                 <td>
                                     <label>Район вызова</label>
-                                    <select class="form-control" name="call_district_coato" readonly>
+                                    <select class="form-control" required name="call_district_coato">
+                                        <option></option>
                                         @foreach ($districts as $key => $district)
-
                                             <option
                                                 value="{{ $district->coato }}" {{ $indicator->call_district_coato == $district->coato ? 'selected' : '' }}>
                                                 {{ $district->name }}
@@ -50,7 +50,8 @@
                                 </td>
                                 <td>
                                     <label>Подстанция принятия вызова</label>
-                                    <select class="form-control" name="substation_id" readonly>
+                                    <select class="form-control" required name="substation_id">
+                                        <option></option>
                                         @foreach ($substations as $key => $substation)
                                             <option
                                                 value="{{ $substation->id }}" {{ $indicator->substation_id == $substation->id ? 'selected' : '' }}>
@@ -62,9 +63,12 @@
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </td>
+                            </tr>
+                            <tr>
                                 <td>
                                     <label>Заполнение карты вызова</label>
-                                    <select class="form-control" name="filling_call_card" readonly>
+                                    <select class="form-control" required name="filling_call_card">
+                                        <option></option>
                                         <option value="1" {{ $indicator->filling_call_card  == 1 ? 'selected' : '' }}>
                                             Истинный
                                         </option>
@@ -75,7 +79,8 @@
                                 </td>
                                 <td>
                                     <label>Тип вызова</label>
-                                    <select class="form-control" name="call_type_id" readonly>
+                                    <select class="form-control" required name="call_type_id">
+                                        <option></option>
                                         @foreach ($call_types as $key => $call_type)
                                             <option
                                                 value="{{ $call_type->id }}" {{ $indicator->call_type_id == $call_type->id ? 'selected' : '' }}>
@@ -89,12 +94,11 @@
                                 </td>
                                 <td>
                                     <label>Номер КВ</label>
-                                    <input type="text" name="card_number" class="form-control"
-                                           value="{{$indicator->card_number}}" required>
+                                    <input type="text" name="card_number" class="form-control" required
+                                           value="{{$indicator->card_number}}">
                                 </td>
                             </tr>
                             <tr>
-
                                 <td>
                                     <label>Дата приема вызова</label>
                                     <input type="date"
@@ -108,11 +112,13 @@
                                            name="call_reception" class="form-control" required>
                                 </td>
                                 <td>
-                                    <label>Время началы формирования Карточки транспортировки (КТ)</label>
+                                    <label>Время началы формирования КТ</label>
                                     <input type="datetime-local"
                                            value="{{$indicator->beginning_formation_ct}}"
                                            name="beginning_formation_ct" class="form-control" required>
                                 </td>
+                            </tr>
+                            <tr>
                                 <td>
                                     <label>Время завершения формирования КТ</label>
                                     <input type="datetime-local"
@@ -133,7 +139,6 @@
                                 </td>
                             </tr>
                             <tr>
-
                                 <td>
                                     <label>Прибытие Бригады на место вызова</label>
                                     <input type="datetime-local"
@@ -152,6 +157,8 @@
                                            value="{{$indicator->arrival_medical_center}}"
                                            name="arrival_medical_center" class="form-control" required>
                                 </td>
+                            </tr>
+                            <tr>
                                 <td>
                                     <label>время завершения вызова</label>
                                     <input type="datetime-local"
@@ -165,8 +172,9 @@
                                            name="return_substation" class="form-control" required>
                                 </td>
                                 <td>
-                                    <label>Название бригады</label>
-                                    <select class="form-control" name="brigade_id" readonly>
+                                    <label>Бригада</label>
+                                    <select class="form-control" required name="brigade_id">
+                                        <option></option>
                                         @foreach ($brigades as $key => $brigade)
                                             <option
                                                 value="{{ $brigade->id }}" {{ $indicator->brigade_id == $brigade->id ? 'selected' : '' }}>
@@ -180,15 +188,15 @@
                                 </td>
                             </tr>
                             <tr>
-
                                 <td>
                                     <label>Подробный адрес вызова</label>
                                     <input type="text" name="address" class="form-control"
-                                           value="{{$indicator->address}}" required>
+                                           value="{{$indicator->address}}">
                                 </td>
                                 <td>
                                     <label>Причина вызова</label>
-                                    <select class="form-control" name="reason_id" readonly>
+                                    <select class="form-control" required name="reason_id">
+                                        <option></option>
                                         @foreach ($reasons as $key => $reason)
                                             <option
                                                 value="{{ $reason->id }}" {{ $indicator->reason_id == $reason->id ? 'selected' : '' }}>
@@ -202,7 +210,8 @@
                                 </td>
                                 <td>
                                     <label>Пол пациента</label>
-                                    <select class="form-control" name="gender" readonly>
+                                    <select class="form-control" required name="gender">
+                                        <option></option>
                                         <option value="Э/М" {{ $indicator->gender == "Э/М" ? 'selected' : '' }}>
                                             Э/М
                                         </option>
@@ -215,14 +224,17 @@
                                         </option>
                                     </select>
                                 </td>
+                            </tr>
+                            <tr>
                                 <td>
                                     <label>Возраст пациента</label>
-                                    <input type="number" name="age" class="form-control" value="{{$indicator->age}}"
-                                           min="0" required>
+                                    <input type="number" name="age" class="form-control" required value="{{$indicator->age}}"
+                                           min="0">
                                 </td>
                                 <td>
                                     <label>Область проживания пациента</label>
-                                    <select class="form-control" name="residence_region_coato" readonly>
+                                    <select class="form-control" required name="residence_region_coato">
+                                        <option></option>
                                         @foreach ($regions as $key => $region)
                                             <option
                                                 value="{{ $region->coato }}" {{ $indicator->residence_region_coato == $region->coato ? 'selected' : '' }}>
@@ -236,7 +248,8 @@
                                 </td>
                                 <td>
                                     <label>Район проживания пациента</label>
-                                    <select class="form-control" name="residence_district_coato" readonly>
+                                    <select class="form-control" required name="residence_district_coato">
+                                        <option></option>
                                         @foreach ($districts as $key => $district)
                                             <option
                                                 value="{{ $district->coato }}" {{$indicator->residence_district_coato == $district->coato ? 'selected' : '' }}>
@@ -250,15 +263,15 @@
                                 </td>
                             </tr>
                             <tr>
-
                                 <td>
                                     <label>Диагноз по МКБ10</label>
-                                    <input type="text" name="diagnos" class="form-control"
-                                           value="{{$indicator->diagnos}}" required>
+                                    <input type="text" name="diagnos" class="form-control" required
+                                           value="{{$indicator->diagnos}}">
                                 </td>
                                 <td>
                                     <label>Результат выезда</label>
-                                    <select class="form-control" name="call_result_id" readonly>
+                                    <select class="form-control" required name="call_result_id">
+                                        <option></option>
                                         @foreach ($call_results as $key => $call_result)
                                             <option
                                                 value="{{ $call_result->id }}" {{ $indicator->call_result_id == $call_result->id ? 'selected' : '' }}>
@@ -272,7 +285,8 @@
                                 </td>
                                 <td>
                                     <label>Место госпитализации</label>
-                                    <select class="form-control" name="hospital_id" readonly>
+                                    <select class="form-control" name="hospital_id">
+                                        <option></option>
                                         @foreach ($hospitals as $key => $hospital)
                                             <option
                                                 value="{{ $hospital->id }}" {{ $indicator->hospital_id == $hospital->id ? 'selected' : '' }}>
@@ -284,9 +298,12 @@
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </td>
+                            </tr>
+                            <tr>
                                 <td>
                                     <label>Результат госпитализации</label>
-                                    <select class="form-control" name="hospitalization_result_id" readonly>
+                                    <select class="form-control" name="hospitalization_result_id">
+                                        <option></option>
                                         @foreach ($hospitalization_results as $key => $hospitalization_result)
                                             <option
                                                 value="{{ $hospitalization_result->id }}" {{ $indicator->hospitalization_result_id == $hospitalization_result->id ? 'selected' : '' }}>
@@ -300,7 +317,8 @@
                                 </td>
                                 <td>
                                     <label>Кто вызвал</label>
-                                    <select class="form-control" name="called_person_id" readonly>
+                                    <select class="form-control" name="called_person_id">
+                                        <option></option>
                                         @foreach ($called_persons as $key => $called_person)
                                             <option
                                                 value="{{ $called_person->id }}" {{ $indicator->called_person_id == $called_person->id ? 'selected' : '' }}>
@@ -314,7 +332,8 @@
                                 </td>
                                 <td>
                                     <label>Место вызова</label>
-                                    <select class="form-control" name="call_place_id" readonly>
+                                    <select class="form-control" required name="call_place_id">
+                                        <option></option>
                                         @foreach ($call_places as $key => $call_place)
                                             <option
                                                 value="{{ $call_place->id }}" {{ $indicator->call_place_id == $call_place->id ? 'selected' : '' }}>
@@ -328,7 +347,6 @@
 
                                 </td>
                             </tr>
-
                             </tbody>
                         </table>
                         <div class="d-flex justify-content-end">

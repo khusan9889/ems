@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('ods_ambulance_hospitals', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('region_coato');
-            $table->string('district_coato');
+            $table->string('name')->nullable();
+            $table->string('region_coato')->nullable();
+            $table->string('district_coato')->nullable();
             $table->unsignedBigInteger('hospital_id')->nullable();
             $table->timestamps();
         });

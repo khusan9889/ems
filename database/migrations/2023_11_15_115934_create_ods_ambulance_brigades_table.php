@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('ods_ambulance_brigades', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('brigade_number');
+            $table->string('name')->nullable();
+            $table->integer('brigade_number')->nullable();
             $table->unsignedBigInteger('brigade_id')->nullable();
             $table->unsignedBigInteger('substation_id')->nullable();
             $table->timestamps();

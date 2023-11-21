@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('sub_filials', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->unsignedBigInteger('branch_id')->nullable();
             $table->timestamps();
         });
