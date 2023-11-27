@@ -14,8 +14,7 @@ class OdsAmbulanceSubstations extends Model
     public $fillable = [
         'name',
         'region_coato',
-        'district_coato',
-        'substation_id',
+        'district_coato'
     ];
 
     protected $table = 'ods_ambulance_substations';
@@ -26,5 +25,18 @@ class OdsAmbulanceSubstations extends Model
     public function district(): BelongsTo
     {
         return $this->belongsTo(OdsAmbulanceDistricts::class,'district_coato','coato');
+    }
+    public static function findOrCreate($name,$region_coato,$district_coato)
+    {
+        $obj = OdsAmbulanceSubstations::where('name',$name)->first();
+        if ($obj == null)
+        {
+            $obj = new OdsAmbulanceSubstations;
+            $obj->name = $name;
+            $obj->region_coato = $region_coato;
+            $obj->district_coato = $district_coato;
+            $obj->save();
+        }
+        return $obj->id;
     }
 }

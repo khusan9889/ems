@@ -10,4 +10,5 @@
 <link href="{{ asset('dash/assets/css/select2.css') }}" rel="stylesheet" />
 <!-- ================== END BASE CSS STYLE ================== -->
 
+
 @stack('css')

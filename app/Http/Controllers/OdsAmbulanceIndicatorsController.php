@@ -26,6 +26,7 @@ class OdsAmbulanceIndicatorsController extends Controller
             'call_result_id' => $request->input('call_result_id'),
             'call_region_coato' => $request->input('call_region_coato'),
             'call_district_coato' => $request->input('call_district_coato'),
+            'call_received' => $request->input('call_received'),
             'sort' => $request->input('sort') ?? 'DESC',
         ];
 
@@ -48,13 +49,16 @@ class OdsAmbulanceIndicatorsController extends Controller
                 fn($query, $value) => $query->where('call_district_coato', $filters['call_district_coato'])
             )->when(
                 $filters['call_region_coato'],
-                fn($query, $value) => $query->where('call_region_coato', 'like', '%' . $filters['call_region_coato'] . '%')
+                fn($query, $value) => $query->where('call_region_coato', $filters['call_region_coato'])
             )->when(
                 $filters['brigade_id'],
-                fn($query, $value) => $query->where('brigade_id', 'like', '%' . $filters['brigade_id'] . '%')
+                fn($query, $value) => $query->where('brigade_id',$filters['brigade_id'] )
             )->when(
                 $filters['call_result_id'],
-                fn($query, $value) => $query->where('call_result_id', 'like', '%' . $filters['call_result_id'] . '%')
+                fn($query, $value) => $query->where('call_result_id',  $filters['call_result_id'] )
+            )->when(
+                $filters['call_received'],
+                fn($query, $value) => $query->whereDate('call_received',  $filters['call_received'] )
             );
         $indicators = $query->paginate(10);
         $regions=OdsAmbulanceRegions::all();
@@ -201,7 +205,8 @@ class OdsAmbulanceIndicatorsController extends Controller
         $request->validate([
             'import_file' => 'required'
         ]);
-        Excel::queueImport(new OdsAmbulanceIndicatorsImport, request()->file('import_file'));
+        Excel::import(new OdsAmbulanceIndicatorsImport, request()->file('import_file'));
+
         Session::flash('success','Успешно прошла валидацию! Данные скоро будут импортированы.');
         return back();
     }

@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthApiController;
 use App\Http\Controllers\Api\StatisticsController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\FilialSubWeekController;
+use App\Http\Controllers\OdsAmbulanceIndicatorsController;
 use App\Http\Controllers\SubFilialController;
 use App\Http\Controllers\WeekController;
 use Illuminate\Support\Facades\Route;
@@ -56,3 +57,5 @@ Route::group(['prefix' => 'statistics'], function () {
     Route::get('acs', [StatisticsController::class, 'acs']);
     Route::get('polytrauma', [StatisticsController::class, 'polytrauma']);
 });
+Route::post('/import', [OdsAmbulanceIndicatorsController::class, 'importExcel']);
+

@@ -1,3 +1,4 @@
+@php use Carbon\Carbon; @endphp
 @extends('dashboard.layouts.default')
 
 @php
@@ -8,23 +9,63 @@
 
 @section('content')
     <h1 class="page-header">Скорая помощь</h1>
-    <x-panel>
-        <div class="d-flex justify-content-end mb-3">
-            {{--            <form method="POST" action="{{ route('indicator.import') }}">--}}
-            {{--                @csrf--}}
-            {{--                <td>--}}
-            {{--                    <input class="form-control form-control-sm" type="file" name="import_file">--}}
-            {{--                </td>--}}
-            {{--                <td class="align-middle d-flex justify-content-center">--}}
-            {{--                    <div>--}}
-            {{--                        <button type="submit" class="btn btn-sm btn-primary">Импорт</button>--}}
-            {{--                    </div>--}}
-            {{--                </td>--}}
-            {{--            </form>--}}
 
+
+
+    <x-panel>
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger fade show in m-b-15">
+                    <strong>Ошибка!</strong>
+                    {{__($error)}}
+                    <span class="close" data-dismiss="alert">&times;</span>
+                </div>
+            @endforeach
+        @endif
+
+
+        <div class="d-flex justify-content-end mb-3">
+            <a href="#modal-dialog" class="btn btn-success mr-2" data-toggle="modal">Импорт Excel</a>
             <a href="{{ route('indicator.create-page') }}" class="btn btn-success">Добавить</a>
         </div>
+        <!-- #modal-dialog -->
+        <div class="modal fade" id="modal-dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title">Импорт Excel</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <form method="POST" action="{{ route('indicator.import') }}" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <pre>
+                                @error(' ')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </pre>
+
+                            @csrf
+                            <td>
+                                <span class="btn btn-success fileinput-button form-control">
+                                    <i class="fa fa-plus"></i>
+                                    <span>Выберите файл...</span>
+                                    <input  type="file" name="import_file"  accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
+                                </span>
+                            </td>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Close</a>
+                            <button type="submit" class="btn btn-sm btn-primary">Импорт</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <div class="d-flex">
+
+
             <table id="data-table-default" class="table table-striped table-bordered align-middle">
                 <tr>
                     <form action="">
@@ -102,6 +143,11 @@
                             @error('call_result_id')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
+                        </td>
+                        <td class="text-nowrap">
+                            <label>Дата приема вызова</label>
+                            <input class="form-control" type="date" name="call_received"
+                                   value="{{request('call_received')}}">
                         </td>
                         {{--                        <td class="text-nowrap">--}}
                         {{--                            <label>Место госпитализации</label>--}}
@@ -211,10 +257,14 @@
                         <td>{{ $item?->call_region?->name }}</td>
                         <td>{{ $item?->call_district?->name }}</td>
                         <td>{{ $item?->substation?->name }}</td>
-                        <td>@if($item->filling_call_card)Истинный @else Ложный @endif</td>
-                        <td>{{ $item->call_type->name }}</td>
+                        <td>@if($item->filling_call_card)
+                                Истинный
+                            @else
+                                Ложный
+                            @endif</td>
+                        <td>{{ $item->call_type?->name }}</td>
                         <td>{{ $item->card_number }}</td>
-                        <td>{{ \Carbon\Carbon::parse($item->call_received)->isoFormat('YYYY-MM-DD') }}</td>
+                        <td>{{ Carbon::parse($item->call_received)->isoFormat('YYYY-MM-DD') }}</td>
                         <td>{{ $item->call_reception}}</td>
                         <td>{{ $item->beginning_formation_ct}}</td>
                         <td>{{ $item->completion_formation_ct}}</td>
@@ -269,6 +319,9 @@
             $('#deleteConfirmationModal').modal('show');
             $('#deleteForm').attr('action', `/indicator/delete/${id}`);
         }
+
+
+
 
     </script>
 @endsection

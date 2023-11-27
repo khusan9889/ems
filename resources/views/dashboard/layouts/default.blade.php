@@ -5,8 +5,6 @@
     @include('dashboard.includes.head')
     @stack('custom_css')
 
-    @vite(['resources/js/app.js'])
-
 </head>
 @php
     $bodyClass = !empty($boxedLayout) ? 'boxed-layout' : '';

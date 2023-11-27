@@ -13,10 +13,20 @@ class OdsAmbulanceReferences extends Model
 
     public $fillable = [
         'name',
-        'table_name',
-        'item_id'
+        'table_name'
     ];
 
     protected $table = 'ods_ambulance_references';
-
+    public static function findOrCreate($name)
+    {
+        $obj = OdsAmbulanceReferences::where('name',$name)->first();
+        if ($obj == null)
+        {
+            $obj = new OdsAmbulanceSubstations();
+            $obj->name = $name;
+//            $obj->table_name = 'call_types';
+            $obj->save();
+        }
+        return $obj->id;
+    }
 }

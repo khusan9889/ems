@@ -4,6 +4,7 @@
 <script src="{{ asset('dash/assets/js/select2.js') }}"></script>
 <!-- ================== END BASE JS ================== -->
 
+
 <script>
     $(document).ready(function () {
       $('.select2').select2();
