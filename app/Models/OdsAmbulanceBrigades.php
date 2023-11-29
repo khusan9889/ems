@@ -22,14 +22,14 @@ class OdsAmbulanceBrigades extends Model
     {
         return $this->belongsTo(OdsAmbulanceSubstations::class);
     }
-    public static function findOrCreate($name,$brigade_number,$substation)
+    public static function findOrCreate($name,$substation)
     {
         $obj = OdsAmbulanceBrigades::where('name',$name)->first();
         if ($obj == null)
         {
             $obj = new OdsAmbulanceBrigades();
             $obj->name = $name;
-            $obj->brigade_number = $brigade_number;
+//            $obj->brigade_number = $brigade_number;
             $obj->substation_id = $substation;
             $obj->save();
         }

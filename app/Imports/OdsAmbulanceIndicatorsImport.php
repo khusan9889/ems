@@ -45,7 +45,7 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
         $hospitalization_result=OdsAmbulanceReferences::findOrCreate($row['rezultat_gospitalizacii'],'hospitalization_results');
         $called_person=OdsAmbulanceReferences::findOrCreate($row['kto_vyzval'],'called_persons');
         $call_place=OdsAmbulanceReferences::findOrCreate($row['mesto_vyzova'],'call_places');
-        $brigade=OdsAmbulanceBrigades::findOrCreate($row['nazvanie_brigady'],$row['nomer_brigady'],$substation);
+        $brigade=OdsAmbulanceBrigades::findOrCreate($row['nazvanie_brigady'],$substation);
 
         OdsAmbulanceIndicators::create([
             'call_region_coato' => $region_call,
