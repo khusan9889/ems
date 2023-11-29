@@ -179,6 +179,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     });
     Route::post('/import', [OdsAmbulanceIndicatorsController::class, 'importExcel'])->name('indicator.import');
+    Route::get('/export', [OdsAmbulanceIndicatorsController::class, 'exportExcel'])->name('indicator.export');
 
 
     Route::get('week_data/{data}', [ReportFormController::class, 'week_data'])->name('form.week_data');

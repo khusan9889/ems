@@ -14,6 +14,7 @@ use App\Models\OdsAmbulanceRegions;
 use App\Models\OdsAmbulanceSubstations;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 class OdsAmbulanceIndicatorsController extends Controller
@@ -209,5 +210,9 @@ class OdsAmbulanceIndicatorsController extends Controller
 
         Session::flash('success','Успешно прошла валидацию! Данные скоро будут импортированы.');
         return back();
+    }
+    public function exportExcel(Request $request)
+    {
+        return Storage::disk('public')->download("Import shablon.xlsx");
     }
 }
