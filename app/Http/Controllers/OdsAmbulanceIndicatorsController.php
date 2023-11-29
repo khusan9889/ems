@@ -213,6 +213,6 @@ class OdsAmbulanceIndicatorsController extends Controller
     }
     public function exportExcel(Request $request)
     {
-        return Storage::disk('public')->download("shablon.xlsx");
+        return response()->download("shablon.xlsx");
     }
 }
