@@ -16,4 +16,17 @@ class OdsAmbulanceRegions extends Model
     ];
 
     protected $table = 'ods_ambulance_regions';
+
+    public static function findOrCreate($name,$coato)
+    {
+        $obj = OdsAmbulanceRegions::where('coato',$coato)->first();
+        if ($obj == null)
+        {
+            $obj = new OdsAmbulanceRegions;
+            $obj->name = $name;
+            $obj->coato = $coato;
+            $obj->save();
+        }
+        return $obj->coato;
+    }
 }

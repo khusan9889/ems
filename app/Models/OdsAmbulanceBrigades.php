@@ -14,7 +14,6 @@ class OdsAmbulanceBrigades extends Model
     public $fillable = [
         'name',
         'brigade_number',
-        'brigade_id',
         'substation_id',
     ];
 
@@ -22,5 +21,18 @@ class OdsAmbulanceBrigades extends Model
     public function substation(): BelongsTo
     {
         return $this->belongsTo(OdsAmbulanceSubstations::class);
+    }
+    public static function findOrCreate($name,$brigade_number,$substation)
+    {
+        $obj = OdsAmbulanceBrigades::where('name',$name)->first();
+        if ($obj == null)
+        {
+            $obj = new OdsAmbulanceBrigades();
+            $obj->name = $name;
+            $obj->brigade_number = $brigade_number;
+            $obj->substation_id = $substation;
+            $obj->save();
+        }
+        return $obj->id;
     }
 }

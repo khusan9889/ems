@@ -47,10 +47,10 @@
 
                             @csrf
                             <td>
-                                <span class="btn btn-success fileinput-button form-control">
-                                    <i class="fa fa-plus"></i>
-                                    <span>Выберите файл...</span>
-                                    <input  type="file" name="import_file"  accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
+                                <span class="btn btn-success file input-button form-control" onclick="handleClick()">
+                                    <i class="fa fa-upload mr-1"></i>
+                                    <span onclick="" id="id-x">Выберите файл...</span>
+                                    <input id="import_file"  type="file" style="display:none;" name="import_file"  accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
                                 </span>
                             </td>
                         </div>
@@ -149,58 +149,6 @@
                             <input class="form-control" type="date" name="call_received"
                                    value="{{request('call_received')}}">
                         </td>
-                        {{--                        <td class="text-nowrap">--}}
-                        {{--                            <label>Место госпитализации</label>--}}
-                        {{--                            <select class="form-control"  name="hospital_id" readonly>--}}
-                        {{--                                @foreach ($hospitals as $key => $hospital)--}}
-                        {{--                                    <option value="{{ $hospital->id }}" {{ old('hospital_id') == $hospital->id ? 'selected' : '' }}>--}}
-                        {{--                                        {{ $hospital->name }}--}}
-                        {{--                                    </option>--}}
-                        {{--                                @endforeach--}}
-                        {{--                            </select>--}}
-                        {{--                            @error('hospital_id')--}}
-                        {{--                            <span class="text-danger">{{ $message }}</span>--}}
-                        {{--                            @enderror--}}
-                        {{--                        </td>--}}
-                        {{--                        <td class="text-nowrap">--}}
-                        {{--                            <label>Результат госпитализации</label>--}}
-                        {{--                            <select class="form-control"  name="hospitalization_result_id" readonly>--}}
-                        {{--                                @foreach ($hospitalization_results as $key => $hospitalization_result)--}}
-                        {{--                                    <option value="{{ $hospitalization_result->id }}" {{ old('hospitalization_result_id') == $hospitalization_result->id ? 'selected' : '' }}>--}}
-                        {{--                                        {{ $hospitalization_result->name }}--}}
-                        {{--                                    </option>--}}
-                        {{--                                @endforeach--}}
-                        {{--                            </select>--}}
-                        {{--                            @error('hospitalization_result_id')--}}
-                        {{--                            <span class="text-danger">{{ $message }}</span>--}}
-                        {{--                            @enderror--}}
-                        {{--                        </td>--}}
-                        {{--                        <td class="text-nowrap">--}}
-                        {{--                            <label>Кто вызвал</label>--}}
-                        {{--                            <select class="form-control"  name="called_person_id" readonly>--}}
-                        {{--                                @foreach ($called_persons as $key => $called_person)--}}
-                        {{--                                    <option value="{{ $called_person->id }}" {{ old('called_person_id') == $called_person->id ? 'selected' : '' }}>--}}
-                        {{--                                        {{ $called_person->name }}--}}
-                        {{--                                    </option>--}}
-                        {{--                                @endforeach--}}
-                        {{--                            </select>--}}
-                        {{--                            @error('called_person_id')--}}
-                        {{--                            <span class="text-danger">{{ $message }}</span>--}}
-                        {{--                            @enderror--}}
-                        {{--                        </td>--}}
-                        {{--                        <td class="text-nowrap">--}}
-                        {{--                            <label>Место вызова</label>--}}
-                        {{--                            <select class="form-control"  name="call_place_id" readonly>--}}
-                        {{--                                @foreach ($call_places as $key => $call_place)--}}
-                        {{--                                    <option value="{{ $call_place->id }}" {{ old('call_place_id') == $call_place->id ? 'selected' : '' }}>--}}
-                        {{--                                        {{ $call_place->name }}--}}
-                        {{--                                    </option>--}}
-                        {{--                                @endforeach--}}
-                        {{--                            </select>--}}
-                        {{--                            @error('call_place_id')--}}
-                        {{--                            <span class="text-danger">{{ $message }}</span>--}}
-                        {{--                            @enderror--}}
-                        {{--                        </td>--}}
                         <td class="align-middle">
                             <div class="d-flex justify-content-center">
                                 <button type="submit" class="btn btn-sm btn-primary mb-2">Применить</button>
@@ -320,8 +268,15 @@
             $('#deleteForm').attr('action', `/indicator/delete/${id}`);
         }
 
+        document.querySelector("#import_file").onchange = function() {
+          const fileName = this.files[0]?.name;
+          const label = document.getElementById('id-x');
+          label.innerText = fileName ?? "Выберите файл...";
+        };
 
-
+        function handleClick() {
+            document.getElementById('import_file').click();
+        }
 
     </script>
 @endsection

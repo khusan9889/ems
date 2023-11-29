@@ -17,14 +17,14 @@ class OdsAmbulanceReferences extends Model
     ];
 
     protected $table = 'ods_ambulance_references';
-    public static function findOrCreate($name)
+    public static function findOrCreate($name,$table_name)
     {
         $obj = OdsAmbulanceReferences::where('name',$name)->first();
         if ($obj == null)
         {
-            $obj = new OdsAmbulanceSubstations();
+            $obj = new OdsAmbulanceReferences();
             $obj->name = $name;
-//            $obj->table_name = 'call_types';
+            $obj->table_name = $table_name;
             $obj->save();
         }
         return $obj->id;

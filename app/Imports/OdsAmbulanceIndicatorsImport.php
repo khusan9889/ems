@@ -4,8 +4,12 @@ namespace App\Imports;
 
 
 use App\Jobs\OdsAmbulanceIndicatorJob;
+use App\Models\OdsAmbulanceBrigades;
+use App\Models\OdsAmbulanceDistricts;
+use App\Models\OdsAmbulanceHospitals;
 use App\Models\OdsAmbulanceIndicators;
 use App\Models\OdsAmbulanceReferences;
+use App\Models\OdsAmbulanceRegions;
 use App\Models\OdsAmbulanceSubstations;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Collection;
@@ -29,12 +33,23 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
     foreach ($rows as $row)
     {
 
-//        dd(Carbon::createFromTimestamp($row['data_priema_vyzova']));
         $substation= OdsAmbulanceSubstations::findOrCreate($row['podstanciia_priniatiia_vyzova'],$row['coato_oblast_vyzova'],$row['coato_raion_vyzova']);
-        $type=OdsAmbulanceReferences::findOrCreate($row['tip_vyzova']);
+        $region_call=OdsAmbulanceRegions::findOrCreate($row['oblast_vyzova'],$row['coato_oblast_vyzova']);
+        $district_call=OdsAmbulanceDistricts::findOrCreate($row['raion_vyzova'],$row['coato_raion_vyzova'],$row['oblast_vyzova'],$row['coato_oblast_vyzova']);
+        $region_residence=OdsAmbulanceRegions::findOrCreate($row['oblast_prozivaniia_pacienta'],$row['coato_oblast_prozivaniia_pacienta']);
+        $district_residence=OdsAmbulanceDistricts::findOrCreate($row['raion_prozivaniia_pacienta'],$row['coato_raion_prozivaniia_pacienta'],$row['oblast_prozivaniia_pacienta'],$row['coato_oblast_prozivaniia_pacienta']);
+        $type=OdsAmbulanceReferences::findOrCreate($row['tip_vyzova'],'call_types');
+        $reason=OdsAmbulanceReferences::findOrCreate($row['pricina_vyzova'],'reasons');
+        $hospital=OdsAmbulanceHospitals::findOrCreate($row['mesto_gospitalizacii'],$region_call,$district_call);
+        $call_result=OdsAmbulanceReferences::findOrCreate($row['rezultat_vyezda'],'call_results');
+        $hospitalization_result=OdsAmbulanceReferences::findOrCreate($row['rezultat_gospitalizacii'],'hospitalization_results');
+        $called_person=OdsAmbulanceReferences::findOrCreate($row['kto_vyzval'],'called_persons');
+        $call_place=OdsAmbulanceReferences::findOrCreate($row['mesto_vyzova'],'call_places');
+        $brigade=OdsAmbulanceBrigades::findOrCreate($row['nazvanie_brigady'],$row['nomer_brigady'],$substation);
+
         OdsAmbulanceIndicators::create([
-            'call_region_coato' => $row['coato_oblast_vyzova'],
-            'call_district_coato' => $row['raion_vyzova'],
+            'call_region_coato' => $region_call,
+            'call_district_coato' => $district_call,
             'substation_id'=>$substation,
             'filling_call_card'=>$row['zapolnenie_karty_vyzova_kv'],
             'call_type_id'=>$type,
@@ -50,19 +65,19 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
             'arrival_medical_center'=>Carbon::createFromTimestamp($row['vremia_pribytiia_na_med_ucrezdenie']),
             'call_end'=>Carbon::createFromTimestamp($row['vremia_zaverseniia_vyzova']),
             'return_substation'=>Carbon::createFromTimestamp($row['vremia_vozvraseniia_na_podstanciiu']),
-            'brigade_id'=>$row['nazvanie_brigady'],
+            'brigade_id'=>$brigade,
             'address'=>$row['podrobnyi_adres_vyzova'],
-            'reason_id'=>2,
-            'gender'=>$row['pricina_vyzova'],
-            'age'=>4,
-            'residence_region_coato'=>'rt',
-            'residence_district_coato'=>'tr',
-            'diagnos'=>46,
-            'call_result_id'=>45,
-            'hospital_id'=>45,
-            'hospitalization_result_id'=>45,
-            'called_person_id'=>45,
-            'call_place_id'=>45,
+            'reason_id'=>$reason,
+            'gender'=>$row['pol_pacienta'],
+            'age'=>$row['vozrast_pacienta'],
+            'residence_region_coato'=>$region_residence,
+            'residence_district_coato'=>$district_residence,
+            'diagnos'=>$row['diagnoz_po_mkb10'],
+            'call_result_id'=>$call_result,
+            'hospital_id'=>$hospital,
+            'hospitalization_result_id'=>$hospitalization_result,
+            'called_person_id'=>$called_person,
+            'call_place_id'=>$call_place,
         ]);
     }
 }
@@ -92,28 +107,36 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
     {
 
         return [
-            'branch_id' => 'required',
-            'podstanciia_priniatiia_vyzova' => 'required',
             'coato_oblast_vyzova' => 'required|integer',
+            'podstanciia_priniatiia_vyzova' => 'required',
             'coato_raion_vyzova' => 'required',
-            'tip_vyzova' => 'required|integer',
-            'raion_vyzova' => 'required|integer',
-            'zapolnenie_karty_vyzova_kv' => 'required',
+            'zapolnenie_karty_vyzova_kv' => 'required|boolean',
+            'tip_vyzova' => 'required|string',
             'nomer_kv' => 'required|integer',
-            'data_priema_vyzova' => 'required|integer',
-            'vremia_priema_vyzova' => 'required|numeric',
-            'vremia_nacaly_formirovaniia_kartocki_transportirovki_kt' => 'required|date_format:Y',
+            'data_priema_vyzova' => 'required',
+            'vremia_priema_vyzova' => 'required',
+            'vremia_nacaly_formirovaniia_kartocki_transportirovki_kt' => 'required',
             'vremia_zaverseniia_formirovaniia_kt' => 'required',
-            'vremia_peredaci_vyzova_brigade' => 'required|integer',
+            'vremia_peredaci_vyzova_brigade' => 'required',
             'vremia_vyezda_brigady' => 'required',
-            'pribytie_brigady_na_mesto_vyzova' => 'required|integer',
+            'pribytie_brigady_na_mesto_vyzova' => 'required',
             'vremia_nacaly_transportirovki' => 'required',
-            'vremia_pribytiia_na_med_ucrezdenie' => 'required|integer',
+            'vremia_pribytiia_na_med_ucrezdenie' => 'required',
             'vremia_zaverseniia_vyzova' => 'required',
-            'vremia_vozvraseniia_na_podstanciiu' => 'required|integer',
-            'nazvanie_brigady' => 'required|integer',
-            'podrobnyi_adres_vyzova' => 'required|numeric',
-            'pricina_vyzova' => 'required|date_format:Y'
+            'vremia_vozvraseniia_na_podstanciiu' => 'required',
+            'nazvanie_brigady' => 'required',
+            'podrobnyi_adres_vyzova' => 'nullable',
+            'pricina_vyzova' => 'required',
+            'pol_pacienta' => 'required',
+            'vozrast_pacienta' => 'required|integer',
+            'coato_oblast_prozivaniia_pacienta' => 'required|integer',
+            'coato_raion_prozivaniia_pacienta' => 'required|integer',
+            'diagnoz_po_mkb10' => 'required|string',
+            'rezultat_vyezda' => 'required',
+            'mesto_gospitalizacii' => 'nullable',
+            'rezultat_gospitalizacii' => 'nullable',
+            'kto_vyzval' => 'nullable',
+            'mesto_vyzova' => 'required'
         ];
     }
 }
