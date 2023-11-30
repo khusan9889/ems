@@ -25,7 +25,7 @@
 
 
         <div class="d-flex justify-content-end mb-3">
-            <a href="{{ route('indicator.export') }}" class="btn btn-success mr-2" >Скачать шаблон</a>
+            <a href="{{ asset('ambulance_indicators/import_template.xlsx') }}" download="" class="btn btn-success mr-2" >Скачать шаблон</a>
             <a href="#modal-dialog" class="btn btn-success mr-2" data-toggle="modal">Импорт Excel</a>
             <a href="{{ route('indicator.create-page') }}" class="btn btn-success">Добавить</a>
         </div>
