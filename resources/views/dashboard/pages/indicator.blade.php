@@ -202,7 +202,7 @@
                 <tbody>
                 @foreach ($indicators as $key => $item)
                     <tr>
-                        <td>{{ $item->id }}</td>
+                        <td>{{ ($indicators->currentpage()-1)*10 + $loop->index + 1}}</td>
                         <td>{{ $item?->call_region?->name }}</td>
                         <td>{{ $item?->call_district?->name }}</td>
                         <td>{{ $item?->substation?->name }}</td>
@@ -255,9 +255,8 @@
             </table>
         </div>
     </x-panel>
-
     <div class="d-flex justify-content-center">
-        {{ $indicators->links() }}
+        <div class="float-right">{{$indicators->withQueryString()->links()}}</div>
     </div>
 
 

@@ -36,11 +36,11 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
         $district_residence=OdsAmbulanceDistricts::findOrCreate($row['raion_prozivaniia_pacienta'],$row['coato_raion_prozivaniia_pacienta'],$row['oblast_prozivaniia_pacienta'],$row['coato_oblast_prozivaniia_pacienta']);
         $type=OdsAmbulanceReferences::findOrCreate($row['tip_vyzova'],'call_types');
         $reason=OdsAmbulanceReferences::findOrCreate($row['pricina_vyzova'],'reasons');
-        $hospital=OdsAmbulanceHospitals::findOrCreate($row['mesto_gospitalizacii'],$region_call,$district_call);
         $call_result=OdsAmbulanceReferences::findOrCreate($row['rezultat_vyezda'],'call_results');
         $hospitalization_result=OdsAmbulanceReferences::findOrCreate($row['rezultat_gospitalizacii'],'hospitalization_results');
         $called_person=OdsAmbulanceReferences::findOrCreate($row['kto_vyzval'],'called_persons');
         $call_place=OdsAmbulanceReferences::findOrCreate($row['mesto_vyzova'],'call_places');
+        $hospital=OdsAmbulanceHospitals::findOrCreate($row['mesto_gospitalizacii'],$region_call,$district_call);
         $brigade=OdsAmbulanceBrigades::findOrCreate($row['nazvanie_brigady'],$substation);
 
         OdsAmbulanceIndicators::create([

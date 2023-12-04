@@ -61,7 +61,7 @@
                 <tbody>
                 @foreach ($brigades as $key => $item)
                     <tr>
-                        <td>{{ $item->id }}</td>
+                        <td>{{ ($brigades->currentpage()-1)*10 + $loop->index + 1}}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->brigade_number }}</td>
                         <td>{{ $item->substation->name }}</td>
@@ -85,7 +85,8 @@
     </x-panel>
 
     <div class="d-flex justify-content-center">
-        {{ $brigades->links() }}
+        <div class="float-right">{{$brigades->withQueryString()->links()}}</div>
+
     </div>
 
 

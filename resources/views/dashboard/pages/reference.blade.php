@@ -72,7 +72,7 @@
                 <tbody>
                 @foreach ($references as $key => $item)
                     <tr>
-                        <td>{{ $item->id }}</td>
+                        <td>{{ ($references->currentpage()-1)*10 + $loop->index + 1 }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ __("messages.".$item->table_name) }}</td>
                         <td class="align-middle">
@@ -95,7 +95,8 @@
     </x-panel>
 
     <div class="d-flex justify-content-center">
-        {{ $references->links() }}
+        <div class="float-right">{{$references->withQueryString()->links()}}</div>
+
     </div>
 
 

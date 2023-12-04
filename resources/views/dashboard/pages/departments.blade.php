@@ -56,7 +56,7 @@
                 <tbody>
                     @foreach ($data as $key => $item)
                         <tr>
-                            <td>{{ $item->id }}</td>
+                            <td>{{ ($data->currentpage()-1)*10 + $loop->index + 1 }}</td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->branch->name }}</td>
                             <td class="align-middle">
@@ -82,7 +82,7 @@
     </x-panel>
 
     <div class="d-flex justify-content-center">
-        {{ $data->links() }}
+        <div class="float-right">{{$data->withQueryString()->links()}}</div>
     </div>
 
 

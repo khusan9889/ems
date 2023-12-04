@@ -14,6 +14,7 @@ class OdsAmbulanceBrigadesController extends Controller
     public function index(Request $request)
     {
         $filters = [
+            'name' => $request->input('name'),
             'brigade_number' => $request->input('brigade_number'),
             'substation_id' => $request->input('substation_id'),
             'sort' => $request->input('sort') ?? 'DESC',
@@ -27,8 +28,8 @@ class OdsAmbulanceBrigadesController extends Controller
                 $filters['substation_id'],
                 fn($query, $value) => $query->where('substation_id', $filters['substation_id'])
             ) ->when(
-                $filters['brigade_number'],
-                fn($query, $value) => $query->where('brigade_number', 'like', '%' . $filters['brigade_number'] . '%')
+                $filters['name'],
+                fn($query, $value) => $query->where('name', 'like', '%' . $filters['name'] . '%')
             );
         $brigades = $query->paginate(10);
         $substations=OdsAmbulanceSubstations::all();
