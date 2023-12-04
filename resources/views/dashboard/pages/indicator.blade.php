@@ -72,7 +72,7 @@
                     <form action="">
                         <td class="text-nowrap">
                             <label>Область вызова </label>
-                            <select class="form-control" name="call_region_coato">
+                            <select class="form-control" name="call_region_coato" onchange="myFunction(this.value)">
                                 <option value="">Все</option>
                                 @foreach ($regions as $key => $region)
                                     <option
@@ -87,7 +87,7 @@
                         </td>
                         <td class="text-nowrap">
                             <label>Район вызова</label>
-                            <select class="form-control" name="call_district_coato">
+                            <select class="form-control" name="call_district_coato" id="mySelect">
                                 <option value="">Все</option>
                                 @foreach ($districts as $key => $district)
                                     <option
@@ -207,9 +207,9 @@
                         <td>{{ $item?->call_district?->name }}</td>
                         <td>{{ $item?->substation?->name }}</td>
                         <td>@if($item->filling_call_card)
-                                Истинный
+                                Да
                             @else
-                                Ложный
+                                Нет
                             @endif</td>
                         <td>{{ $item->call_type?->name }}</td>
                         <td>{{ $item->card_number }}</td>
@@ -278,6 +278,36 @@
         function handleClick() {
             document.getElementById('import_file').click();
         }
+
+
+        function myFunction(val) {
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `district_region/${val}`);
+        xhr.send();
+        xhr.responseType = "json";
+        xhr.onload = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+
+        var x = document.getElementById("mySelect");
+        document.querySelectorAll('#mySelect option').forEach(option => option.remove())
+            var option = document.createElement("option");
+              option.text = "Все";
+              option.value="";
+              x.add(option);
+            for (const  object in xhr.response) {
+              var option = document.createElement("option");
+              option.text = xhr.response[object]['name'];
+              option.value=xhr.response[object]['coato'];
+              x.add(option);
+             }
+        } else {
+        console.log(`Error: ${xhr.status}`);
+        }
+        };
+        }
+
+
 
     </script>
 @endsection

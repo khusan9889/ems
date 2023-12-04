@@ -14,7 +14,7 @@
                 <tr>
                     <td>
                         <label>Область вызова</label>
-                        <select class="form-control" required name="call_region_coato">
+                        <select class="form-control" required name="call_region_coato" onchange="myFunction(this.value)">
                             <option></option>
                             @foreach ($regions as $key => $region)
                                 <option
@@ -31,7 +31,7 @@
                     </td>
                     <td>
                         <label>Район вызова</label>
-                        <select class="form-control" required name="call_district_coato">
+                        <select class="form-control" required name="call_district_coato" id="mySelect">
                             <option></option>
                             @foreach ($districts as $key => $district)
                                 <option
@@ -66,10 +66,10 @@
                         <select class="form-control" required name="filling_call_card">
                             <option></option>
                             <option value="1">
-                                Истинный
+                                Да
                             </option>
                             <option value="0">
-                                Ложный
+                                Нет
                             </option>
                         </select>
                     </td>
@@ -215,7 +215,7 @@
                     </td>
                     <td>
                         <label>Область проживания пациента</label>
-                        <select class="form-control" required name="residence_region_coato">
+                        <select class="form-control" required name="residence_region_coato" onchange="my_Function(this.value)">
                             <option></option>
                             @foreach ($regions as $key => $region)
                                 <option
@@ -231,7 +231,7 @@
                     <td>
                         <label>Район проживания пациента</label>
 
-                        <select class="form-control" required name="residence_district_coato">
+                        <select class="form-control" required name="residence_district_coato" id="my_id">
                             <option></option>
                             @foreach ($districts as $key => $district)
                                 <option
@@ -334,4 +334,65 @@
             <button type="submit" class="btn btn-primary pull-right ">Создать</button>
         </form>
     </x-panel>
+
+    <script>
+
+
+        function myFunction(val) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `district_region/${val}`);
+        xhr.send();
+        xhr.responseType = "json";
+        xhr.onload = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr.response);
+        var x = document.getElementById("mySelect");
+        document.querySelectorAll('#mySelect option').forEach(option => option.remove())
+            var option = document.createElement("option");
+              option.text = "Все";
+              option.value="";
+              x.add(option);
+            for (const  object in xhr.response) {
+              var option = document.createElement("option");
+              option.text = xhr.response[object]['name'];
+              option.value=xhr.response[object]['coato'];
+              x.add(option);
+             }
+        } else {
+        console.log(`Error: ${xhr.status}`);
+        }
+        };
+        }
+
+
+        function my_Function(val) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `district_region/${val}`);
+        xhr.send();
+        xhr.responseType = "json";
+        xhr.onload = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr.response);
+        var x = document.getElementById("my_id");
+        document.querySelectorAll('#my_id option').forEach(option => option.remove())
+            var option = document.createElement("option");
+              option.text = "Все";
+              option.value="";
+              x.add(option);
+            for (const  object in xhr.response) {
+              var option = document.createElement("option");
+              option.text = xhr.response[object]['name'];
+              option.value=xhr.response[object]['coato'];
+              x.add(option);
+             }
+        } else {
+        console.log(`Error: ${xhr.status}`);
+        }
+        };
+        }
+
+
+
+
+    </script>
 @endsection

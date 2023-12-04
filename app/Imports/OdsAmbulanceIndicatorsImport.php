@@ -3,7 +3,6 @@
 namespace App\Imports;
 
 
-use App\Jobs\OdsAmbulanceIndicatorJob;
 use App\Models\OdsAmbulanceBrigades;
 use App\Models\OdsAmbulanceDistricts;
 use App\Models\OdsAmbulanceHospitals;
@@ -11,16 +10,13 @@ use App\Models\OdsAmbulanceIndicators;
 use App\Models\OdsAmbulanceReferences;
 use App\Models\OdsAmbulanceRegions;
 use App\Models\OdsAmbulanceSubstations;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Collection;
+use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\ToCollection;
-use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
-use Illuminate\Support\Facades\Validator;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use Carbon\Carbon;
 use Throwable;
@@ -51,7 +47,7 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
             'call_region_coato' => $region_call,
             'call_district_coato' => $district_call,
             'substation_id'=>$substation,
-            'filling_call_card'=>$row['zapolnenie_karty_vyzova_kv'],
+            'filling_call_card'=>$row['zapolnenie_karty_vyzova_kv']=="Да"?1:0,
             'call_type_id'=>$type,
             'card_number'=>$row['nomer_kv'],
             'call_received'=>Carbon::createFromTimestamp($row['data_priema_vyzova']),
@@ -106,24 +102,25 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
     public function  rules(): array
     {
 
+
         return [
             '*.coato_oblast_vyzova' => 'required|integer',
             '*.podstanciia_priniatiia_vyzova' => 'required',
             '*.coato_raion_vyzova' => 'required',
-            '*.zapolnenie_karty_vyzova_kv' => 'required|boolean',
+            '*.zapolnenie_karty_vyzova_kv' => ['required',Rule::in(["Да","Нет"])],
             '*.tip_vyzova' => 'required|string',
             '*.nomer_kv' => 'required|integer',
-            '*.data_priema_vyzova' => 'required',
-            '*.vremia_priema_vyzova' => 'required',
-            '*.vremia_nacaly_formirovaniia_kartocki_transportirovki_kt' => 'required',
-            '*.vremia_zaverseniia_formirovaniia_kt' => 'required',
-            '*.vremia_peredaci_vyzova_brigade' => 'required',
-            '*.vremia_vyezda_brigady' => 'required',
-            '*.pribytie_brigady_na_mesto_vyzova' => 'required',
-            '*.vremia_nacaly_transportirovki' => 'required',
-            '*.vremia_pribytiia_na_med_ucrezdenie' => 'required',
-            '*.vremia_zaverseniia_vyzova' => 'required',
-            '*.vremia_vozvraseniia_na_podstanciiu' => 'required',
+            '*.data_priema_vyzova' => 'required|date',
+            '*.vremia_priema_vyzova' => 'required|date',
+            '*.vremia_nacaly_formirovaniia_kartocki_transportirovki_kt' => 'required|date',
+            '*.vremia_zaverseniia_formirovaniia_kt' => 'required|date',
+            '*.vremia_peredaci_vyzova_brigade' => 'required|date',
+            '*.vremia_vyezda_brigady' => 'required|date',
+            '*.pribytie_brigady_na_mesto_vyzova' => 'required|date',
+            '*.vremia_nacaly_transportirovki' => 'required|date',
+            '*.vremia_pribytiia_na_med_ucrezdenie' => 'required|date',
+            '*.vremia_zaverseniia_vyzova' => 'required|date',
+            '*.vremia_vozvraseniia_na_podstanciiu' => 'required|date',
             '*.nazvanie_brigady' => 'required',
             '*.podrobnyi_adres_vyzova' => 'nullable',
             '*.pricina_vyzova' => 'required',

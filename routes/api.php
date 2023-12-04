@@ -58,4 +58,5 @@ Route::group(['prefix' => 'statistics'], function () {
     Route::get('polytrauma', [StatisticsController::class, 'polytrauma']);
 });
 Route::post('/import', [OdsAmbulanceIndicatorsController::class, 'importExcel']);
+//Route::post('/store', [OdsAmbulanceIndicatorsController::class, 'store'])->name('indicator.store');
 

@@ -63,6 +63,12 @@ class OdsAmbulanceDistrictsController extends Controller
         return redirect()->route('district.index')->with('success', 'Район успешно обновлено');
     }
 
+    public function district_region($data)
+    {
+        $region=OdsAmbulanceRegions::where('coato',$data)->first();
+        $districts = OdsAmbulanceDistricts::where('region_id', $region->id)->get();
+        return $districts;
+    }
     public function destroy($id)
     {
         $department = OdsAmbulanceDistricts::findOrFail($id);
@@ -70,4 +76,5 @@ class OdsAmbulanceDistrictsController extends Controller
 
         return redirect()->back()->with('success', 'Запись успешно удалена');
     }
+
 }

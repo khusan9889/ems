@@ -183,6 +183,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::get('week_data/{data}', [ReportFormController::class, 'week_data'])->name('form.week_data');
+    Route::get('district_region/{data}', [OdsAmbulanceDistrictsController::class, 'district_region']);
+    Route::get('indicator/district_region/{data}', [OdsAmbulanceDistrictsController::class, 'district_region']);
 
     Route::group(['prefix' => 'departments'], function () {
         Route::get('/branch', [BranchController::class, 'fetchDepartments']);
