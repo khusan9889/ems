@@ -42,27 +42,27 @@
                                 <thead>
                                 <tr>
                                     <th scope="col" colspan="6"></th>
-                                    <th scope="col" colspan="3" style="background: olivedrab;text-align:center">Яшил зона оркали</th>
-                                    <th scope="col" colspan="3" style="background: yellow;text-align:center">Сарик зона оркали</th>
-                                    <th scope="col" colspan="4" style="background: red;text-align:center">Кизил зона оркали</th>
+                                    <th scope="col" colspan="3" style="background: olivedrab;text-align:center">Через зеленую зону/Yashil zona orqali</th>
+                                    <th scope="col" colspan="3" style="background: yellow;text-align:center">Через желтую зону/Sariq zona orqali</th>
+                                    <th scope="col" colspan="4" style="background: red;text-align:center">Через красную зону/Qizil zona orqali</th>
                                 </tr>
                                 <tr>
-                                    <th scope="col-1">Филиал ва субфилиал номи</th>
-                                    <th scope="col">жами мурожаатлар</th>
-                                    <th scope="col">шундан, ёткизилгани</th>
-                                    <th scope="col">шундан, амбулатор</th>
-                                    <th scope="col">шундан, вафот этгани</th>
-                                    <th scope="col">мурда акт</th>
-                                    <th scope="col">мурожаат</th>
-                                    <th scope="col">ёткизилгани</th>
-                                    <th scope="col">амбулатор</th>
-                                    <th scope="col">мурожаат</th>
-                                    <th scope="col">ёткизилгани</th>
-                                    <th scope="col">амбулатор</th>
-                                    <th scope="col">мурожаат</th>
-                                    <th scope="col">ёткизилгани</th>
-                                    <th scope="col">вафот этгани</th>
-                                    <th scope="col">мурда акт</th>
+                                    <th class="text-nowrap" scope="col-1">Название филиала и филиала/Filial va subfilial nomi</th>
+                                    <th class="text-nowrap" scope="col">Общее количество апелляций/Murojaatlarning umumiy soni</th>
+                                    <th class="text-nowrap" scope="col">Из них госпитализировано/Shundan yotqizilganlar</th>
+                                    <th class="text-nowrap" scope="col">Из них амбулаторные/Shundan ambulator</th>
+                                    <th class="text-nowrap" scope="col">Из них те, кто погиб/Shundan, vafot etganlar</th>
+                                    <th class="text-nowrap" scope="col">Мурда акт</th>
+                                    <th class="text-nowrap" scope="col">Обжалование/Murojaat</th>
+                                    <th class="text-nowrap" scope="col">Это заложено/Yotqizilgani</th>
+                                    <th class="text-nowrap" scope="col">Амбулаторный/Ambulatoriya</th>
+                                    <th class="text-nowrap" scope="col">Обжалование/Murojaat</th>
+                                    <th class="text-nowrap" scope="col">Это заложено/Yotqizilgani</th>
+                                    <th class="text-nowrap" scope="col">Амбулаторный/Ambulatoriya</th>
+                                    <th class="text-nowrap" scope="col">Обжалование/Murojaat</th>
+                                    <th class="text-nowrap" scope="col">Это заложено/Yotqizilgani</th>
+                                    <th class="text-nowrap" scope="col">Он умер/Vafot etgani</th>
+                                    <th class="text-nowrap" scope="col">мурда акт</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -119,80 +119,80 @@
                                 <th scope="col" colspan="2" class="text-center" ></th>
                             </tr>
                             <tr>
-                                <th scope="col" >Кўрсаткичлар номи</th>
-                                <th scope="col" >филиал</th>
+                                <th scope="col" >Название индикатора/Ko‘rsatkichlar nomi</th>
+                                <th scope="col" >филиал/filial</th>
                             </tr>
                             </thead>
                             <tr>
-                                <td>Жами мурожаатлар</td>
+                                <td>Всего апелляций/Jami murojaatlar</td>
                                 <td>{{$week->ambulance_03+$week->arrived_himself+$week->came_ticket}}</td>
                             </tr>
                             <tr>
-                                <td>жумладан болалар</td>
+                                <td>включая детей/jumladan, bolalar</td>
                                 <td>{{$week->children_03+$week->children_arrived_himself+$week->children_came_ticket}}</td>
                             </tr>
                             <tr>
-                                <td>Тез ёрдам</td>
+                                <td>Быстрая помощь/Tez yordam:</td>
                                 <td>{{$week->ambulance_03}}</td>
                             </tr>
                             <tr>
-                                <td>Жумладан болалар</td>
+                                <td>включая детей/jumladan, bolalar</td>
                                 <td>{{$week->children_03}}</td>
                             </tr>
                             <tr>
-                                <td>Узи келган</td>
+                                <td>Те, кто пришел сам/O'zi kelganlar</td>
                                 <td>{{$week->arrived_himself}}</td>
                             </tr>
                             <tr>
-                                <td>Жумладан болалар</td>
+                                <td>включая детей/jumladan, bolalar</td>
                                 <td>{{$week->children_arrived_himself}}</td>
                             </tr>
                             <tr>
-                                <td>Йулланма билан келган</td>
+                                <td>Пришёл по рекомендации/Yo‘llanma bilan kelgan</td>
                                 <td>{{$week->came_ticket}}</td>
                             </tr>
                             <tr>
-                                <td>Жумладан болалар</td>
+                                <td>включая детей/jumladan, bolalar</td>
                                 <td>{{$week->children_came_ticket}}</td>
                             </tr>
                             <tr>
-                                <td>Операция</td>
+                                <td>Операция/Operatsiya</td>
                                 <td>{{$week->operation}}</td>
                             </tr>
                             <tr>
-                                <td>Жумладан болалар</td>
+                                <td>включая детей/jumladan, bolalar</td>
                                 <td>{{$week->children_operation}}</td>
                             </tr>
                             <tr>
-                                <td>Юқори технологик операциялар</td>
+                                <td>Высокотехнологичные операции/Yuqori texnologiyali operatsiyalar</td>
                                 <td>{{$week->high_tech_operas}}</td>
                             </tr>
                             <tr>
-                                <td>Жумладан болалар</td>
+                                <td>включая детей/jumladan, bolalar</td>
                                 <td>{{$week->children_high_tech_operas}}</td>
                             </tr>
                             <tr>
-                                <td>Умерло</td>
+                                <td>Умерло/O'lgan</td>
                                 <td>{{$week->death}}</td>
                             </tr>
                             <tr>
-                                <td>Жумладан болалар</td>
+                                <td>включая детей/jumladan, bolalar</td>
                                 <td>{{$week->children_death}}</td>
                             </tr>
                             <tr>
-                                <td>Амбулатор</td>
+                                <td>Амбулатор/Ambulator</td>
                                 <td>{{$week->ambulator}}</td>
                             </tr>
                             <tr>
-                                <td>Жумладан болалар</td>
+                                <td>включая детей/jumladan, bolalar</td>
                                 <td>{{$week->children_ambulator}}</td>
                             </tr>
                             <tr>
-                                <td>Амбулатор операциялар</td>
+                                <td>Амбулаторная хирургия/Ambulator jarrohlik</td>
                                 <td>{{$week->ambulatory_operas}}</td>
                             </tr>
                             <tr>
-                                <td>Жумладан болалар</td>
+                                <td>включая детей/jumladan, bolalar</td>
                                 <td>{{$week->including_children}}</td>
                             </tr>
                         </table>

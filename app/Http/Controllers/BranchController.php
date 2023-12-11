@@ -28,6 +28,7 @@ class BranchController extends Controller
 
     public function fetchDepartments(Request $request)
     {
+
         $data = Department::when($request->branch_id, function ($query, $value) {
             $query->where('branch_id', $value);
         })->get();

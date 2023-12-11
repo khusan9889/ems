@@ -62,6 +62,10 @@ class ReportFormController extends Controller
     public function edit($id)
     {
         $week = FilialSubWeek::findOrFail($id);
+        if ($week->confirm_status==1){
+            return back()->with(['not-allowed' => 'У вас нет доступа']);
+        }
+
         $filial_sub_weeks = FilialSubWeek::with(['week', 'branch', 'sub_filial'])->orderBy('id', 'ASC')->where('branch_id', $week->branch_id)->where('week_id', $week->week_id)->whereNotNull('sub_filial_id')->get();
         return view('dashboard.pages.report-form-create-page', compact('filial_sub_weeks', 'week'));
     }
@@ -75,7 +79,6 @@ class ReportFormController extends Controller
 
     public function update(Request $request, $id)
     {
-
         FilialSubWeek::updateOrCreate(
             ['id' => $id],
             [
@@ -107,6 +110,7 @@ class ReportFormController extends Controller
                 'children_ambulator' => $request->children_ambulator,
                 'ambulatory_operas' => $request->ambulatory_operas,
                 'including_children' => $request->including_children,
+                'confirm_status' => $request->confirm_status,
                 'status' => 'Измененный'
             ]
         );

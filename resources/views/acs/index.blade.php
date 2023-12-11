@@ -9,16 +9,16 @@
 
         <thead>
             <tr>
-                <th>№</th>
-                <th>Субъект</th>
-                <th>Отделение</th>
-                <th>Номер ИБ</th>
-                <th>Пациент ФИО</th>
-                <th>Дата поступления</th>
-                <th>Дата выписки</th>
-                <th>Канал госпитализации</th>
-                <th>ФИО лечащего врача</th>
-                <th>Действия</th>
+                <th  class="text-nowrap">№</th>
+                <th  class="text-nowrap">Субъект/Filial</th>
+                <th  class="text-nowrap">Отделение/Bo'lim</th>
+                <th  class="text-nowrap">Номер истории болезни/Kasallik tarixi raqami	</th>
+                <th  class="text-nowrap">Пациент ФИО/Bemorning FIO</th>
+                <th  class="text-nowrap">Дата поступления/Qabul qilish sanasi</th>
+                <th  class="text-nowrap">Дата выписки/Chiqarish sanasi</th>
+                <th  class="text-nowrap">Канал госпитализации/Olib kelingan usuli</th>
+                <th  class="text-nowrap">ФИО лечащего врача/Davolovchi shifokorning FIO</th>
+                <th  class="text-nowrap">Действия/Amallar</th>
             </tr>
             <tr>
                 <form action="">
@@ -86,7 +86,19 @@
         </thead>
         <tbody>
             @foreach ($data as $key => $item)
-                <tr>
+                <tr
+                    @if ($item->confirm_status == 3)
+                        class="table-danger"
+                    @endif
+
+                    @if ($item->confirm_status == 2)
+                        class="table-warning"
+                    @endif
+
+                    @if ($item->confirm_status == 1)
+                        class="table-success"
+                    @endif
+                >
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->branch?->name }}</td>
                     <td>{{ $item->department?->name }}</td>

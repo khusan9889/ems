@@ -37,7 +37,6 @@ class ACSController extends Controller
         $data = $acsService->customFilter($filters);
         $branches = Branch::pluck('name', 'id');
         $departments = Department::pluck('name', 'id');
-
         return view('dashboard.pages.home', compact('data', 'branches', 'hospitalization_channels', 'departments'));
     }
 
@@ -103,6 +102,9 @@ class ACSController extends Controller
     {
         $data = ACS::findOrFail($id);
         $branches = Branch::all();
+        if ($data->confirm_status==1){
+            return back()->with(['not-allowed' => 'У вас нет доступа']);
+        }
 
         // Log the edit activity
         $activity = new ActionsLog();

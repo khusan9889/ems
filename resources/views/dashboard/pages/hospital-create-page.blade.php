@@ -7,13 +7,13 @@
             <table class="table table-striped table-bordered align-middle">
                 <tbody>
                 <tr>
-                    <th>Название больницы</th>
+                    <th>Название больницы/Kasalxona nomi</th>
                     <td>
                         <input type="text" name="name" class="form-control" required>
                     </td>
                 </tr>
                 <tr>
-                    <th>Выберите область</th>
+                    <th>Выберите область/Viloyatni tanlang</th>
                     <td>
                         <select class="form-control"  name="region_coato" readonly>
                             @foreach ($regions as $key => $region)
@@ -30,7 +30,7 @@
 
                 </tr>
                 <tr>
-                    <th>Выберите район</th>
+                    <th>Выберите район/Tumanni tanlang</th>
                     <td>
                         <select class="form-control"  name="district_coato" readonly>
                             @foreach ($districts as $key => $district)

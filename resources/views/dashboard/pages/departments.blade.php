@@ -7,7 +7,7 @@
 @endphp
 
 @section('content')
-    <h1 class="page-header">Отделения</h1>
+    <h1 class="page-header">Отделения/Bo'lim</h1>
     <x-panel>
         <div class="d-flex justify-content-end mb-3">
             <a href="{{ route('department.create-page') }}" class="btn btn-success">Добавить</a>
@@ -17,9 +17,9 @@
                 <thead>
                     <tr>
                         <th>№</th>
-                        <th>Отделения</th>
-                        <th>Филиал</th>
-                        <th>Действия</th>
+                        <th>Отделения/Bo'lim</th>
+                        <th>Филиал/Filial</th>
+                        <th>Действия/Harakatlar</th>
                     </tr>
                     <tr>
                         <form action="">

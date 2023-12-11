@@ -9,8 +9,8 @@
                 <thead>
                     <tr>
                         <th>№</th>
-                        <th>Индикаторы</th>
-                        <th>Результат (%)</th>
+                        <th>Индикаторы/Ko'rsatkichlar</th>
+                        <th>Результат/Natija (%)</th>
                     </tr>
                 </thead>
                 @foreach ($data as $index => $item)

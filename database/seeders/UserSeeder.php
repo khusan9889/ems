@@ -162,6 +162,15 @@ class UserSeeder extends Seeder
             'branch_id' => 14,
             'role_id' => 2
         ]);
+        User::create(
+            [
+            'name' => 'Подтверждатель',
+            'phone_number' => '903306022',
+            'email' => 'confirmator@gmail.com',
+            'password' => bcrypt(11111111),
+            'branch_id' => 1,
+            'role_id' => 4
+        ]);
 
     }
 }

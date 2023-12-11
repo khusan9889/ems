@@ -17,9 +17,9 @@
                 <thead>
                 <tr>
                     <th>№</th>
-                    <th>Название области</th>
-                    <th>СОАТО</th>
-                    <th>Действия</th>
+                    <th>Название области/Viloyat nomi</th>
+                    <th>СОАТО/SOATO</th>
+                    <th>Действия/Harakatlar</th>
                 </tr>
                 <tr>
                     <form action="">

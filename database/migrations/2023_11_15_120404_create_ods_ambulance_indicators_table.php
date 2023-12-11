@@ -43,6 +43,7 @@ return new class extends Migration
             $table->integer('hospitalization_result_id')->nullable();
             $table->integer('called_person_id')->nullable();
             $table->integer('call_place_id')->nullable();
+            $table->unsignedBigInteger('confirm_status')->nullable();
             $table->timestamps();
         });
     }

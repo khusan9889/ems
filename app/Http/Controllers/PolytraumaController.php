@@ -106,7 +106,9 @@ class PolytraumaController extends Controller
     {
         $data = Polytrauma::findOrFail($id);
         $branches = Branch::all();
-
+        if ($data->confirm_status==1){
+            return back()->with(['not-allowed' => 'У вас нет доступа']);
+        }
         $activity = new ActionsLog();
         $activity->name = 'Политравма запись изменена: ' . $data->id;
         $activity->user_id = auth()->id();

@@ -45,6 +45,7 @@ return new class extends Migration
             $table->integer('ambulatory_operas')->nullable();
             $table->integer('including_children')->nullable();
             $table->string('status')->default('Не изменилось');
+            $table->unsignedBigInteger('confirm_status')->nullable();
             $table->timestamps();
         });
     }

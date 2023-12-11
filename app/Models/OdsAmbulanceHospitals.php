@@ -29,6 +29,10 @@ class OdsAmbulanceHospitals extends Model
     }
     public static function findOrCreate($name,$region_coato,$district_coato)
     {
+        if ($name == null)
+        {
+            return null;
+        }
         $obj = OdsAmbulanceHospitals::where('name',$name)->where('region_coato',$region_coato)->where('district_coato',$district_coato)->first();
         if ($obj == null)
         {

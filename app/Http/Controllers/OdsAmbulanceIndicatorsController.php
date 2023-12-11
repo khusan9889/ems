@@ -82,6 +82,10 @@ class OdsAmbulanceIndicatorsController extends Controller
     public function edit($id)
     {
         $indicator = OdsAmbulanceIndicators::findOrFail($id);
+        if ($indicator->confirm_status==1){
+            return back()->with(['not-allowed' => 'У вас нет доступа']);
+        }
+
         $substations=OdsAmbulanceSubstations::all();
         $call_types=OdsAmbulanceReferences::where('table_name','call_types')->get();
         $reasons=OdsAmbulanceReferences::where('table_name','reasons')->get();
@@ -152,6 +156,7 @@ class OdsAmbulanceIndicatorsController extends Controller
         $indicator->hospitalization_result_id = $request->hospitalization_result_id;
         $indicator->called_person_id = $request->called_person_id;
         $indicator->call_place_id = $request->call_place_id;
+        $indicator->confirm_status = $request->confirm_status;
         $indicator->save();
 
         return redirect()->route('indicator.index')->with('success', 'Индикаторы успешно создано');
@@ -190,6 +195,7 @@ class OdsAmbulanceIndicatorsController extends Controller
         $indicator->hospitalization_result_id = $request->hospitalization_result_id;
         $indicator->called_person_id = $request->called_person_id;
         $indicator->call_place_id = $request->call_place_id;
+        $indicator->confirm_status = $request->confirm_status;
         $indicator->save();
         return redirect()->route('indicator.index')->with('success', 'Индикаторы успешно обновлено');
     }

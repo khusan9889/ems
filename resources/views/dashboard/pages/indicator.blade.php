@@ -8,7 +8,7 @@
 @endphp
 
 @section('content')
-    <h1 class="page-header">Скорая помощь</h1>
+    <h1 class="page-header">Скорая помощь/Tez yordam</h1>
 
 
 
@@ -71,7 +71,7 @@
                 <tr>
                     <form action="">
                         <td class="text-nowrap">
-                            <label>Область вызова </label>
+                            <label>Область вызова/Viloyat qo'ng'iroq </label>
                             <select class="form-control" name="call_region_coato" onchange="myFunction(this.value)">
                                 <option value="">Все</option>
                                 @foreach ($regions as $key => $region)
@@ -86,7 +86,7 @@
                             @enderror
                         </td>
                         <td class="text-nowrap">
-                            <label>Район вызова</label>
+                            <label>Район вызова/Tuman qo'ng'iroq</label>
                             <select class="form-control" name="call_district_coato" id="mySelect">
                                 <option value="">Все</option>
                                 @foreach ($districts as $key => $district)
@@ -101,7 +101,7 @@
                             @enderror
                         </td>
                         <td class="text-nowrap">
-                            <label>Подстанция принятия вызова</label>
+                            <label>Подстанция принятия вызова/Qo'ng'iroqni qabul qilish podstansiyasi</label>
                             <select class="form-control" name="substation_id">
                                 <option value="">Все</option>
                                 @foreach ($substations as $key => $substation)
@@ -116,7 +116,7 @@
                             @enderror
                         </td>
                         <td class="text-nowrap">
-                            <label>Бригады</label>
+                            <label>Бригады/Brigadalar</label>
                             <select class="form-control" name="brigade_id">
                                 <option value="">Все</option>
                                 @foreach ($brigades as $key => $brigade)
@@ -131,7 +131,7 @@
                             @enderror
                         </td>
                         <td class="text-nowrap">
-                            <label>Результат выезда</label>
+                            <label>Результат выезда/Chiqish natijasi</label>
                             <select class="form-control" name="call_result_id">
                                 <option value="">Все</option>
                                 @foreach ($call_results as $key => $call_result)
@@ -146,7 +146,7 @@
                             @enderror
                         </td>
                         <td class="text-nowrap">
-                            <label>Дата приема вызова</label>
+                            <label>Дата приема вызова/Qo'ng'iroqni qabul qilish sanasi</label>
                             <input class="form-control" type="date" name="call_received"
                                    value="{{request('call_received')}}">
                         </td>
@@ -201,7 +201,19 @@
                 </thead>
                 <tbody>
                 @foreach ($indicators as $key => $item)
-                    <tr>
+                    <tr
+                        @if ($item->confirm_status == 3)
+                            class="table-danger"
+                        @endif
+
+                        @if ($item->confirm_status == 2)
+                            class="table-warning"
+                        @endif
+
+                        @if ($item->confirm_status == 1)
+                            class="table-success"
+                        @endif
+                    >
                         <td>{{ ($indicators->currentpage()-1)*10 + $loop->index + 1}}</td>
                         <td>{{ $item?->call_region?->name }}</td>
                         <td>{{ $item?->call_district?->name }}</td>

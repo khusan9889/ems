@@ -17,10 +17,10 @@
                 <thead>
                 <tr>
                     <th>№</th>
-                    <th>Название бригады</th>
-                    <th>Номер бригады</th>
-                    <th>Название подстанции</th>
-                    <th>Действия</th>
+                    <th>Название бригады/Brigada nomi</th>
+                    <th>Номер бригады/Brigada raqami</th>
+                    <th>Название подстанции/Podstansiya nomi</th>
+                    <th>Действия/Harakatlar</th>
                 </tr>
                 <tr>
                     <form action="">

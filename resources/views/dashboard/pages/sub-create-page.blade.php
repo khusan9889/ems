@@ -1,16 +1,16 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <x-panel title="Субфилиал - создание нового субфилиал">
+    <x-panel title="Субфилиал - создание нового субфилиал/Subfilial - yangi filialni tashkil etish">
         <form method="POST" action="{{ route('sub.store') }}">
             @csrf
             <table class="table table-striped table-bordered align-middle">
                 <tbody>
                     <tr>
-                        <th>Филиал</th>
+                        <th>Филиал/Filial</th>
                         <td>
                             <select class="form-control" id="branch" name="branch_id" readonly>
-                                <option value="" hidden>Выберите субъект</option>
+                                <option value="" hidden>Выберите субъект/Flailni tanlang</option>
                                 @foreach ($branches as $key => $branch)
                                     <option value="{{ $branch->id }}" {{ old('branch_id') == $branch->id ? 'selected' : '' }}
                                         @if (auth()->user()->branch_id == $branch->id) selected @endif>
@@ -24,7 +24,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Название субфилиала</th>
+                        <th>Название субфилиала/Subfilial nomi</th>
                         <td>
                             <input type="text" name="name" class="form-control" required>
                         </td>

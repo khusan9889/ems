@@ -47,6 +47,8 @@ return new class extends Migration
             $table->string('skull_trepanation')->nullable();
             $table->string('physician_full_name')->nullable();
             $table->string('stat_department_full_name')->nullable();
+            $table->unsignedBigInteger('confirm_status')->nullable();
+
 
             $table->timestamps();
         });

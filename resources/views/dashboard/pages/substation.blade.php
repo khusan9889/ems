@@ -17,10 +17,10 @@
                 <thead>
                 <tr>
                     <th>№</th>
-                    <th>Название подстанции</th>
-                    <th>Область</th>
-                    <th>Район</th>
-                    <th>Действия</th>
+                    <th>Название подстанции/Podstansiya nomi</th>
+                    <th>Область/Viloyat</th>
+                    <th>Район/Tuman</th>
+                    <th>Действия/Harakatlar</th>
                 </tr>
                 <tr>
                     <form action="">

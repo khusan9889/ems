@@ -21,7 +21,7 @@
                                 <td>{{ $reference->id }}</td>
                             </tr>
                             <tr>
-                                <th>Выберите тип</th>
+                                <th>Выберите тип/Turini tanlang</th>
                                 <td>
                                     <select class="form-control form-control-sm" name="table_name">
                                         <option value="Тип вызова" style="font-size: 12px;"
@@ -51,7 +51,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Название</th>
+                                <th>Название/Nomi</th>
                                 <td>
                                     <input type="text" name="name" class="form-control" value="{{ $reference->name }}" required>
                                 </td>

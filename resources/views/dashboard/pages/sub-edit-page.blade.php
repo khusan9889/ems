@@ -15,7 +15,7 @@
                         <table class="table table-striped table-bordered align-middle">
                             <tbody>
                                 <tr>
-                                    <th>Филиал</th>
+                                    <th>Филиал/Filial</th>
                                     <td>
                                         <select class="form-control" id="branch" name="branch_id">
                                             <option value="" hidden>Выберите субъект</option>
@@ -29,7 +29,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Название суб филиала</th>
+                                    <th>Название суб филиала/Subfilial nomi</th>
                                     <td>
                                         <input type="text" name="name" class="form-control" value="{{ $department->name }}" required>
                                     </td>

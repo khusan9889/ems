@@ -45,6 +45,7 @@ return new class extends Migration
             $table->string('ACE_inhibitors_ARBs')->nullable();
             $table->string('physician_full_name')->nullable();
             $table->string('stat_department_full_name')->nullable();
+            $table->unsignedBigInteger('confirm_status')->nullable();
 
             $table->timestamps();
         });

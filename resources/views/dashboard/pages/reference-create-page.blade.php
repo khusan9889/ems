@@ -7,7 +7,7 @@
             <table class="table table-striped table-bordered align-middle">
                 <tbody>
                     <tr>
-                        <th>Выберите Тип</th>
+                        <th>Выберите Тип/Turini tanlang</th>
                         <td>
                             <select class="form-control form-control-sm" name="table_name">
                                 <option value="call_types" style="font-size: 12px;"
@@ -37,7 +37,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Название</th>
+                        <th>Название/Nomi</th>
                         <td>
                             <input type="text" name="name" class="form-control" required>
                         </td>

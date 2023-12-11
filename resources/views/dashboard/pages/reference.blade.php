@@ -17,9 +17,9 @@
                 <thead>
                 <tr>
                     <th>№</th>
-                    <th>Название</th>
-                    <th>Тип</th>
-                    <th>Действия</th>
+                    <th>Название/Nomi</th>
+                    <th>Тип/Turi</th>
+                    <th>Действия/Harakatlar</th>
                 </tr>
                 <tr>
                     <form action="">

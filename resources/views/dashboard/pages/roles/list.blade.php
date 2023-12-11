@@ -7,8 +7,8 @@
             <table id="data-table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>Название</th>
-                    <th class="text-right">Действие</th>
+                    <th>Название/Nomi</th>
+                    <th class="text-right">Действия/Harakatlar</th>
                 </tr>
                 </thead>
                 <tbody>

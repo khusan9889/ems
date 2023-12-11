@@ -7,7 +7,7 @@
 @endphp
 
 @section('content')
-    <h1 class="page-header">Больница скорой помощи</h1>
+    <h1 class="page-header">Больница скорой помощи/Tez yordam kasalxonasi</h1>
     <x-panel>
         <div class="d-flex justify-content-end mb-3">
             <a href="{{ route('hospital.create-page') }}" class="btn btn-success">Добавить</a>
@@ -17,10 +17,10 @@
                 <thead>
                 <tr>
                     <th>№</th>
-                    <th>Название больницы</th>
-                    <th>Область</th>
-                    <th>Район</th>
-                    <th>Действия</th>
+                    <th>Название больницы/Kasalxona nomi</th>
+                    <th>Область/Viloyat</th>
+                    <th>Район/Tuman</th>
+                    <th>Действия/Harakatlar</th>
                 </tr>
                 <tr>
                     <form action="">

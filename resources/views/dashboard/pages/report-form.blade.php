@@ -9,20 +9,20 @@
 @section('content')
 
     <ol class="breadcrumb float-xl-end pull-right">
-        <li class="breadcrumb-item active">Еженедельные отчеты</li>
+        <li class="breadcrumb-item active">Еженедельные отчеты/Haftalik hisobotlar</li>
         <li class="breadcrumb-item active">Отчеты</li>
     </ol>
-    <h1 class="page-header">Отчеты</h1>
+    <h1 class="page-header">Отчеты/Hisobotlar</h1>
     <x-panel>
         <div class="table-responsive">
             <table id="data-table-default" class="table table-striped table-bordered align-middle">
                 <thead>
                 <tr>
                     <th>ИД</th>
-                    <th>Филиал</th>
-                    <th>Неделя</th>
-                    <th>Статус</th>
-                    <th>Действия</th>
+                    <th>Филиал/Filial</th>
+                    <th>Неделя/Hafta</th>
+                    <th>Статус/Status</th>
+                    <th>Действия/Harakatlar</th>
                 </tr>
                 <tr>
                     <form action="">
@@ -91,8 +91,20 @@
                 </thead>
                 <tbody>
                 @foreach ($data as $key => $item)
-                    <tr>
-                        <td>{{ $item->id }}</td>
+                    <tr
+                        @if ($item->confirm_status == 3)
+                            class="table-danger"
+                        @endif
+
+                        @if ($item->confirm_status == 2)
+                            class="table-warning"
+                        @endif
+
+                        @if ($item->confirm_status == 1)
+                            class="table-success"
+                        @endif
+                    >
+                        <td>{{ $item->id }} {{$item->confirm_status}}</td>
                         <td>{{ $item->branch->name }}</td>
                         <td>{{ $item->week->name }}</td>
                         <td @if ($item->status=="Не изменилось")

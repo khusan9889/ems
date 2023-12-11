@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <h1 class="page-header">Редактировать бригаду</h1>
+    <h1 class="page-header">Редактировать бригады/Brigadalarni tahrirlash</h1>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card mb-4">
@@ -21,7 +21,7 @@
                                 <td>{{ $brigade->id }}</td>
                             </tr>
                             <tr>
-                                <th>Выберите подстанцию</th>
+                                <th>Выберите подстанцию/Podstansiyani tanlang</th>
                                 <td>
                                     <select class="form-control"  name="substation_id">
                                         @foreach ($substations as $key => $substation)
@@ -37,13 +37,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Название бригады </th>
+                                <th>Название бригады/Brigada nomi </th>
                                 <td>
                                     <input type="text" name="name" class="form-control" value="{{ $brigade->name }}" required>
                                 </td>
                             </tr>
                             <tr>
-                                <th>Номер бригады </th>
+                                <th>Номер бригады/Brigada raqami </th>
                                 <td>
                                     <input type="text" name="brigade_number" class="form-control" value="{{ $brigade->brigade_number }}" required>
                                 </td>

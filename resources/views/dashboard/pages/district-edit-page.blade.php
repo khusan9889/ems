@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <h1 class="page-header">Редактировать район</h1>
+    <h1 class="page-header">Редактировать район/Tumanni tahrirlash</h1>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card mb-4">
@@ -21,7 +21,7 @@
                                 <td>{{ $district->id }}</td>
                             </tr>
                             <tr>
-                                <th>Выберите область</th>
+                                <th>Выберите область/viloyatni tanlang</th>
                                 <td>
                                     <select class="form-control"  name="region_id">
                                         @foreach ($regions as $key => $region)
@@ -37,13 +37,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Название района</th>
+                                <th>Название района/Tuman nomi</th>
                                 <td>
                                     <input type="text" name="name" class="form-control" value="{{ $district->name }}" required>
                                 </td>
                             </tr>
                             <tr>
-                                <th>Район СОАТО</th>
+                                <th>Район СОАТО/SOATO tumani</th>
                                 <td>
                                     <input type="text" name="coato" class="form-control" value="{{ $district->coato }}" required>
                                 </td>

@@ -1,13 +1,13 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <x-panel title="Создание нового района">
+    <x-panel title="Создание нового района/Yangi tumanni tashkil etish">
         <form method="POST" action="{{ route('district.store') }}">
             @csrf
             <table class="table table-striped table-bordered align-middle">
                 <tbody>
                     <tr>
-                        <th>Выберите область</th>
+                        <th>Выберите область/Viloyatni tanlang</th>
                         <td>
                             <select class="form-control"  name="region_id" readonly>
                                 @foreach ($regions as $key => $region)
@@ -23,13 +23,13 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Название района</th>
+                        <th>Название района/Tuman nomi</th>
                         <td>
                             <input type="text" name="name" class="form-control" required>
                         </td>
                     </tr>
                     <tr>
-                        <th>Район СОАТО</th>
+                        <th>Район СОАТО/SOATO tumani</th>
                         <td>
                             <input type="text" name="coato" class="form-control" required>
                         </td>

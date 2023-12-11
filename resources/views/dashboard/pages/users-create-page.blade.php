@@ -1,19 +1,19 @@
 @extends('dashboard.layouts.default')
 
 @section('content')
-    <x-panel title="Создать пользователя">
+    <x-panel title="Создать пользователя/Foydalanuvchi yarating">
         <form method="POST" action="{{ route('users.store') }}">
             @csrf
 
             <div class="form-group">
-                <label for="name">ФИО Пользователя</label>
+                <label for="name">ФИО Пользователя/Foydalanuvchi nomi</label>
                 <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
             </div>
 
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="branch">Выбрать субъект СЭМП</label>
+                        <label for="branch">Выбрать субъект СЭМП/Filialni tanlang</label>
                         <select class="form-control" id="branch" name="branch_id" readonly>
                             <option value="" hidden>Выберите субъект</option>
                             @foreach ($branches as $key => $branch)
@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="department">Выбрать отделение</label>
+                        <label for="department">Выбрать отделение/Bo'limni tanlang</label>
                         <select class="form-control" id="department" name="department_id">
                             <option value="" hidden>Выберите отделение</option>
                             @foreach ($departments as $department)
@@ -49,7 +49,7 @@
 
             <!-- Roles Dropdown -->
             <div class="form-group">
-                <label for="role_id">Роль</label>
+                <label for="role_id">Роль/Roli</label>
                 <select class="form-control" id="role_id" name="role_id" required>
                     @foreach ($roles as $role)
                         <option value="{{ $role->id }}">
@@ -60,20 +60,20 @@
             </div>
 
             <div class="form-group">
-                <label for="email">Почта</label>
+                <label for="email">Почта/Elektron pochta</label>
                 <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
                 @error('email')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="phone_number">Номер телефона</label>
+                <label for="phone_number">Номер телефона/Telefon raqami</label>
                 <input type="text" class="form-control" id="phone_number" name="phone_number"
                        value="{{ old('phone_number') }}" required>
             </div>
 
             <div class="form-group">
-                <label for="password">Пароль</label>
+                <label for="password">Пароль/Parol</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
 
@@ -84,6 +84,8 @@
 
 @push('scripts')
     <script>
+        var axios=require('axios');
+
         let departments = [];
         const branch = document.getElementById('branch')
         const fetchDepartmentsByBranchId = async function (value) {

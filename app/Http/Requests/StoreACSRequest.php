@@ -52,6 +52,7 @@ class StoreACSRequest extends FormRequest
             'p2y12' => 'required',
             'high_intensity_statins' => 'required',
             'ACE_inhibitors_ARBs' => 'required',
+            'confirm_status' => 'required',
         ];
 
         if ($this->input('cta_invasive_angiography') === 'Нет') {

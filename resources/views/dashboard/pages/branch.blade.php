@@ -1,14 +1,14 @@
 @extends('dashboard.layouts.default')
 
 @section('content')
-<h1 class="page-header">Филиал в СЭМП</h1>
+<h1 class="page-header">Филиал в СЭМП/Filiallar</h1>
 <x-panel>
     <div class="table-responsive">
         <table id="data-table-default" class="table table-striped table-bordered align-middle">
             <thead>
                 <tr>
                     <th style="width: 60px;">№</th>
-                    <th>Субъект</th>
+                    <th>Субъект/Filial</th>
                 </tr>
             </thead>
             <tbody>

@@ -17,13 +17,13 @@
                 <thead>
                     <tr>
                         <th>№</th>
-                        <th>Субъект СЭМП</th>
-                        <th>Отделение</th>
-                        <th>ФИО пользователя</th>
-                        <th>Номер телефона</th>
-                        <th>Электронная почта</th>
-                        <th>Роль</th>
-                        <th>Действия</th>
+                        <th>Субъект СЭМП/Filial</th>
+                        <th>Отделение/Bo'lim</th>
+                        <th>ФИО пользователя/Foydalanuvchi nomi</th>
+                        <th>Номер телефона/Telefon raqami</th>
+                        <th>Электронная почта/Elektron pochta</th>
+                        <th>Роль/Roli</th>
+                        <th>Действия/Harakatlar</th>
                     </tr>
                     <tr>
                         <form action="">
