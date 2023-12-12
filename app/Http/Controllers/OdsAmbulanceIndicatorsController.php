@@ -28,6 +28,7 @@ class OdsAmbulanceIndicatorsController extends Controller
             'call_region_coato' => $request->input('call_region_coato'),
             'call_district_coato' => $request->input('call_district_coato'),
             'call_received' => $request->input('call_received'),
+            'confirm_status' => $request->input('confirm_status'),
             'sort' => $request->input('sort') ?? 'DESC',
         ];
 
@@ -54,6 +55,9 @@ class OdsAmbulanceIndicatorsController extends Controller
             )->when(
                 $filters['brigade_id'],
                 fn($query, $value) => $query->where('brigade_id',$filters['brigade_id'] )
+            )->when(
+                $filters['confirm_status'],
+                fn($query, $value) => $query->where('confirm_status',$filters['confirm_status'] )
             )->when(
                 $filters['call_result_id'],
                 fn($query, $value) => $query->where('call_result_id',  $filters['call_result_id'] )

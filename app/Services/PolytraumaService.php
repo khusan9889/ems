@@ -70,8 +70,10 @@ class PolytraumaService implements PolytraumaServiceInterface
             ->when(
                 $filters['hospitalization_channels'],
                 fn ($query, $value) => $query->where('hospitalization_channels', $value)
-            )
-            ->when(
+            )->when(
+                $filters['confirm_status'],
+                fn($query, $value) => $query->where('confirm_status',$filters['confirm_status'] )
+            )->when(
                 $filters['branch'],
                 fn ($query, $value) => $query->where('branch_id', $value)
             );

@@ -18,11 +18,11 @@
             <table id="data-table-default" class="table table-striped table-bordered align-middle">
                 <thead>
                 <tr>
-                    <th>ИД</th>
-                    <th>Филиал/Filial</th>
-                    <th>Неделя/Hafta</th>
-                    <th>Статус/Status</th>
-                    <th>Действия/Harakatlar</th>
+                    <th class="text-nowrap">ИД</th>
+                    <th class="text-nowrap">Филиал/Filial</th>
+                    <th class="text-nowrap">Неделя/Hafta</th>
+                    <th class="text-nowrap">Статус/Status</th>
+                    <th class="text-nowrap">Подтвердите статус/Holatni tasdiqlang</th>
                 </tr>
                 <tr>
                     <form action="">
@@ -67,22 +67,29 @@
 
                         </td>
                         <td>
-                            <select class="form-control form-control-sm" name="status">
-                                <option value="" style="font-size: 12px;">Все</option>
-                                <option value="Измененный"
-                                        @if ('Измененный' == request('status')))
-                                            selected
-                                        @endif
-                                        style="font-size: 12px;">Измененный</option>
-                                <option value="Не изменилось"
-                                        @if ('Не изменилось' == request('status')))
-                                        selected
-                                        @endif
-                                        style="font-size: 12px;">Не изменилось</option>
-                            </select>
+                         <select class="form-control m-r-5" name="status">
+                             <option value="" style="font-size: 12px;">Все</option>
+                             <option value="Измененный"
+                                     @if ('Измененный' == request('status')))
+                                     selected
+                                     @endif
+                                     style="font-size: 12px;">Измененный</option>
+                             <option value="Не изменилось"
+                                     @if ('Не изменилось' == request('status')))
+                                     selected
+                                     @endif
+                                     style="font-size: 12px;">Не изменилось</option>
+                         </select>
+
                         </td>
                         <td class="align-middle d-flex justify-content-center">
-                            <div>
+                            <div class="d-flex justify-content-center">
+                                <select class="form-control m-r-5" name="confirm_status">
+                                    <option value="">Все</option>
+                                    <option value="1" {{ request('confirm_status') == 1? 'selected' : '' }}>Одобрение</option>
+                                    <option value="2" {{ request('confirm_status') == 2? 'selected' : '' }}>Подача на одобрение</option>
+                                    <option value="3" {{ request('confirm_status') == 3? 'selected' : '' }}>Возврат на доработку</option>
+                                </select>
                                 <button type="submit" class="btn btn-sm btn-primary">Применить</button>
                             </div>
                         </td>

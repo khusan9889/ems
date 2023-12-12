@@ -34,6 +34,9 @@ class FilialSubWeekService implements FilialSubWeekServiceInterface
             ->when(
                 $filters['status'],
                 fn($query, $value) => $query->where('status', $value)
+            )->when(
+                $filters['confirm_status'],
+                fn($query, $value) => $query->where('confirm_status',$filters['confirm_status'] )
             )
             ->when(
                 $filters['week'],

@@ -55,9 +55,10 @@ class StorePolytraumaRequest extends FormRequest
             'skull_trepanation' => 'required',
             'physician_full_name' => 'required',
             'stat_department_full_name' => 'required',
+            'confirm_status' => 'required',
 
         ];
 
-        
+
     }
 }

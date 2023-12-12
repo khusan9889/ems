@@ -101,7 +101,7 @@
                             @enderror
                         </td>
                         <td class="text-nowrap">
-                            <label>Подстанция принятия вызова/Qo'ng'iroqni qabul qilish podstansiyasi</label>
+                            <label>Подстанция/Podstansiya</label>
                             <select class="form-control" name="substation_id">
                                 <option value="">Все</option>
                                 @foreach ($substations as $key => $substation)
@@ -131,7 +131,7 @@
                             @enderror
                         </td>
                         <td class="text-nowrap">
-                            <label>Результат выезда/Chiqish natijasi</label>
+                            <label>Статус одобрения/Tasdiqlash holati</label>
                             <select class="form-control" name="call_result_id">
                                 <option value="">Все</option>
                                 @foreach ($call_results as $key => $call_result)
@@ -146,13 +146,23 @@
                             @enderror
                         </td>
                         <td class="text-nowrap">
-                            <label>Дата приема вызова/Qo'ng'iroqni qabul qilish sanasi</label>
+                            <label>Дата/Sana</label>
                             <input class="form-control" type="date" name="call_received"
                                    value="{{request('call_received')}}">
                         </td>
-                        <td class="align-middle">
+                        <td class="text-nowrap">
+                            <label>Подтвердите статус/Holatni tasdiqlang</label>
                             <div class="d-flex justify-content-center">
-                                <button type="submit" class="btn btn-sm btn-primary mb-2">Применить</button>
+                            <select class="form-control" name="confirm_status">
+                                <option value="">Все</option>
+                                <option value="1" {{ request('confirm_status') == 1? 'selected' : '' }}>Одобрение</option>
+                                <option value="2" {{ request('confirm_status') == 2? 'selected' : '' }}>Подача на одобрение</option>
+                                <option value="3" {{ request('confirm_status') == 3? 'selected' : '' }}>Возврат на доработку</option>
+                            </select>
+                            @error('confirm_status')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                                <button type="submit"  class="btn btn-sm btn-primary ml-2">Применить</button>
                             </div>
                         </td>
                     </form>
@@ -214,7 +224,7 @@
                             class="table-success"
                         @endif
                     >
-                        <td>{{ ($indicators->currentpage()-1)*10 + $loop->index + 1}}</td>
+                        <td>{{ ($indicators->currentpage()-1)*10 + $loop->index + 1}} {{$item->confirm_status}}</td>
                         <td>{{ $item?->call_region?->name }}</td>
                         <td>{{ $item?->call_district?->name }}</td>
                         <td>{{ $item?->substation?->name }}</td>

@@ -3,6 +3,7 @@
     $order = request()->sort;
 @endphp
 
+
 <div class="table-responsive">
     <table id="data-table-default" class="table table-striped table-bordered align-middle">
 
@@ -17,7 +18,7 @@
                 <th  class="text-nowrap">Дата выписки/Chiqarish sanasi</th>
                 <th  class="text-nowrap">Канал госпитализации/Kasalxonaga yotqizish kanali</th>
                 <th  class="text-nowrap">ФИО лечащего врача/Davolovchi shifokorning FIO</th>
-                <th  class="text-nowrap">Действия/Amallar</th>
+                <th  class="text-nowrap">Подтвердите статус/Holatni tasdiqlang</th>
             </tr>
             <tr>
                 <form action="">
@@ -69,9 +70,14 @@
                 <td>
                     <input class="form-control form-control-sm" name="physician_full_name" value="{{ request('physician_full_name') }}"></input>
                 </td>
-
                 <td class="align-middle d-flex justify-content-center">
-                    <div>
+                    <div class="d-flex">
+                        <select class="form-control m-r-5" name="confirm_status">
+                            <option value="">Все</option>
+                            <option value="1" {{ request('confirm_status') == 1? 'selected' : '' }}>Одобрение</option>
+                            <option value="2" {{ request('confirm_status') == 2? 'selected' : '' }}>Подача на одобрение</option>
+                            <option value="3" {{ request('confirm_status') == 3? 'selected' : '' }}>Возврат на доработку</option>
+                        </select>
                         <button type="submit" class="btn btn-sm btn-primary">Применить</button>
                     </div>
                 </td>
@@ -79,6 +85,7 @@
             </tr>
 
         </thead>
+
         <tbody>
             @foreach ($data as $key => $item)
                 <tr
@@ -105,7 +112,7 @@
                     <td>{{ $item->physician_full_name }}</td>
                     {{-- <td>{{ $item->stat_department_full_name }}</td> --}}
                     <td class="align-middle">
-                        <div class="d-flex">
+                        <div class="d-flex justify-content-center">
                             <a href="{{ route('full-table-polyt', ['id' => $item->id]) }}"
                                 class="btn btn-primary btn-xs mr-1">
                                 <i class="fas fa-eye"></i>

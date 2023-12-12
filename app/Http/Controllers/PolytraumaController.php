@@ -27,6 +27,7 @@ class PolytraumaController extends Controller
             'discharge_date' => $request->input('discharge_date'),
             'physician_full_name' => $request->input('physician_full_name'),
             'hospitalization_channels' => $request->input('hospitalization_channels'),
+            'confirm_status' => $request->input('confirm_status'),
             'sort' => $request->input('sort') ?? 'DESC',
         ];
 

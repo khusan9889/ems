@@ -22,6 +22,7 @@ class ACSController extends Controller
             'hospitalization_date' => $request->input('hospitalization_date'),
             'discharge_date' => $request->input('discharge_date'),
             'physician_full_name' => $request->input('physician_full_name'),
+            'confirm_status' => $request->input('confirm_status'),
             'department' => $request->input('department'),
             'hospitalization_channels' => $request->input('hospitalization_channels'),
             'sort' => $request->input('sort') ?? 'DESC',

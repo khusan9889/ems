@@ -35,6 +35,7 @@ class ReportFormController extends Controller
             'week' => $request->input('week'),
             'branch' => $request->input('branch'),
             'status' => $request->input('status'),
+            'confirm_status' => $request->input('confirm_status'),
             'sort' => $request->input('sort') ?? 'DESC',
         ];
         $userBranchId = auth()->user()->branch_id;
