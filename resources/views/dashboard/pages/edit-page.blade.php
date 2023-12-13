@@ -130,7 +130,7 @@
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="final_result"
                                                id="final_resultOption2"
-                                               value="Оим без Q" {{ $data->final_result == 'Оим без Q' ? 'checked' : '' }}>
+                                               value="Оим без Q" {{ $data->final_result == 'ОИМ без Q' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="final_resultOption2">Оим без Q/Q-siz
                                             infarkt</label>
                                     </div>

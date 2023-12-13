@@ -478,7 +478,7 @@
             </div>
             <hr>
             <div class="form-group">
-                <label for="thoracocentesis"><b>Торакоцентез/Torasentez:</b></label><br>
+                <label for="thoracocentesis"><b>Торакоцентез/Torakocentez:</b></label><br>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="thoracocentesis" id="thoracocentesisOption1"
                         value="Да" {{ old('thoracocentesis') == 'Да' ? 'checked' : '' }}>
@@ -495,7 +495,7 @@
             </div>
             <hr>
             <div class="form-group">
-                <label for="laparotomy"><b>Лапаратомия/Laparotomiya:</b></label><br>
+                <label for="laparotomy"><b>Лапаратомия/Laparatomiya:</b></label><br>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="laparotomy" id="laparotomyOption1"
                         value="Да" {{ old('laparotomy') == 'Да' ? 'checked' : '' }}>
@@ -513,7 +513,7 @@
             <hr>
 
             <div class="form-group">
-                <label for="thoracoscopy_thoracotomy"><b>Торакоскопия (торакотомия):</b></label><br>
+                <label for="thoracoscopy_thoracotomy"><b>Торакоскопия (торакотомия)/Torakoskopiya (torakotomiya):</b></label><br>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="thoracoscopy_thoracotomy"
                         id="thoracoscopy_thoracotomyOption1" value="Да"
@@ -532,7 +532,7 @@
             </div>
             <hr>
             <div class="form-group">
-                <label for="osteosynthesis_of_fractures"><b>Остеосинтез переломов/Singan osteosintezi:</b></label><br>
+                <label for="osteosynthesis_of_fractures"><b>Остеосинтез переломов/Singan suyak osteosintezi:</b></label><br>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="osteosynthesis_of_fractures"
                         id="osteosynthesis_of_fracturesOption1" value="Да"
@@ -551,7 +551,7 @@
             </div>
             <hr>
             <div class="form-group">
-                <label for="skull_trepanation"><b>Трепанация черепа/Boshsuyagi trepanatsiyasi:</b></label><br>
+                <label for="skull_trepanation"><b>Трепанация черепа/Bosh chanog'i trepanaciyasi:</b></label><br>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="skull_trepanation"
                         id="skull_trepanationOption1" value="Да"

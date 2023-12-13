@@ -156,7 +156,7 @@
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="final_result" id="overallOption2"
                         value="Оим без Q" {{ old('final_result') == 'Оим без Q' ? 'checked' : '' }}>
-                    <label class="form-check-label" for="overallOption2">Оим без Q/Q-siz infarkt</label>
+                    <label class="form-check-label" for="overallOption2">ОИМ без Q/Q-siz infarkt</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="final_result" id="overallOption3"

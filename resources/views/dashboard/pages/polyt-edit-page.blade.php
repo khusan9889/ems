@@ -316,7 +316,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Торакоцентез/Torasentez:</th>
+                                    <th>Торакоцентез/Torakocentez:</th>
                                     <td>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="thoracocentesis" id="thoracocentesisOption1" value="Да" {{ $data->thoracocentesis == 'Да' ? 'checked' : '' }}>
@@ -329,7 +329,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Лапаратомия/Laparotomiya:</th>
+                                    <th>Лапаратомия/Laparatomiya:</th>
                                     <td>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="laparotomy" id="laparotomyOption1" value="Да" {{ $data->laparotomy == 'Да' ? 'checked' : '' }}>
@@ -342,7 +342,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Торакоскопия (торакотомия):</th>
+                                    <th>Торакоскопия (торакотомия)/Torakoskopiya (torakotomiya):</th>
                                     <td>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="thoracoscopy_thoracotomy" id="thoracoscopy_thoracotomyOption1" value="Да" {{ $data->thoracoscopy_thoracotomy == 'Да' ? 'checked' : '' }}>
@@ -355,7 +355,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Остеосинтез переломов/Singan osteosintezi:</th>
+                                    <th>Остеосинтез переломов/Singan suyak osteosintezi:</th>
                                     <td>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="osteosynthesis_of_fractures" id="osteosynthesis_of_fracturesOption1" value="Да" {{ $data->osteosynthesis_of_fractures == 'Да' ? 'checked' : '' }}>
@@ -368,7 +368,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Трепанация черепа/Boshsuyagi trepanatsiyasi:</th>
+                                    <th>Трепанация черепа/Bosh chanog'i trepanaciyasi:</th>
                                     <td>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="skull_trepanation" id="skull_trepanationOption1" value="Да" {{ $data->skull_trepanation == 'Да' ? 'checked' : '' }}>
