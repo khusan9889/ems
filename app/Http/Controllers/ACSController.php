@@ -15,6 +15,7 @@ class ACSController extends Controller
 {
     public function index(Request $request, ACSServiceInterface $acsService)
     {
+//        return Department::all();
         $filters = [
             'branch' => $request->input('branch'),
             'history_disease' => $request->input('history_disease'),
@@ -83,13 +84,12 @@ class ACSController extends Controller
     public function create()
     {
         $userBranchId = auth()->user()->branch_id;
-        if ($userBranchId === 1) {
+        if ($userBranchId == 1) {
             $branches = Branch::all(['id', 'name']);
         } else {
             $branches = Branch::where('id', $userBranchId)->get(['id', 'name']);
         }
-        $departments = Department::all(['id', 'name']);
-
+        $departments = Department::where('branch_id', 1)->get();
         // Log the creation activity
         $activity = new ActionsLog();
         $activity->name = 'Таблица ОКС создана';
@@ -103,6 +103,7 @@ class ACSController extends Controller
     {
         $data = ACS::findOrFail($id);
         $branches = Branch::all();
+        $departments = Department::where('branch_id', $data->branch_id)->get();
         if ($data->confirm_status==1){
             return back()->with(['not-allowed' => 'У вас нет доступа']);
         }
@@ -112,8 +113,7 @@ class ACSController extends Controller
         $activity->name = 'ОКС запись изменена: ' . $data->id;
         $activity->user_id = auth()->id();
         $activity->save();
-
-        return view('dashboard.pages.edit-page', compact('data', 'branches'));
+        return view('dashboard.pages.edit-page', compact('data', 'branches','departments'));
     }
 
     public function update(Request $request, $id)

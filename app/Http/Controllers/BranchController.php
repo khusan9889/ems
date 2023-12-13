@@ -35,4 +35,11 @@ class BranchController extends Controller
 
         return response()->json($data);
     }
+    public function fetch($id)
+    {
+
+        $data = Department::where('branch_id', $id)->get();
+
+        return $data;
+    }
 }

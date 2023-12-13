@@ -13,8 +13,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="branch">Выбрать субъект СЭМП/Filialni tanlang</label>
-                        <select class="form-control" id="branch" name="branch_id" readonly>
-                            <option value="" hidden>Выберите субъект</option>
+                        <select class="form-control"  name="branch_id" onchange="myFunction(this.value)">
                             @foreach ($branches as $key => $branch)
                                 <option value="{{ $branch->id }}" {{ old('branch_id') == $branch->id ? 'selected' : '' }}
                                     @if (auth()->user()->branch_id == $branch->id) selected @endif>
@@ -30,7 +29,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="department">Выбрать отделение/Bo'limni tanlang</label>
-                        <select class="form-control" id="department" name="department_id">
+                        <select class="form-control" id="mySelect" name="department_id">
                             <option value="" hidden>Выбрать отделение/Bo'limni tanlang</option>
                             @foreach ($departments as $department)
                                 <option value="{{ $department->id }}" @selected(old('department_id') == $department->id)>
@@ -71,7 +70,7 @@
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </div>
                             </div>
-                            <input class="form-control" id="hospitalization_calendar" type="text"
+                            <input class="form-control" id="hospitalization_calendar" type="datetime-local"
                                 name="hospitalization_date" value="{{ old('hospitalization_date') }}">
                         </div>
                         @error('hospitalization_date')
@@ -89,7 +88,7 @@
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </div>
                             </div>
-                            <input class="form-control" id="discharge_calendar" type="text" name="discharge_date"
+                            <input class="form-control" id="discharge_calendar" type="datetime-local" name="discharge_date"
                                 value="{{ old('discharge_date') }}">
                         </div>
                         @error('discharge_date')
@@ -603,127 +602,28 @@
     <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
     <script>
-    var axios=require('axios');
+   function myFunction(val) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `department_branch/${val}`);
+        xhr.send();
+        xhr.responseType = "json";
+        xhr.onload = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+        var x = document.getElementById("mySelect");
 
-        $('#hospitalization_calendar').daterangepicker({
-            "singleDatePicker": true,
-            "showDropdowns": true,
-            "timePicker": true,
-            "timePicker24Hour": true,
-            "locale": {
-                format: 'DD.MM.YYYY HH:mm',
-                "separator": " - ",
-                "applyLabel": "Применить",
-                "cancelLabel": "Отменить",
-                "fromLabel": "From",
-                "toLabel": "To",
-                "customRangeLabel": "Custom",
-                "weekLabel": "W",
-                "daysOfWeek": [
-                    "Вс",
-                    "Пн",
-                    "Вт",
-                    "Ср",
-                    "Чт",
-                    "Пт",
-                    "Сб"
-                ],
-                "monthNames": [
-                    "Январь",
-                    "Февраль",
-                    "Март",
-                    "Апрель",
-                    "Май",
-                    "Июнь",
-                    "Июль",
-                    "Август",
-                    "Сентябрь",
-                    "Октябрь",
-                    "Ноябрь",
-                    "Декабрь"
-                ],
-                "firstDay": 1
-            },
-        }, function(start, end, label) {
-            $('#hospitalization_calendar').val(start.format('DD.MM.YYYY HH:mm'));
-        });
-
-        $('#discharge_calendar').daterangepicker({
-            "singleDatePicker": true,
-            "showDropdowns": true,
-            "timePicker": true,
-            "timePicker24Hour": true,
-            "locale": {
-                format: 'DD.MM.YYYY HH:mm',
-                "separator": " - ",
-                "applyLabel": "Применить",
-                "cancelLabel": "Отменить",
-                "fromLabel": "From",
-                "toLabel": "To",
-                "customRangeLabel": "Custom",
-                "weekLabel": "W",
-                "daysOfWeek": [
-                    "Вс",
-                    "Пн",
-                    "Вт",
-                    "Ср",
-                    "Чт",
-                    "Пт",
-                    "Сб"
-                ],
-                "monthNames": [
-                    "Январь",
-                    "Февраль",
-                    "Март",
-                    "Апрель",
-                    "Май",
-                    "Июнь",
-                    "Июль",
-                    "Август",
-                    "Сентябрь",
-                    "Октябрь",
-                    "Ноябрь",
-                    "Декабрь"
-                ],
-                "firstDay": 1
-            },
-        }, function(start, end, label) {
-            $('#discharge_calendar').val(start.format('DD.MM.YYYY HH:mm'));
-        });
-
-        let departments = [];
-        const branch = document.getElementById('branch')
-        const fetchDepartmentsByBranchId = async function(value) {
-            try {
-
-                const res = await axios({
-                    url: '/departments/branch',
-                    params: {
-                        branch_id: Number(value)
-                    }
-                })
-
-                departments = res.data
-
-                const department = document.getElementById('department')
-
-                department.innerHTML = '<option value="" hidden>Выберите отделение</option>'
-                departments.forEach(dep => {
-                    const optEl = document.createElement('option')
-                    optEl.value = dep.id
-                    optEl.innerHTML = dep.name
-                    department.insertAdjacentElement('beforeend', optEl)
-                })
-            } catch (error) {
-                alert(error.message)
-            }
-
+        document.querySelectorAll('#mySelect option').forEach(option => option.remove())
+            var option = document.createElement("option");
+            for (const  object in xhr.response) {
+              var option = document.createElement("option");
+              option.text = xhr.response[object]['name'];
+              option.value=xhr.response[object]['id'];
+              x.add(option);
+             }
+        } else {
+        console.log(`Error: ${xhr.status}`);
         }
-        branch.addEventListener('change', (event) => fetchDepartmentsByBranchId(event.target.value))
-        window.addEventListener('DOMContentLoaded', function(event) {
-            const selectedBranch = document.getElementById('branch')
-            console.log('selectedBranch id: ', selectedBranch.value);
-            fetchDepartmentsByBranchId(selectedBranch.value)
-        })
+        };
+        }
+
     </script>
 @endpush

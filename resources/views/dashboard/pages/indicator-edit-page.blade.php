@@ -350,7 +350,7 @@
                             </tbody>
                         </table>
                         <div class="d-flex justify-content-end">
-                            @if (auth()->user()->role->id==4)
+                            @if (auth()->user()->role->id==4 or auth()->user()->role->id==1)
                                 <button type="submit" name="confirm_status" value="3" class="btn btn-primary fa-pull-right m-r-5">Возврат на доработку</button>
                                 <button type="submit" name="confirm_status" value="1" class="btn btn-primary fa-pull-right m-r-5">Одобрение</button>
                             @else

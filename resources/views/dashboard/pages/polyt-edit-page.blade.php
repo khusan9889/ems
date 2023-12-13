@@ -23,11 +23,33 @@
                                 </tr>
                                 <tr>
                                     <th>Субъект/Filial</th>
-                                    <td>{{$data->branch->name}}</td>
+                                    <td>
+                                        <select class="form-control" required name="branch_id"
+                                                onchange="myFunction(this.value)"
+                                                @if (auth()->user()->role->id!=1) disabled @endif>
+                                            @foreach ($branches as $key => $branch)
+                                                <option
+                                                    value="{{ $branch->id }}" {{ $data->branch_id == $branch->id ? 'selected' : '' }}>
+                                                    {{ $branch->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Отделение/Bo'lim</th>
-                                    <td>{{$data->department->name}}</td>
+                                    <td>
+                                        <select class="form-control" required name="department_id" id="mySelect"
+                                                @if (auth()->user()->role->id!=1) disabled @endif >
+                                            @foreach ($departments as $key => $department)
+                                                <option
+                                                    value="{{ $department->id }}" {{ $data->department_id == $department->id ? 'selected' : '' }}>
+                                                    {{ $department->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Номер ИБ/Kasallik tarixi raqami</th>
@@ -369,7 +391,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                            @if (auth()->user()->role->id==4)
+                            @if (auth()->user()->role->id==4 or auth()->user()->role->id==1)
                                 <button type="submit" name="confirm_status" value="1" class="btn btn-primary fa-pull-right">Одобрение</button>
                                 <button type="submit" name="confirm_status" value="3" class="btn btn-primary fa-pull-right m-r-5">Возврат на доработку</button>
                             @else
@@ -381,5 +403,37 @@
             </div>
         </div>
     </div>
+    <script>
+
+
+
+    function myFunction(val) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `department_branch/${val}`);
+        xhr.send();
+        xhr.responseType = "json";
+        xhr.onload = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+        var x = document.getElementById("mySelect");
+        document.querySelectorAll('#mySelect option').forEach(option => option.remove())
+            var option = document.createElement("option");
+            for (const  object in xhr.response) {
+              var option = document.createElement("option");
+              option.text = xhr.response[object]['name'];
+              option.value=xhr.response[object]['id'];
+              x.add(option);
+             }
+        } else {
+        console.log(`Error: ${xhr.status}`);
+        }
+        };
+        }
+
+
+
+
+
+    </script>
+
 @endsection
 

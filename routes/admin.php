@@ -42,7 +42,6 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('add', [PolytraumaController::class, 'store'])->name('polytrauma.add');
             Route::get('/polyt-edit-page/{id}', [PolytraumaController::class, 'edit'])->name('polyt-edit-page');
             Route::put('/update-data/{id}', [PolytraumaController::class, 'update'])->name('polyt-update-data');
-
             Route::delete('/delete/{id}', [PolytraumaController::class, 'destroy'])->name('polytrauma.delete');
         });
 
@@ -81,7 +80,6 @@ Route::group(['middleware' => 'auth'], function () {
             Route::put('/update/{department}', [DepartmentController::class, 'update'])->name('department.update');
             Route::get('/create-page', [DepartmentController::class, 'create'])->name('department.create-page');
             Route::post('/store', [DepartmentController::class, 'store'])->name('department.store');
-            //            Route::get('/branch', [BranchController::class, 'fetchDepartments']);
             Route::delete('/delete/{id}', [DepartmentController::class, 'destroy'])->name('department.delete');
         });
 
@@ -185,6 +183,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('week_data/{data}', [ReportFormController::class, 'week_data'])->name('form.week_data');
     Route::get('district_region/{data}', [OdsAmbulanceDistrictsController::class, 'district_region']);
     Route::get('indicator/district_region/{data}', [OdsAmbulanceDistrictsController::class, 'district_region']);
+    Route::get('department_branch/{id}', [BranchController::class, 'fetch']);
 
     Route::group(['prefix' => 'departments'], function () {
         Route::get('/branch', [BranchController::class, 'fetchDepartments']);
@@ -192,6 +191,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('print/{id}', [PrintController::class, 'create_pdf'])->name('save');
     Route::get('polyt-print/{id}', [PolytPrintController::class, 'create_pdf'])->name('polyt-save');
+
+
+    Route::get('acs/edit-page/department_branch/{id}', [BranchController::class, 'fetch']);
+    Route::get('acs/department_branch/{id}', [BranchController::class, 'fetch']);
+    Route::get('polytrauma/polyt-edit-page/department_branch/{id}', [BranchController::class, 'fetch']);
+    Route::get('polytrauma/department_branch/{id}', [BranchController::class, 'fetch']);
 
 
 });
