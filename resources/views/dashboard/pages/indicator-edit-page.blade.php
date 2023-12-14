@@ -20,8 +20,9 @@
                             <tr>
                                 <td>
                                     <label>Область вызова/Viloyat qo'ng'iroq</label>
-                                    <select class="form-control" required name="call_region_coato">
+                                    <select class="form-control" required name="call_region_coato" onchange="myFunction(this.value)">
                                         <option></option>
+
                                         @foreach ($regions as $key => $region)
                                             <option
                                                 value="{{ $region->coato }}" {{$indicator->call_region_coato==$region->coato ? 'selected' : '' }}>
@@ -35,8 +36,9 @@
                                 </td>
                                 <td>
                                     <label>Район вызова/Tuman qo'ng'iroq</label>
-                                    <select class="form-control" required name="call_district_coato">
+                                    <select class="form-control" required name="call_district_coato" id="mySelect">
                                         <option></option>
+
                                         @foreach ($districts as $key => $district)
                                             <option
                                                 value="{{ $district->coato }}" {{ $indicator->call_district_coato == $district->coato ? 'selected' : '' }}>
@@ -233,8 +235,9 @@
                                 </td>
                                 <td>
                                     <label>Область проживания пациента/Bemorning yashash viloyati</label>
-                                    <select class="form-control" required name="residence_region_coato">
+                                    <select class="form-control" required name="residence_region_coato" onchange="my_Function(this.value)">
                                         <option></option>
+
                                         @foreach ($regions as $key => $region)
                                             <option
                                                 value="{{ $region->coato }}" {{ $indicator->residence_region_coato == $region->coato ? 'selected' : '' }}>
@@ -248,9 +251,9 @@
                                 </td>
                                 <td>
                                     <label>Район проживания пациента/Bemorning yashash tumani</label>
-                                    <select class="form-control" required name="residence_district_coato">
+                                    <select class="form-control" required name="residence_district_coato" id="my_id">
                                         <option></option>
-                                        @foreach ($districts as $key => $district)
+                                        @foreach ($residence_districts as $key => $district)
                                             <option
                                                 value="{{ $district->coato }}" {{$indicator->residence_district_coato == $district->coato ? 'selected' : '' }}>
                                                 {{ $district->name }}
@@ -363,4 +366,59 @@
             </div>
         </div>
     </div>
+    <script>
+
+
+        function myFunction(val) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `district_region/${val}`);
+        xhr.send();
+        xhr.responseType = "json";
+        xhr.onload = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr.response);
+        var x = document.getElementById("mySelect");
+        document.querySelectorAll('#mySelect option').forEach(option => option.remove())
+            var option = document.createElement("option");
+            for (const  object in xhr.response) {
+              var option = document.createElement("option");
+              option.text = xhr.response[object]['name'];
+              option.value=xhr.response[object]['coato'];
+              x.add(option);
+             }
+        } else {
+        console.log(`Error: ${xhr.status}`);
+        }
+        };
+        }
+
+
+        function my_Function(val) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `district_region/${val}`);
+        xhr.send();
+        xhr.responseType = "json";
+        xhr.onload = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr.response);
+        var x = document.getElementById("my_id");
+        document.querySelectorAll('#my_id option').forEach(option => option.remove())
+            var option = document.createElement("option");
+            for (const  object in xhr.response) {
+              var option = document.createElement("option");
+              option.text = xhr.response[object]['name'];
+              option.value=xhr.response[object]['coato'];
+              x.add(option);
+             }
+        } else {
+        console.log(`Error: ${xhr.status}`);
+        }
+        };
+        }
+
+
+
+
+    </script>
+
 @endsection

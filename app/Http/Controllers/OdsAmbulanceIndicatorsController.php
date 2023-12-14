@@ -100,11 +100,12 @@ class OdsAmbulanceIndicatorsController extends Controller
         $brigades=OdsAmbulanceBrigades::all();
         $hospitals=OdsAmbulanceHospitals::all();
         $regions=OdsAmbulanceRegions::all();
-        $districts=OdsAmbulanceDistricts::all();
+        $districts=OdsAmbulanceDistricts::where('region_id',$indicator->call_region->id)->get();
+        $residence_districts=OdsAmbulanceDistricts::where('region_id',$indicator->residence_district->id)->get();
         return view('dashboard.pages.indicator-edit-page',
             compact('indicator','substations','call_types','brigades',
                 'reasons','call_results','hospitals','hospitalization_results',
-                'called_persons','call_places','regions','districts'));
+                'called_persons','call_places','regions','districts','residence_districts'));
     }
 
     public function create()

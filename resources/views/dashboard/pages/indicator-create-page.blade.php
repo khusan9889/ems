@@ -215,7 +215,7 @@
                     </td>
                     <td>
                         <label>Область проживания пациента/Bemorning yashash viloyati</label>
-                        <select class="form-control" required name="residence_region_coato" onchange="my_Function(this.value)">
+                        <select class="form-control" required name="residence_region_coato"  >
                             <option></option>
                             @foreach ($regions as $key => $region)
                                 <option
