@@ -13,10 +13,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Номер бригады/Brigada raqami</th>
-                        <td>
-                            <input type="number" name="brigade_number" class="form-control" required>
-                        </td>
+{{--                        <th>Номер бригады/Brigada raqami</th>--}}
+{{--                        <td>--}}
+{{--                            <input type="number" name="brigade_number" class="form-control" required>--}}
+{{--                        </td>--}}
                     </tr>
                     <tr>
                         <th>Выберите подстанцию/Podstansiyani tanlang</th>

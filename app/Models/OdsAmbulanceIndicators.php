@@ -42,6 +42,8 @@ class OdsAmbulanceIndicators extends Model
         'hospitalization_result_id',
         'called_person_id',
         'call_place_id',
+        'brigade_call_time',
+        'travel_time',
     ];
 
     protected $table = 'ods_ambulance_indicators';
@@ -64,6 +66,10 @@ class OdsAmbulanceIndicators extends Model
     public function call_result(): BelongsTo
     {
         return $this->belongsTo(OdsAmbulanceReferences::class,'call_result_id');
+    }
+    public function diagnosis(): BelongsTo
+    {
+        return $this->belongsTo(OdsAmbulanceReferences::class,'diagnosis_id');
     }
     public function hospital(): BelongsTo
     {

@@ -30,6 +30,9 @@
                                 <option value="call_places" style="font-size: 12px;"
                                         @if ("Место вызова" == request('table_name')) selected @endif>Место вызова
                                 </option>
+                                <option value="diagnoses" style="font-size: 12px;"
+                                        @if ("Диагноз" == request('table_name')) selected @endif>Диагноз
+                                </option>
                             </select>
                             @error('table_name')
                             <span class="text-danger">{{ $message }}</span>

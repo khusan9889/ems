@@ -17,6 +17,7 @@ class BranchesImport implements ToCollection
             // Assuming your Excel file columns are in the following order:
             $id = $row[0]; // Replace with the actual column index
             $name = $row[1]; // Replace with the actual column index
+            $coato = $row[2]; // Replace with the actual column index
 
 
             // Create a new Branch record with the extracted data
@@ -24,6 +25,7 @@ class BranchesImport implements ToCollection
                 'id' => $id
             ], [
                 'name' => $name,
+                'coato' => $coato,
             ]);
         }
     }

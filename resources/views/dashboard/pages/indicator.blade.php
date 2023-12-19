@@ -71,7 +71,7 @@
                 <tr>
                     <form action="">
                         <td class="text-nowrap">
-                            <label>Область вызова/Viloyat qo'ng'iroq </label>
+                            <label>Область вызова/Viloyat</label>
                             <select class="form-control" name="call_region_coato" onchange="myFunction(this.value)">
                                 <option value="">Все</option>
                                 @foreach ($regions as $key => $region)
@@ -85,21 +85,21 @@
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </td>
-                        <td class="text-nowrap">
-                            <label>Район вызова/Tuman qo'ng'iroq</label>
-                            <select class="form-control" name="call_district_coato" id="mySelect">
-                                <option value="">Все</option>
-                                @foreach ($districts as $key => $district)
-                                    <option
-                                        value="{{ $district->coato }}" {{ request('call_district_coato') == $district->coato ? 'selected' : '' }}>
-                                        {{ $district->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('call_district_coato')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </td>
+{{--                        <td class="text-nowrap">--}}
+{{--                            <label>Район вызова/Tuman</label>--}}
+{{--                            <select class="form-control" name="call_district_coato" id="mySelect">--}}
+{{--                                <option value="">Все</option>--}}
+{{--                                @foreach ($districts as $key => $district)--}}
+{{--                                    <option--}}
+{{--                                        value="{{ $district->coato }}" {{ request('call_district_coato') == $district->coato ? 'selected' : '' }}>--}}
+{{--                                        {{ $district->name }}--}}
+{{--                                    </option>--}}
+{{--                                @endforeach--}}
+{{--                            </select>--}}
+{{--                            @error('call_district_coato')--}}
+{{--                            <span class="text-danger">{{ $message }}</span>--}}
+{{--                            @enderror--}}
+{{--                        </td>--}}
                         <td class="text-nowrap">
                             <label>Подстанция/Podstansiya</label>
                             <select class="form-control" name="substation_id">
@@ -182,10 +182,10 @@
                     <th class="text-nowrap">Заполнение карты вызова</th>
                     <th class="text-nowrap">Тип вызова</th>
                     <th class="text-nowrap">Номер КВ</th>
-                    <th class="text-nowrap">Дата приема вызова</th>
-                    <th class="text-nowrap">Время приема вызова</th>
-                    <th class="text-nowrap">время началы формирования КТ</th>
-                    <th class="text-nowrap">Время завершения формирования КТ</th>
+                    <th class="text-nowrap">Дата приёма</th>
+                    <th class="text-nowrap">Вр. нач. форм. КТ</th>
+                    <th class="text-nowrap">Время приёма</th>
+{{--                    <th class="text-nowrap">Время завершения формирования КТ</th>--}}
                     <th class="text-nowrap">Время передачи вызова Бригаде</th>
                     <th class="text-nowrap">Время выезда Бригады</th>
                     <th class="text-nowrap">Прибытие Бригады на место вызова</th>
@@ -198,14 +198,16 @@
                     <th class="text-nowrap">Причина вызова</th>
                     <th class="text-nowrap">Пол пациента</th>
                     <th class="text-nowrap">Возраст пациента</th>
-                    <th class="text-nowrap">Область проживания пациента</th>
-                    <th class="text-nowrap">Район проживания пациента</th>
+{{--                    <th class="text-nowrap">Область проживания пациента</th>--}}
+{{--                    <th class="text-nowrap">Район проживания пациента</th>--}}
                     <th class="text-nowrap">Диагноз по МКБ10</th>
                     <th class="text-nowrap">Результат выезда</th>
                     <th class="text-nowrap">Место госпитализации</th>
                     <th class="text-nowrap">Результат госпитализации</th>
                     <th class="text-nowrap">Кто вызвал</th>
                     <th class="text-nowrap">Место вызова</th>
+                    <th class="text-nowrap">Вр.на прин.выз.бр.</th>
+                    <th class="text-nowrap">Вр. доезда на выз.</th>
                     <th class="text-nowrap">Действия</th>
                 </tr>
                 </thead>
@@ -236,9 +238,9 @@
                         <td>{{ $item->call_type?->name }}</td>
                         <td>{{ $item->card_number }}</td>
                         <td>{{ Carbon::parse($item->call_received)->isoFormat('YYYY-MM-DD') }}</td>
-                        <td>{{ $item->call_reception}}</td>
                         <td>{{ $item->beginning_formation_ct}}</td>
-                        <td>{{ $item->completion_formation_ct}}</td>
+                        <td>{{ $item->call_reception}}</td>
+{{--                        <td>{{ $item->completion_formation_ct}}</td>--}}
                         <td>{{ $item->transfer_brigade}}</td>
                         <td>{{ $item->brigade_departure}}</td>
                         <td>{{ $item->arrival_brigade_place}}</td>
@@ -251,14 +253,16 @@
                         <td>{{ $item?->reason?->name }}</td>
                         <td>{{ $item->gender }}</td>
                         <td>{{ $item->age }}</td>
-                        <td>{{ $item?->residence_region?->name }}</td>
-                        <td>{{ $item?->residence_district?->name }}</td>
+{{--                        <td>{{ $item?->residence_region?->name }}</td>--}}
+{{--                        <td>{{ $item?->residence_district?->name }}</td>--}}
                         <td>{{ $item->diagnos }}</td>
                         <td>{{ $item?->call_result?->name }}</td>
                         <td>{{ $item?->hospital?->name }}</td>
                         <td>{{ $item?->hospitalization_result?->name }}</td>
                         <td>{{ $item?->called_person?->name }}</td>
                         <td>{{ $item?->call_place?->name }}</td>
+                        <td>{{ $item->brigade_call_time }}</td>
+                        <td>{{ $item->travel_time }}</td>
                         <td class="align-middle">
                             <div class="d-flex justify-content-center">
                                 <a href="{{ route('indicator.edit', $item->id) }}"

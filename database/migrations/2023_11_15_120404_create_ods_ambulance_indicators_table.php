@@ -44,6 +44,9 @@ return new class extends Migration
             $table->integer('called_person_id')->nullable();
             $table->integer('call_place_id')->nullable();
             $table->unsignedBigInteger('confirm_status')->nullable();
+            $table->integer('diagnosis_id')->nullable();
+            $table->string('travel_time')->nullable();
+            $table->string('brigade_call_time')->nullable();
             $table->timestamps();
         });
     }

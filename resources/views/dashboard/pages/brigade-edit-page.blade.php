@@ -42,12 +42,12 @@
                                     <input type="text" name="name" class="form-control" value="{{ $brigade->name }}" required>
                                 </td>
                             </tr>
-                            <tr>
-                                <th>Номер бригады/Brigada raqami </th>
-                                <td>
-                                    <input type="text" name="brigade_number" class="form-control" value="{{ $brigade->brigade_number }}" required>
-                                </td>
-                            </tr>
+{{--                            <tr>--}}
+{{--                                <th>Номер бригады/Brigada raqami </th>--}}
+{{--                                <td>--}}
+{{--                                    <input type="text" name="brigade_number" class="form-control" value="{{ $brigade->brigade_number }}" required>--}}
+{{--                                </td>--}}
+{{--                            </tr>--}}
                             </tbody>
                         </table>
                         <div class="d-flex justify-content-end">

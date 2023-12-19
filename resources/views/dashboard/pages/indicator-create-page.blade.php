@@ -13,8 +13,9 @@
                 <tbody>
                 <tr>
                     <td>
-                        <label>Область вызова/Viloyat qo'ng'iroq</label>
-                        <select class="form-control" required name="call_region_coato" onchange="myFunction(this.value)">
+                        <label>Область вызова/Viloyat</label>
+                        <select class="form-control" required name="call_region_coato"
+                                onchange="myFunction(this.value)">
                             <option></option>
                             @foreach ($regions as $key => $region)
                                 <option
@@ -30,22 +31,7 @@
 
                     </td>
                     <td>
-                        <label>Район вызова/Tuman qo'ng'iroq</label>
-                        <select class="form-control" required name="call_district_coato" id="mySelect">
-                            <option></option>
-                            @foreach ($districts as $key => $district)
-                                <option
-                                    value="{{ $district->coato }}" {{ old('call_district_coato') == $district->coato ? 'selected' : '' }}>
-                                    {{ $district->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('call_district_coato')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </td>
-                    <td>
-                        <label>Подстанция принятия вызова/Qo'ng'iroqlarni qabul qilish podstansiyasi</label>
+                        <label>Подстанция принятия вызова/Chaqiruvlarni qabul qilish podstansiyasi</label>
                         <select class="form-control" required name="substation_id">
                             <option></option>
                             @foreach ($substations as $key => $substation)
@@ -59,10 +45,27 @@
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </td>
+                    <td>
+                        <label>Место вызова/Chaqiruv joyi</label>
+                        <select class="form-control" required name="call_place_id">
+                            <option></option>
+                            @foreach ($call_places as $key => $call_place)
+                                <option
+                                    value="{{ $call_place->id }}" {{ old('call_place_id') == $call_place->id ? 'selected' : '' }}>
+                                    {{ $call_place->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('call_place_id')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+
+                    </td>
+
                 </tr>
                 <tr>
                     <td>
-                        <label>Заполнение карты вызова/Qo'ng'iroq kartasini to'ldirish</label>
+                        <label>Заполнение карты вызова/Chaqiruv kartasini to'ldirish</label>
                         <select class="form-control" required name="filling_call_card">
                             <option></option>
                             <option value="1">
@@ -74,7 +77,7 @@
                         </select>
                     </td>
                     <td>
-                        <label>Тип вызова/Qo'ng'iroq turi</label>
+                        <label>Тип вызова/Chaqiruv turi</label>
                         <select class="form-control" required name="call_type_id">
                             <option></option>
                             @foreach ($call_types as $key => $call_type)
@@ -95,27 +98,23 @@
                 </tr>
                 <tr>
                     <td>
-                        <label>Дата приема вызова/Qo'ng'iroqni qabul qilish sanasi</label>
+                        <label>Дата приёма/Chaqiruvni qabul qilish sanasi</label>
                         <input type="date" name="call_received" value="<?php echo date('Y-m-d'); ?>"
                                class="form-control" required>
                     </td>
                     <td>
-                        <label>Время приема вызова/Qo'ng'iroqlarni qabul qilish vaqti</label>
+                        <label>Время приёма/Chaqiruvlarni qabul qilish vaqti</label>
                         <input type="datetime-local" value="<?php echo date('Y-m-d H:i') ?>" name="call_reception"
                                class="form-control" required>
                     </td>
                     <td>
-                        <label>время началы формирования КТ/KT shakllanishining boshlanish vaqti</label>
+                        <label>Вр. нач. форм. КТ/KT shakllanishining boshlanish vaqti</label>
                         <input type="datetime-local" value="<?php echo date('Y-m-d H:i') ?>"
                                name="beginning_formation_ct" class="form-control" required>
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <label>Время завершения формирования КТ/KT shakllanishini yakunlash vaqti</label>
-                        <input type="datetime-local" value="<?php echo date('Y-m-d H:i') ?>"
-                               name="completion_formation_ct" class="form-control" required>
-                    </td>
+
                     <td>
                         <label>Время передачи вызова бригаде/Chaqiruvni brigadaga o'tkazish vaqti</label>
                         <input type="datetime-local" value="<?php echo date('Y-m-d H:i') ?>" name="transfer_brigade"
@@ -126,13 +125,14 @@
                         <input type="datetime-local" value="<?php echo date('Y-m-d H:i') ?>" name="brigade_departure"
                                class="form-control" required>
                     </td>
-                </tr>
-                <tr>
+
                     <td>
                         <label>Прибытие Бригады на место вызова/Brigadaning chaqiruv joyiga kelishi</label>
                         <input type="datetime-local" value="<?php echo date('Y-m-d H:i') ?>"
                                name="arrival_brigade_place" class="form-control" required>
                     </td>
+                </tr>
+                <tr>
                     <td>
                         <label>Время началы транспортировки/Transportning boshlanish vaqti</label>
                         <input type="datetime-local" value="<?php echo date('Y-m-d H:i') ?>" name="transportation_start"
@@ -143,13 +143,13 @@
                         <input type="datetime-local" value="<?php echo date('Y-m-d H:i') ?>"
                                name="arrival_medical_center" class="form-control" required>
                     </td>
-                </tr>
-                <tr>
                     <td>
-                        <label>время завершения вызова/qo'ng'iroqni tugatish vaqti</label>
+                        <label>время завершения вызова/Chaqiruvlarni tugatish vaqti</label>
                         <input type="datetime-local" value="<?php echo date('Y-m-d H:i') ?>" name="call_end"
                                class="form-control" required>
                     </td>
+                </tr>
+                <tr>
                     <td>
                         <label>Время возвращения на подстанцию/Podstansiyaga qaytish vaqti</label>
                         <input type="datetime-local" value="<?php echo date('Y-m-d H:i') ?>" name="return_substation"
@@ -170,14 +170,14 @@
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </td>
+                    <td>
+                        <label>Подробный адрес вызова/Chaqiruv manzili</label>
+                        <input type="text" name="address" class="form-control">
+                    </td>
                 </tr>
                 <tr>
                     <td>
-                        <label>Подробный адрес вызова/Batafsil qo'ng'iroq manzili</label>
-                        <input type="text" name="address" class="form-control">
-                    </td>
-                    <td>
-                        <label>Причина вызова/Qo'ng'iroq qilish sababi</label>
+                        <label>Причина вызова/Chaqiruv qilish sababi</label>
                         <select class="form-control" required name="reason_id">
                             <option></option>
                             @foreach ($reasons as $key => $reason)
@@ -207,42 +207,9 @@
                             </option>
                         </select>
                     </td>
-                </tr>
-                <tr>
                     <td>
                         <label>Возраст пациента/Bemorning yoshi</label>
                         <input type="number" name="age" class="form-control" required>
-                    </td>
-                    <td>
-                        <label>Область проживания пациента/Bemorning yashash viloyati</label>
-                        <select class="form-control" required name="residence_region_coato"  >
-                            <option></option>
-                            @foreach ($regions as $key => $region)
-                                <option
-                                    value="{{ $region->coato }}" {{ old('residence_region_coato') == $region->coato ? 'selected' : '' }}>
-                                    {{ $region->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('residence_region_coato')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </td>
-                    <td>
-                        <label>Район проживания пациента/Bemorning yashash tumani</label>
-
-                        <select class="form-control" required name="residence_district_coato" id="my_id">
-                            <option></option>
-                            @foreach ($districts as $key => $district)
-                                <option
-                                    value="{{ $district->coato }}" {{ old('residence_district_coato') == $district->coato ? 'selected' : '' }}>
-                                    {{ $district->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('residence_district_coato')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
                     </td>
                 </tr>
                 <tr>
@@ -298,7 +265,7 @@
                         @enderror
                     </td>
                     <td>
-                        <label>Кто вызвал/Kim qo'ng'iroq qildi</label>
+                        <label>Кто вызвал/Kim chaqirdi</label>
                         <select class="form-control" name="called_person_id">
                             <option></option>
                             @foreach ($called_persons as $key => $called_person)
@@ -313,88 +280,41 @@
                         @enderror
                     </td>
                     <td>
-                        <label>Место вызова/Qo'ng'iroq joyi</label>
-                        <select class="form-control" required name="call_place_id">
+                        <label>Диагноз врача/Shifokor tashxisi</label>
+                        <select class="form-control" name="diagnosis_id">
                             <option></option>
-                            @foreach ($call_places as $key => $call_place)
+                            @foreach ($diagnoses as $key => $diagnosis)
                                 <option
-                                    value="{{ $call_place->id }}" {{ old('call_place_id') == $call_place->id ? 'selected' : '' }}>
-                                    {{ $call_place->name }}
+                                    value="{{ $diagnosis->id }}" {{ old('diagnosis_id') == $diagnosis->id ? 'selected' : '' }}>
+                                    {{ $diagnosis->name }}
                                 </option>
                             @endforeach
                         </select>
-                        @error('call_place_id')
+                        @error('diagnosis_id')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
+                    </td>
 
+                </tr>
+                <tr>
+                    <td>
+                        <label for="travel_time">Вр. доезда на выз./Yo'lga ketgan vaqt</label>
+                        <input type="time" name="travel_time" class="form-control" required>
+                    </td>
+                    <td>
+                        <label for="brigade_call_time">Вр.на прин.выз.бр./Birgada chaqiruvni qabul qilish vaqti</label>
+                        <input type="time" name="brigade_call_time" class="form-control" required>
                     </td>
                 </tr>
                 </tbody>
             </table>
-                <button type="submit" name="confirm_status" value="2" class="btn btn-primary fa-pull-right m-r-5">Подача на одобрение / Tasdiqlash uchun taqdim etish</button>
-                <button type="submit" name="confirm_status" value="4" class="btn btn-primary fa-pull-right m-r-5">Сохранять / Saqlash</button>
+            <button type="submit" name="confirm_status" value="2" class="btn btn-primary fa-pull-right m-r-5">Подача на
+                одобрение / Tasdiqlash uchun taqdim etish
+            </button>
+            <button type="submit" name="confirm_status" value="4" class="btn btn-primary fa-pull-right m-r-5">Сохранять
+                / Saqlash
+            </button>
 
         </form>
     </x-panel>
-
-    <script>
-
-
-        function myFunction(val) {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", `district_region/${val}`);
-        xhr.send();
-        xhr.responseType = "json";
-        xhr.onload = () => {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            console.log(xhr.response);
-        var x = document.getElementById("mySelect");
-        document.querySelectorAll('#mySelect option').forEach(option => option.remove())
-            var option = document.createElement("option");
-              option.text = "Все";
-              option.value="";
-              x.add(option);
-            for (const  object in xhr.response) {
-              var option = document.createElement("option");
-              option.text = xhr.response[object]['name'];
-              option.value=xhr.response[object]['coato'];
-              x.add(option);
-             }
-        } else {
-        console.log(`Error: ${xhr.status}`);
-        }
-        };
-        }
-
-
-        function my_Function(val) {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", `district_region/${val}`);
-        xhr.send();
-        xhr.responseType = "json";
-        xhr.onload = () => {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            console.log(xhr.response);
-        var x = document.getElementById("my_id");
-        document.querySelectorAll('#my_id option').forEach(option => option.remove())
-            var option = document.createElement("option");
-              option.text = "Все";
-              option.value="";
-              x.add(option);
-            for (const  object in xhr.response) {
-              var option = document.createElement("option");
-              option.text = xhr.response[object]['name'];
-              option.value=xhr.response[object]['coato'];
-              x.add(option);
-             }
-        } else {
-        console.log(`Error: ${xhr.status}`);
-        }
-        };
-        }
-
-
-
-
-    </script>
 @endsection

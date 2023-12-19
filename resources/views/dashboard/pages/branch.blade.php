@@ -9,6 +9,7 @@
                 <tr>
                     <th style="width: 60px;">№</th>
                     <th>Субъект/Filial</th>
+                    <th>СОАТО/SOATO	</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,6 +17,7 @@
                 <tr>
                     <td>{{ $branch->id }}</td>
                     <td>{{ $branch->name }}</td>
+                    <td>{{ $branch->coato }}</td>
                 </tr>
                 @endforeach
             </tbody>

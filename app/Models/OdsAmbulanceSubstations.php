@@ -26,7 +26,7 @@ class OdsAmbulanceSubstations extends Model
     {
         return $this->belongsTo(OdsAmbulanceDistricts::class,'district_coato','coato');
     }
-    public static function findOrCreate($name,$region_coato,$district_coato)
+    public static function findOrCreate($name,$region_coato)
     {
         $obj = OdsAmbulanceSubstations::where('name',$name)->first();
         if ($obj == null)
@@ -34,7 +34,7 @@ class OdsAmbulanceSubstations extends Model
             $obj = new OdsAmbulanceSubstations;
             $obj->name = $name;
             $obj->region_coato = $region_coato;
-            $obj->district_coato = $district_coato;
+//            $obj->district_coato = $district_coato;
             $obj->save();
         }
         return $obj->id;

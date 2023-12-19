@@ -56,8 +56,11 @@
                                 <option value="called_persons" style="font-size: 12px;"
                                         @if ("called_persons" == request('table_name')) selected @endif>Кто вызвал
                                 </option>
-                                <option value="Место вызова" style="font-size: 12px;"
+                                <option value="call_places" style="font-size: 12px;"
                                         @if ("call_places" == request('table_name')) selected @endif>Место вызова
+                                </option>
+                                <option value="diagnoses" style="font-size: 12px;"
+                                        @if ("Диагноз" == request('table_name')) selected @endif>Диагноз
                                 </option>
                             </select>
                         </td>

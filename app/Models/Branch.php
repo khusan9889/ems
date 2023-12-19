@@ -16,6 +16,7 @@ class Branch extends Model
 
     public $fillable = [
         'name',
+        'coato',
     ];
 
     public $hidden = [

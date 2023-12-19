@@ -18,7 +18,7 @@
                 <tr>
                     <th>№</th>
                     <th>Название бригады/Brigada nomi</th>
-                    <th>Номер бригады/Brigada raqami</th>
+{{--                    <th>Номер бригады/Brigada raqami</th>--}}
                     <th>Название подстанции/Podstansiya nomi</th>
                     <th>Действия/Harakatlar</th>
                 </tr>
@@ -37,10 +37,10 @@
                             <input class="form-control form-control-sm" type="text" name="name"
                                    value="{{ request('name') }}">
                         </td>
-                        <td>
-                            <input class="form-control form-control-sm" type="text" name="brigade_number"
-                                   value="{{ request('brigade_number') }}">
-                        </td>
+{{--                        <td>--}}
+{{--                            <input class="form-control form-control-sm" type="text" name="brigade_number"--}}
+{{--                                   value="{{ request('brigade_number') }}">--}}
+{{--                        </td>--}}
                         <td>
                             <select class="form-control form-control-sm" name="substation_id">
                                 <option value="" style="font-size: 12px;">Все</option>
@@ -63,7 +63,7 @@
                     <tr>
                         <td>{{ ($brigades->currentpage()-1)*10 + $loop->index + 1}}</td>
                         <td>{{ $item->name }}</td>
-                        <td>{{ $item->brigade_number }}</td>
+{{--                        <td>{{ $item->brigade_number }}</td>--}}
                         <td>{{ $item->substation->name }}</td>
                         <td class="align-middle">
                             <div class="d-flex justify-content-center">
