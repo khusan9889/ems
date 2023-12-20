@@ -46,7 +46,7 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
         $type=OdsAmbulanceReferences::findOrCreate($row['tip_vyzova'],'call_types');
         $reason=OdsAmbulanceReferences::findOrCreate($row['povod'],'reasons');
         $call_result=OdsAmbulanceReferences::findOrCreate($row['rezultat_vyezda'],'call_results');
-        $hospitalization_result=$row['rezultat_vyezda']?OdsAmbulanceReferences::findOrCreate($row['rezultat_vyezda'],'hospitalization_results'):null;
+        $hospitalization_result=$row['rez_tat_gosp_cii']?OdsAmbulanceReferences::findOrCreate($row['rez_tat_gosp_cii'],'hospitalization_results'):null;
         $called_person=OdsAmbulanceReferences::findOrCreate($row['vyzvavsii'],'called_persons');
         $call_place=OdsAmbulanceReferences::findOrCreate($row['mesto_vyzova'],'call_places');
         $diagnosis=OdsAmbulanceReferences::findOrCreate($row['diagnoz'],'diagnoses');
@@ -144,6 +144,7 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
             '*.diagnoz' => 'required|string',
             '*.rezultat_vyezda' => 'required',
             '*.mesto_gospit' => 'nullable',
+            '*.rez_tat_gosp_cii' => 'nullable',
             '*.vyzvavsii' => 'required',
             '*.mesto_vyzova' => 'required',
             '*.vr_doezda_na_vyz' => 'required',

@@ -153,7 +153,7 @@
                     <td>
                         <label>Время возвращения на подстанцию/Podstansiyaga qaytish vaqti</label>
                         <input type="datetime-local" value="<?php echo date('Y-m-d H:i') ?>" name="return_substation"
-                               class="form-control" required>
+                               class="form-control">
                     </td>
                     <td>
                         <label>Бригада/Brigada</label>

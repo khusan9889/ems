@@ -239,7 +239,8 @@ return [
         '*.vozvr_nie_na_pst'=>'Возвр-ние на п/ст',
         '*.vr_doezda_na_vyz'=>'Вр. доезда на выз.',
         '*.vrna_prinvyzbr'=>'Вр.на прин.выз.бр',
-        '*.kv_zapolnena'=>'kv_zapolnena',
+        '*.kv_zapolnena'=>'КВ заполнена',
+        '*.rez_tat_gosp_cii'=>'Рез-тат госп-ции',
     ],
 
 ];

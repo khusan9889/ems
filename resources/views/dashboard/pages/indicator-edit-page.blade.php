@@ -149,7 +149,7 @@
                                     <label>Время возвращения на подстанцию/Podstansiyaga qaytish vaqti</label>
                                     <input type="datetime-local"
                                            value="{{$indicator->return_substation}}"
-                                           name="return_substation" class="form-control" required>
+                                           name="return_substation" class="form-control">
                                 </td>
                             </tr>
                             <tr>
@@ -303,7 +303,7 @@
                                         <option></option>
                                         @foreach ($diagnoses as $key => $diagnosis)
                                             <option
-                                                value="{{ $diagnosis->id }}" {{ old('diagnosis_id') == $diagnosis->id ? 'selected' : '' }}>
+                                                value="{{ $diagnosis->id }}" {{ $diagnosis->id == $indicator->diagnosis_id ? 'selected' : '' }}>
                                                 {{ $diagnosis->name }}
                                             </option>
                                         @endforeach
