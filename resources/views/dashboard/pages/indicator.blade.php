@@ -200,7 +200,7 @@
                     <th class="text-nowrap">Возраст пациента</th>
 {{--                    <th class="text-nowrap">Область проживания пациента</th>--}}
 {{--                    <th class="text-nowrap">Район проживания пациента</th>--}}
-                    <th class="text-nowrap">Диагноз по МКБ10</th>
+                    <th class="text-nowrap">Код МКБ</th>
                     <th class="text-nowrap">Результат выезда</th>
                     <th class="text-nowrap">Место госпитализации</th>
                     <th class="text-nowrap">Результат госпитализации</th>
@@ -208,6 +208,7 @@
                     <th class="text-nowrap">Место вызова</th>
                     <th class="text-nowrap">Вр.на прин.выз.бр.</th>
                     <th class="text-nowrap">Вр. доезда на выз.</th>
+                    <th class="text-nowrap">Диагноз</th>
                     <th class="text-nowrap">Действия</th>
                 </tr>
                 </thead>
@@ -263,6 +264,7 @@
                         <td>{{ $item?->call_place?->name }}</td>
                         <td>{{ $item->brigade_call_time }}</td>
                         <td>{{ $item->travel_time }}</td>
+                        <td>{{ $item->diagnosis->name }}</td>
                         <td class="align-middle">
                             <div class="d-flex justify-content-center">
                                 <a href="{{ route('indicator.edit', $item->id) }}"

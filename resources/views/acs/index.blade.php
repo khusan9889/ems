@@ -72,7 +72,7 @@
                     </td>
                     <td>
                         <input class="form-control form-control-sm" name="physician_full_name"
-                            value="{{ request('physician_full_name') }}"></input>
+                            value="{{ request('physician_full_name') }}">
                     </td>
 
                     <td class="align-middle">
