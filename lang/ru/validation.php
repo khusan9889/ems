@@ -207,7 +207,7 @@ return [
         '*.zapolnenie_karty_vyzova_kv'=>'Заполнение карты вызова (КВ)',
         '*.tip_vyzova'=>'Тип вызова',
         '*.nomer_kv'=>'Номер КВ',
-        '*.data_priema_vyzova'=>'Дата приема вызова',
+        '*.data_priema'=>'Дата приёма',
         '*.vremia_priema'=>'Дата приёма',
         '*.vremia_nacaly_formirovaniia_kartocki_transportirovki_kt'=>'Время началы формирования Карточки транспортировки (КТ)',
         '*.vremia_zaverseniia_formirovaniia_kt'=>'Время завершения формирования КТ',
