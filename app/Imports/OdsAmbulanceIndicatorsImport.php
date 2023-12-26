@@ -11,6 +11,7 @@ use App\Models\OdsAmbulanceReferences;
 use App\Models\OdsAmbulanceRegions;
 use App\Models\OdsAmbulanceSubstations;
 use App\Rules\ExcelAgeRule;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
@@ -18,20 +19,18 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithValidation;
-use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
 use Throwable;
 
 
-class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHeadingRow, WithColumnFormatting, WithValidation, WithChunkReading
+class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHeadingRow, WithValidation, WithChunkReading, WithMapping
 {
     public function collection(Collection $rows)
     {
-        foreach ($rows as $row) {
-//        $district_call=OdsAmbulanceDistricts::findOrCreate($row['raion_vyzova'],$row['coato_raion_vyzova'],$row['oblast_vyzova'],$row['coato_oblast_vyzova']);
-//        $region_residence=OdsAmbulanceRegions::findOrCreate($row['oblast_prozivaniia_pacienta'],$row['coato_oblast_prozivaniia_pacienta']);
-//        $district_residence=OdsAmbulanceDistricts::findOrCreate($row['raion_prozivaniia_pacienta'],$row['coato_raion_prozivaniia_pacienta'],$row['oblast_prozivaniia_pacienta'],$row['coato_oblast_prozivaniia_pacienta']);
 
+        foreach ($rows as $row) {
 
             if ($row['vremia_priema'] < $row['vr_nac_form_kt']) {
                 $d = date_create($row['data_priema']);
@@ -39,6 +38,7 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
             } else {
                 $d = date_create($row['data_priema']);
             }
+
 
             $substation = OdsAmbulanceSubstations::findOrCreate($row['podstanciia'], $row['coato_oblast_vyzova']);
             $region_call = OdsAmbulanceRegions::findOrCreate($row['oblast_vyzova'], $row['coato_oblast_vyzova']);
@@ -53,10 +53,6 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
             $brigade = OdsAmbulanceBrigades::findOrCreate($row['brigada'], $substation);
 
             OdsAmbulanceIndicators::create([
-//            'residence_region_coato'=>$region_residence,
-//            'residence_district_coato'=>$district_residence,
-//            'call_district_coato' => $district_call,
-//            'completion_formation_ct'=>Carbon::createFromTimestamp($row['vremia_zaverseniia_formirovaniia_kt']),
                 'call_region_coato' => $region_call,
                 'substation_id' => $substation,
                 'filling_call_card' => $row['kv_zapolnena'] == "Да" ? 1 : 0,
@@ -90,6 +86,12 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
         }
     }
 
+    public function map($row): array
+    {
+        $row['data_priema']=Date::excelToDateTimeObject($row['data_priema'])->format('Y-m-d');
+        return $row;
+    }
+
     public function onError(Throwable $e)
     {
         // TODO: Implement onError() method.
@@ -100,28 +102,11 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
         return 1000;
     }
 
-    public function columnFormats(): array
-    {
-        return [
-            'I' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'J' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'K' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'L' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'M' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'N' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'O' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'P' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'Q' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'R' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'S' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-        ];
-    }
-
     public function rules(): array
     {
 
         return [
-            '*.coato_oblast_vyzova' => 'required|integer',
+            '*.coato_oblast_vyzova' => 'required',
             '*.oblast_vyzova' => 'required',
             '*.peredaca_brigade' => 'required|date',
             '*.vremia_vyezda_br' => 'required|date',
@@ -130,7 +115,7 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
             '*.podstanciia' => 'required',
             '*.kv_zapolnena' => ['required', Rule::in(["да", "нет"])],
             '*.tip_vyzova' => 'required|string',
-//            '*.data_priema' => 'required|date_format:Y-m-d',
+            '*.data_priema' => 'required|date',
             '*.vremia_priema' => 'required',
             '*.vr_nac_form_kt' => 'required',
             '*.nacalo_transp_ki' => 'nullable',
