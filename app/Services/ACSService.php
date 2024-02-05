@@ -151,81 +151,82 @@ class ACSService implements ACSServiceInterface
             ->get();
 
         $n = $data->count() ?? 1;
+
         if (!$n) $n = 1;
         $result = [];
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которые выписаны',
-            'value' => round($tmp->where('treatment_result', 'Выписан')->count() / $n * 100)
+            'value' => round($tmp->where('treatment_result', 'Выписан')->count() / $n * 100,1)
         ];
 
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которые умерли',
-            'value' => round($tmp->where('treatment_result', 'Летальный исход')->count() / $n * 100)
+            'value' => round($tmp->where('treatment_result', 'Летальный исход')->count() / $n * 100,1)
         ];
 
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которые выписаны в тяжелом состоянии',
-            'value' => round($tmp->where('treatment_result', 'Выписан в тяжелом состоянии')->count() / $n * 100)
+            'value' => round($tmp->where('treatment_result', 'Выписан в тяжелом состоянии')->count() / $n * 100,1)
         ];
 
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов с исходом в ОИМ с Q',
-            'value' => round($tmp->where('final_result', 'ОИМ с Q')->count() / $n * 100)
+            'value' => round($tmp->where('final_result', 'ОИМ с Q')->count() / $n * 100,1)
         ];
 
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов с исходом в ОИМ без Q',
-            'value' => round($tmp->where('final_result', 'ОИМ без Q')->count() / $n * 100)
+            'value' => round($tmp->where('final_result', 'Оим без Q')->count() / $n * 100,1)
         ];
 
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов с исходом в прогрессирующую стенокардию',
-            'value' => round($tmp->where('final_result', 'Прогрессирующая стенокардия')->count() / $n * 100)
+            'value' => round($tmp->where('final_result', 'Прогрессирующая стенокардия')->count() / $n * 100,1)
         ];
 
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, поступивших в сроки до 6 часов',
-            'value' => round($tmp->where('anginal_attack_date', 'до 6ч.')->count() / $n * 100)
+            'value' => round($tmp->where('anginal_attack_date', 'до 6ч.')->count() / $n * 100,1)
         ];
 
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, поступивших в сроки 6-12 часов',
-            'value' => round($tmp->where('anginal_attack_date', '6-12ч.')->count() / $n * 100)
+            'value' => round($tmp->where('anginal_attack_date', '6-12ч.')->count() / $n * 100,1)
         ];
 
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, поступивших в сроки позже 12 часов',
-            'value' => round($tmp->where('anginal_attack_date', 'позже 12ч.')->count() / $n * 100)
+            'value' => round($tmp->where('anginal_attack_date', 'позже 12ч.')->count() / $n * 100,1)
         ];
 
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым показана экстренное ЧКВ',
-            'value' => round($tmp->where('cta_invasive_angiography', 'Да')->count() / $n * 100)
+            'value' => round($tmp->where('cta_invasive_angiography', 'Да')->count() / $n * 100,1)
         ];
 
         $tmp = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым показана отсроченное ЧКВ',
-            'value' => round($tmp->where('deferred_cta_invasive', 'Да')->count() / $n * 100)
+            'value' => round($tmp->where('cta_invasive_angiography' ,'Нет')->count() / $n * 100,1)
         ];
-
+//dd($tmp->where('cta_invasive_angiography' ,'Нет')->count());
         $tmp = $data;
         $tmp1 = $data;
         $denominator = round($tmp1->where('cta_invasive_angiography')->count());
 
         $result[] = [
             'title' => 'Доля пациентов, которым выполнено экстренное ЧКВ',
-            'value' => round($denominator ? $tmp->where('cta_90min', 'Да')->where('cta_invasive_angiography', 'Да')->count() / $denominator * 100 : 0)
+            'value' => round( $tmp->where('cta_90min', 'Да')->count() / $tmp->where('cta_invasive_angiography', 'Да')->count() * 100,1)
             //            'value' => 'check'
         ];
         // 13 gacha tayyor
@@ -233,20 +234,15 @@ class ACSService implements ACSServiceInterface
         $tmp1 = $data;
         $result[] = [
             'title' => 'Доля пациентов, которым выполнено отсроченное ЧКВ',
-            'value' => round($tmp1->where('deferred_cta_invasive', 'Да')->count() > 0 ? $tmp->where('deferred_cta_completed', 'Да')->count() / $tmp1->where('deferred_cta_invasive', 'Да')->count() * 100 : 0)
+            'value' => round($tmp1->where('deferred_cta_invasive', 'Да')->count() > 0 ? $tmp->where('deferred_cta_completed', 'Да')->count() / $tmp1->where('deferred_cta_invasive', 'Да')->count() * 100 : 0,1)
         ];
         //14
         $tmp = $data;
-        $tmp1 = $data;
-        $tmp2 = $data;
-        $tmp3 = $data;
 
-        $numerator = $tmp->where('cta_90min', 'Да')->count() + $tmp2->where('deferred_cta_completed', 'Да')->count();
-        $denominator = $tmp1->where('deferred_cta_completed', 'Да')->count() + $tmp3->where('cta_invasive_angiography', 'Да')->count();
-
+        $numerator = $tmp->where('cta_90min', 'Да')->count() + $tmp->where('deferred_cta_completed', 'Да')->count();
+        $denominator = $tmp->where('deferred_cta_invasive', 'Да')->count() + $tmp->where('cta_invasive_angiography', 'Да')->count();
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
-
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
         $result[] = [
             'title' => 'Доля пациентов, которым выполнено ЧКВ',
             'value' => $value
@@ -261,7 +257,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $tmp2->where('cta_invasive_angiography', 'Да')->count() + $tmp3->where('deferred_cta_invasive', 'Да')->count();
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым не выполнено ЧКВ',
@@ -276,7 +272,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $tmp1->where('cta_90min', 'Нет')->count() + $tmp2->where('deferred_cta_completed', 'Нет')->count();
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым ЧКВ не выполнено по медицинским противопоказаниям',
@@ -291,7 +287,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $tmp1->where('cta_90min', 'Нет')->count() + $tmp2->where('deferred_cta_completed', 'Нет')->count();
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым ЧКВ не выполнено по причине отсутствия специалиста',
@@ -304,9 +300,8 @@ class ACSService implements ACSServiceInterface
 
         $numerator = $tmp->where('reasons_not_performing_cta', 'отсутствие оборудования')->count();
         $denominator = $tmp1->where('cta_90min', 'Нет')->count() + $tmp2->where('deferred_cta_completed', 'Нет')->count();
-
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым ЧКВ не выполнено по причине отсутствия оборудования',
@@ -321,10 +316,10 @@ class ACSService implements ACSServiceInterface
         $denominator = $tmp1->where('cta_90min', 'Нет')->count() + $tmp2->where('deferred_cta_completed', 'Нет')->count();
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым ЧКВ не выполнено по причине занятости оборудования',
@@ -339,7 +334,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $tmp1->where('cta_90min', 'Нет')->count() + $tmp2->where('deferred_cta_completed', 'Нет')->count();
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым ЧКВ не выполнено по причине отсутствия расходных материалов',
@@ -354,7 +349,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $tmp1->where('cta_90min', 'Нет')->count() + $tmp2->where('deferred_cta_completed', 'Нет')->count();
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым ЧКВ не выполнено по причине отказа больного',
@@ -367,7 +362,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $n;
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым показана ТЛТ',
@@ -381,7 +376,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $tmp1->where('thrombolytic_therapy', 'Да')->count();
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым выполнена ТЛТ',
@@ -395,7 +390,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $tmp1->where('thrombolytic_therapy', 'Да')->count();
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым не выполнена ТЛТ',
@@ -409,7 +404,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $tmp1->where('thrombolytic_therapy_administered', 'Нет')->count();
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым ТЛТ не проведена по причине наличия медицинских противопоказаний',
@@ -423,7 +418,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $tmp1->where('thrombolytic_therapy_administered', 'Нет')->count();
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым ТЛТ не проведена по причине отсутствия препарата',
@@ -437,7 +432,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $tmp1->where('thrombolytic_therapy_administered', 'Нет')->count();
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым ТЛТ не проведена по причине отказа больного',
@@ -451,7 +446,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $n;
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым выполнена ЭКГ',
@@ -464,7 +459,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $n;
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым не выполнена ЭКГ',
@@ -478,7 +473,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $tmp1->where('ecg_during_hospitalization', 'Да')->count();
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов с подъемом сегмента ST',
@@ -491,7 +486,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $n;
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым проведено измерение ФВ',
@@ -505,7 +500,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $tmp1->where('echocardiogram', 'Да')->count();
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым измерение ФВ выполнено в сроки ≤3 суток',
@@ -519,8 +514,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $tmp1->where('ecg_during_hospitalization', 'Да')->count();
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
-
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
         $result[] = [
             'title' => 'Доля пациентов, которым измерение ФВ выполнено в сроки > 3 суток',
             'value' => $value
@@ -532,7 +526,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $n;
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым проведены анализы на ЛПНП',
@@ -545,7 +539,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $n;
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым не проведены анализы на ЛПНП',
@@ -558,7 +552,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $n;
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым проведены анализ на АЧТВ',
@@ -571,7 +565,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $n;
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым не проведены анализ на АЧТВ',
@@ -584,7 +578,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $n;
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым проведена антикоагулянтная терапия',
@@ -597,7 +591,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $n;
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которым не проведена антикоагулянтная терапия',
@@ -610,7 +604,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $n;
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которые принимали аспирин',
@@ -623,7 +617,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $n;
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которые не принимали аспирин',
@@ -636,7 +630,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $n;
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которые принимали ингибиторы P2Y12',
@@ -649,7 +643,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $n;
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которые не принимали ингибиторы P2Y12',
@@ -662,7 +656,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $n;
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которые принимали статины высокой интенсивности',
@@ -675,7 +669,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $n;
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которые не принимали статины высокой интенсивности',
@@ -688,7 +682,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $n;
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которые принимали ингибиторы АПФ или БРАII',
@@ -701,7 +695,7 @@ class ACSService implements ACSServiceInterface
         $denominator = $n;
 
         $isDenominatorPositive = $denominator > 0;
-        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0);
+        $value = round($isDenominatorPositive ? ($numerator / $denominator) * 100 : 0,1);
 
         $result[] = [
             'title' => 'Доля пациентов, которые не принимали ингибиторы АПФ или БРАII',
