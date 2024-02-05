@@ -226,7 +226,7 @@ class ACSService implements ACSServiceInterface
 
         $result[] = [
             'title' => 'Доля пациентов, которым выполнено экстренное ЧКВ',
-            'value' => round( $tmp->where('cta_90min', 'Да')->count() / $tmp->where('cta_invasive_angiography', 'Да')->count() * 100,1)
+            'value' => round( $tmp->where('cta_90min', 'Да')->count() / ($tmp->where('cta_invasive_angiography', 'Да')->count()==0?1:$tmp->where('cta_invasive_angiography', 'Да')->count()) * 100,1)
             //            'value' => 'check'
         ];
         // 13 gacha tayyor
