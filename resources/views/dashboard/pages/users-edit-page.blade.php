@@ -68,6 +68,7 @@
 
 @push('custom_js')
 <script>
+    var axios=require('axios');
     let departments = [];
         const branch = document.getElementById('branch')
         const fetchDepartmentsByBranchId = async function(value) {
