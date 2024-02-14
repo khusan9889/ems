@@ -36,6 +36,7 @@ class UserController extends Controller
         $roles = Role::pluck('name', 'id');
         $departments = Department::pluck('name', 'id');
 
+
         return view('dashboard.pages.users', compact('data', 'branches', 'roles', 'departments'));
     }
 
