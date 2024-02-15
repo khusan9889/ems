@@ -4,20 +4,17 @@ namespace App\Imports;
 
 
 use App\Models\OdsAmbulanceBrigades;
-use App\Models\OdsAmbulanceDistricts;
 use App\Models\OdsAmbulanceHospitals;
 use App\Models\OdsAmbulanceIndicators;
 use App\Models\OdsAmbulanceReferences;
 use App\Models\OdsAmbulanceRegions;
 use App\Models\OdsAmbulanceSubstations;
 use App\Rules\ExcelAgeRule;
-use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
-use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithValidation;
@@ -25,7 +22,7 @@ use PhpOffice\PhpSpreadsheet\Shared\Date;
 use Throwable;
 
 
-class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHeadingRow, WithValidation, WithChunkReading, WithMapping
+class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHeadingRow, WithValidation, WithChunkReading#, WithMapping
 {
     public function collection(Collection $rows)
     {
@@ -86,11 +83,11 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
         }
     }
 
-    public function map($row): array
-    {
-        $row['data_priema']=Date::excelToDateTimeObject($row['data_priema'])->format('Y-m-d');
-        return $row;
-    }
+//    public function map($row): array
+//    {
+//        $row['data_priema']=Date::excelToDateTimeObject($row['data_priema'])->format('Y-m-d');
+//        return $row;
+//    }
 
     public function onError(Throwable $e)
     {
@@ -99,7 +96,7 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
 
     public function chunkSize(): int
     {
-        return 1000;
+        return 500;
     }
 
     public function rules(): array

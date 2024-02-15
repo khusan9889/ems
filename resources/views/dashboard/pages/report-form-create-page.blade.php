@@ -40,25 +40,25 @@
                     <td>
                         <pre class="form-control">{{$week->branch->name}}</pre>
                     </td>
-                    <td><input class="form-control" name="g_appeal_one" type="number" min="0"
+                    <td><input  class="form-control" name="g_appeal_one" type="number" min="0"
                                value="{{$week->g_appeal}}"></td>
-                    <td><input class="form-control" name="g_sleeping_one" type="number" min="0"
+                    <td><input  class="form-control" name="g_sleeping_one" type="number" min="0"
                                value="{{$week->g_sleeping}}"></td>
-                    <td><input class="form-control" name="g_ambulator_one" type="number" min="0"
+                    <td><input  class="form-control" name="g_ambulator_one" type="number" min="0"
                                value="{{$week->g_ambulator}}"></td>
-                    <td><input class="form-control" name="y_appeal_one" type="number" min="0"
+                    <td><input  class="form-control" name="y_appeal_one" type="number" min="0"
                                value="{{$week->y_appeal}}"></td>
-                    <td><input class="form-control" name="y_sleeping_one" type="number" min="0"
+                    <td><input  class="form-control" name="y_sleeping_one" type="number" min="0"
                                value="{{$week->y_sleeping}}"></td>
-                    <td><input class="form-control" name="y_ambulator_one" type="number" min="0"
+                    <td><input  class="form-control" name="y_ambulator_one" type="number" min="0"
                                value="{{$week->y_ambulator}}"></td>
-                    <td><input class="form-control" name="r_appeal_one" type="number" min="0"
+                    <td><input  class="form-control" name="r_appeal_one" type="number" min="0"
                                value="{{$week->r_appeal}}"></td>
-                    <td><input class="form-control" name="r_sleeping_one" type="number" min="0"
+                    <td><input  class="form-control" name="r_sleeping_one" type="number" min="0"
                                value="{{$week->r_sleeping}}"></td>
-                    <td><input class="form-control" name="r_death_one" type="number" min="0"
+                    <td><input  class="form-control" name="r_death_one" type="number" min="0"
                                value="{{$week->r_death}}"></td>
-                    <td><input class="form-control" name="r_dead_one" type="number" min="0"
+                    <td><input  class="form-control" name="r_dead_one" type="number" min="0"
                                value="{{$week->r_dead}}">
                     </td>
                 </tr>

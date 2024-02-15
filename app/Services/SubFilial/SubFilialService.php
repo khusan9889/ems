@@ -35,7 +35,7 @@ class SubFilialService implements SubFilialServiceInterface
                 $filters['name'],
                 fn($query, $value) => $query->where('name', 'like', '%' . $filters['name'] . '%')
             );
-        $perPage = 10;
+        $perPage = 20;
         $results = $query->paginate($perPage);
 
         return $results;

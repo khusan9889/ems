@@ -14,6 +14,7 @@ class UserService implements UserServiceInterface
 
     public function filter()
     {
+
         return $this->modelClass::whereLike('name')
             ->whereLike('phone_number')
             ->whereLike('email')
