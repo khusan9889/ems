@@ -17,7 +17,6 @@ class WeekSeeder extends Seeder
     public function run(): void
     {
         Week::truncate();
-        Week::truncate();
         FilialSubWeek::truncate();
 
         $date = new DateTime('2023-08-04');
