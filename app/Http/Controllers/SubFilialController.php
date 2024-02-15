@@ -28,6 +28,13 @@ class SubFilialController extends Controller
             'branch' => $request->input('branch'),
             'sort' => $request->input('sort') ?? 'DESC',
         ];
+
+        $userBranchId = auth()->user()->branch_id;
+
+        if ($userBranchId != 1) {
+            $filters['branch'] = $userBranchId;
+        }
+
         $branches = Branch::pluck('name', 'id');
         $data = $service->customFilter($filters);
         return view('dashboard.pages.sub', compact( 'branches', 'data'));
