@@ -71,7 +71,7 @@
                                     <td>{{$week->branch->name}}</td>
                                     <td>{{$week->g_appeal+$week->y_appeal+$week->r_appeal}}</td>
                                     <td>{{$week->g_sleeping+$week->y_sleeping+$week->r_sleeping}}</td>
-                                    <td>{{$week->g_ambulator+$week->y_ambulator+$week->r_death}}</td>
+                                    <td>{{$week->g_ambulator+$week->y_ambulator}}</td>
                                     <td>{{$week->r_death}}</td>
                                     <td>{{$week->r_dead}}</td>
                                     <td>{{$week->g_appeal}}</td>
@@ -91,7 +91,7 @@
                                         <td>{{ $data->sub_filial->name }}</td>
                                         <td>{{$data->g_appeal+$data->y_appeal+$data->r_appeal}}</td>
                                         <td>{{$data->g_sleeping+$data->y_sleeping+$data->r_sleeping}}</td>
-                                        <td>{{$data->g_ambulator+$data->y_ambulator+$data->r_death}}</td>
+                                        <td>{{$data->g_ambulator+$data->y_ambulator}}</td>
                                         <td>{{$data->r_death}}</td>
                                         <td>{{$data->r_dead}}</td>
                                         <td>{{$data->g_appeal}}</td>

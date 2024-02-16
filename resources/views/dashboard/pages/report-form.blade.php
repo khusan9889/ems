@@ -111,7 +111,7 @@
                             class="table-success"
                         @endif
                     >
-                        <td>{{ $item->id }} {{$item->confirm_status}}</td>
+                        <td>{{ $item->id }}</td>
                         <td>{{ $item->branch->name }}</td>
                         <td>{{ $item->week->name }}</td>
                         <td @if ($item->status=="Не изменилось")

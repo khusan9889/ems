@@ -10,6 +10,7 @@ use App\Models\Branch;
 use App\Models\Department;
 use App\Models\FilialSubWeek;
 use App\Models\SubFilial;
+use App\Models\Week;
 use App\Services\SubFilial\Contracts\SubFilialServiceInterface;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -57,6 +58,16 @@ class SubFilialController extends Controller
         $flial->name = $request->name;
         $flial->branch_id = $request->branch_id;
         $flial->save();
+
+        $weeks=Week::all();
+        foreach ($weeks as $week) {
+            FilialSubWeek::create([
+                'week_id' => $week->id,
+                'branch_id' => $flial->branch_id,
+                'sub_filial_id' => $flial->id,
+                'g_appeal' => null
+            ]);
+        }
 
         return redirect()->route('sub.index')->with('success', 'Отделение успешно создано');
 
