@@ -113,7 +113,6 @@ class UserController extends Controller
             $branches = Branch::where('id', $userBranchId)->get(['id', 'name']);
         }
 
-        return $departments;
         $activity = new ActionsLog();
         $activity->name = 'Пользователь изменен: ' . $data->id;
         $activity->user_id = auth()->id();

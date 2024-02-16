@@ -69,8 +69,8 @@
          <div class="m-5">
              <div class="row mb-3">
                  <div class="col-2">
-                     <label>Быстрая помощь/Tez yordam:</label>
-                     <input type="number" min="0" class="form-control"name="ambulance_03" value="{{$week->ambulance_03}}" placeholder="Быстрая помощь/Tez yordam">
+                     <label>Скорая помощь/Tez yordam:</label>
+                     <input type="number" min="0" class="form-control"name="ambulance_03" value="{{$week->ambulance_03}}" placeholder="Скорая помощь/Tez yordam">
                  </div>
                  <div class="col-2">
                      <label>Включая детей/Jumladan bolalar:</label>
