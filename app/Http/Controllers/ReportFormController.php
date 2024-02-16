@@ -67,7 +67,7 @@ class ReportFormController extends Controller
             return back()->with(['not-allowed' => 'У вас нет доступа']);
         }
 
-        $filial_sub_weeks = FilialSubWeek::with(['week', 'branch', 'sub_filial'])->orderBy('id', 'ASC')->where('branch_id', $week->branch_id)->where('week_id', $week->week_id)->whereNotNull('sub_filial_id')->get();
+        $filial_sub_weeks = FilialSubWeek::with(['week', 'branch', 'sub_filial'])->orderBy('id', 'DESC')->where('branch_id', $week->branch_id)->where('week_id', $week->week_id)->whereNotNull('sub_filial_id')->get();
         return view('dashboard.pages.report-form-create-page', compact('filial_sub_weeks', 'week'));
     }
 
