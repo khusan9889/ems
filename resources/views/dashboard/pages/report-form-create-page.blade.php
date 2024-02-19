@@ -81,7 +81,7 @@
                     <div class="col-2">
                         <label>Узи келган</label>
                         <input type="number" min="0" class="form-control" name="arrived_himself"
-                               value="{{$week->arrived_himself}}" placeholder="Те, кто пришел сам/O'zi kelganlar">
+                               value="{{$week->arrived_himself}}" placeholder="Узи келган">
                     </div>
                     <div class="col-2">
                         <label>Жумладан болалар</label>
@@ -103,7 +103,7 @@
                     <div class="col-2">
                         <label>Ётқизилган</label>
                         <input type="number" min="0" class="form-control" name="recumbent" value="{{$week->recumbent}}"
-                               placeholder="Госпитализирован/Yotqizilgan">
+                               placeholder="Ётқизилган">
                     </div>
                     <div class="col-2">
                         <label>Жумладан болалар</label>
@@ -113,7 +113,7 @@
                     <div class="col-2">
                         <label>Операция</label>
                         <input type="number" min="0" class="form-control" name="operation" value="{{$week->operation}}"
-                               placeholder="Операция/Operatsiya">
+                               placeholder="Операция">
                     </div>
                     <div class="col-2">
                         <label>Жумладан болалар</label>
@@ -124,7 +124,7 @@
                         <label>Юқори технологик операциялар</label>
                         <input type="number" min="0" class="form-control" name="high_tech_operas"
                                value="{{$week->high_tech_operas}}"
-                               placeholder="Высокотехнологичные операции/Yuqori texnologiyali operatsiyalar">
+                               placeholder="Юқори технологик операциялар">
                     </div>
                     <div class="col-2">
                         <label>Жумладан болалар</label>
@@ -196,7 +196,7 @@
                     @foreach ($filial_sub_weeks as $key => $data)
                         <tr>
                             <td>
-                                <pre class="form-control">{{ $data?->sub_filial?->name }}</pre>
+                                <pre class="form-control">{{ $data?->sub_filial }}</pre>
                             </td>
                             <td><input class="form-control" name="g_appeal[{{$data->id}}]" type="number" min="0"
                                        value="{{$data->g_appeal}}"></td>

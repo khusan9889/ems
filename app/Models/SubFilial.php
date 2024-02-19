@@ -14,6 +14,7 @@ class SubFilial extends Model
     protected $table = 'sub_filials';
 
     public $fillable = [
+        'id',
         'name',
         'branch_id'
     ];

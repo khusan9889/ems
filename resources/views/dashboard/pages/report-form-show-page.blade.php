@@ -88,7 +88,7 @@
 
                                 @foreach ($filial_sub_weeks as $key => $data)
                                     <tr>
-                                        <td>{{ $data->sub_filial->name }}</td>
+                                        <td>{{ $data?->sub_filial }}</td>
                                         <td>{{$data->g_appeal+$data->y_appeal+$data->r_appeal}}</td>
                                         <td>{{$data->g_sleeping+$data->y_sleeping+$data->r_sleeping}}</td>
                                         <td>{{$data->g_ambulator+$data->y_ambulator}}</td>

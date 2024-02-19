@@ -11,6 +11,7 @@ use App\Models\Week;
 use App\Services\FilialSubWeek\Contracts\FilialSubWeekServiceInterface;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReportFormController extends Controller
 {
@@ -67,19 +68,45 @@ class ReportFormController extends Controller
             return back()->with(['not-allowed' => 'У вас нет доступа']);
         }
 
-        $filial_sub_weeks = FilialSubWeek::with(['week', 'branch', 'sub_filial'])->orderBy('id', 'DESC')->where('branch_id', $week->branch_id)->where('week_id', $week->week_id)->whereNotNull('sub_filial_id')->get();
+//        $filial_sub_weeks = FilialSubWeek::with(['week', 'branch', 'sub_filial'])
+//            ->where('branch_id', $week->branch_id)
+//            ->where('week_id', $week->week_id)
+//            ->whereNotNull('sub_filial_id')
+//            ->get();
+        $filial_sub_weeks= DB::table('filial_sub_weeks')
+            ->leftJoin('sub_filials', 'filial_sub_weeks.sub_filial_id', '=', 'sub_filials.id')
+            ->leftJoin('weeks', 'filial_sub_weeks.week_id', '=', 'weeks.id')
+            ->select('filial_sub_weeks.*','sub_filials.name as sub_filial','weeks.name as week_name')
+            ->where('filial_sub_weeks.branch_id', $week->branch_id)
+            ->where('filial_sub_weeks.week_id', $week->week_id)
+            ->whereNotNull('sub_filial_id')
+            ->orderBy('sub_filials.name')
+            ->get();
         return view('dashboard.pages.report-form-create-page', compact('filial_sub_weeks', 'week'));
     }
 
     public function show($id)
     {
         $week = FilialSubWeek::findOrFail($id);
-        $filial_sub_weeks = FilialSubWeek::with(['week', 'branch', 'sub_filial'])->orderBy('id', 'ASC')->where('branch_id', $week->branch_id)->where('week_id', $week->week_id)->whereNotNull('sub_filial_id')->get();
+//        $filial_sub_weeks = FilialSubWeek::with(['week', 'branch', 'sub_filial'])
+//            ->where('branch_id', $week->branch_id)
+//            ->where('week_id', $week->week_id)
+//            ->whereNotNull('sub_filial_id')->get();
+        $filial_sub_weeks= DB::table('filial_sub_weeks')
+            ->leftJoin('sub_filials', 'filial_sub_weeks.sub_filial_id', '=', 'sub_filials.id')
+            ->leftJoin('weeks', 'filial_sub_weeks.week_id', '=', 'weeks.id')
+            ->select('filial_sub_weeks.*','sub_filials.name as sub_filial','weeks.name as week_name')
+            ->where('filial_sub_weeks.branch_id', $week->branch_id)
+            ->where('filial_sub_weeks.week_id', $week->week_id)
+            ->whereNotNull('sub_filial_id')
+            ->orderBy('sub_filials.name')
+            ->get();
         return view('dashboard.pages.report-form-show-page', compact('filial_sub_weeks', 'week'));
     }
 
     public function update(Request $request, $id)
     {
+        dd($request->all());
         FilialSubWeek::updateOrCreate(
             ['id' => $id],
             [

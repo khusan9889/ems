@@ -13,6 +13,7 @@ class Week extends Model
     protected $table = 'weeks';
 
     public $fillable = [
+        'id',
         'name',
         'start_date',
         'end_date',
