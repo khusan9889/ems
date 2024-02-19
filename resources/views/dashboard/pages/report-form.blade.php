@@ -9,20 +9,20 @@
 @section('content')
 
     <ol class="breadcrumb float-xl-end pull-right">
-        <li class="breadcrumb-item active">Еженедельные отчеты/Haftalik hisobotlar</li>
-        <li class="breadcrumb-item active">Отчеты</li>
+        <li class="breadcrumb-item active">Ҳафталик ҳисоботлар</li>
+        <li class="breadcrumb-item active">Ҳисобот</li>
     </ol>
-    <h1 class="page-header">Отчеты/Hisobotlar</h1>
+    <h1 class="page-header">Ҳисоботлар</h1>
     <x-panel>
         <div class="table-responsive">
             <table id="data-table-default" class="table table-striped table-bordered align-middle">
                 <thead>
                 <tr>
                     <th class="text-nowrap">ИД</th>
-                    <th class="text-nowrap">Филиал/Filial</th>
-                    <th class="text-nowrap">Неделя/Hafta</th>
-                    <th class="text-nowrap">Статус/Status</th>
-                    <th class="text-nowrap">Подтвердите статус/Holatni tasdiqlang</th>
+                    <th class="text-nowrap">Филиал номи</th>
+                    <th class="text-nowrap">Ҳафта</th>
+                    <th class="text-nowrap">Ҳолат</th>
+                    <th class="text-nowrap">Ҳолатни тасдиқланг</th>
                 </tr>
                 <tr>
                     <form action="">

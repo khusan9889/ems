@@ -97,8 +97,8 @@ class SubFilialController extends Controller
 
     public function destroy($id)
     {
-        $filial = SubFilial::findOrFail($id);
-        $filial->delete();
+        FilialSubWeek::where('sub_filial_id',$id)->delete();
+        SubFilial::findOrFail($id)->delete();
         return redirect()->back()->with('success', 'Запись успешно удалена');
 
     }
