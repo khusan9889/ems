@@ -21,7 +21,7 @@
                                 <td>{{ $region->id }}</td>
                             </tr>
                             <tr>
-                                <th>Название области</th>
+                                <th>Вилоят номи</th>
                                 <td>
                                     <input type="text" name="name" class="form-control" value="{{ $region->name }}" required>
                                 </td>

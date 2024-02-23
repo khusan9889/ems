@@ -212,7 +212,7 @@ return [
         '*.vremia_nacaly_formirovaniia_kartocki_transportirovki_kt'=>'Время началы формирования Карточки транспортировки (КТ)',
         '*.vremia_zaverseniia_formirovaniia_kt'=>'Время завершения формирования КТ',
         '*.peredaca_brigade'=>'Передача бригаде',
-        '*.vremia_vyezda_br'=>'Время выезда бр',
+        '*.vremia_vyezda_br'=>'Время выезда бр.',
         '*.pribytie_na_vyz'=>'Прибытие на выз',
         '*.vremia_nacaly_transportirovki'=>'Время началы транспортировки',
         '*.vremia_pribytiia_na_med_ucrezdenie'=>'Время прибытия на мед. Учреждение',

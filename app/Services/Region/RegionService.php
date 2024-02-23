@@ -33,7 +33,7 @@ class RegionService implements RegionServiceInterface
                 $filters['coato'],
                 fn($query, $value) => $query->where('coato', 'like', '%' . $filters['coato'] . '%')
             );
-        $perPage = 10;
+        $perPage = 15;
         $results = $query->paginate($perPage);
 
         return $results;

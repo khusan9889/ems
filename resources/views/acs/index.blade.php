@@ -143,7 +143,8 @@
     </table>
 
     Записи с {{ ($data->currentpage()-1)*$data->perpage() + ($data->total()==0?0:1)}}
-    по {{($data->currentpage()-1)*$data->perpage() + count($data->items())}} из {{ $data->total() }} записей</div>
+    по {{($data->currentpage()-1)*$data->perpage() + count($data->items())}} из {{ $data->total() }} записей
+</div>
 
 
 <!-- Pagination -->

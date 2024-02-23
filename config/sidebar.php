@@ -5,127 +5,130 @@ return [
     'menu' => [
         [
             'icon' => 'fa fa-th-large',
-            'title' => 'ОКС/<br>OKS',
+            'title' => 'ОКС',
 //			'url' => '/acs',
             'url' => 'javascript:;',
             'caret' => true,
             'sub_menu' => [
                 [
                     'url' => '/acs/list',
-                    'title' => 'Таблица/Jadval',
+                    'title' => 'Жадвал<br>Таблица',
                 ],
                 [
                     'url' => '/acs/statistics',
-                    'title' => 'Статистика/Statistika',
+                    'title' => 'Статистика',
                 ],
 
             ]
         ],
         [
             'icon' => 'fa fa-th-large',
-            'title' => 'Политравма/<br>Politravma',
-            //			'url' => '/polytrauma',
+            'title' => 'Политравма',
             'url' => 'javascript:;',
             'caret' => true,
             'sub_menu' => [
                 [
                     'url' => '/polytrauma/list',
-                    'title' => 'Таблица/Jadval',
+                    'title' => 'Жадвал<br>Таблица',
                 ],
                 [
                     'url' => '/polytrauma/statistics',
-                    'title' => 'Статистика/Statistika',
+                    'title' => 'Статистика',
                 ],
 
             ]
         ],
         [
             'icon' => 'fa fa-align-left',
-            'title' => 'Еженедельный отчет/<br>Haftalik hisobotlar',
+            'title' => 'Ҳафталик ҳисоботлар<br>Еженедельный отчет',
             'url' => 'javascript:;',
             'caret' => true,
             'sub_menu' => [
                 [
                     'url' => '/data',
-                    'title' => 'Отчеты/Hisobotlar'
+                    'title' => 'Ҳисоботлар<br>Отчеты'
                 ]
 
             ]
         ],
         [
             'icon' => 'fa fa-align-left',
-            'title' => 'Скорая помощь/<br>Tez yordam',
+            'title' => 'Тез ёрдам<br>Скорая помощь',
             'url' => 'javascript:;',
             'caret' => true,
             'sub_menu' => [
                 [
                     'url' => '/indicator',
-                    'title' => 'Отчеты/Hisobotlar'
+                    'title' => 'Ҳисоботлар<br>Отчеты'
+                ],
+                [
+                    'url' => '/indicator-file',
+                    'title' => 'Юкланган файллар<br>Загруженные файлы'
                 ]
 
             ]
         ],
         [
             'icon' => 'fa fa-align-left',
-            'title' => 'Справочник/<br>Ma\'lumotnoma',
+            'title' => 'Маълумотнома<br>Справочник',
             'url' => 'javascript:;',
             'caret' => true,
             'sub_menu' => [
                 [
                     'url' => '/branch',
-                    'title' => 'Филиал/Filial'
+                    'title' => 'Филиал'
                 ], [
                     'url' => '/sub-branch',
-                    'title' => 'Субфилиал/Subfilial'
+                    'title' => 'Субфилиал'
                 ],
                 [
                     'url' => '/departments',
-                    'title' => 'Отделения/Bo\'limlar'
+                    'title' => 'Бўлимлар<br>Отделения'
                 ],
                 [
                     'url' => '/region',
-                    'title' => 'Область/Viloyat'
+                    'title' => 'Вилоят<br>Область'
                 ],
-                [
-                    'url' => '/district',
-                    'title' => 'Район/Tuman'
-                ],
-                [
-                    'url' => '/substation',
-                    'title' => 'Подстанция/Podstansiya'
-                ],
-                [
-                    'url' => '/brigade',
-                    'title' => 'Бригада/Brigada'
-                ],
-                [
-                    'url' => '/hospital',
-                    'title' => 'Больница/Shifoxona'
-                ],
-                [
-                    'url' => '/reference',
-                    'title' => 'Скорой помощи/<br>Tez yordam'
-                ],
+//                [
+//                    'url' => '/district',
+//                    'title' => 'Туман<br>Район'
+//                ],
+//                [
+//                    'url' => '/substation',
+//                    'title' => 'Подстанция'
+//                ],
+//                [
+//                    'url' => '/brigade',
+//                    'title' => 'Бригада'
+//                ],
+//                [
+//                    'url' => '/hospital',
+//                    'title' => 'Больница'
+//                ],
+//                [
+//                    'url' => '/reference',
+//                    'title' => 'Скорой помощи<br>Тез ёрдам'
+//                ],
             ]
         ],
         [
             'icon' => 'fa fa-cog',
-            'title' => 'Настройки/<br>Sozlamalar',
+            'title' => 'Созламалар<br>Настройки',
             'url' => 'javascript:;',
             'caret' => true,
             'sub_menu' => [
                 [
                     'url' => '/users',
-                    'title' => 'Пользователи/<br>Foydalanuvchilar',
+                    'title' => 'Фойдаланувчила<br>Пользователи',
                     'role' => 'admin'
                 ],
                 [
                     'url' => '/roles',
-                    'title' => 'Роли/<br>Rollar'
+                    'title' => 'Ҳуқуқлар<br>Роли'
                 ],
                 [
                     'url' => '/activities',
-                    'title' => 'Активности/<br>Faoliyatlar'
+                    'title' => 'Фаолиятлар<br>Активности'
                 ],
             ]
         ]

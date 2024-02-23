@@ -2,7 +2,7 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <h1 class="page-header">Редактировать/Tahrirlash</h1>
+    <h1 class="page-header">Таҳрирлаш/Редактировать</h1>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card mb-4">
@@ -19,7 +19,7 @@
                             <tbody>
                             <tr>
                                 <td>
-                                    <label>Область вызова/Viloyat</label>
+                                    <label>Область вызова</label>
                                     <select class="form-control" required name="call_region_coato"
                                             onchange="myFunction(this.value)">
                                         <option></option>
@@ -36,7 +36,7 @@
                                     @enderror
                                 </td>
                                 <td>
-                                    <label>Подстанция принятия вызова/Chaqiruvlarni qabul qilish podstansiyasi</label>
+                                    <label>Подстанция принятия вызова</label>
                                     <select class="form-control" required name="substation_id">
                                         <option></option>
                                         @foreach ($substations as $key => $substation)
@@ -51,7 +51,7 @@
                                     @enderror
                                 </td>
                                 <td>
-                                    <label>Заполнение карты вызова/Chaqiruv kartasini to'ldirish</label>
+                                    <label>Заполнение карты вызова</label>
                                     <select class="form-control" required name="filling_call_card">
                                         <option></option>
                                         <option value="1" {{ $indicator->filling_call_card  == 1 ? 'selected' : '' }}>
@@ -65,7 +65,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label>Тип вызова/Chaqiruv turi</label>
+                                    <label>Тип вызова </label>
                                     <select class="form-control" required name="call_type_id">
                                         <option></option>
                                         @foreach ($call_types as $key => $call_type)
@@ -80,12 +80,12 @@
                                     @enderror
                                 </td>
                                 <td>
-                                    <label>Номер КВ/KV raqami</label>
+                                    <label>Номер КВ</label>
                                     <input type="text" name="card_number" class="form-control" required
                                            value="{{$indicator->card_number}}">
                                 </td>
                                 <td>
-                                    <label>Дата приёма/Chaqiruvni qabul qilish sanasi</label>
+                                    <label>Дата приёма</label>
                                     <input type="date"
                                            value="{{ Carbon::parse($indicator->call_received)->isoFormat('YYYY-MM-DD')}}"
                                            name="call_received" class="form-control" required>
@@ -93,19 +93,19 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label>Время приёма/Chaqiruvlarni qabul qilish vaqti</label>
+                                    <label>Время приёма</label>
                                     <input type="datetime-local"
                                            value="{{ $indicator->call_reception }}"
                                            name="call_reception" class="form-control" required>
                                 </td>
                                 <td>
-                                    <label>Вр. нач. форм. КТ/KT shakllanishining boshlanish vaqti</label>
+                                    <label>Вр. нач. форм. КТ</label>
                                     <input type="datetime-local"
                                            value="{{$indicator->beginning_formation_ct}}"
                                            name="beginning_formation_ct" class="form-control" required>
                                 </td>
                                 <td>
-                                    <label>Время передачи вызова бригаде/Chaqiruvni brigadaga o'tkazish vaqti</label>
+                                    <label>Время передачи вызова бригаде</label>
                                     <input type="datetime-local"
                                            value="{{$indicator->transfer_brigade}}"
                                            name="transfer_brigade" class="form-control" required>
@@ -113,19 +113,19 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label>Время выезда бригады.Brigadaning ketish vaqti</label>
+                                    <label>Время выезда бригады.</label>
                                     <input type="datetime-local"
                                            value="{{$indicator->brigade_departure}}"
                                            name="brigade_departure" class="form-control" required>
                                 </td>
                                 <td>
-                                    <label>Прибытие Бригады на место вызова/Brigadaning chaqiruv joyiga kelishi</label>
+                                    <label>Прибытие Бригады на место вызова</label>
                                     <input type="datetime-local"
                                            value="{{$indicator->arrival_brigade_place}}"
                                            name="arrival_brigade_place" class="form-control" required>
                                 </td>
                                 <td>
-                                    <label>Время началы транспортировки/Transportning boshlanish vaqti </label>
+                                    <label>Время началы транспортировки</label>
                                     <input type="datetime-local"
                                            value="{{$indicator->transportation_start}}"
                                            name="transportation_start" class="form-control" required>
@@ -133,20 +133,19 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label>Время прибытия на мед. Учреждение/Tibbiyot markaziga kelish vaqti Tashkil
-                                        etish</label>
+                                    <label>Время прибытия на мед. Учреждение</label>
                                     <input type="datetime-local"
                                            value="{{$indicator->arrival_medical_center}}"
                                            name="arrival_medical_center" class="form-control" required>
                                 </td>
                                 <td>
-                                    <label>время завершения вызова/qo'ng'iroqni tugatish vaqti</label>
+                                    <label>время завершения вызова</label>
                                     <input type="datetime-local"
                                            value="{{$indicator->call_end}}"
                                            name="call_end" class="form-control" required>
                                 </td>
                                 <td>
-                                    <label>Время возвращения на подстанцию/Podstansiyaga qaytish vaqti</label>
+                                    <label>Время возвращения на подстанцию </label>
                                     <input type="datetime-local"
                                            value="{{$indicator->return_substation}}"
                                            name="return_substation" class="form-control">
@@ -154,7 +153,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label>Бригада/Brigada</label>
+                                    <label>Бригада</label>
                                     <select class="form-control" required name="brigade_id">
                                         <option></option>
                                         @foreach ($brigades as $key => $brigade)
@@ -169,12 +168,12 @@
                                     @enderror
                                 </td>
                                 <td>
-                                    <label>Подробный адрес вызова/Batafsil qo'ng'iroq manzili</label>
+                                    <label>Подробный адрес вызова</label>
                                     <input type="text" name="address" class="form-control"
                                            value="{{$indicator->address}}">
                                 </td>
                                 <td>
-                                    <label>Причина вызова/Chaqiruv qilish sababi</label>
+                                    <label>Причина вызова</label>
                                     <select class="form-control" required name="reason_id">
                                         <option></option>
                                         @foreach ($reasons as $key => $reason)
@@ -191,7 +190,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label>Пол пациента/Bemor jinsi</label>
+                                    <label>Пол пациента</label>
                                     <select class="form-control" required name="gender">
                                         <option></option>
                                         <option value="Э/М" {{ $indicator->gender == "Э/М" ? 'selected' : '' }}>
@@ -207,20 +206,20 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <label>Возраст пациента/Bemorning yoshi</label>
+                                    <label>Возраст пациента</label>
                                     <input type="number" name="age" class="form-control" required
                                            value="{{$indicator->age}}"
                                            min="0">
                                 </td>
                                 <td>
-                                    <label>Диагноз по МКБ10/ICD 10 ga muvofiq diagnostika</label>
+                                    <label>Диагноз по МКБ10</label>
                                     <input type="text" name="diagnos" class="form-control" required
                                            value="{{$indicator->diagnos}}">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <label>Результат выезда/Ketish natijasi</label>
+                                    <label>Результат выезда</label>
                                     <select class="form-control" required name="call_result_id">
                                         <option></option>
                                         @foreach ($call_results as $key => $call_result)
@@ -235,7 +234,7 @@
                                     @enderror
                                 </td>
                                 <td>
-                                    <label>Место госпитализации/Kasalxonaga yotqizilgan joy</label>
+                                    <label>Место госпитализации</label>
                                     <select class="form-control" name="hospital_id">
                                         <option></option>
                                         @foreach ($hospitals as $key => $hospital)
@@ -250,7 +249,7 @@
                                     @enderror
                                 </td>
                                 <td>
-                                    <label>Результат госпитализации/Kasalxonaga yotqizish natijasi</label>
+                                    <label>Результат госпитализации</label>
                                     <select class="form-control" name="hospitalization_result_id">
                                         <option></option>
                                         @foreach ($hospitalization_results as $key => $hospitalization_result)
@@ -267,7 +266,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label>Кто вызвал/Kim chaqirdi</label>
+                                    <label>Кто вызвал</label>
                                     <select class="form-control" name="called_person_id">
                                         <option></option>
                                         @foreach ($called_persons as $key => $called_person)
@@ -282,7 +281,7 @@
                                     @enderror
                                 </td>
                                 <td>
-                                    <label>Место вызова/Chaqiruv joyi</label>
+                                    <label>Место вызова</label>
                                     <select class="form-control" required name="call_place_id">
                                         <option></option>
                                         @foreach ($call_places as $key => $call_place)
@@ -298,7 +297,7 @@
 
                                 </td>
                                 <td>
-                                    <label>Диагноз врача/Shifokor tashxisi</label>
+                                    <label>Диагноз врача</label>
                                     <select class="form-control" name="diagnosis_id">
                                         <option></option>
                                         @foreach ($diagnoses as $key => $diagnosis)
@@ -315,13 +314,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label for="brigade_call_time">Вр. доезда на выз./Yo'lga ketgan vaqt</label>
+                                    <label for="brigade_call_time">Вр. доезда на выз.</label>
 
                                     <input type="time" name="travel_time"
                                            value="{{$indicator->brigade_call_time}}" class="form-control" required>
                                 </td>
                                 <td>
-                                    <label for="travel_time">Вр.на прин.выз.бр./Birgada chaqiruvni qabul qilish
+                                    <label for="travel_time">Вр.на прин.выз.бр.
                                         vaqti</label>
 
                                     <input type="time" name="brigade_call_time" class="form-control"
@@ -332,18 +331,18 @@
                         </table>
                         <div class="d-flex justify-content-end">
                             @if (auth()->user()->role->id==4 or auth()->user()->role->id==1)
-                                <button type="submit" name="confirm_status" value="3"
-                                        class="btn btn-primary fa-pull-right m-r-5">Возврат на доработку
+                                <button type="submit" name="confirm_status" value="3" class="btn btn-primary fa-pull-right m-r-5">
+                                    Қайта кўриб чиқиш учун қайтинг
                                 </button>
-                                <button type="submit" name="confirm_status" value="1"
-                                        class="btn btn-primary fa-pull-right m-r-5">Одобрение
+                                <button type="submit" name="confirm_status" value="1" class="btn btn-primary fa-pull-right m-r-5">
+                                    Тасдиқлаш
                                 </button>
                             @else
-                                <button type="submit" name="confirm_status" value=""
-                                        class="btn btn-primary fa-pull-right m-r-5">Сохранять
+                                <button type="submit" name="confirm_status" value="" class="btn btn-primary fa-pull-right m-r-5">
+                                    Ўзингиз учун сақлаш
                                 </button>
-                                <button type="submit" name="confirm_status" value="2"
-                                        class="btn btn-primary fa-pull-right m-r-5">Подача на одобрение
+                                <button type="submit" name="confirm_status" value="2" class="btn btn-primary fa-pull-right m-r-5">
+                                    Тасдиқлаш учун тақдим этиш
                                 </button>
                             @endif
                         </div>

@@ -3,14 +3,15 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteConfirmationModalLabel">Подтверждение/Tasdiqlash</h5>
+                <h5 class="modal-title" id="deleteConfirmationModalLabel">Тасдиқлаш/Подтверждение</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Вы уверены, что хотите безвозвратно удалить запись?
-                <br>Haqiqatan ham yozuvni butunlay oʻchirib tashlamoqchimisiz?
+
+                Ҳақиқатан ҳам ёзувни бутунлай ўчириб ташламоқчимисиз?
+                <br>Вы уверены, что хотите безвозвратно удалить запись?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>

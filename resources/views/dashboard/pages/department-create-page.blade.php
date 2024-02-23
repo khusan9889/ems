@@ -1,13 +1,13 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <x-panel title="Отделения - создание нового отделения/Bo'lim - yangi bo'limni tashkil etish">
+    <x-panel title="Отделения - создание нового отделения">
         <form method="POST" action="{{ route('department.store') }}">
             @csrf
             <table class="table table-striped table-bordered align-middle">
                 <tbody>
                     <tr>
-                        <th>Субъект/Flailni tanlang</th>
+                        <th>Филиал танланг</th>
                         <td>
                             <select class="form-control" id="branch" name="branch_id" readonly>
                                 <option value="" hidden>Выберите субъект</option>
@@ -24,7 +24,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Название отделения/Bo'im nomi</th>
+                        <th>Бўлим номи</th>
                         <td>
                             <input type="text" name="name" class="form-control" required>
                         </td>

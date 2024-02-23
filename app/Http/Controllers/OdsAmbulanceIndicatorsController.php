@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\MedDataImportRequest;
 use App\Imports\OdsAmbulanceIndicatorsImport;
+use App\Jobs\ImportExcelJob;
+use App\Models\Branch;
+use App\Models\MedDataExcel;
 use App\Models\OdsAmbulanceBrigades;
 use App\Models\OdsAmbulanceDistricts;
 use App\Models\OdsAmbulanceHospitals;
@@ -16,6 +20,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Validators\ValidationException;
 
 class OdsAmbulanceIndicatorsController extends Controller
 {
@@ -40,9 +45,9 @@ class OdsAmbulanceIndicatorsController extends Controller
             ->with('residence_region')
             ->with('residence_district')
             ->when(
-            $filters['sort'],
-            fn($query, $value) => $query->orderBy('id', $value)
-        )
+                $filters['sort'],
+                fn($query, $value) => $query->orderBy('id', $value)
+            )
             ->when(
                 $filters['substation_id'],
                 fn($query, $value) => $query->where('substation_id', $filters['substation_id'])
@@ -54,76 +59,76 @@ class OdsAmbulanceIndicatorsController extends Controller
                 fn($query, $value) => $query->where('call_region_coato', $filters['call_region_coato'])
             )->when(
                 $filters['brigade_id'],
-                fn($query, $value) => $query->where('brigade_id',$filters['brigade_id'] )
+                fn($query, $value) => $query->where('brigade_id', $filters['brigade_id'])
             )->when(
                 $filters['confirm_status'],
-                fn($query, $value) => $query->where('confirm_status',$filters['confirm_status'] )
+                fn($query, $value) => $query->where('confirm_status', $filters['confirm_status'])
             )->when(
                 $filters['call_result_id'],
-                fn($query, $value) => $query->where('call_result_id',  $filters['call_result_id'] )
+                fn($query, $value) => $query->where('call_result_id', $filters['call_result_id'])
             )->when(
                 $filters['call_received'],
-                fn($query, $value) => $query->whereDate('call_received',  $filters['call_received'] )
+                fn($query, $value) => $query->whereDate('call_received', $filters['call_received'])
             );
         $indicators = $query->paginate(10);
-        $regions=OdsAmbulanceRegions::all();
-        $districts=OdsAmbulanceDistricts::all();
-        $substations=OdsAmbulanceSubstations::all();
-        $call_types=OdsAmbulanceReferences::where('table_name','call_types')->get();
-        $reasons=OdsAmbulanceReferences::where('table_name','reasons')->get();
-        $call_results=OdsAmbulanceReferences::where('table_name','call_results')->get();
-        $hospitalization_results=OdsAmbulanceReferences::where('table_name','hospitalization_results')->get();
-        $called_persons=OdsAmbulanceReferences::where('table_name','called_persons')->get();
-        $call_places=OdsAmbulanceReferences::where('table_name','call_places')->get();
-        $brigades=OdsAmbulanceBrigades::all();
-        $hospitals=OdsAmbulanceHospitals::all();
+        $regions = OdsAmbulanceRegions::all();
+        $districts = OdsAmbulanceDistricts::all();
+        $substations = OdsAmbulanceSubstations::all();
+        $call_types = OdsAmbulanceReferences::where('table_name', 'call_types')->get();
+        $reasons = OdsAmbulanceReferences::where('table_name', 'reasons')->get();
+        $call_results = OdsAmbulanceReferences::where('table_name', 'call_results')->get();
+        $hospitalization_results = OdsAmbulanceReferences::where('table_name', 'hospitalization_results')->get();
+        $called_persons = OdsAmbulanceReferences::where('table_name', 'called_persons')->get();
+        $call_places = OdsAmbulanceReferences::where('table_name', 'call_places')->get();
+        $brigades = OdsAmbulanceBrigades::all();
+        $hospitals = OdsAmbulanceHospitals::all();
         return view('dashboard.pages.indicator',
-            compact( 'indicators','substations','call_types',
-                'brigades','reasons','call_results','hospitals','hospitalization_results',
-                'called_persons','call_places','regions','districts'));
+            compact('indicators', 'substations', 'call_types',
+                'brigades', 'reasons', 'call_results', 'hospitals', 'hospitalization_results',
+                'called_persons', 'call_places', 'regions', 'districts'));
     }
 
     public function edit($id)
     {
         $indicator = OdsAmbulanceIndicators::findOrFail($id);
-        if ($indicator->confirm_status==1){
+        if ($indicator->confirm_status == 1) {
             return back()->with(['not-allowed' => 'У вас нет доступа']);
         }
 
-        $substations=OdsAmbulanceSubstations::all();
-        $call_types=OdsAmbulanceReferences::where('table_name','call_types')->get();
-        $reasons=OdsAmbulanceReferences::where('table_name','reasons')->get();
-        $call_results=OdsAmbulanceReferences::where('table_name','call_results')->get();
-        $hospitalization_results=OdsAmbulanceReferences::where('table_name','hospitalization_results')->get();
-        $called_persons=OdsAmbulanceReferences::where('table_name','called_persons')->get();
-        $call_places=OdsAmbulanceReferences::where('table_name','call_places')->get();
-        $brigades=OdsAmbulanceBrigades::all();
-        $hospitals=OdsAmbulanceHospitals::all();
-        $regions=OdsAmbulanceRegions::all();
-        $diagnoses=OdsAmbulanceReferences::where('table_name','diagnoses')->get();
+        $substations = OdsAmbulanceSubstations::all();
+        $call_types = OdsAmbulanceReferences::where('table_name', 'call_types')->get();
+        $reasons = OdsAmbulanceReferences::where('table_name', 'reasons')->get();
+        $call_results = OdsAmbulanceReferences::where('table_name', 'call_results')->get();
+        $hospitalization_results = OdsAmbulanceReferences::where('table_name', 'hospitalization_results')->get();
+        $called_persons = OdsAmbulanceReferences::where('table_name', 'called_persons')->get();
+        $call_places = OdsAmbulanceReferences::where('table_name', 'call_places')->get();
+        $brigades = OdsAmbulanceBrigades::all();
+        $hospitals = OdsAmbulanceHospitals::all();
+        $regions = OdsAmbulanceRegions::all();
+        $diagnoses = OdsAmbulanceReferences::where('table_name', 'diagnoses')->get();
         return view('dashboard.pages.indicator-edit-page',
-            compact('indicator','substations','call_types','brigades',
-                'reasons','call_results','hospitals','hospitalization_results',
-                'called_persons','call_places','regions','diagnoses'));
+            compact('indicator', 'substations', 'call_types', 'brigades',
+                'reasons', 'call_results', 'hospitals', 'hospitalization_results',
+                'called_persons', 'call_places', 'regions', 'diagnoses'));
     }
 
     public function create()
     {
-        $regions=OdsAmbulanceRegions::all();
-        $substations=OdsAmbulanceSubstations::all();
-        $call_types=OdsAmbulanceReferences::where('table_name','call_types')->get();
-        $reasons=OdsAmbulanceReferences::where('table_name','reasons')->get();
-        $call_results=OdsAmbulanceReferences::where('table_name','call_results')->get();
-        $hospitalization_results=OdsAmbulanceReferences::where('table_name','hospitalization_results')->get();
-        $called_persons=OdsAmbulanceReferences::where('table_name','called_persons')->get();
-        $call_places=OdsAmbulanceReferences::where('table_name','call_places')->get();
-        $brigades=OdsAmbulanceBrigades::all();
-        $hospitals=OdsAmbulanceHospitals::all();
-        $diagnoses=OdsAmbulanceReferences::where('table_name','diagnoses')->get();
+        $regions = OdsAmbulanceRegions::all();
+        $substations = OdsAmbulanceSubstations::all();
+        $call_types = OdsAmbulanceReferences::where('table_name', 'call_types')->get();
+        $reasons = OdsAmbulanceReferences::where('table_name', 'reasons')->get();
+        $call_results = OdsAmbulanceReferences::where('table_name', 'call_results')->get();
+        $hospitalization_results = OdsAmbulanceReferences::where('table_name', 'hospitalization_results')->get();
+        $called_persons = OdsAmbulanceReferences::where('table_name', 'called_persons')->get();
+        $call_places = OdsAmbulanceReferences::where('table_name', 'call_places')->get();
+        $brigades = OdsAmbulanceBrigades::all();
+        $hospitals = OdsAmbulanceHospitals::all();
+        $diagnoses = OdsAmbulanceReferences::where('table_name', 'diagnoses')->get();
         return view('dashboard.pages.indicator-create-page',
-            compact('substations','call_types','brigades',
-                'reasons','call_results','hospitals','hospitalization_results',
-                'called_persons','call_places','regions','diagnoses'));
+            compact('substations', 'call_types', 'brigades',
+                'reasons', 'call_results', 'hospitals', 'hospitalization_results',
+                'called_persons', 'call_places', 'regions', 'diagnoses'));
     }
 
     public function store(Request $request)
@@ -218,19 +223,76 @@ class OdsAmbulanceIndicatorsController extends Controller
 
         return redirect()->back()->with('success', 'Запись успешно удалена');
     }
+
     public function importExcel(Request $request)
     {
-        $request->validate([
-            'import_file' => 'required'
-        ]);
-//        dd(request()->file('import_file'));
-        Excel::import(new OdsAmbulanceIndicatorsImport, request()->file('import_file'));
 
-        Session::flash('success','Успешно прошла валидацию! Данные скоро будут импортированы.');
-        return back();
+
+        $request->validate([
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'import_file' => 'required',
+            'region_coato' => 'required'
+        ]);
+
+
+        $results = OdsAmbulanceIndicators::whereBetween('call_received', [$request->start_date, $request->end_date])->where('call_region_coato',$request->region_coato)->count();
+        if ($results==0) {
+            if ($file = $request->file("import_file")) {
+                try {
+
+//                    Excel::import(new MedDataImportRequest($request->start_date, $request->end_date), $file);
+
+                    $med_data = new MedDataExcel();
+                    $med_data->file = uploadFile($file, 'med_data');
+                    $med_data->start_date = $request->start_date;
+                    $med_data->end_date = $request->end_date;
+                    $med_data->region_coato = $request->region_coato;
+                    $med_data->save();
+                    ImportExcelJob::dispatch($med_data->id, $request->region_coato, $med_data->file,$request->start_date, $request->end_date);
+                    Session::flash('success', 'Маълумотлар текширувга юборилди! Тез орада маълумотлар юкланади.');
+
+                    return back();
+                } catch (ValidationException $e) {
+
+                    $failures = $e->failures();
+                    $errors = [];
+                    $counter = 0;
+                    foreach ($failures as $failure) {
+                        $errors[] = $failure->errors()[0];
+                        $counter++;
+                        if ($counter == 5) {
+                            break;
+                        }
+                    }
+                    Session::flash('validation-errors', $errors);
+                    return back();
+                }
+            }
+        } else {
+
+            Session::flash('not-allowed', 'Маълумотлар танланган вақт оралиғида яратилган!');
+            return back();
+        }
     }
+
     public function exportExcel(Request $request)
     {
         return response()->download("shablon.xlsx");
+    }
+
+    public function index_file(Request $request)
+    {
+
+        $indicators = MedDataExcel::with('region')->withCount('indicators')->paginate(15);
+        return view('dashboard.pages.indicator-file',compact('indicators'));
+    }
+    public function delete_files($id)
+    {
+        $med_data = MedDataExcel::findOrFail($id);
+        OdsAmbulanceIndicators::where('excel_id',$med_data->id)->delete();
+        $med_data->delete();
+
+        return redirect()->back()->with('success', 'Запись успешно удалена');
     }
 }

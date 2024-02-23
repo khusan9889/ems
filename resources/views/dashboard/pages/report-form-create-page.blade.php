@@ -135,9 +135,9 @@
                 </div>
                 <div class="row mb-5">
                     <div class="col-2">
-                        <label>Умерло</label>
+                        <label>Ўлганлар</label>
                         <input type="number" min="0" class="form-control" name="death" value="{{$week->death}}"
-                               placeholder="Умерло">
+                               placeholder="Ўлганлар">
                     </div>
                     <div class="col-2">
                         <label>Жумладан болалар</label>
@@ -225,17 +225,18 @@
             @endif
 
             @if (auth()->user()->role->id==4 or auth()->user()->role->id==1)
-                <button type="submit" name="confirm_status" value="1" class="btn btn-primary fa-pull-right">Одобрение
+                <button type="submit" name="confirm_status" value="1" class="btn btn-primary fa-pull-right">
+                    Тасдиқлаш
                 </button>
                 <button type="submit" name="confirm_status" value="3" class="btn btn-primary fa-pull-right m-r-5">
-                    Возврат на доработку
+                    Қайта кўриб чиқиш учун қайтинг
                 </button>
             @else
-                <button type="submit" name="confirm_status" value="2" class="btn btn-primary fa-pull-right m-r-5">Подача
-                    на одобрение
+                <button type="submit" name="confirm_status" value="2" class="btn btn-primary fa-pull-right m-r-5">
+                    Тасдиқлаш учун тақдим этиш
                 </button>
                 <button type="submit" name="confirm_status" value="4" class="btn btn-primary fa-pull-right m-r-5">
-                    Сохранять
+                    Ўзингиз учун сақлаш
                 </button>
             @endif
         </form>

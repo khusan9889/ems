@@ -7,7 +7,7 @@
 @endphp
 
 @section('content')
-    <h1 class="page-header">Отделения/Bo'lim</h1>
+    <h1 class="page-header">Бўлимлар</h1>
     <x-panel>
         <div class="d-flex justify-content-end mb-3">
             <a href="{{ route('department.create-page') }}" class="btn btn-success">Добавить</a>
@@ -17,9 +17,9 @@
                 <thead>
                     <tr>
                         <th>№</th>
-                        <th>Отделения/Bo'lim</th>
-                        <th>Филиал/Filial</th>
-                        <th>Действия/Harakatlar</th>
+                        <th>Филиал</th>
+                        <th>Бўлим</th>
+                        <th class="d-flex align-items-center justify-content-center">Действия</th>
                     </tr>
                     <tr>
                         <form action="">
@@ -33,18 +33,18 @@
                                 </div>
                             </td>
                             <td>
-                                <input class="form-control form-control-sm" type="text" name="name"
-                                    value="{{ request('name') }}">
-                            </td>
-                            <td>
                                 <select class="form-control form-control-sm" name="branch" @if (auth()->user()->branch_id != 1) disabled @endif>
                                     <option value="" style="font-size: 12px;">Все</option>
                                     @foreach ($branches as $id => $name)
                                         <option value="{{ $id }}" style="font-size: 12px;"
-                                            @if ($id == request('branch') || (auth()->user()->branch_id == $id && auth()->user()->branch_id != 1)) selected @endif>{{ $name }}</option>
+                                                @if ($id == request('branch') || (auth()->user()->branch_id == $id && auth()->user()->branch_id != 1)) selected @endif>{{ $name }}</option>
                                     @endforeach
                                 </select>
                             </td>
+                            <td>
+                                <input class="form-control form-control-sm" type="text" name="name" value="{{ request('name') }}">
+                            </td>
+
                             <td class="align-middle d-flex justify-content-center">
                                 <div>
                                     <button type="submit" class="btn btn-sm btn-primary">Применить</button>
@@ -57,18 +57,18 @@
                     @foreach ($data as $key => $item)
                         <tr>
                             <td>{{ ($data->currentpage()-1)*10 + $loop->index + 1 }}</td>
-                            <td>{{ $item->name }}</td>
                             <td>{{ $item->branch->name }}</td>
-                            <td class="align-middle">
+                            <td>{{ $item->name }}</td>
+                            <td class="d-flex align-items-center justify-content-center">
                                 <div class="d-flex">
-                                    @if ($userBranchID === 0 || $userBranchID === 1 || $userBranchID === $item->branch->id)
+                                    @if ($userBranchID == 0 || $userBranchID == 1 || $userBranchID == $item->branch->id)
                                         <a href="{{ route('departments.edit', $item->id) }}"
                                             class="btn btn-warning btn-xs mr-1">
                                             <i class="fas fa-pen"></i>
                                         </a>
                                         <button type="button" class="btn btn-danger btn-xs mr-1"
                                             onclick="confirmDelete({{ $item->id }})"
-                                            {{ $userBranchID !== $item->branch->id && $userBranchID !== 1 ? 'disabled' : '' }}>
+                                            {{ $userBranchID != $item->branch->id && $userBranchID != 1 ? 'disabled' : '' }}>
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
                                     @endif

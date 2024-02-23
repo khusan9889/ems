@@ -172,7 +172,7 @@
                                 <td>{{$week->children_high_tech_operas}}</td>
                             </tr>
                             <tr>
-                                <td>Умерло</td>
+                                <td>Ўлганлар</td>
                                 <td>{{$week->death}}</td>
                             </tr>
                             <tr>

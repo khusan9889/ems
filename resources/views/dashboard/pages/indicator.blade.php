@@ -8,11 +8,8 @@
 @endphp
 
 @section('content')
-    <h1 class="page-header">Скорая помощь/Tez yordam</h1>
 
-
-
-    <x-panel>
+    <x-panel title="Тез ёрдам. Скорая помощь.">
         @if ($errors->any())
             @foreach ($errors->all() as $error)
                 <div class="alert alert-danger fade show in m-b-15">
@@ -23,37 +20,54 @@
             @endforeach
         @endif
 
-
         <div class="d-flex justify-content-end mb-3">
-            <a href="{{ asset('ambulance_indicators/import_template.xlsx') }}" download="" class="btn btn-success mr-2" >Скачать шаблон</a>
+            <a href="{{ asset('ambulance_indicators/import_template.xlsx') }}" download="" class="btn btn-success mr-2">Скачать
+                шаблон</a>
             <a href="#modal-dialog" class="btn btn-success mr-2" data-toggle="modal">Импорт Excel</a>
             <a href="{{ route('indicator.create-page') }}" class="btn btn-success">Добавить</a>
         </div>
         <!-- #modal-dialog -->
+
         <div class="modal fade" id="modal-dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-
                         <h4 class="modal-title">Импорт Excel</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <form method="POST" action="{{ route('indicator.import') }}" enctype="multipart/form-data">
                         <div class="modal-body">
-                            <pre>
-                                @error(' ')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </pre>
-
+                            @error(' ')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                             @csrf
-                            <td>
-                                <span class="btn btn-success file input-button form-control" onclick="handleClick()">
-                                    <i class="fa fa-upload mr-1"></i>
-                                    <span onclick="" id="id-x">Выберите файл...</span>
-                                    <input id="import_file"  type="file" style="display:none;" name="import_file"  accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
-                                </span>
-                            </td>
+                            <label>Вилоятлар/Области</label>
+                            <select class="form-control mb-3" name="region_coato"
+                                    onchange="myFunction(this.value)">
+                                @foreach ($regions as $key => $region)
+                                    <option
+                                        value="{{ $region->coato }}" {{ request('region_coato    ') == $region->coato ? 'selected' : '' }}>
+                                        {{ $region->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('region_coato')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+
+                            <label>Вақт оралиғини танланг/Выберите временной интервал</label>
+                            <span class="d-flex justify-content-between">
+                                <input class="form-control mb-3 mr-2" type="date" name="start_date" required>
+                                <input class="form-control mb-3" type="date" name="end_date" required>
+                            </span>
+
+
+                            <span class="btn btn-success file input-button form-control" onclick="handleClick()">
+                            <i class="fa fa-upload mr-1"></i>
+                            <span onclick="" id="id-x">Выберите файл...</span>
+                            <input id="import_file" type="file" style="display:none;" name="import_file" accept=".xls,.xlsx" required>
+                        </span>
+
                         </div>
                         <div class="modal-footer">
                             <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Close</a>
@@ -71,7 +85,7 @@
                 <tr>
                     <form action="">
                         <td class="text-nowrap">
-                            <label>Область вызова/Viloyat</label>
+                            <label>Области</label>
                             <select class="form-control" name="call_region_coato" onchange="myFunction(this.value)">
                                 <option value="">Все</option>
                                 @foreach ($regions as $key => $region)
@@ -85,23 +99,8 @@
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </td>
-{{--                        <td class="text-nowrap">--}}
-{{--                            <label>Район вызова/Tuman</label>--}}
-{{--                            <select class="form-control" name="call_district_coato" id="mySelect">--}}
-{{--                                <option value="">Все</option>--}}
-{{--                                @foreach ($districts as $key => $district)--}}
-{{--                                    <option--}}
-{{--                                        value="{{ $district->coato }}" {{ request('call_district_coato') == $district->coato ? 'selected' : '' }}>--}}
-{{--                                        {{ $district->name }}--}}
-{{--                                    </option>--}}
-{{--                                @endforeach--}}
-{{--                            </select>--}}
-{{--                            @error('call_district_coato')--}}
-{{--                            <span class="text-danger">{{ $message }}</span>--}}
-{{--                            @enderror--}}
-{{--                        </td>--}}
                         <td class="text-nowrap">
-                            <label>Подстанция/Podstansiya</label>
+                            <label>Подстанция</label>
                             <select class="form-control" name="substation_id">
                                 <option value="">Все</option>
                                 @foreach ($substations as $key => $substation)
@@ -116,7 +115,7 @@
                             @enderror
                         </td>
                         <td class="text-nowrap">
-                            <label>Бригады/Brigadalar</label>
+                            <label>Бригады</label>
                             <select class="form-control" name="brigade_id">
                                 <option value="">Все</option>
                                 @foreach ($brigades as $key => $brigade)
@@ -131,7 +130,7 @@
                             @enderror
                         </td>
                         <td class="text-nowrap">
-                            <label>Статус одобрения/Tasdiqlash holati</label>
+                            <label>Статус одобрения</label>
                             <select class="form-control" name="call_result_id">
                                 <option value="">Все</option>
                                 @foreach ($call_results as $key => $call_result)
@@ -146,23 +145,28 @@
                             @enderror
                         </td>
                         <td class="text-nowrap">
-                            <label>Дата/Sana</label>
+                            <label>Дата</label>
                             <input class="form-control" type="date" name="call_received"
                                    value="{{request('call_received')}}">
                         </td>
                         <td class="text-nowrap">
-                            <label>Подтвердите статус/Holatni tasdiqlang</label>
+                            <label>Подтвердите статус</label>
                             <div class="d-flex justify-content-center">
-                            <select class="form-control" name="confirm_status">
-                                <option value="">Все</option>
-                                <option value="1" {{ request('confirm_status') == 1? 'selected' : '' }}>Одобрение</option>
-                                <option value="2" {{ request('confirm_status') == 2? 'selected' : '' }}>Подача на одобрение</option>
-                                <option value="3" {{ request('confirm_status') == 3? 'selected' : '' }}>Возврат на доработку</option>
-                            </select>
-                            @error('confirm_status')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                                <button type="submit"  class="btn btn-sm btn-primary ml-2">Применить</button>
+                                <select class="form-control" name="confirm_status">
+                                    <option value="">Все</option>
+                                    <option value="1" {{ request('confirm_status') == 1? 'selected' : '' }}>Одобрение
+                                    </option>
+                                    <option value="2" {{ request('confirm_status') == 2? 'selected' : '' }}>Подача на
+                                        одобрение
+                                    </option>
+                                    <option value="3" {{ request('confirm_status') == 3? 'selected' : '' }}>Возврат на
+                                        доработку
+                                    </option>
+                                </select>
+                                @error('confirm_status')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <button type="submit" class="btn btn-sm btn-primary ml-2">Применить</button>
                             </div>
                         </td>
                     </form>
@@ -176,8 +180,7 @@
                 <thead>
                 <tr>
                     <th class="text-nowrap">№</th>
-                    <th class="text-nowrap">Область вызова</th>
-                    <th class="text-nowrap">Район вызова</th>
+                    <th class="text-nowrap">Область</th>
                     <th class="text-nowrap">Подстанция принятия вызова</th>
                     <th class="text-nowrap">Заполнение карты вызова</th>
                     <th class="text-nowrap">Тип вызова</th>
@@ -185,7 +188,7 @@
                     <th class="text-nowrap">Дата приёма</th>
                     <th class="text-nowrap">Вр. нач. форм. КТ</th>
                     <th class="text-nowrap">Время приёма</th>
-{{--                    <th class="text-nowrap">Время завершения формирования КТ</th>--}}
+                    {{--                    <th class="text-nowrap">Время завершения формирования КТ</th>--}}
                     <th class="text-nowrap">Время передачи вызова Бригаде</th>
                     <th class="text-nowrap">Время выезда Бригады</th>
                     <th class="text-nowrap">Прибытие Бригады на место вызова</th>
@@ -198,8 +201,8 @@
                     <th class="text-nowrap">Причина вызова</th>
                     <th class="text-nowrap">Пол пациента</th>
                     <th class="text-nowrap">Возраст пациента</th>
-{{--                    <th class="text-nowrap">Область проживания пациента</th>--}}
-{{--                    <th class="text-nowrap">Район проживания пациента</th>--}}
+                    {{--                    <th class="text-nowrap">Область проживания пациента</th>--}}
+                    {{--                    <th class="text-nowrap">Район проживания пациента</th>--}}
                     <th class="text-nowrap">Код МКБ</th>
                     <th class="text-nowrap">Результат выезда</th>
                     <th class="text-nowrap">Место госпитализации</th>
@@ -229,7 +232,7 @@
                     >
                         <td>{{ ($indicators->currentpage()-1)*10 + $loop->index + 1}} {{$item->confirm_status}}</td>
                         <td>{{ $item?->call_region?->name }}</td>
-                        <td>{{ $item?->call_district?->name }}</td>
+{{--                        <td>{{ $item?->call_district?->name }}</td>--}}
                         <td>{{ $item?->substation?->name }}</td>
                         <td>@if($item->filling_call_card)
                                 Да
@@ -241,7 +244,7 @@
                         <td>{{ Carbon::parse($item->call_received)->isoFormat('YYYY-MM-DD') }}</td>
                         <td>{{ $item->beginning_formation_ct}}</td>
                         <td>{{ $item->call_reception}}</td>
-{{--                        <td>{{ $item->completion_formation_ct}}</td>--}}
+                        {{--                        <td>{{ $item->completion_formation_ct}}</td>--}}
                         <td>{{ $item->transfer_brigade}}</td>
                         <td>{{ $item->brigade_departure}}</td>
                         <td>{{ $item->arrival_brigade_place}}</td>
@@ -254,8 +257,8 @@
                         <td>{{ $item?->reason?->name }}</td>
                         <td>{{ $item->gender }}</td>
                         <td>{{ $item->age }}</td>
-{{--                        <td>{{ $item?->residence_region?->name }}</td>--}}
-{{--                        <td>{{ $item?->residence_district?->name }}</td>--}}
+                        {{--                        <td>{{ $item?->residence_region?->name }}</td>--}}
+                        {{--                        <td>{{ $item?->residence_district?->name }}</td>--}}
                         <td>{{ $item->diagnos }}</td>
                         <td>{{ $item?->call_result?->name }}</td>
                         <td>{{ $item?->hospital?->name }}</td>
@@ -333,6 +336,8 @@
         }
         };
         }
+
+
 
 
 

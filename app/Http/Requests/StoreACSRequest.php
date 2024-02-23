@@ -55,19 +55,19 @@ class StoreACSRequest extends FormRequest
             'confirm_status' => 'required',
         ];
 
-        if ($this->input('cta_invasive_angiography') === 'Нет') {
+        if ($this->input('cta_invasive_angiography') == 'Нет') {
             $rules['cta_90min'] = 'nullable';
         } else {
             $rules['cta_90min'] = 'required';
         }
 
-        if ($this->input('deferred_cta_invasive') === 'Нет') {
+        if ($this->input('deferred_cta_invasive') == 'Нет') {
             $rules['deferred_cta_completed'] = 'nullable';
         } else {
             $rules['deferred_cta_completed'] = 'required';
         }
 
-        if ($this->input('thrombolytic_therapy') === 'Да') {
+        if ($this->input('thrombolytic_therapy') == 'Да') {
             $rules['thrombolytic_therapy_administered'] = 'nullable';
             $rules['not_administering_tlt'] = 'nullable';
         } else {
@@ -76,17 +76,17 @@ class StoreACSRequest extends FormRequest
             $rules['not_administering_tlt'] = 'required';
         }
 
-        if ($this->input('thrombolytic_therapy_administered') === 'Да') {
+        if ($this->input('thrombolytic_therapy_administered') == 'Да') {
             $rules['not_administering_tlt'] = 'nullable';
         }
 
-        if ($this->input('ecg_during_hospitalization') === 'Нет') {
+        if ($this->input('ecg_during_hospitalization') == 'Нет') {
             $rules['st_segment'] = 'nullable';
         } else {
             $rules['st_segment'] = 'required';
         }
 
-        if ($this->input('echocardiogram') === 'Нет') {
+        if ($this->input('echocardiogram') == 'Нет') {
             $rules['first_measurement'] = 'nullable';
         } else {
             $rules['first_measurement'] = 'required';

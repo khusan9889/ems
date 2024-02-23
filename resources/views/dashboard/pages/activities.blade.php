@@ -8,9 +8,9 @@
             <thead>
                 <tr>
                     <th style="width: 60px;">№</th>
-                    <th>Действия/Harakatlar</th>
-                    <th>Пользователь/Foydalanuvchi</th>
-                    <th>Дата и время/Sana va vaqt</th>
+                    <th>Действия</th>
+                    <th>Пользователь</th>
+                    <th>Дата и время</th>
                 </tr>
             </thead>
             <tbody>

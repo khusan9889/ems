@@ -176,6 +176,10 @@ Route::group(['middleware' => 'auth'], function () {
         });
 
     });
+    Route::group(['prefix' => 'indicator-file'], function () {
+        Route::get('/', [OdsAmbulanceIndicatorsController::class, 'index_file'])->name('indicator.file');
+        Route::delete('/delete/{id}', [OdsAmbulanceIndicatorsController::class, 'delete_files'])->name('indicator-file.delete');
+    });
     Route::post('/import', [OdsAmbulanceIndicatorsController::class, 'importExcel'])->name('indicator.import');
     Route::get('/export', [OdsAmbulanceIndicatorsController::class, 'exportExcel'])->name('indicator.export');
 

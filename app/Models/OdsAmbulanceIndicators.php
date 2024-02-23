@@ -45,6 +45,7 @@ class OdsAmbulanceIndicators extends Model
         'brigade_call_time',
         'travel_time',
         'diagnosis_id',
+        'excel_id'
     ];
 
     protected $table = 'ods_ambulance_indicators';

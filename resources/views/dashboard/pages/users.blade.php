@@ -17,13 +17,13 @@
                 <thead>
                     <tr>
                         <th>№</th>
-                        <th>Субъект СЭМП/Filial</th>
-                        <th>Отделение/Bo'lim</th>
-                        <th>ФИО пользователя/Foydalanuvchi nomi</th>
-                        <th>Номер телефона/Telefon raqami</th>
-                        <th>Электронная почта/Elektron pochta</th>
-                        <th>Роль/Roli</th>
-                        <th>Действия/Harakatlar</th>
+                        <th>Филиал в СЭМП</th>
+                        <th>Отделение</th>
+                        <th>ФИО пользователя</th>
+                        <th>Номер телефона</th>
+                        <th>Электронная почта</th>
+                        <th>Роль</th>
+                        <th class="d-flex align-items-center justify-content-center">Действия</th>
                     </tr>
                     <tr>
                         <form action="">
@@ -88,7 +88,7 @@
                             <td>{{ $item->phone_number }}</td>
                             <td>{{ $item->email }}</td>
                             <td> {{ $item->role?->name }} </td>
-                            <td class="align-middle">
+                            <td class="d-flex align-items-center justify-content-center">
                                 <div class="d-flex">
                                     @if ($userBranchID == 0 || $userBranchID == 1 || $userBranchID == $item->branch?->id)
                                         <a href="{{ route('users.edit-page', $item->id) }}"

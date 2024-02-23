@@ -7,19 +7,19 @@
 @endphp
 
 @section('content')
-    <h1 class="page-header">Область скорой помощи</h1>
-    <x-panel>
-        <div class="d-flex justify-content-end mb-3">
-            <a href="{{ route('region.create-page') }}" class="btn btn-success">Добавить</a>
+    <x-panel >
+        <div class="d-flex justify-content-between mb-3 ">
+            <h2>Тез ёрдам ҳудудлари.<br>Область скорой помощи.</h2>
+            <a href="{{ route('region.create-page') }}" class="btn btn-success">Қўшиш<br>Добавить</a>
         </div>
         <div class="table-responsive">
             <table id="data-table-default" class="table table-striped table-bordered align-middle">
                 <thead>
                 <tr>
                     <th>№</th>
-                    <th>Название области/Viloyat nomi</th>
-                    <th>СОАТО/SOATO</th>
-                    <th>Действия/Harakatlar</th>
+                    <th>Вилоят номи</th>
+                    <th>СОАТО</th>
+                    <th class="d-flex align-items-center justify-content-center">Действия</th>
                 </tr>
                 <tr>
                     <form action="">
@@ -54,7 +54,7 @@
                         <td>{{ ($data->currentpage()-1)*10 + $loop->index + 1}}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->coato }}</td>
-                        <td class="align-middle">
+                        <td class="d-flex align-items-center justify-content-center">
                             <div class="d-flex justify-content-center">
                                     <a href="{{ route('region.edit', $item->id) }}"
                                        class="btn btn-warning btn-xs mr-1">

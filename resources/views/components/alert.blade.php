@@ -6,7 +6,7 @@
     <script>
         setTimeout(function () {
             $('.alert').hide();
-        }, 20000);
+        }, 200000);
     </script>
 @endif
 @if (session()->has('warning'))
@@ -17,7 +17,7 @@
     <script>
         setTimeout(function () {
             $('.alert').hide();
-        }, 20000);
+        }, 200000);
     </script>
 @endif
 @if (session()->has('not-allowed'))
@@ -28,7 +28,7 @@
     <script>
         setTimeout(function () {
             $('.alert').hide();
-        }, 20000);
+        }, 200000);
     </script>
 @endif
 @if (session()->has('not-deleteable'))
@@ -39,6 +39,22 @@
     <script>
         setTimeout(function () {
             $('.alert').hide();
-        }, 20000);
+        }, 200000);
     </script>
 @endif
+
+@if (session()->has('validation-errors'))
+        @foreach (session('validation-errors') as $error)
+            <div class="alert alert-danger fade show in m-b-15">
+                <strong>Ошибка!</strong>
+                {{$error}}
+                <span class="close" data-dismiss="alert">&times;</span>
+            </div>
+        @endforeach
+    <script>
+        setTimeout(function () {
+            $('.alert').hide();
+        }, 200000);
+    </script>
+@endif
+

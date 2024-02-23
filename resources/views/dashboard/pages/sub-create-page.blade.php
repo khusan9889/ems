@@ -1,13 +1,13 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <x-panel title="Субфилиал - создание нового субфилиал/Subfilial - yangi filialni tashkil etish">
+    <x-panel title="Субфилиал - янги филиални ташкил этиш">
         <form method="POST" action="{{ route('sub.store') }}">
             @csrf
             <table class="table table-striped table-bordered align-middle">
                 <tbody>
                     <tr>
-                        <th>Филиал/Filial</th>
+                        <th>Филиал</th>
                         <td>
                             <select class="form-control" id="branch" name="branch_id" readonly>
                                 <option value="" hidden>Выберите субъект/Flailni tanlang</option>
@@ -24,7 +24,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Название субфилиала/Subfilial nomi</th>
+                        <th>Субфилиал номи</th>
                         <td>
                             <input type="text" name="name" class="form-control" required>
                         </td>
