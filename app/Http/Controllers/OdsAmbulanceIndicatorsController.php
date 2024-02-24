@@ -238,7 +238,6 @@ class OdsAmbulanceIndicatorsController extends Controller
                     $med_data->end_date = $request->end_date;
                     $med_data->region_coato = $request->region_coato;
                     $med_data->save();
-                    dd($med_data,$request->all());
                     ImportExcelJob::dispatch($med_data->id, $request->region_coato, $med_data->file,$request->start_date, $request->end_date);
                     Session::flash('success', 'Маълумотлар текширувга юборилди! Тез орада маълумотлар юкланади.');
 

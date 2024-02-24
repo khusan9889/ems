@@ -33,8 +33,8 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
     {
         $this->excel_id=$excel_id;
         $this->region_coato=$region_coato;
-        $this->end_date=$end_date;
         $this->start_date=$start_date;
+        $this->end_date=$end_date;
     }
     public function collection(Collection $rows)
     {

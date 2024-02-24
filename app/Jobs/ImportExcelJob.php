@@ -46,6 +46,7 @@ class ImportExcelJob implements ShouldQueue
         $med_data = MedDataExcel::findOrFail($this->excel_id);
         $med_data->sanction=2;
         $med_data->save();
+        dd($med_data);
     }
 
 
