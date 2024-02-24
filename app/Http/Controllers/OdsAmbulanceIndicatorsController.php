@@ -285,7 +285,9 @@ class OdsAmbulanceIndicatorsController extends Controller
     {
 
         $indicators = MedDataExcel::with('region')->withCount('indicators')->paginate(15);
-        return view('dashboard.pages.indicator-file',compact('indicators'));
+        $regions = OdsAmbulanceRegions::all();
+
+        return view('dashboard.pages.indicator-file',compact('indicators','regions'));
     }
     public function delete_files($id)
     {

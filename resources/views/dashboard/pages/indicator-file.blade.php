@@ -7,8 +7,77 @@
 @endphp
 
 @section('content')
-    <h1 class="page-header">Юкланган файллар/Загруженные файлы</h1>
-    <x-panel>
+    <x-panel title="Юкланган файллар/Загруженные файлы">
+
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger fade show in m-b-15">
+                    <strong>Ошибка!</strong>
+                    {{__($error)}}
+                    <span class="close" data-dismiss="alert">&times;</span>
+                </div>
+            @endforeach
+        @endif
+
+        <div class="d-flex justify-content-between mb-3">
+            <h2 class="page-header">Юкланган файллар/Загруженные файлы</h2>
+            <div>
+                <a href="{{ asset('ambulance_indicators/import_template.xlsx') }}" download="" class="btn btn-success mr-2">Шаблонни юклаб олиш</a>
+                <a href="#modal-dialog" class="btn btn-success mr-2" data-toggle="modal">Импорт Excel</a>
+            </div>
+        </div>
+
+        <!-- #modal-dialog -->
+
+        <div class="modal fade" id="modal-dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Импорт Excel</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <form method="POST" action="{{ route('indicator.import') }}" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            @error(' ')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                            @csrf
+                            <label>Вилоятлар/Области</label>
+                            <select class="form-control mb-3" name="region_coato"
+                                    onchange="myFunction(this.value)">
+                                @foreach ($regions as $key => $region)
+                                    <option
+                                        value="{{ $region->coato }}" {{ request('region_coato    ') == $region->coato ? 'selected' : '' }}>
+                                        {{ $region->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('region_coato')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+
+                            <label>Вақт оралиғини танланг/Выберите временной интервал</label>
+                            <span class="d-flex justify-content-between">
+                                <input class="form-control mb-3 mr-2" type="date" name="start_date" required>
+                                <input class="form-control mb-3" type="date" name="end_date" required>
+                            </span>
+
+
+                            <span class="btn btn-success file input-button form-control" onclick="handleClick()">
+                            <i class="fa fa-upload mr-1"></i>
+                            <span onclick="" id="id-x">Выберите файл...</span>
+                            <input id="import_file" type="file" style="display:none;" name="import_file" accept=".xls,.xlsx" required>
+                        </span>
+
+                        </div>
+                        <div class="modal-footer">
+                            <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Close</a>
+                            <button type="submit" class="btn btn-sm btn-primary">Импорт</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
         <div class="table-responsive">
             <table id="data-table-default" class="table table-striped table-bordered align-middle">
@@ -34,12 +103,21 @@
                         <td><b>{{ $item->end_date }}</b></td>
                         <td><b>{{ $item->indicators_count }}</b></td>
                         <td class="d-flex justify-content-center">@if ($item->sanction==1)
-                               <b style="background-color:#2c952c; padding-left: 10px;padding-right: 10px; border-radius: 3px; color: white;"> Юкланди</b>
+                                <div
+                                    style="background-color:green; padding-right: 6px; padding-left: 6px;margin: 4px;  border-radius: 3px; color: white;">
+                                    <b> Юкланди</b>
+                                </div>
                             @else
                                 @if ($item->sanction==2)
-                                    <b style="background-color:red; padding-left: 10px;padding-right: 10px; border-radius: 3px; color: white;">Хатолик бор</b>
+                                    <div
+                                        style="background-color:red; padding-right: 6px; padding-left: 6px;margin: 4px;  border-radius: 3px; color: white;">
+                                        <b>Хатолик бор</b>
+                                    </div>
                                 @else
-                                    <b style="background-color:yellow; padding-left: 10px;padding-right: 10px; border-radius: 3px; color: black;">Текширилмоқда</b>
+                                    <div
+                                        style="background-color:yellow; padding-right: 6px; padding-left: 6px;margin: 4px;  border-radius: 3px; color: black;">
+                                        <b>Текширилмоқда</b>
+                                    </div>
                                 @endif
                             @endif
                         </td>
@@ -81,6 +159,45 @@
             $('#deleteConfirmationModal').modal('show');
             $('#deleteForm').attr('action', `/indicator-file/delete/${id}`);
         }
+
+        document.querySelector("#import_file").onchange = function() {
+          const fileName = this.files[0]?.name;
+          const label = document.getElementById('id-x');
+          label.innerText = fileName ?? "Выберите файл...";
+        };
+
+        function handleClick() {
+            document.getElementById('import_file').click();
+        }
+
+
+        function myFunction(val) {
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `district_region/${val}`);
+        xhr.send();
+        xhr.responseType = "json";
+        xhr.onload = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+
+        var x = document.getElementById("mySelect");
+        document.querySelectorAll('#mySelect option').forEach(option => option.remove())
+            var option = document.createElement("option");
+              option.text = "Все";
+              option.value="";
+              x.add(option);
+            for (const  object in xhr.response) {
+              var option = document.createElement("option");
+              option.text = xhr.response[object]['name'];
+              option.value=xhr.response[object]['coato'];
+              x.add(option);
+             }
+        } else {
+        console.log(`Error: ${xhr.status}`);
+        }
+        };
+        }
+
 
     </script>
 @endsection
