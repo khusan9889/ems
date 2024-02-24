@@ -232,15 +232,13 @@ class OdsAmbulanceIndicatorsController extends Controller
         if ($results==0) {
             if ($file = $request->file("import_file")) {
                 try {
-
-//                    Excel::import(new MedDataImportRequest($request->start_date, $request->end_date), $file);
-
                     $med_data = new MedDataExcel();
                     $med_data->file = uploadFile($file, 'med_data');
                     $med_data->start_date = $request->start_date;
                     $med_data->end_date = $request->end_date;
                     $med_data->region_coato = $request->region_coato;
                     $med_data->save();
+                    dd($med_data,$request->all());
                     ImportExcelJob::dispatch($med_data->id, $request->region_coato, $med_data->file,$request->start_date, $request->end_date);
                     Session::flash('success', 'Маълумотлар текширувга юборилди! Тез орада маълумотлар юкланади.');
 

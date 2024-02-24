@@ -24,7 +24,7 @@ class MedDataExcel extends Model
 
     public function indicators()
     {
-        return $this->hasMany(OdsAmbulanceIndicators::class,'excel_id','id');
+        return $this->hasMany(OdsAmbulanceIndicators::class,'excel_id');
     }
     public function region(): BelongsTo
     {

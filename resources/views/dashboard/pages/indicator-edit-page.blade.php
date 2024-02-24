@@ -1,18 +1,8 @@
 @php use Carbon\Carbon; @endphp
 @extends('dashboard.layouts.default')
 @section('content')
-
-    <h1 class="page-header">Таҳрирлаш/Редактировать</h1>
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <a href="{{ url('/indicator') }}" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-arrow-left"></i>
-                        </a>
-                    </div>
-                    <form method="POST" action="{{ route('indicator.update', ['id' => $indicator->id]) }}">
+    <x-panel title="Таҳрирлаш/Редактировать">
+    <form method="POST" action="{{ route('indicator.update', ['id' => $indicator->id]) }}">
                         @csrf
                         @method('PUT')
                         <table class="table table-striped table-bordered align-middle">
@@ -347,10 +337,7 @@
                             @endif
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    </x-panel>
     <script>
 
 

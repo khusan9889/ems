@@ -8,7 +8,6 @@
 @endphp
 
 @section('content')
-
     <x-panel title="Тез ёрдам. Скорая помощь.">
         <div class="d-flex justify-content-between mb-3">
             <h3>Тез ёрдам. Скорая помощь.</h3>
@@ -219,10 +218,14 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="d-flex justify-content-center mt-2">
+            <div class="float-right">{{$indicators->withQueryString()->links()}}</div>
+        </div>
     </x-panel>
-    <div class="d-flex justify-content-center">
-        <div class="float-right">{{$indicators->withQueryString()->links()}}</div>
-    </div>
+
+
+
 
 
     @include('components.modals.confirmation-modal')
