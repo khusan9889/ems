@@ -1,25 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Imports\MedDataImportRequest;
-use App\Imports\OdsAmbulanceIndicatorsImport;
 use App\Jobs\ImportExcelJob;
-use App\Models\Branch;
 use App\Models\MedDataExcel;
 use App\Models\OdsAmbulanceBrigades;
 use App\Models\OdsAmbulanceDistricts;
 use App\Models\OdsAmbulanceHospitals;
 use App\Models\OdsAmbulanceIndicators;
-use App\Http\Requests\StoreOdsAmbulanceIndicatorsRequest;
-use App\Http\Requests\UpdateOdsAmbulanceIndicatorsRequest;
 use App\Models\OdsAmbulanceReferences;
 use App\Models\OdsAmbulanceRegions;
 use App\Models\OdsAmbulanceSubstations;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
-use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\Validators\ValidationException;
 
 class OdsAmbulanceIndicatorsController extends Controller
