@@ -7,18 +7,14 @@ use App\Models\OdsAmbulanceBrigades;
 use App\Models\OdsAmbulanceHospitals;
 use App\Models\OdsAmbulanceIndicators;
 use App\Models\OdsAmbulanceReferences;
-use App\Models\OdsAmbulanceRegions;
 use App\Models\OdsAmbulanceSubstations;
-use App\Rules\ExcelAgeRule;
 use Illuminate\Support\Collection;
-use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithValidation;
-use PhpOffice\PhpSpreadsheet\Shared\Date;
 use Throwable;
 
 
@@ -119,12 +115,12 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
 //            '*.podstanciia' => 'required',
 //            '*.kv_zapolnena' => ['required', Rule::in(["да", "нет"])],
 //            '*.tip_vyzova' => 'required|string',
-            '*.data_priema' => [
-                'required',
-                'date',
-                'after_or_equal:'.$this->start_date,
-                'before_or_equal:'.$this->end_date,
-            ],
+//            '*.data_priema' => [
+//                'required',
+//                'date',
+//                'after_or_equal:'.$this->start_date,
+//                'before_or_equal:'.$this->end_date,
+//            ],
             '*.vremia_priema' => 'required',
 //            '*.vr_nac_form_kt' => 'required',
 //            '*.nacalo_transp_ki' => 'nullable',

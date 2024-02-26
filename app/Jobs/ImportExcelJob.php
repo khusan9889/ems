@@ -34,7 +34,7 @@ class ImportExcelJob implements ShouldQueue
 
     public function handle()
     {
-        Excel::import(new OdsAmbulanceIndicatorsImport($this->excel_id,$this->region_coato,$this->start_date,$this->end_date), storage_path($this->file));
+        Excel::import(new OdsAmbulanceIndicatorsImport($this->excel_id,$this->region_coato,$this->start_date,$this->end_date), $this->file);
 
         $med_data = MedDataExcel::findOrFail($this->excel_id);
         $med_data->sanction=1;

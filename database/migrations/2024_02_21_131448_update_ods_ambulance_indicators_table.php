@@ -25,7 +25,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('ods_ambulance_indicators', function (Blueprint $table) {
-            //
+            $table->dropColumn('excel_id');
         });
     }
 };

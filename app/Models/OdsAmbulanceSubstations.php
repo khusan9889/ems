@@ -31,7 +31,7 @@ class OdsAmbulanceSubstations extends Model
         $obj = OdsAmbulanceSubstations::where('name',$name)->first();
         if ($obj == null)
         {
-            $region=OdsAmbulanceRegions::findOrFail($region_id);
+            $region=OdsAmbulanceRegions::where('coato',$region_id)->first();
             $obj = new OdsAmbulanceSubstations;
             $obj->name = $name;
             $obj->region_coato = $region->id;
