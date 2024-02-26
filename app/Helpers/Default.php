@@ -42,7 +42,7 @@ function uploadFile($file, $path, $old = null): ?string
         $names = explode(".", $file->getClientOriginalName());
         $model = time() . '.' . $names[count($names) - 1];
         $file->storeAs("public/$path", $model);
-        $result = "/storage/$path/" . $model;
+        $result = "$path/" . $model;
     }
     return $result;
 }

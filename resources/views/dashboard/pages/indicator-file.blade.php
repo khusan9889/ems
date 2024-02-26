@@ -27,7 +27,6 @@
             </div>
         </div>
 
-            <p>{{asset('pl')}}</p>
         <!-- #modal-dialog -->
 
         <div class="modal fade" id="modal-dialog">
