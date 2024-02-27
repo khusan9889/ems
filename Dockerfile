@@ -3,7 +3,7 @@ FROM php:8.1-fpm
 # Set working directory
 WORKDIR /var/www
 
-COPY custom-php.ini /usr/local/etc/php/
+COPY custom-php.ini /usr/local/etc/php/conf.d/
 
 RUN apt-get update \
   && apt-get install -y \
