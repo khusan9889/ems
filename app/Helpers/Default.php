@@ -47,6 +47,14 @@ function uploadFile($file, $path, $old = null): ?string
     return $result;
 }
 
+function uploadFilePublic($file, $path, $old = null): ?string
+{
+    $filename = time() . '_' . $file->getClientOriginalName();
+    $file->move($path, $filename);
+    return "/$path/" . $filename;
+
+}
+
 function deleteFile($path): void
 {
     if ($path != null && file_exists(public_path() . $path)) {

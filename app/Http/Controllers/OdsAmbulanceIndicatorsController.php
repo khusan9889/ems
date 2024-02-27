@@ -12,6 +12,7 @@ use App\Models\OdsAmbulanceRegions;
 use App\Models\OdsAmbulanceSubstations;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Validators\ValidationException;
 
 class OdsAmbulanceIndicatorsController extends Controller
@@ -220,6 +221,8 @@ class OdsAmbulanceIndicatorsController extends Controller
     {
 
 
+
+
         $request->validate([
             'start_date' => 'required',
             'end_date' => 'required',
@@ -234,13 +237,12 @@ class OdsAmbulanceIndicatorsController extends Controller
             if ($file = $request->file("import_file")) {
                 try {
                     $med_data = new MedDataExcel();
-                    $med_data->file = uploadFile($file, 'med_data');
+                    $med_data->file = uploadFilePublic($file, 'med_excels');
                     $med_data->start_date = $request->start_date;
                     $med_data->end_date = $request->end_date;
                     $med_data->region_coato = $request->region_coato;
                     $med_data->save();
-                    $my_file = $request->file("import_file")->store('my_file');
-                    ImportExcelJob::dispatch($med_data->id, $request->region_coato, $my_file,$request->start_date, $request->end_date);
+                    ImportExcelJob::dispatch($med_data->id, $request->region_coato, public_path($med_data->file),$request->start_date, $request->end_date);
                     Session::flash('success', 'Маълумотлар текширувга юборилди! Тез орада маълумотлар юкланади.');
                     return back();
                 } catch (ValidationException $e) {
