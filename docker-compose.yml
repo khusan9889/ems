@@ -36,7 +36,7 @@ services:
     tty: true
     working_dir: /var/www
     volumes:
-      - ./storage/logs:/var/www/storage/logs
+      - ./storage:/var/www/storage
       - ./public:/var/www/public
       - ./public/build:/var/www/public/build
       - TELESCOPE_ENABLED=true
