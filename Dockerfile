@@ -30,16 +30,18 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 COPY . /var/www
 
 # Run composer install
-RUN composer install
-RUN composer dump-autoload
+# RUN composer install
+# RUN composer dump-autoload
 
-RUN npm install
-RUN npm install -D @tailwindcss/typography
-RUN npm run build
+# RUN npm install
+# RUN npm install -D @tailwindcss/typography
+# RUN npm run build
 
-RUN mkdir /var/www/resources/build
+RUN php artisan storage:link
 
-RUN cp -R /var/www/public/build/* /var/www/resources/build
+# RUN mkdir /var/www/resources/build
+
+# RUN cp -R /var/www/public/build/* /var/www/resources/build
 
 # Copy existing application directory permissions
 COPY --chown=www:www . /var/www
