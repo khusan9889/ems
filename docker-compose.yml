@@ -37,6 +37,7 @@ services:
     working_dir: /var/www
     volumes:
       - ./storage/logs:/var/www/storage/logs
+      - ./public:/var/www/public
       - ./public/build:/var/www/public/build
       - TELESCOPE_ENABLED=true
     networks:
