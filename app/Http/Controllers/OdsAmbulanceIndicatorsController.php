@@ -241,6 +241,7 @@ class OdsAmbulanceIndicatorsController extends Controller
                     $med_data->start_date = $request->start_date;
                     $med_data->end_date = $request->end_date;
                     $med_data->region_coato = $request->region_coato;
+                    $med_data->sanction = 0;
                     $med_data->save();
                     ImportExcelJob::dispatch($med_data->id, $request->region_coato, public_path($med_data->file),$request->start_date, $request->end_date);
                     Session::flash('success', 'Маълумотлар текширувга юборилди! Тез орада маълумотлар юкланади.');
@@ -276,7 +277,32 @@ class OdsAmbulanceIndicatorsController extends Controller
     public function index_file(Request $request)
     {
 
-        $indicators = MedDataExcel::with('region')->withCount('indicators')->paginate(15);
+        $filters = [
+            'call_region_coato' => $request->input('call_region_coato'),
+            'end_date' => $request->input('end_date'),
+            'start_date' => $request->input('start_date'),
+            'sanction' => $request->input('sanction')==3?0:$request->input('sanction')
+        ];
+
+        $indicators = MedDataExcel::with('region')
+            ->withCount('indicators')
+            ->when(
+                $filters['call_region_coato'],
+                fn($query, $value) => $query->where('region_coato', $filters['call_region_coato'])
+            )
+            ->when(
+                $filters['sanction'],
+                fn($query, $value) => $query->where('sanction', $filters['sanction'])
+            )
+            ->when(
+                $filters['end_date'],
+                fn($query, $value) => $query->where('end_date','<=', $filters['end_date'])
+            )
+            ->when(
+                $filters['start_date'],
+                fn($query, $value) => $query->where('start_date', '>=',$filters['start_date'])
+            )
+            ->paginate(15);
         $regions = OdsAmbulanceRegions::all();
 
         return view('dashboard.pages.indicator-file',compact('indicators','regions'));

@@ -79,6 +79,59 @@
             </div>
         </div>
 
+        <div class="d-flex">
+                <table id="data-table-default" class="table table-striped table-bordered align-middle">
+                    <tr>
+                        <form action="">
+                            <td class="text-nowrap">
+                                <label>Вилоятлар</label>
+                                <select class="form-control" name="call_region_coato" onchange="myFunction(this.value)">
+                                    <option value="">Все</option>
+                                    @foreach ($regions as $key => $region)
+                                        <option
+                                            value="{{ $region->coato }}" {{ request('call_region_coato') == $region->coato ? 'selected' : '' }}>
+                                            {{ $region->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('call_region_coato')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </td>
+
+
+                            <td class="text-nowrap">
+                                <label>Файл ҳолати</label>
+                                <select class="form-control" name="sanction">
+                                    <option value="">Все</option>
+                                    <option value="2"  {{ request('sanction') == 2 ? 'selected' : '' }}>Хатолик бор</option>
+                                    <option value="1"  {{ request('sanction') == 1 ? 'selected' : '' }}>Юкланди</option>
+                                    <option value="3"  {{ request('sanction') == 3 ? 'selected' : '' }}>Текширилмоқда</option>
+                                </select>
+
+                            </td>
+                            <td class="text-nowrap">
+                                <label>Бошланиш санаси	</label>
+                                <input class="form-control" type="date" name="start_date"
+                                       value="{{request('start_date')}}">
+                            </td>
+                            <td class="text-nowrap">
+                                <label>Тугаш санаси</label>
+                                <input class="form-control" type="date" name="end_date"
+                                       value="{{request('end_date')}}">
+                            </td>
+
+                            <td class="text-nowrap">
+                                <div class="d-flex justify-content-center mt-4  ">
+                                    <button type="submit" class="btn btn-primary">Филтр</button>
+                                </div>
+                            </td>
+                        </form>
+                    </tr>
+
+                </table>
+            </div>
+
         <div class="table-responsive">
             <table id="data-table-default" class="table table-striped table-bordered align-middle">
                 <thead>
@@ -88,10 +141,10 @@
                     <th>Бошланиш санаси</th>
                     <th>Тугаш санаси</th>
                     <th>Чақирувлар сони</th>
+                    <th class="d-flex justify-content-center">Файл ҳолати</th>
                     <th>Юкланган файллар</th>
                     <th>Яратилган вақт</th>
-                    <th>Файл ҳолати</th>
-                    <th>Действия</th>
+                    <th>Амаллар</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -102,7 +155,8 @@
                         <td><b>{{ $item->start_date }}</b></td>
                         <td><b>{{ $item->end_date }}</b></td>
                         <td><b>{{ $item->indicators_count }}</b></td>
-                        <td class="d-flex justify-content-center">@if ($item->sanction==1)
+                        <td class="d-flex justify-content-center">
+                            @if ($item->sanction==1)
                                 <div
                                     style="background-color:green; padding-right: 6px; padding-left: 6px;margin: 4px;  border-radius: 3px; color: white;">
                                     <b> Юкланди</b>
@@ -121,7 +175,7 @@
                                 @endif
                             @endif
                         </td>
-                        <td><a href="{{asset($item->file)}}">
+                        <td><a href="{{asset($item->file)}}" download="">
                                 <b>
                                     {{$item->start_date}}-{{$item->end_date}}</a></td>
                         </b>
