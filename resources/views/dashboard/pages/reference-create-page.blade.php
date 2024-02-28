@@ -1,7 +1,9 @@
+
 @extends('dashboard.layouts.default')
 @section('content')
 
     <x-panel title="Янги каталог яратиш">
+@php phpinfo() @endphp
         <form method="POST" action="{{ route('reference.store') }}">
             @csrf
             <table class="table table-striped table-bordered align-middle">

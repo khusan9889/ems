@@ -136,7 +136,7 @@
                                 <td>{{$week->ambulance_03}}</td>
                             </tr>
                             <tr>
-                                <td>Жумладан <бо></бо>лалар</td>
+                                <td>Жумладан болалар</td>
                                 <td>{{$week->children_03}}</td>
                             </tr>
                             <tr>
