@@ -39,18 +39,16 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
         foreach ($rows as $row) {
             $data_priema = strtotime($row['data_priema']);
                 $data_p = date("Y-m-d", $data_priema);
-            if ($data_p >= $this->start_date and $data_p <= $this->end_date and $data_p != null) {
+            if ($data_p >= $this->start_date and $data_p <= $this->end_date and $data_p != null and $row['peredaca_brigade']!=null ) {
                 $substation = OdsAmbulanceSubstations::findOrCreate($row['podstanciia'], $this->region_coato);
                 $type = OdsAmbulanceReferences::findOrCreate($row['tip_vyzova'], 'call_types');
                 $reason = OdsAmbulanceReferences::findOrCreate($row['povod'], 'reasons');
                 $call_result = OdsAmbulanceReferences::findOrCreate($row['rezultat_vyezda'], 'call_results');
                 $hospitalization_result = $row['rez_tat_gosp_cii'] ? OdsAmbulanceReferences::findOrCreate($row['rez_tat_gosp_cii'], 'hospitalization_results') : null;
-//            $called_person = OdsAmbulanceReferences::findOrCreate($row['vyzvavsii'], 'called_persons');
                 $call_place = OdsAmbulanceReferences::findOrCreate($row['mesto_vyzova'], 'call_places');
                 $diagnosis = OdsAmbulanceReferences::findOrCreate($row['diagnoz'], 'diagnoses');
                 $hospital = OdsAmbulanceHospitals::findOrCreate($row['mesto_gospit'], $this->region_coato);
                 $brigade = OdsAmbulanceBrigades::findOrCreate($row['brigada'], $substation);
-
                 OdsAmbulanceIndicators::create([
                     'call_region_coato' => $this->region_coato,
                     'substation_id' => $substation,
@@ -59,7 +57,6 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
                     'card_number' => $row['pp'],
                     'call_received' => $row['data_priema'],
                     'call_reception' => $data_p . ' ' . $row['vremia_priema'],
-//                'beginning_formation_ct' => $row['data_priema'] . ' ' . $row['vr_nac_form_kt'],
                     'transfer_brigade' => $row['peredaca_brigade']?$row['peredaca_brigade']:null,
                     'brigade_departure' => $row['vremia_vyezda_br']?$row['vremia_vyezda_br']:null,
                     'arrival_brigade_place' => $row['pribytie_na_vyz']?$row['pribytie_na_vyz']:null,
@@ -76,7 +73,6 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
                     'call_result_id' => $call_result,
                     'hospital_id' => $hospital,
                     'hospitalization_result_id' => $hospitalization_result,
-//                'called_person_id' => $called_person,
                     'call_place_id' => $call_place,
                     'brigade_call_time' => $row['vr_doezda_na_vyz']?$row['vr_doezda_na_vyz']:null,
                     'travel_time' => $row['vrna_prinvyzbr']?$row['vrna_prinvyzbr']:null,
@@ -85,6 +81,11 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
                 ]);
             }
         }
+
+
+//            $called_person = OdsAmbulanceReferences::findOrCreate($row['vyzvavsii'], 'called_persons');
+//                'beginning_formation_ct' => $row['data_priema'] . ' ' . $row['vr_nac_form_kt'],
+//                'called_person_id' => $called_person,
 
     }
 
