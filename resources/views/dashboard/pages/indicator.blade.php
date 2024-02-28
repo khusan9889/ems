@@ -5,6 +5,7 @@
     $selectedID = null;
     $order = request()->sort;
     $userBranchID = auth()->user()->branch_id;
+    phpinfo();
 @endphp
 
 @section('content')
