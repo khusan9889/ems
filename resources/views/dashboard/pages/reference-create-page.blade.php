@@ -1,13 +1,13 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <x-panel title="Создание нового справочника">
+    <x-panel title="Янги каталог яратиш">
         <form method="POST" action="{{ route('reference.store') }}">
             @csrf
             <table class="table table-striped table-bordered align-middle">
                 <tbody>
                     <tr>
-                        <th>Выберите Тип/Turini tanlang</th>
+                        <th>Турини танланг</th>
                         <td>
                             <select class="form-control form-control-sm" name="table_name">
                                 <option value="call_types" style="font-size: 12px;"
@@ -40,7 +40,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Название/Nomi</th>
+                        <th>Номи</th>
                         <td>
                             <input type="text" name="name" class="form-control" required>
                         </td>
@@ -49,7 +49,7 @@
 
                 </tbody>
             </table>
-            <button type="submit" class="btn btn-primary pull-right ">Создать</button>
+            <button type="submit" class="btn btn-primary pull-right ">Сақлаш</button>
         </form>
     </x-panel>
 @endsection

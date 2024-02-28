@@ -7,20 +7,19 @@
 @endphp
 
 @section('content')
-    <h1 class="page-header">Подстанции скорой помощи</h1>
-    <x-panel>
+    <x-panel title="Тез ёрдам подстанциялари">
         <div class="d-flex justify-content-end mb-3">
-            <a href="{{ route('substation.create-page') }}" class="btn btn-success">Добавить</a>
+            <a href="{{ route('substation.create-page') }}" class="btn btn-success">Янги қўшиш</a>
         </div>
         <div class="table-responsive">
             <table id="data-table-default" class="table table-striped table-bordered align-middle">
                 <thead>
                 <tr>
                     <th>№</th>
-                    <th>Название подстанции/Podstansiya nomi</th>
-                    <th>Область/Viloyat</th>
-                    <th>Район/Tuman</th>
-                    <th>Действия/Harakatlar</th>
+                    <th>Подстанция номи</th>
+                    <th>Вилоят</th>
+                    <th>Туман</th>
+                    <th class="d-flex align-items-center justify-content-center">Амаллар</th>
                 </tr>
                 <tr>
                     <form action="">
@@ -59,7 +58,7 @@
                         </td>
                         <td class="align-middle d-flex justify-content-center">
                             <div>
-                                <button type="submit" class="btn btn-sm btn-primary">Применить</button>
+                                <button type="submit" class="btn btn-sm btn-primary">Фильтр</button>
                             </div>
                         </td>
                     </form>

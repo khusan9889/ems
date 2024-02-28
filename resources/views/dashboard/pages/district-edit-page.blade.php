@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <h1 class="page-header">Редактировать район/Tumanni tahrirlash</h1>
+    <h1 class="page-header">Туманни таҳрирлаш</h1>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card mb-4">
@@ -16,12 +16,12 @@
                         @method('PUT')
                         <table class="table table-striped table-bordered align-middle">
                             <tbody>
+{{--                            <tr>--}}
+{{--                                <th>№</th>--}}
+{{--                                <td>{{ $district->id }}</td>--}}
+{{--                            </tr>--}}
                             <tr>
-                                <th>№</th>
-                                <td>{{ $district->id }}</td>
-                            </tr>
-                            <tr>
-                                <th>Выберите область/viloyatni tanlang</th>
+                                <th>Вилоятни танланг</th>
                                 <td>
                                     <select class="form-control"  name="region_id">
                                         @foreach ($regions as $key => $region)
@@ -37,13 +37,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Название района/Tuman nomi</th>
+                                <th>Туман номи</th>
                                 <td>
                                     <input type="text" name="name" class="form-control" value="{{ $district->name }}" required>
                                 </td>
                             </tr>
                             <tr>
-                                <th>Район СОАТО/SOATO tumani</th>
+                                <th>СОАТО</th>
                                 <td>
                                     <input type="text" name="coato" class="form-control" value="{{ $district->coato }}" required>
                                 </td>
@@ -51,7 +51,7 @@
                             </tbody>
                         </table>
                         <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary ">Сохранить</button>
+                        <button type="submit" class="btn btn-primary ">Сақлаш</button>
                         </div>
                     </form>
                 </div>

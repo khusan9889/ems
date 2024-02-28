@@ -18,7 +18,7 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 use Throwable;
 
 
-class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHeadingRow, WithChunkReading, WithMapping, WithValidation
+class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHeadingRow, WithChunkReading, WithMapping#, WithValidation
 {
     protected $excel_id;
     protected $region_coato;
@@ -108,43 +108,43 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
         return 1000;
     }
 
-    public function rules(): array
-    {
-
-        return [
-            '*.peredaca_brigade' => 'required|date',
-            '*.vremia_vyezda_br' => 'required|date',
-//            '*.pribytie_na_vyz' => 'required|date',
-//            '*.pp' => 'required|integer',
-//            '*.podstanciia' => 'required',
-//            '*.kv_zapolnena' => ['required', Rule::in(["да", "нет"])],
-//            '*.tip_vyzova' => 'required|string',
-//            '*.data_priema' => [
-//                'required',
-//                'date',
-//                'after_or_equal:'.$this->start_date,
-//                'before_or_equal:'.$this->end_date,
-//            ],
-            '*.vremia_priema' => 'required',
-//            '*.vr_nac_form_kt' => 'required',
-//            '*.nacalo_transp_ki' => 'nullable',
-//            '*.prib_ie_v_medorg' => 'nullable',
-//            '*.okoncanie_vyzova' => 'required|date',
-//            '*.vozvr_nie_na_pst' => 'nullable',
-//            '*.brigada' => 'required',
-//            '*.adres' => 'nullable',
-//            '*.povod' => 'required',
-//            '*.pol' => 'nullable',
-//            '*.vozrast' => ['required', new ExcelAgeRule()],
-//            '*.diagnoz' => 'required|string',
-//            '*.rezultat_vyezda' => 'required',
-//            '*.mesto_gospit' => 'nullable',
-//            '*.rez_tat_gosp_cii' => 'nullable',
-//            '*.vyzvavsii' => 'required',
-//            '*.mesto_vyzova' => 'required',
-            '*.vr_doezda_na_vyz' => 'required',
-            '*.vrna_prinvyzbr' => 'required',
-            '*.kod_mkb' => 'nullable',
-        ];
-    }
+//    public function rules(): array
+//    {
+//
+//        return [
+//            '*.peredaca_brigade' => 'required|date',
+//            '*.vremia_vyezda_br' => 'required|date',
+////            '*.pribytie_na_vyz' => 'required|date',
+////            '*.pp' => 'required|integer',
+////            '*.podstanciia' => 'required',
+////            '*.kv_zapolnena' => ['required', Rule::in(["да", "нет"])],
+////            '*.tip_vyzova' => 'required|string',
+////            '*.data_priema' => [
+////                'required',
+////                'date',
+////                'after_or_equal:'.$this->start_date,
+////                'before_or_equal:'.$this->end_date,
+////            ],
+//            '*.vremia_priema' => 'required',
+////            '*.vr_nac_form_kt' => 'required',
+////            '*.nacalo_transp_ki' => 'nullable',
+////            '*.prib_ie_v_medorg' => 'nullable',
+////            '*.okoncanie_vyzova' => 'required|date',
+////            '*.vozvr_nie_na_pst' => 'nullable',
+////            '*.brigada' => 'required',
+////            '*.adres' => 'nullable',
+////            '*.povod' => 'required',
+////            '*.pol' => 'nullable',
+////            '*.vozrast' => ['required', new ExcelAgeRule()],
+////            '*.diagnoz' => 'required|string',
+////            '*.rezultat_vyezda' => 'required',
+////            '*.mesto_gospit' => 'nullable',
+////            '*.rez_tat_gosp_cii' => 'nullable',
+////            '*.vyzvavsii' => 'required',
+////            '*.mesto_vyzova' => 'required',
+//            '*.vr_doezda_na_vyz' => 'required',
+//            '*.vrna_prinvyzbr' => 'required',
+//            '*.kod_mkb' => 'nullable',
+//        ];
+//    }
 }

@@ -19,7 +19,7 @@
                     <th>№</th>
                     <th>Номи</th>
                     <th>Филиал</th>
-                    <th class="d-flex align-items-center justify-content-center">Действия</th>
+                    <th class="d-flex align-items-center justify-content-center">Амаллар</th>
                 </tr>
                 <tr>
                     <form action="">
@@ -50,7 +50,7 @@
                         </td>
                         <td class="align-middle d-flex justify-content-center">
                             <div>
-                                <button type="submit" class="btn btn-sm btn-primary">Применить</button>
+                                <button type="submit" class="btn btn-sm btn-primary">Фильтр</button>
                             </div>
                         </td>
                     </form>

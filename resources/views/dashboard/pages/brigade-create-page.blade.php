@@ -1,13 +1,13 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <x-panel title="Создание новой бригада/Yangi jamoani yaratish">
+    <x-panel title="Янги жамоани яратиш">
         <form method="POST" action="{{ route('brigade.store') }}">
             @csrf
             <table class="table table-striped table-bordered align-middle">
                 <tbody>
                     <tr>
-                        <th>Название бригады/Brigada nomi</th>
+                        <th>Бригада номи</th>
                         <td>
                             <input type="text" name="name" class="form-control" required>
                         </td>
@@ -19,7 +19,7 @@
 {{--                        </td>--}}
                     </tr>
                     <tr>
-                        <th>Выберите подстанцию/Podstansiyani tanlang</th>
+                        <th>Подстанцияни танланг</th>
                         <td>
                             <select class="form-control"  name="substation_id" readonly>
                                 @foreach ($substations as $key => $substation)
@@ -36,7 +36,7 @@
 
                 </tbody>
             </table>
-            <button type="submit" class="btn btn-primary pull-right ">Создать</button>
+            <button type="submit" class="btn btn-primary pull-right ">Сақлаш</button>
         </form>
     </x-panel>
 @endsection

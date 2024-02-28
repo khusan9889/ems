@@ -7,19 +7,18 @@
 @endphp
 
 @section('content')
-    <h1 class="page-header">Справочник скорой помощи</h1>
-    <x-panel>
+    <x-panel title="Тез ёрдам маълумотномаси">
         <div class="d-flex justify-content-end mb-3">
-            <a href="{{ route('reference.create-page') }}" class="btn btn-success">Добавить</a>
+            <a href="{{ route('reference.create-page') }}" class="btn btn-success">Янги қўшиш</a>
         </div>
         <div class="table-responsive">
             <table id="data-table-default" class="table table-striped table-bordered align-middle">
                 <thead>
                 <tr>
                     <th>№</th>
-                    <th>Название/Nomi</th>
-                    <th>Тип/Turi</th>
-                    <th>Действия/Harakatlar</th>
+                    <th>Номи</th>
+                    <th>Тури</th>
+                    <th class="align-content-center d-flex justify-content-center">Амаллар</th>
                 </tr>
                 <tr>
                     <form action="">
@@ -66,7 +65,7 @@
                         </td>
                         <td class="align-middle d-flex justify-content-center">
                             <div>
-                                <button type="submit" class="btn btn-sm btn-primary">Применить</button>
+                                <button type="submit" class="btn btn-sm btn-primary">Фильтр</button>
                             </div>
                         </td>
                     </form>

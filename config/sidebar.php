@@ -89,26 +89,26 @@ return [
                     'url' => '/region',
                     'title' => 'Вилоят<br>Область'
                 ],
-//                [
-//                    'url' => '/district',
-//                    'title' => 'Туман<br>Район'
-//                ],
-//                [
-//                    'url' => '/substation',
-//                    'title' => 'Подстанция'
-//                ],
-//                [
-//                    'url' => '/brigade',
-//                    'title' => 'Бригада'
-//                ],
-//                [
-//                    'url' => '/hospital',
-//                    'title' => 'Больница'
-//                ],
-//                [
-//                    'url' => '/reference',
-//                    'title' => 'Скорой помощи<br>Тез ёрдам'
-//                ],
+                [
+                    'url' => '/district',
+                    'title' => 'Туман<br>Район'
+                ],
+                [
+                    'url' => '/substation',
+                    'title' => 'Подстанция'
+                ],
+                [
+                    'url' => '/brigade',
+                    'title' => 'Бригада'
+                ],
+                [
+                    'url' => '/hospital',
+                    'title' => 'Больница'
+                ],
+                [
+                    'url' => '/reference',
+                    'title' => 'Скорой помощи<br>Тез ёрдам'
+                ],
             ]
         ],
         [
