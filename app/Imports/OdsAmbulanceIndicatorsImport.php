@@ -38,48 +38,55 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
 
         foreach ($rows as $row) {
             $data_priema = strtotime($row['data_priema']);
-                $data_p = date("Y-m-d", $data_priema);
-            if ($data_p >= $this->start_date and $data_p <= $this->end_date and $data_p != null and $row['peredaca_brigade']!=null ) {
-                $substation = OdsAmbulanceSubstations::findOrCreate($row['podstanciia'], $this->region_coato);
-                $type = OdsAmbulanceReferences::findOrCreate($row['tip_vyzova'], 'call_types');
-                $reason = OdsAmbulanceReferences::findOrCreate($row['povod'], 'reasons');
-                $call_result = OdsAmbulanceReferences::findOrCreate($row['rezultat_vyezda'], 'call_results');
-                $hospitalization_result = $row['rez_tat_gosp_cii'] ? OdsAmbulanceReferences::findOrCreate($row['rez_tat_gosp_cii'], 'hospitalization_results') : null;
-                $call_place = OdsAmbulanceReferences::findOrCreate($row['mesto_vyzova'], 'call_places');
-                $diagnosis = OdsAmbulanceReferences::findOrCreate($row['diagnoz'], 'diagnoses');
-                $hospital = OdsAmbulanceHospitals::findOrCreate($row['mesto_gospit'], $this->region_coato);
-                $brigade = OdsAmbulanceBrigades::findOrCreate($row['brigada'], $substation);
-                OdsAmbulanceIndicators::create([
-                    'call_region_coato' => $this->region_coato,
-                    'substation_id' => $substation,
-                    'filling_call_card' => $row['kv_zapolnena']?$row['kv_zapolnena']:null,
-                    'call_type_id' => $type,
-                    'card_number' => $row['pp'],
-                    'call_received' => $row['data_priema'],
-                    'call_reception' => $data_p . ' ' . $row['vremia_priema'],
-                    'transfer_brigade' => $row['peredaca_brigade']?$row['peredaca_brigade']:null,
-                    'brigade_departure' => $row['vremia_vyezda_br']?$row['vremia_vyezda_br']:null,
-                    'arrival_brigade_place' => $row['pribytie_na_vyz']?$row['pribytie_na_vyz']:null,
-                    'transportation_start' => $row['nacalo_transp_ki']?$row['nacalo_transp_ki']:null,
-                    'arrival_medical_center' => $row['prib_ie_v_medorg']?$row['prib_ie_v_medorg']:null,
-                    'call_end' => $row['okoncanie_vyzova']?$row['okoncanie_vyzova']:null,
-                    'return_substation' => $row['vozvr_nie_na_pst']?$row['vozvr_nie_na_pst']:null,
-                    'brigade_id' => $brigade,
-                    'address' => $row['adres_prozivaniia']?$row['adres_prozivaniia']:null,
-                    'reason_id' => $reason,
-                    'gender' => $row['pol']?$row['pol']:null,
-                    'age' => $row['vozrast']?$row['vozrast']:null,
-                    'diagnos' => $row['kod_mkb']?$row['kod_mkb']:null,
-                    'call_result_id' => $call_result,
-                    'hospital_id' => $hospital,
-                    'hospitalization_result_id' => $hospitalization_result,
-                    'call_place_id' => $call_place,
-                    'brigade_call_time' => $row['vr_doezda_na_vyz']?$row['vr_doezda_na_vyz']:null,
-                    'travel_time' => $row['vrna_prinvyzbr']?$row['vrna_prinvyzbr']:null,
-                    'diagnosis_id' => $diagnosis,
-                    'excel_id' => $this->excel_id
-                ]);
+            $data_p = date("Y-m-d", $data_priema);
+            if ($data_p >= $this->start_date and $data_p <= $this->end_date and $data_p != null and $row['peredaca_brigade'] != null) {
+                try {
+                    $substation = OdsAmbulanceSubstations::findOrCreate($row['podstanciia'], $this->region_coato);
+                    $type = OdsAmbulanceReferences::findOrCreate($row['tip_vyzova'], 'call_types');
+                    $reason = OdsAmbulanceReferences::findOrCreate($row['povod'], 'reasons');
+                    $call_result = OdsAmbulanceReferences::findOrCreate($row['rezultat_vyezda'], 'call_results');
+                    $hospitalization_result = $row['rez_tat_gosp_cii'] ? OdsAmbulanceReferences::findOrCreate($row['rez_tat_gosp_cii'], 'hospitalization_results') : null;
+                    $call_place = OdsAmbulanceReferences::findOrCreate($row['mesto_vyzova'], 'call_places');
+                    $diagnosis = OdsAmbulanceReferences::findOrCreate($row['diagnoz'], 'diagnoses');
+                    $hospital = OdsAmbulanceHospitals::findOrCreate($row['mesto_gospit'], $this->region_coato);
+                    $brigade = OdsAmbulanceBrigades::findOrCreate($row['brigada'], $substation);
+                    OdsAmbulanceIndicators::create([
+                        'call_region_coato' => $this->region_coato,
+                        'substation_id' => $substation,
+                        'filling_call_card' => $row['kv_zapolnena'] ? $row['kv_zapolnena'] : null,
+                        'call_type_id' => $type,
+                        'card_number' => $row['pp'],
+                        'call_received' => $row['data_priema'],
+                        'call_reception' => $data_p . ' ' . $row['vremia_priema'],
+                        'transfer_brigade' => $row['peredaca_brigade'] ? $row['peredaca_brigade'] : null,
+                        'brigade_departure' => $row['vremia_vyezda_br'] ? $row['vremia_vyezda_br'] : null,
+                        'arrival_brigade_place' => $row['pribytie_na_vyz'] ? $row['pribytie_na_vyz'] : null,
+                        'transportation_start' => $row['nacalo_transp_ki'] ? $row['nacalo_transp_ki'] : null,
+                        'arrival_medical_center' => $row['prib_ie_v_medorg'] ? $row['prib_ie_v_medorg'] : null,
+                        'call_end' => $row['okoncanie_vyzova'] ? $row['okoncanie_vyzova'] : null,
+                        'return_substation' => $row['vozvr_nie_na_pst'] ? $row['vozvr_nie_na_pst'] : null,
+                        'brigade_id' => $brigade,
+                        'address' => $row['adres_prozivaniia'] ? $row['adres_prozivaniia'] : null,
+                        'reason_id' => $reason,
+                        'gender' => $row['pol'] ? $row['pol'] : null,
+                        'age' => $row['vozrast'] ? $row['vozrast'] : null,
+                        'diagnos' => $row['kod_mkb'] ? $row['kod_mkb'] : null,
+                        'call_result_id' => $call_result,
+                        'hospital_id' => $hospital,
+                        'hospitalization_result_id' => $hospitalization_result,
+                        'call_place_id' => $call_place,
+                        'brigade_call_time' => $row['vr_doezda_na_vyz'] ? $row['vr_doezda_na_vyz'] : null,
+                        'travel_time' => $row['vrna_prinvyzbr'] ? $row['vrna_prinvyzbr'] : null,
+                        'diagnosis_id' => $diagnosis,
+                        'excel_id' => $this->excel_id
+                    ]);
+                } catch(\Exception $e) {
+                    $errorMessage = "[" . date("Y-m-d H:i:s") . "] Xatolik: " . $e->getMessage() . " Qatorda: " . json_encode($row) . "\n";
+                    file_put_contents("import_errors.log", $errorMessage, FILE_APPEND);
+                }
             }
+
+
         }
 
 
