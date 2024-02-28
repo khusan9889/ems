@@ -39,7 +39,7 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
         foreach ($rows as $row) {
             $data_priema = strtotime($row['data_priema']);
                 $data_p = date("Y-m-d", $data_priema);
-            if ($data_p >= $this->start_date and $data_p <= $this->end_date) {
+            if ($data_p >= $this->start_date and $data_p <= $this->end_date and $data_p != null) {
                 $substation = OdsAmbulanceSubstations::findOrCreate($row['podstanciia'], $this->region_coato);
                 $type = OdsAmbulanceReferences::findOrCreate($row['tip_vyzova'], 'call_types');
                 $reason = OdsAmbulanceReferences::findOrCreate($row['povod'], 'reasons');
@@ -54,32 +54,32 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
                 OdsAmbulanceIndicators::create([
                     'call_region_coato' => $this->region_coato,
                     'substation_id' => $substation,
-                    'filling_call_card' => $row['kv_zapolnena'],
+                    'filling_call_card' => $row['kv_zapolnena']?$row['kv_zapolnena']:null,
                     'call_type_id' => $type,
                     'card_number' => $row['pp'],
                     'call_received' => $row['data_priema'],
                     'call_reception' => $data_p . ' ' . $row['vremia_priema'],
 //                'beginning_formation_ct' => $row['data_priema'] . ' ' . $row['vr_nac_form_kt'],
-                    'transfer_brigade' => $row['peredaca_brigade'],
-                    'brigade_departure' => $row['vremia_vyezda_br'],
-                    'arrival_brigade_place' => $row['pribytie_na_vyz'],
-                    'transportation_start' => $row['nacalo_transp_ki'],
-                    'arrival_medical_center' => $row['prib_ie_v_medorg'],
-                    'call_end' => $row['okoncanie_vyzova'],
-                    'return_substation' => $row['vozvr_nie_na_pst'],
+                    'transfer_brigade' => $row['peredaca_brigade']?$row['peredaca_brigade']:null,
+                    'brigade_departure' => $row['vremia_vyezda_br']?$row['vremia_vyezda_br']:null,
+                    'arrival_brigade_place' => $row['pribytie_na_vyz']?$row['pribytie_na_vyz']:null,
+                    'transportation_start' => $row['nacalo_transp_ki']?$row['nacalo_transp_ki']:null,
+                    'arrival_medical_center' => $row['prib_ie_v_medorg']?$row['prib_ie_v_medorg']:null,
+                    'call_end' => $row['okoncanie_vyzova']?$row['okoncanie_vyzova']:null,
+                    'return_substation' => $row['vozvr_nie_na_pst']?$row['vozvr_nie_na_pst']:null,
                     'brigade_id' => $brigade,
-                    'address' => $row['adres_prozivaniia'],
+                    'address' => $row['adres_prozivaniia']?$row['adres_prozivaniia']:null,
                     'reason_id' => $reason,
-                    'gender' => $row['pol'],
-                    'age' => $row['vozrast'] == $row['vozrast'],
-                    'diagnos' => $row['kod_mkb'],
+                    'gender' => $row['pol']?$row['pol']:null,
+                    'age' => $row['vozrast']?$row['vozrast']:null,
+                    'diagnos' => $row['kod_mkb']?$row['kod_mkb']:null,
                     'call_result_id' => $call_result,
                     'hospital_id' => $hospital,
                     'hospitalization_result_id' => $hospitalization_result,
 //                'called_person_id' => $called_person,
                     'call_place_id' => $call_place,
-                    'brigade_call_time' => $row['vr_doezda_na_vyz'],
-                    'travel_time' => $row['vrna_prinvyzbr'],
+                    'brigade_call_time' => $row['vr_doezda_na_vyz']?$row['vr_doezda_na_vyz']:null,
+                    'travel_time' => $row['vrna_prinvyzbr']?$row['vrna_prinvyzbr']:null,
                     'diagnosis_id' => $diagnosis,
                     'excel_id' => $this->excel_id
                 ]);
