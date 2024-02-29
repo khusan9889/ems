@@ -170,7 +170,7 @@
                     >
                         <td>{{ ($indicators->currentpage()-1)*10 + $loop->index + 1}} {{$item->confirm_status}}</td>
                         <td>{{ $item?->call_region?->name }}</td>
-{{--                        <td>{{ $item?->call_district?->name }}</td>--}}
+                        {{--                        <td>{{ $item?->call_district?->name }}</td>--}}
                         <td>{{ $item?->substation?->name }}</td>
                         <td>@if($item->filling_call_card)
                                 Да
@@ -240,6 +240,7 @@
             $('#deleteConfirmationModal').modal('show');
             $('#deleteForm').attr('action', `/indicator/delete/${id}`);
         }
+
 
     </script>
 @endsection

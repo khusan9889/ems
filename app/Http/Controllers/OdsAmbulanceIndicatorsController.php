@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Jobs\ImportExcelJob;
 use App\Models\MedDataExcel;
 use App\Models\OdsAmbulanceBrigades;
@@ -27,6 +28,8 @@ class OdsAmbulanceIndicatorsController extends Controller
             'call_district_coato' => $request->input('call_district_coato'),
             'call_received' => $request->input('call_received'),
             'confirm_status' => $request->input('confirm_status'),
+            'end_date' => $request->input('end_date'),
+            'start_date' => $request->input('start_date'),
             'sort' => $request->input('sort') ?? 'DESC',
         ];
 
@@ -62,6 +65,13 @@ class OdsAmbulanceIndicatorsController extends Controller
             )->when(
                 $filters['call_received'],
                 fn($query, $value) => $query->whereDate('call_received', $filters['call_received'])
+            )->when(
+                $filters['end_date'],
+                fn($query, $value) => $query->where('transfer_brigade', '<=', $filters['end_date'])
+            )
+            ->when(
+                $filters['start_date'],
+                fn($query, $value) => $query->where('transfer_brigade', '>=', $filters['start_date'])
             );
         $indicators = $query->paginate(10);
         $regions = OdsAmbulanceRegions::all();
@@ -221,8 +231,6 @@ class OdsAmbulanceIndicatorsController extends Controller
     {
 
 
-
-
         $request->validate([
             'start_date' => 'required',
             'end_date' => 'required',
@@ -231,9 +239,8 @@ class OdsAmbulanceIndicatorsController extends Controller
         ]);
 
 
-
-        $results = OdsAmbulanceIndicators::whereBetween('call_received', [$request->start_date, $request->end_date])->where('call_region_coato',$request->region_coato)->count();
-        if ($results==0) {
+        $results = OdsAmbulanceIndicators::whereBetween('call_received', [$request->start_date, $request->end_date])->where('call_region_coato', $request->region_coato)->count();
+        if ($results == 0) {
             if ($file = $request->file("import_file")) {
                 try {
                     $med_data = new MedDataExcel();
@@ -243,7 +250,7 @@ class OdsAmbulanceIndicatorsController extends Controller
                     $med_data->region_coato = $request->region_coato;
                     $med_data->sanction = 0;
                     $med_data->save();
-                    ImportExcelJob::dispatch($med_data->id, $request->region_coato, public_path($med_data->file),$request->start_date, $request->end_date);
+                    ImportExcelJob::dispatch($med_data->id, $request->region_coato, public_path($med_data->file), $request->start_date, $request->end_date);
                     Session::flash('success', 'Маълумотлар текширувга юборилди! Тез орада маълумотлар юкланади.');
                     return back();
                 } catch (ValidationException $e) {
@@ -281,7 +288,7 @@ class OdsAmbulanceIndicatorsController extends Controller
             'call_region_coato' => $request->input('call_region_coato'),
             'end_date' => $request->input('end_date'),
             'start_date' => $request->input('start_date'),
-            'sanction' => $request->input('sanction')==3?0:$request->input('sanction')
+            'sanction' => $request->input('sanction') == 3 ? 0 : $request->input('sanction')
         ];
 
         $indicators = MedDataExcel::with('region')
@@ -296,21 +303,22 @@ class OdsAmbulanceIndicatorsController extends Controller
             )
             ->when(
                 $filters['end_date'],
-                fn($query, $value) => $query->where('end_date','<=', $filters['end_date'])
+                fn($query, $value) => $query->where('end_date', '<=', $filters['end_date'])
             )
             ->when(
                 $filters['start_date'],
-                fn($query, $value) => $query->where('start_date', '>=',$filters['start_date'])
+                fn($query, $value) => $query->where('start_date', '>=', $filters['start_date'])
             )
             ->paginate(15);
         $regions = OdsAmbulanceRegions::all();
 
-        return view('dashboard.pages.indicator-file',compact('indicators','regions'));
+        return view('dashboard.pages.indicator-file', compact('indicators', 'regions'));
     }
+
     public function delete_files($id)
     {
         $med_data = MedDataExcel::findOrFail($id);
-        OdsAmbulanceIndicators::where('excel_id',$med_data->id)->delete();
+        OdsAmbulanceIndicators::where('excel_id', $med_data->id)->delete();
         $med_data->delete();
 
         return redirect()->back()->with('success', 'Запись успешно удалена');
