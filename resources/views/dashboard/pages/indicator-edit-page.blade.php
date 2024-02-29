@@ -42,7 +42,7 @@
                                 </td>
                                 <td>
                                     <label>Заполнение карты вызова</label>
-                                    <select class="form-control" required name="filling_call_card">
+                                    <select class="form-control"  name="filling_call_card">
                                         <option></option>
                                         <option value="1" {{ $indicator->filling_call_card  == 1 ? 'selected' : '' }}>
                                             Истинный
@@ -56,7 +56,7 @@
                             <tr>
                                 <td>
                                     <label>Тип вызова </label>
-                                    <select class="form-control" required name="call_type_id">
+                                    <select class="form-control"  name="call_type_id">
                                         <option></option>
                                         @foreach ($call_types as $key => $call_type)
                                             <option
@@ -71,14 +71,14 @@
                                 </td>
                                 <td>
                                     <label>Номер КВ</label>
-                                    <input type="text" name="card_number" class="form-control" required
+                                    <input type="text" name="card_number" class="form-control"
                                            value="{{$indicator->card_number}}">
                                 </td>
                                 <td>
                                     <label>Дата приёма</label>
                                     <input type="date"
                                            value="{{ Carbon::parse($indicator->call_received)->isoFormat('YYYY-MM-DD')}}"
-                                           name="call_received" class="form-control" required>
+                                           name="call_received" class="form-control" >
                                 </td>
                             </tr>
                             <tr>
@@ -86,19 +86,19 @@
                                     <label>Время приёма</label>
                                     <input type="datetime-local"
                                            value="{{ $indicator->call_reception }}"
-                                           name="call_reception" class="form-control" required>
+                                           name="call_reception" class="form-control" >
                                 </td>
                                 <td>
                                     <label>Вр. нач. форм. КТ</label>
                                     <input type="datetime-local"
                                            value="{{$indicator->beginning_formation_ct}}"
-                                           name="beginning_formation_ct" class="form-control" required>
+                                           name="beginning_formation_ct" class="form-control" >
                                 </td>
                                 <td>
                                     <label>Время передачи вызова бригаде</label>
                                     <input type="datetime-local"
                                            value="{{$indicator->transfer_brigade}}"
-                                           name="transfer_brigade" class="form-control" required>
+                                           name="transfer_brigade" class="form-control" >
                                 </td>
                             </tr>
                             <tr>
@@ -106,19 +106,19 @@
                                     <label>Время выезда бригады.</label>
                                     <input type="datetime-local"
                                            value="{{$indicator->brigade_departure}}"
-                                           name="brigade_departure" class="form-control" required>
+                                           name="brigade_departure" class="form-control" >
                                 </td>
                                 <td>
                                     <label>Прибытие Бригады на место вызова</label>
                                     <input type="datetime-local"
                                            value="{{$indicator->arrival_brigade_place}}"
-                                           name="arrival_brigade_place" class="form-control" required>
+                                           name="arrival_brigade_place" class="form-control" >
                                 </td>
                                 <td>
                                     <label>Время началы транспортировки</label>
                                     <input type="datetime-local"
                                            value="{{$indicator->transportation_start}}"
-                                           name="transportation_start" class="form-control" required>
+                                           name="transportation_start" class="form-control" >
                                 </td>
                             </tr>
                             <tr>
@@ -126,13 +126,13 @@
                                     <label>Время прибытия на мед. Учреждение</label>
                                     <input type="datetime-local"
                                            value="{{$indicator->arrival_medical_center}}"
-                                           name="arrival_medical_center" class="form-control" required>
+                                           name="arrival_medical_center" class="form-control" >
                                 </td>
                                 <td>
                                     <label>время завершения вызова</label>
                                     <input type="datetime-local"
                                            value="{{$indicator->call_end}}"
-                                           name="call_end" class="form-control" required>
+                                           name="call_end" class="form-control" >
                                 </td>
                                 <td>
                                     <label>Время возвращения на подстанцию </label>
@@ -144,7 +144,7 @@
                             <tr>
                                 <td>
                                     <label>Бригада</label>
-                                    <select class="form-control" required name="brigade_id">
+                                    <select class="form-control"  name="brigade_id">
                                         <option></option>
                                         @foreach ($brigades as $key => $brigade)
                                             <option
@@ -164,7 +164,7 @@
                                 </td>
                                 <td>
                                     <label>Причина вызова</label>
-                                    <select class="form-control" required name="reason_id">
+                                    <select class="form-control"  name="reason_id">
                                         <option></option>
                                         @foreach ($reasons as $key => $reason)
                                             <option
@@ -181,7 +181,7 @@
                             <tr>
                                 <td>
                                     <label>Пол пациента</label>
-                                    <select class="form-control" required name="gender">
+                                    <select class="form-control"  name="gender">
                                         <option></option>
                                         <option value="Э/М" {{ $indicator->gender == "Э/М" ? 'selected' : '' }}>
                                             Э/М
@@ -197,20 +197,20 @@
                                 </td>
                                 <td>
                                     <label>Возраст пациента</label>
-                                    <input type="number" name="age" class="form-control" required
+                                    <input type="number" name="age" class="form-control"
                                            value="{{$indicator->age}}"
                                            min="0">
                                 </td>
                                 <td>
                                     <label>Диагноз по МКБ10</label>
-                                    <input type="text" name="diagnos" class="form-control" required
+                                    <input type="text" name="diagnos" class="form-control"
                                            value="{{$indicator->diagnos}}">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <label>Результат выезда</label>
-                                    <select class="form-control" required name="call_result_id">
+                                    <select class="form-control"  name="call_result_id">
                                         <option></option>
                                         @foreach ($call_results as $key => $call_result)
                                             <option
@@ -272,7 +272,7 @@
                                 </td>
                                 <td>
                                     <label>Место вызова</label>
-                                    <select class="form-control" required name="call_place_id">
+                                    <select class="form-control"  name="call_place_id">
                                         <option></option>
                                         @foreach ($call_places as $key => $call_place)
                                             <option
@@ -307,14 +307,14 @@
                                     <label for="brigade_call_time">Вр. доезда на выз.</label>
 
                                     <input type="time" name="travel_time"
-                                           value="{{$indicator->brigade_call_time}}" class="form-control" required>
+                                           value="{{$indicator->brigade_call_time}}" class="form-control" >
                                 </td>
                                 <td>
                                     <label for="travel_time">Вр.на прин.выз.бр.
                                         vaqti</label>
 
                                     <input type="time" name="brigade_call_time" class="form-control"
-                                           value="{{$indicator->travel_time}}" required>
+                                           value="{{$indicator->travel_time}}" >
                                 </td>
                             </tr>
                             </tbody>

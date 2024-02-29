@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('ods_ambulance_indicators', function (Blueprint $table) {
-            $table->string('filling_call_card', 255)->change();
-            $table->string('age', 255)->change();
+            $table->string('filling_call_card', 255)->change()->nullable();
+            $table->string('age', 255)->change()->nullable();
             $table->integer('excel_id')->nullable();
 
         });

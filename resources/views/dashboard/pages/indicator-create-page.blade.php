@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.default')
 @section('content')
 
-    <x-panel title="Янги тиббий маълумотларни яратинг/Создание новой медицинские данные">
+    <x-panel title="Янги тиббий маълумотларни яратинг">
         <form method="POST" action="{{ route('indicator.store') }}">
             @csrf
             <table class="table table-striped table-bordered align-middle">
@@ -294,7 +294,7 @@
                 <tr>
                     <td>
                         <label for="travel_time">Вр. доезда на выз.</label>
-                        <input type="time" name="travel_time" class="form-control" required>
+                        <input type="time" name="travel_time" class="form-control">
                     </td>
                     <td>
                         <label for="brigade_call_time">Вр.на прин.выз.бр.</label>

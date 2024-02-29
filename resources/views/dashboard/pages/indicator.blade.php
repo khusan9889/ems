@@ -11,14 +11,14 @@
     <x-panel title="Тез ёрдам. Скорая помощь.">
         <div class="d-flex justify-content-between mb-3">
             <h3>Тез ёрдам. Скорая помощь.</h3>
-            <a href="{{ route('indicator.create-page') }}" class="btn btn-success">Добавить</a>
+            <a href="{{ route('indicator.create-page') }}" class="btn btn-success">Янги қўшиш</a>
         </div>
         <div class="d-flex">
             <table id="data-table-default" class="table table-striped table-bordered align-middle">
                 <tr>
                     <form action="">
                         <td class="text-nowrap">
-                            <label>Области</label>
+                            <label>Вилоятлар</label>
                             <select class="form-control" name="call_region_coato" onchange="myFunction(this.value)">
                                 <option value="">Все</option>
                                 @foreach ($regions as $key => $region)
@@ -33,7 +33,7 @@
                             @enderror
                         </td>
                         <td class="text-nowrap">
-                            <label>Подстанция</label>
+                            <label>Подстанциялар</label>
                             <select class="form-control" name="substation_id">
                                 <option value="">Все</option>
                                 @foreach ($substations as $key => $substation)
@@ -48,7 +48,7 @@
                             @enderror
                         </td>
                         <td class="text-nowrap">
-                            <label>Бригады</label>
+                            <label>Бригадалар</label>
                             <select class="form-control" name="brigade_id">
                                 <option value="">Все</option>
                                 @foreach ($brigades as $key => $brigade)
@@ -63,7 +63,7 @@
                             @enderror
                         </td>
                         <td class="text-nowrap">
-                            <label>Статус одобрения</label>
+                            <label>Тасдиқлаш ҳолати</label>
                             <select class="form-control" name="call_result_id">
                                 <option value="">Все</option>
                                 @foreach ($call_results as $key => $call_result)
@@ -78,12 +78,17 @@
                             @enderror
                         </td>
                         <td class="text-nowrap">
-                            <label>Дата</label>
-                            <input class="form-control" type="date" name="call_received"
-                                   value="{{request('call_received')}}">
+                            <label>Дан</label>
+                            <input class="form-control" type="date" name="start_date"
+                                   value="{{request('start_date')}}">
                         </td>
                         <td class="text-nowrap">
-                            <label>Подтвердите статус</label>
+                            <label>Гача</label>
+                            <input class="form-control" type="date" name="end_date"
+                                   value="{{request('end_date')}}">
+                        </td>
+                        <td class="text-nowrap">
+                            <label>Ҳолати</label>
                             <div class="d-flex justify-content-center">
                                 <select class="form-control" name="confirm_status">
                                     <option value="">Все</option>
@@ -99,7 +104,7 @@
                                 @error('confirm_status')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
-                                <button type="submit" class="btn btn-sm btn-primary ml-2">Применить</button>
+                                <button type="submit" class="btn btn-sm btn-primary ml-2">фильтр</button>
                             </div>
                         </td>
                     </form>
@@ -113,7 +118,7 @@
                 <thead>
                 <tr>
                     <th class="text-nowrap">№</th>
-                    <th class="text-nowrap">Область</th>
+                    <th class="text-nowrap">Вилоят</th>
                     <th class="text-nowrap">Подстанция принятия вызова</th>
                     <th class="text-nowrap">Заполнение карты вызова</th>
                     <th class="text-nowrap">Тип вызова</th>
@@ -145,7 +150,7 @@
                     <th class="text-nowrap">Вр.на прин.выз.бр.</th>
                     <th class="text-nowrap">Вр. доезда на выз.</th>
                     <th class="text-nowrap">Диагноз</th>
-                    <th class="text-nowrap">Действия</th>
+                    <th class="text-nowrap">Амаллар</th>
                 </tr>
                 </thead>
                 <tbody>
