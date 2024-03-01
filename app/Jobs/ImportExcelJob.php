@@ -16,8 +16,7 @@ class ImportExcelJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $tries = 3;
-    public $backoff = 60;
+    public $tries = 5;
 
     protected $excel_id;
     protected $region_coato;

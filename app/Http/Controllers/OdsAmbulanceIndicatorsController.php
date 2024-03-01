@@ -250,7 +250,7 @@ class OdsAmbulanceIndicatorsController extends Controller
                     $med_data->region_coato = $request->region_coato;
                     $med_data->sanction = 0;
                     $med_data->save();
-                    ImportExcelJob::dispatch($med_data->id, $request->region_coato, public_path($med_data->file), $request->start_date, $request->end_date)->timeout(3600)->tries(10);
+                    ImportExcelJob::dispatch($med_data->id, $request->region_coato, public_path($med_data->file), $request->start_date, $request->end_date);
                     Session::flash('success', 'Маълумотлар текширувга юборилди! Тез орада маълумотлар юкланади.');
                     return back();
                 } catch (ValidationException $e) {
