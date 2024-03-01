@@ -39,7 +39,7 @@ services:
       - ./storage:/var/www/storage
       - ./public:/var/www/public
       - ./public/build:/var/www/public/build
-      - TELESCOPE_ENABLED=true
+#       - TELESCOPE_ENABLED=true
       - ./php.ini:/usr/local/etc/php/php.ini
     networks:
       - app-network
