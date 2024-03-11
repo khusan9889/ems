@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'permission'], function () {
+
         Route::get('/acs/list', [ACSController::class, 'index']);
         Route::get('fullform-acs/{id}', [ACSController::class, 'fullform'])->name('full-table');
 
@@ -38,12 +39,12 @@ Route::group(['middleware' => 'auth'], function () {
         });
 
         Route::group(['prefix' => 'polytrauma'], function () {
-            Route::get('polyt-create-page', [PolytraumaController::class, 'create'])->name('polytrauma.polyt-create-page');
-            Route::post('add', [PolytraumaController::class, 'store'])->name('polytrauma.add');
-            Route::get('/polyt-edit-page/{id}', [PolytraumaController::class, 'edit'])->name('polyt-edit-page');
-            Route::put('/update-data/{id}', [PolytraumaController::class, 'update'])->name('polyt-update-data');
-            Route::delete('/delete/{id}', [PolytraumaController::class, 'destroy'])->name('polytrauma.delete');
-        });
+
+        });  Route::get('polyt-create-page', [PolytraumaController::class, 'create'])->name('polytrauma.polyt-create-page');
+        Route::post('add', [PolytraumaController::class, 'store'])->name('polytrauma.add');
+        Route::get('/polyt-edit-page/{id}', [PolytraumaController::class, 'edit'])->name('polyt-edit-page');
+        Route::put('/update-data/{id}', [PolytraumaController::class, 'update'])->name('polyt-update-data');
+        Route::delete('/delete/{id}', [PolytraumaController::class, 'destroy'])->name('polytrauma.delete');
 
         Route::group(['prefix' => 'users'], function () {
             Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('users.delete');
