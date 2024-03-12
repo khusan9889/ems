@@ -39,13 +39,12 @@ services:
       - ./storage:/var/www/storage
       - ./public:/var/www/public
       - ./public/build:/var/www/public/build
-#       - TELESCOPE_ENABLED=true
       - ./php.ini:/usr/local/etc/php/php.ini
     networks:
       - app-network
 
   queue:
-    container_name: l_queue
+    container_name: queue
     build:
       context: .
       dockerfile: Dockerfile
@@ -54,7 +53,7 @@ services:
     working_dir: /var/www
     volumes:
       - ./:/var/www
-    command: php artisan queue:work
+    command: php artisan queue:work --timeout=10000000
     environment:
       - QUEUE_CONNECTION=database
     networks:
