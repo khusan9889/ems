@@ -53,6 +53,7 @@ services:
     working_dir: /var/www
     volumes:
       - ./:/var/www
+      - ./laravel-worker.conf:/etc/supervisor/conf.d/laravel-worker.conf
     command: php artisan queue:work --timeout=10000000
     environment:
       - QUEUE_CONNECTION=database
