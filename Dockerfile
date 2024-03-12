@@ -38,6 +38,7 @@ COPY . /var/www
 # RUN npm run build
 
 RUN php artisan storage:link
+RUN composer install --no-autoloader
 
 # RUN mkdir /var/www/resources/build
 
