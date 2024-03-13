@@ -38,7 +38,7 @@ COPY . /var/www
 # RUN npm run build
 
 #RUN composer install --no-autoloader
-#RUN php artisan storage:link
+RUN php artisan storage:link
 
 # RUN mkdir /var/www/resources/build
 
@@ -50,7 +50,8 @@ COPY --chown=www:www . /var/www
 # Change current user to www
 USER www
 
-# RUN chmod -R 755 /var/www/public
+RUN chmod -R 755 /var/www/public
+RUN chmod -R 755 /var/www/storage
 
 EXPOSE 9000
 CMD ["php-fpm"]
