@@ -8,6 +8,7 @@ use App\Models\OdsAmbulanceHospitals;
 use App\Models\OdsAmbulanceIndicators;
 use App\Models\OdsAmbulanceReferences;
 use App\Models\OdsAmbulanceSubstations;
+use Exception;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\ToCollection;
@@ -35,12 +36,13 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
 
     public function collection(Collection $rows)
     {
+        try {
 
-        foreach ($rows as $row) {
-            $data_priema = strtotime($row['data_priema']);
-            $data_p = date("Y-m-d", $data_priema);
-            if ($data_p >= $this->start_date and $data_p <= $this->end_date and $data_p != null and $row['peredaca_brigade'] != null) {
-                try {
+
+            foreach ($rows as $row) {
+                $data_priema = strtotime($row['data_priema']);
+                $data_p = date("Y-m-d", $data_priema);
+                if ($data_p >= $this->start_date and $data_p <= $this->end_date and $data_p != null and $row['peredaca_brigade'] != null) {
                     $substation = OdsAmbulanceSubstations::findOrCreate($row['podstanciia'], $this->region_coato);
                     $type = OdsAmbulanceReferences::findOrCreate($row['tip_vyzova'], 'call_types');
                     $reason = OdsAmbulanceReferences::findOrCreate($row['povod'], 'reasons');
@@ -80,13 +82,14 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
                         'diagnosis_id' => $diagnosis,
                         'excel_id' => $this->excel_id
                     ]);
-                } catch(\Exception $e) {
-                    $errorMessage = "[" . date("Y-m-d H:i:s") . "] Xatolik: " . $e->getMessage() . " Qatorda: " . json_encode($row) . "\n";
-                    file_put_contents("import_errors.log", $errorMessage, FILE_APPEND);
+
                 }
+
+
             }
-
-
+        } catch (Exception $e) {
+            $errorMessage = "[" . date("Y-m-d H:i:s") . "] Xatolik: " . $e->getMessage() . " Qatorda: " . json_encode($row) . "\n";
+            file_put_contents("import_errors.log", $errorMessage, FILE_APPEND);
         }
 
 
