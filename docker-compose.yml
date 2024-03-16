@@ -79,3 +79,16 @@ services:
         - ./storage/app:/var/www/storage/app
     networks:
         - app-network
+
+  supervisor:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      container_name: supervisor
+      volumes:
+        - ./src:/var/www
+      networks:
+        - app-network
+    depends_on:
+      - db
+      - app
