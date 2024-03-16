@@ -89,6 +89,6 @@ services:
         - ./src:/var/www
       networks:
         - app-network
-    depends_on:
-      - db
-      - app
+      depends_on:
+        - db
+        - app
