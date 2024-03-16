@@ -43,26 +43,6 @@ services:
     networks:
       - app-network
 
-  queue:
-    container_name: queue
-    build:
-      context: .
-      dockerfile: Dockerfile
-    restart: unless-stopped
-    tty: true
-    working_dir: /var/www
-    volumes:
-      - ./:/var/www
-#       - ./laravel-worker.conf:/etc/supervisor/conf.d/laravel-worker.conf
-    command: php artisan queue:work --timeout=10000000
-    environment:
-      - QUEUE_CONNECTION=database
-    networks:
-      - app-network
-    depends_on:
-      - db
-      - app
-
   nginx:
     image: nginx:1.19.8-alpine
     container_name: nginx
@@ -81,12 +61,15 @@ services:
         - app-network
 
   supervisor:
-      build:
-        context: .
-        dockerfile: Dockerfile
       container_name: supervisor
+      build:
+        context: ./supervisor
+        dockerfile: Dockerfile
+      restart: unless-stopped
+      tty: true
+      working_dir: /var/www
       volumes:
-        - ./src:/var/www
+        - ./:/var/www
       networks:
         - app-network
       depends_on:
