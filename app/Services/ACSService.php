@@ -104,12 +104,13 @@ class ACSService implements ACSServiceInterface
 
         // Filter by hospitalization date
         if (isset($filters['hospitalization_date'])) {
-            $query->where('hospitalization_date', 'like', "%{$filters['hospitalization_date']}%");
+            $query->whereDate('hospitalization_date', '>', $filters['hospitalization_date']);
+
         }
 
         // Filter by discharge date
         if (isset($filters['discharge_date'])) {
-            $query->where('discharge_date', 'like', "%{$filters['discharge_date']}%");
+            $query->whereDate('discharge_date', '<', $filters['discharge_date']);
         }
 
         if (isset($filters['physician_full_name'])) {
@@ -118,7 +119,7 @@ class ACSService implements ACSServiceInterface
 
 
 
-        $perPage = 10; // Adjust the number of records per page as needed
+        $perPage = 20; // Adjust the number of records per page as needed
         $results = $query->paginate($perPage);
 
         return $results;

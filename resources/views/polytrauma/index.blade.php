@@ -52,11 +52,11 @@
                         value="{{ request('full_name') }}">
                 </td>
                 <td>
-                    <input class="form-control form-control-sm" type="text" name="hospitalization_date"
+                    <input class="form-control form-control-sm" type="date" name="hospitalization_date"
                         value="{{ request('hospitalization_date') }}">
                 </td>
                 <td>
-                    <input class="form-control form-control-sm" type="text" name="discharge_date"
+                    <input class="form-control form-control-sm" type="date" name="discharge_date"
                         value="{{ request('discharge_date') }}">
                 </td>
                 <td>
@@ -106,8 +106,8 @@
                     <td>{{ $item->department->name }}</td>
                     <td>{{ $item->history_disease }}</td>
                     <td>{{ $item->full_name }}</td>
-                    <td>{{ $item->hospitalization_date }}</td>
-                    <td>{{ $item->discharge_date }}</td>
+                    <td>{{ \Carbon\Carbon::parse($item->hospitalization_date)->format('Y-m-d H:i') }}</td>
+                    <td>{{ \Carbon\Carbon::parse($item->discharge_date)->format('Y-m-d H:i') }} </td>
                     <td>{{ $item->hospitalization_channels }}</td>
                     <td>{{ $item->physician_full_name }}</td>
                     {{-- <td>{{ $item->stat_department_full_name }}</td> --}}
