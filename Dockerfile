@@ -50,8 +50,8 @@ COPY --chown=www:www . /var/www
 # Change current user to www
 USER www
 
-RUN chmod -R 755 /var/www/public
-RUN chmod -R 755 /var/www/storage
+#RUN chmod -R 755 /var/www/public
+#RUN chmod -R 755 /var/www/storage
 
 EXPOSE 9000
 CMD ["php-fpm"]
