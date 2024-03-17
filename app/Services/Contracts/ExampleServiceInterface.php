@@ -2,7 +2,7 @@
 
 namespace App\Services\Contracts;
 
-interface DepartmentServiceInterface
+interface ExampleServiceInterface
 {
     public function filter();
 

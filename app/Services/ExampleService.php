@@ -6,7 +6,7 @@ use App\Models\Example;
 use App\Services\Contracts\ExampleServiceInterface;
 use App\Traits\Crud;
 
-class BranchService implements ExampleServiceInterface
+class ExampleService implements ExampleServiceInterface
 {
     use Crud;
 
