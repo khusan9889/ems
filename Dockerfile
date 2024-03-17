@@ -12,6 +12,7 @@ RUN apt-get update \
         libxml2-dev \
         zip \
         unzip \
+        supervisor \
         zlib1g-dev \
         libpq-dev \
         libzip-dev \
