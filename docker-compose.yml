@@ -25,23 +25,23 @@ services:
         - POSTGRES_DATABASE=${DB_DATABASE}
     networks:
         - app-network
-#
-#   app:
-#     container_name: app
-#     build:
-#         context: .
-#         dockerfile: Dockerfile
-#     image: php-laravel-7.0
-#     restart: unless-stopped
-#     tty: true
-#     working_dir: /var/www
-#     volumes:
-#         - ./storage:/var/www/storage
-#         - ./public:/var/www/public
-#         - ./public/build:/var/www/public/build
-#         - ./php.ini:/usr/local/etc/php/php.ini
-#     networks:
-#         - app-network
+
+  app:
+    container_name: app
+    build:
+        context: .
+        dockerfile: Dockerfile
+    image: php-laravel-7.0
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www
+    volumes:
+        - ./storage:/var/www/storage
+        - ./public:/var/www/public
+        - ./public/build:/var/www/public/build
+        - ./php.ini:/usr/local/etc/php/php.ini
+    networks:
+        - app-network
 
   supervisor:
     container_name: supervisor
