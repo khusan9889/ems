@@ -24,7 +24,7 @@ RUN apt-get install -y nodejs npm
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
   && docker-php-ext-install pdo pdo_pgsql pgsql zip bcmath gd
 
-RUN apt-get update && apt-get install --no-cache supervisor
+RUN apt-get update && apt-get install supervisor
 
 RUN mkdir -p "/etc/supervisor/logs"
 
