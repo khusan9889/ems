@@ -68,5 +68,4 @@ USER www
 #RUN chmod -R 755 /var/www/storage
 
 EXPOSE 9000
-CMD ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisor/supervisord.conf"]
-
+CMD ["php-fpm"]
