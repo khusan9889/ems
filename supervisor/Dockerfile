@@ -1,6 +1,6 @@
 FROM php:8.1-fpm-alpine
 
-RUN docker-php-ext-install pdo pdo_pgsql
+RUN #docker-php-ext-install pdo pdo_pgsql
 
 RUN apk update && apk add --no-cache supervisor
 

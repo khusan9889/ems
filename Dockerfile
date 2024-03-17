@@ -24,6 +24,13 @@ RUN apt-get install -y nodejs npm
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
   && docker-php-ext-install pdo pdo_pgsql pgsql zip bcmath gd
 
+RUN apt-get update && apt-get add --no-cache supervisor
+
+RUN mkdir -p "/etc/supervisor/logs"
+
+
+COPY /supervisor/supervisord.conf /etc/supervisor/supervisord.conf
+
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 RUN groupadd -g 1000 www
@@ -61,4 +68,5 @@ USER www
 #RUN chmod -R 755 /var/www/storage
 
 EXPOSE 9000
-CMD ["php-fpm"]
+CMD ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisor/supervisord.conf"]
+
