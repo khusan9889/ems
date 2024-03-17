@@ -1,12 +1,18 @@
-FROM php:8.1-fpm-alpine
+FROM phpdockerio/php:8.2-cli
+WORKDIR "/var/www"
 
-RUN #docker-php-ext-install pdo pdo_pgsql
+LABEL author="Ilhom"
 
-RUN apk update && apk add --no-cache supervisor
+ENV APP_ROOT=/var/www/html QUEUE_DRIVER=database NUM_PROCS=4 OPTIONS=
 
-RUN mkdir -p "/etc/supervisor/logs"
+RUN apt-get update \
+    && apt-get -y --no-install-recommends install \
+    supervisor \
+    php8.2-mysql \
+    php8.2-pgsql \
+    php8.2-redis \
+    && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
+ADD /supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 
-COPY supervisord.conf /etc/supervisor/supervisord.conf
-
-CMD ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisor/supervisord.conf"]
+CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
