@@ -13,6 +13,6 @@ RUN apt-get update \
     php8.2-redis \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
-COPY /supervisor/supervisord.conf /etc/supervisor/supervisord.conf
+ADD supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 
 CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
