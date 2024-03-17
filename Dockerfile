@@ -33,11 +33,11 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 COPY . /var/www
 
 
-COPY composer.json composer.lock ./
-RUN composer install --no-dev --optimize-autoloader
+#COPY composer.json composer.lock ./
+#RUN composer install --no-dev --optimize-autoloader
 
 # Run composer install
-# RUN composer install
+RUN composer install
 # RUN composer dump-autoload
 
 # RUN npm install
