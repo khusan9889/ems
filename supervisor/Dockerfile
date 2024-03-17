@@ -3,7 +3,7 @@ WORKDIR "/var/www"
 
 LABEL author="Ilhom"
 
-ENV APP_ROOT=/var/www/html QUEUE_DRIVER=database NUM_PROCS=4 OPTIONS=
+ENV APP_ROOT=/var/www QUEUE_DRIVER=database NUM_PROCS=4 OPTIONS=
 
 RUN apt-get update \
     && apt-get -y --no-install-recommends install \
@@ -13,6 +13,6 @@ RUN apt-get update \
     php8.2-redis \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
-ADD /etc/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
+ADD supervisord.conf /etc/supervisor/supervisord.conf
 
 CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
