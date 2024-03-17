@@ -15,8 +15,7 @@ RUN apt-get update \
         supervisor \
         zlib1g-dev \
         libpq-dev \
-        libzip-dev \
-    && docker-php-ext-install zip
+        libzip-dev
 
 
 RUN apt-get install -y nodejs npm
