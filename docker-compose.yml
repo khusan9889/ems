@@ -45,18 +45,28 @@ services:
     depends_on:
       - db
 
-#   supervisor:
-#     image: supervisor
-#     volumes:
-#       - .:/var/www
-#       - ./laravel-worker.conf:/etc/supervisor/conf.d/laravel-worker.conf
-#     networks:
-#         - app-network
-#     depends_on:
-#       - app
-#       - nginx
-#     command:
-#       - supervisord
+  supervisor:
+    container_name: supervisor
+    build:
+         context: ./supervisor
+         dockerfile: Dockerfile
+    image: vhar/laravel-supervisord:latest
+    restart: unless-stopped
+    environment:
+      - APP_ROOT=${APP_ROOT}
+      - QUEUE_DRIVER=${QUEUE_CONNECTION}
+      - OPTIONS=${QUEUE_OPTIONS}
+      - NUM_PROCS=${NUM_PROCS}
+    volumes:
+      - ./storage:/var/www/storage
+      - ./:${APP_ROOT}
+    networks:
+        - app-network
+    depends_on:
+      - app
+      - nginx
+    command:
+      - supervisord
 
   nginx:
     image: nginx:1.19.8-alpine
