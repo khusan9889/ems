@@ -59,6 +59,9 @@ services:
       - ./:${APP_ROOT}
     networks:
         - app-network
+    depends_on:
+      - db
+      - app
 
 
   nginx:
