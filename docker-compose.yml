@@ -63,7 +63,7 @@ services:
     networks:
         - app-network
     depends_on:
-      - app
+#       - app
       - nginx
     command:
       - supervisord
