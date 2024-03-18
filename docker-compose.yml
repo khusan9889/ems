@@ -50,7 +50,7 @@ services:
     build:
          context: ./supervisor
          dockerfile: Dockerfile
-#     image: vhar/laravel-supervisord:latest
+    image: vhar/laravel-supervisord:latest
     restart: unless-stopped
     environment:
       - APP_ROOT=${APP_ROOT}

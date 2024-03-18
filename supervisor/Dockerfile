@@ -13,7 +13,7 @@ RUN apt-get update \
     php8.2-redis \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
-RUN #mkdir -p "/etc/supervisor/logs"
+#RUN mkdir -p "/etc/supervisor/logs"
 
 ADD supervisord.conf /etc/supervisor/supervisord.conf
 
