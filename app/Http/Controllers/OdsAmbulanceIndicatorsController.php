@@ -288,7 +288,7 @@ class OdsAmbulanceIndicatorsController extends Controller
             'call_region_coato' => $request->input('call_region_coato'),
             'end_date' => $request->input('end_date'),
             'start_date' => $request->input('start_date'),
-            'sanction' => $request->input('sanction') == 3 ? 0 : $request->input('sanction')
+            'sanction' => $request->input('sanction')
         ];
 
         $indicators = MedDataExcel::with('region')
@@ -299,7 +299,7 @@ class OdsAmbulanceIndicatorsController extends Controller
             )
             ->when(
                 $filters['sanction'],
-                fn($query, $value) => $query->where('sanction', $filters['sanction'])
+                fn($query, $value) => $query->where('sanction', $filters['sanction']==3?0:$filters['sanction'])
             )
             ->when(
                 $filters['end_date'],

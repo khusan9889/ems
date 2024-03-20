@@ -1,3 +1,4 @@
+
 @extends('dashboard.layouts.default')
 
 @php
