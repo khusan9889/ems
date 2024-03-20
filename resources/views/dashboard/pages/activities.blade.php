@@ -1,8 +1,7 @@
 @extends('dashboard.layouts.default')
 
 @section('content')
-<h1 class="page-header">Активности</h1>
-<x-panel>
+<x-panel title="Активности">
     <div class="table-responsive">
         <table id="data-table-default" class="table table-striped table-bordered align-middle">
             <thead>
