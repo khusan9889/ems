@@ -40,8 +40,6 @@ services:
         - ./public:/var/www/public
         - ./public/build:/var/www/public/build
         - ./php.ini:/usr/local/etc/php/php.ini
-    command: sh -c "composer install --ignore-platform-reqs && php artisan key:generate"
-
     networks:
         - app-network
     depends_on:
