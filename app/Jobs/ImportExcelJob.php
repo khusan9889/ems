@@ -45,11 +45,11 @@ class ImportExcelJob implements ShouldQueue
 
     public function failed(\Exception $exception)
     {
-        $errorMessage = "[" . date("Y-m-d H:i:s") . "] Xatolik: " . $exception ."\n";
-        file_put_contents("import_errors.log", $errorMessage, FILE_APPEND);
         $med_data = MedDataExcel::findOrFail($this->excel_id);
         $med_data->sanction=2;
         $med_data->save();
+        $errorMessage = "[" . date("Y-m-d H:i:s") . "] Xatolik: " . $exception ."\n";
+        file_put_contents("import_errors.log", $errorMessage, FILE_APPEND);
     }
 
 
