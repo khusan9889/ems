@@ -48,7 +48,7 @@
                                     onchange="myFunction(this.value)">
                                 @foreach ($regions as $key => $region)
                                     <option
-                                        value="{{ $region->coato }}" {{ request('region_coato    ') == $region->coato ? 'selected' : '' }}>
+                                        value="{{ $region->coato }}" {{ request('region_coato') == $region->coato ? 'selected' : '' }}>
                                         {{ $region->name }}
                                     </option>
                                 @endforeach
