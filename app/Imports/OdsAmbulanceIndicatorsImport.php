@@ -36,7 +36,7 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
 
     public function collection(Collection $rows)
     {
-//        try {
+        try {
 
 
             foreach ($rows as $row) {
@@ -87,15 +87,10 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
 
 
             }
-//        } catch (Exception $e) {
-//            $errorMessage = "[" . date("Y-m-d H:i:s") . "] Xatolik: " . $e->getMessage() . " Qatorda: " . json_encode($row) . "\n";
-//            file_put_contents("import_errors.log", $errorMessage, FILE_APPEND);
-//        }
-
-
-//            $called_person = OdsAmbulanceReferences::findOrCreate($row['vyzvavsii'], 'called_persons');
-//                'beginning_formation_ct' => $row['data_priema'] . ' ' . $row['vr_nac_form_kt'],
-//                'called_person_id' => $called_person,
+        } catch (Exception $e) {
+            $errorMessage = "[" . date("Y-m-d H:i:s") . "] Xatolik: " . $e->getMessage() . " Qatorda: " . json_encode($row) . "\n";
+            file_put_contents("import_errors.log", $errorMessage, FILE_APPEND);
+        }
 
     }
 
