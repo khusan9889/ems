@@ -229,7 +229,6 @@ class OdsAmbulanceIndicatorsController extends Controller
 
     public function importExcel(Request $request)
     {
-        dd($request->file("import_file"));
 
 
         $request->validate([
@@ -251,6 +250,8 @@ class OdsAmbulanceIndicatorsController extends Controller
                     $med_data->region_coato = $request->region_coato;
                     $med_data->sanction = 0;
                     $med_data->save();
+                    dd($request->file("import_file"));
+
                     ImportExcelJob::dispatch($med_data->id, $request->region_coato, public_path($med_data->file), $request->start_date, $request->end_date);
                     Session::flash('success', 'Маълумотлар текширувга юборилди! Тез орада маълумотлар юкланади.');
                     return back();
