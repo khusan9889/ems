@@ -229,7 +229,7 @@ class OdsAmbulanceIndicatorsController extends Controller
 
     public function importExcel(Request $request)
     {
-        dd($request->all());
+        dd($request->file("import_file"));
 
 
         $request->validate([
