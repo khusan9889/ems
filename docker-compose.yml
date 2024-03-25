@@ -26,24 +26,24 @@ services:
     networks:
         - app-network
 
-  app:
-    container_name: app
-    build:
-        context: .
-        dockerfile: Dockerfile
-    image: php-laravel-7.0
-    restart: unless-stopped
-    tty: true
-    working_dir: /var/www
-    volumes:
-        - ./storage:/var/www/storage
-        - ./public:/var/www/public
-        - ./public/build:/var/www/public/build
-        - ./php.ini:/usr/local/etc/php/php.ini
-    networks:
-        - app-network
-    depends_on:
-      - db
+#   app:
+#     container_name: app
+#     build:
+#         context: .
+#         dockerfile: Dockerfile
+#     image: php-laravel-7.0
+#     restart: unless-stopped
+#     tty: true
+#     working_dir: /var/www
+#     volumes:
+#         - ./storage:/var/www/storage
+#         - ./public:/var/www/public
+#         - ./public/build:/var/www/public/build
+#         - ./php.ini:/usr/local/etc/php/php.ini
+#     networks:
+#         - app-network
+#     depends_on:
+#       - db
 
   nginx:
     image: nginx:1.19.8-alpine
@@ -61,20 +61,20 @@ services:
         - ./storage/app:/var/www/storage/app
     networks:
         - app-network
-
-  queue:
-    container_name: queue
-    build:
-      context: .
-      dockerfile: supervisor.dockerfile
-    restart: unless-stopped
-    tty: true
-    working_dir: /var/www
-    volumes:
-      - ./:/var/www
-      - ./laravel-worker.conf:/etc/supervisor/conf.d/worker.conf
-    networks:
-      - app-network
-    depends_on:
-      - db
-      - app
+#
+#   queue:
+#     container_name: queue
+#     build:
+#       context: .
+#       dockerfile: supervisor.dockerfile
+#     restart: unless-stopped
+#     tty: true
+#     working_dir: /var/www
+#     volumes:
+#       - ./:/var/www
+#       - ./laravel-worker.conf:/etc/supervisor/conf.d/worker.conf
+#     networks:
+#       - app-network
+#     depends_on:
+#       - db
+#       - app
