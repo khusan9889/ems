@@ -55,10 +55,10 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
                     OdsAmbulanceIndicators::create([
                         'call_region_coato' => $this->region_coato,
                         'substation_id' => $substation,
-                        'filling_call_card' => $row['kv_zapolnena'],
+                        'filling_call_card' =>strtolower(trim($row['kv_zapolnena']))==strtolower("Да")?true:false,
                         'call_type_id' => $type,
                         'card_number' => $row['pp'],
-                        'call_received' => strtolower(trim($row['data_priema']))==strtolower("Да")?true:false,
+                        'call_received' => $row['data_priema'],
                         'call_reception' => $data_p . ' ' . $row['vremia_priema'],
                         'transfer_brigade' => $row['peredaca_brigade'],
                         'brigade_departure' => $row['vremia_vyezda_br'],
