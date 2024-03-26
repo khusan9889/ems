@@ -42,7 +42,7 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
                 $data_p = date("Y-m-d", $data_priema);
 
 //                if ($data_p >= $this->start_date and $data_p <= $this->end_date and $data_p != null and $row['peredaca_brigade'] != null) {
-                if (strlen(trim($row['peredaca_brigade']))== 10 and strlen(trim($row['peredaca_brigade']))>=10 and strlen(trim($row['vremia_vyezda_br']))>=10 and strlen(trim($row['pribytie_na_vyz']))>=10) {
+                if (strlen(trim($row['peredaca_brigade']))== 19 and strlen(trim($row['vremia_vyezda_br']))==19 and strlen(trim($row['pribytie_na_vyz']))==19) {
                     $substation = OdsAmbulanceSubstations::findOrCreate($row['podstanciia'], $this->region_coato);
                     $type = OdsAmbulanceReferences::findOrCreate($row['tip_vyzova'], 'call_types');
 //                    $reason = OdsAmbulanceReferences::findOrCreate($row['povod'], 'reasons');
