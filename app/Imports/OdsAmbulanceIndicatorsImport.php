@@ -10,6 +10,7 @@ use App\Models\OdsAmbulanceReferences;
 use App\Models\OdsAmbulanceSubstations;
 use Exception;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
@@ -36,8 +37,11 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
 
     public function collection(Collection $rows)
     {
+        try {
+                DB::beginTransaction();
 
             foreach ($rows as $row) {
+
                 $data_priema = strtotime(trim($row['data_priema']));
                 $data_p = date("Y-m-d", $data_priema);
 
@@ -87,10 +91,14 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
 
 
             }
-//            try {} catch (Exception $e) {
-//                $errorMessage = "[" . date("Y-m-d H:i:s") . "] Error: " . $e->getMessage() . " Line: " . json_encode($row) . "\n";
-//                file_put_contents("import_errors.log", $errorMessage, FILE_APPEND);
-//            }
+            DB::commit();
+
+
+        } catch (Exception $e) {
+            DB::rollback();
+            $errorMessage = "[" . date("Y-m-d H:i:s") . "] Error: " . $e->getMessage() . " Line: " . json_encode($row) . "\n";
+                file_put_contents("import_errors.log", $errorMessage, FILE_APPEND);
+            }
 
     }
 
