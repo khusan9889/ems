@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMapping;
@@ -21,7 +22,7 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 use Throwable;
 
 
-class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHeadingRow, WithChunkReading, WithMapping#, WithValidation
+class OdsAmbulanceIndicatorsImport implements ToCollection, WithHeadingRow, WithChunkReading, WithMapping,WithBatchInserts
 {
     protected $excel_id;
     protected $region_coato;
@@ -167,53 +168,14 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
         return $row;
     }
 
-    public function onError(Throwable $e)
-    {
-        // TODO: Implement onError() method.
-    }
-
     public function chunkSize(): int
     {
-        return 1000;
+        return 5000;
     }
 
-//    public function rules(): array
-//    {
-//
-//        return [
-//            '*.peredaca_brigade' => 'required|date',
-//            '*.vremia_vyezda_br' => 'required|date',
-////            '*.pribytie_na_vyz' => 'required|date',
-////            '*.pp' => 'required|integer',
-////            '*.podstanciia' => 'required',
-////            '*.kv_zapolnena' => ['required', Rule::in(["да", "нет"])],
-////            '*.tip_vyzova' => 'required|string',
-////            '*.data_priema' => [
-////                'required',
-////                'date',
-////                'after_or_equal:'.$this->start_date,
-////                'before_or_equal:'.$this->end_date,
-////            ],
-//            '*.vremia_priema' => 'required',
-////            '*.vr_nac_form_kt' => 'required',
-////            '*.nacalo_transp_ki' => 'nullable',
-////            '*.prib_ie_v_medorg' => 'nullable',
-////            '*.okoncanie_vyzova' => 'required|date',
-////            '*.vozvr_nie_na_pst' => 'nullable',
-////            '*.brigada' => 'required',
-////            '*.adres' => 'nullable',
-////            '*.povod' => 'required',
-////            '*.pol' => 'nullable',
-////            '*.vozrast' => ['required', new ExcelAgeRule()],
-////            '*.diagnoz' => 'required|string',
-////            '*.rezultat_vyezda' => 'required',
-////            '*.mesto_gospit' => 'nullable',
-////            '*.rez_tat_gosp_cii' => 'nullable',
-////            '*.vyzvavsii' => 'required',
-////            '*.mesto_vyzova' => 'required',
-//            '*.vr_doezda_na_vyz' => 'required',
-//            '*.vrna_prinvyzbr' => 'required',
-//            '*.kod_mkb' => 'nullable',
-//        ];
-//    }
+    public function batchSize(): int
+    {
+        return 5000;
+    }
+
 }

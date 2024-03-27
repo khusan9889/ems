@@ -16,8 +16,8 @@ class ImportExcelJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $tries = 1;
-
+//    public $tries = 1;
+    public $timeout = 0;
     protected $excel_id;
     protected $region_coato;
     protected $file;
@@ -27,6 +27,7 @@ class ImportExcelJob implements ShouldQueue
         $this->excel_id = $excel_id;
         $this->region_coato = $region_coato;
         $this->file = $file;
+
     }
 
 
