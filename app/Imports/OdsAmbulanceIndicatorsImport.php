@@ -38,16 +38,14 @@ class OdsAmbulanceIndicatorsImport implements ToModel, SkipsOnError, WithHeading
 
     public function model(array $row)
     {
+
+    try {
+
+        DB::commit();
+        DB::beginTransaction();
+
         $data_priema = strtotime(trim($row['data_priema']));
         $data_p = date("Y-m-d", $data_priema);
-
-        file_put_contents("import_errors.log",  strlen(trim($row['data_priema']))."== 10 \n", FILE_APPEND);
-        file_put_contents("import_errors.log",  strlen(trim($row['peredaca_brigade']))."== 19 \n", FILE_APPEND);
-        file_put_contents("import_errors.log",  strlen(trim($row['vremia_vyezda_br']))."== 19 \n", FILE_APPEND);
-        file_put_contents("import_errors.log",  strlen(trim($row['pribytie_na_vyz']))."== 19 \n", FILE_APPEND);
-        file_put_contents("import_errors.log",  strlen(trim($row['vrna_prinvyzbr']))."== 8 \n", FILE_APPEND);
-        file_put_contents("import_errors.log",  strlen(trim($row['vr_doezda_na_vyz']))."== 8 \n", FILE_APPEND);
-
 
         if (strlen(trim($row['data_priema']))== 10 and strlen(trim($row['peredaca_brigade']))== 19 and strlen(trim($row['vremia_vyezda_br']))==19 and strlen(trim($row['pribytie_na_vyz']))==19 and strlen(trim($row['vrna_prinvyzbr']))==8 and strlen(trim($row['vr_doezda_na_vyz']))==8) {
             $substation = OdsAmbulanceSubstations::findOrCreate($row['podstanciia'], $this->region_coato);
@@ -91,6 +89,12 @@ class OdsAmbulanceIndicatorsImport implements ToModel, SkipsOnError, WithHeading
             ]);
 
         }
+        DB::commit();
+
+    } catch (Exception $e) {
+            DB::rollback();
+                file_put_contents("import_errors.log", $e, FILE_APPEND);
+            }
 
     }
 
