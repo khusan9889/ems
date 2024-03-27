@@ -229,8 +229,6 @@ class OdsAmbulanceIndicatorsController extends Controller
 
     public function importExcel(Request $request)
     {
-
-
         $request->validate([
             'start_date' => 'required',
             'end_date' => 'required',
@@ -239,8 +237,8 @@ class OdsAmbulanceIndicatorsController extends Controller
         ]);
 
 
-        $results = OdsAmbulanceIndicators::whereBetween('call_received', [$request->start_date, $request->end_date])->where('call_region_coato', $request->region_coato)->count();
-        if ($results == 0) {
+//        $results = OdsAmbulanceIndicators::whereBetween('call_received', [$request->start_date, $request->end_date])->where('call_region_coato', $request->region_coato)->count();
+//        if ($results == 0) {
             if ($file = $request->file("import_file")) {
                 try {
                     $med_data = new MedDataExcel();
@@ -250,30 +248,19 @@ class OdsAmbulanceIndicatorsController extends Controller
                     $med_data->region_coato = $request->region_coato;
                     $med_data->sanction = 0;
                     $med_data->save();
-                    ImportExcelJob::dispatch($med_data->id, $request->region_coato, public_path($med_data->file), $request->start_date, $request->end_date);
+                    ImportExcelJob::dispatch($med_data->id, $request->region_coato, public_path($med_data->file));
                     Session::flash('success', 'Маълумотлар текширувга юборилди! Тез орада маълумотлар юкланади.');
                     return back();
                 } catch (ValidationException $e) {
-
-                    $failures = $e->failures();
-                    $errors = [];
-                    $counter = 0;
-                    foreach ($failures as $failure) {
-                        $errors[] = $failure->errors()[0];
-                        $counter++;
-                        if ($counter == 5) {
-                            break;
-                        }
-                    }
-                    Session::flash('validation-errors', $errors);
+                    Session::flash('validation-errors', 'Юборилган файлда камчилик бор.');
                     return back();
                 }
             }
-        } else {
-
-            Session::flash('not-allowed', 'Маълумотлар танланган вақт оралиғида яратилган!');
-            return back();
-        }
+//        } else {
+//
+//            Session::flash('not-allowed', 'Маълумотлар танланган вақт оралиғида яратилган!');
+//            return back();
+//        }
     }
 
     public function exportExcel(Request $request)

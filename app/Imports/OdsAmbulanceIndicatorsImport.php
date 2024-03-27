@@ -25,15 +25,12 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
 {
     protected $excel_id;
     protected $region_coato;
-    protected $end_date;
-    protected $start_date;
 
-    public function __construct($excel_id, $region_coato, $start_date, $end_date)
+    public function __construct($excel_id, $region_coato)
     {
         $this->excel_id = $excel_id;
         $this->region_coato = $region_coato;
-        $this->start_date = $start_date;
-        $this->end_date = $end_date;
+
     }
 
 //    public function model(array $row)

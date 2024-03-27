@@ -21,22 +21,18 @@ class ImportExcelJob implements ShouldQueue
     protected $excel_id;
     protected $region_coato;
     protected $file;
-    protected $start_date;
-    protected $end_date;
 
-    public function __construct($excel_id,$region_coato,$file,$start_date,$end_date)
+    public function __construct($excel_id,$region_coato,$file)
     {
         $this->excel_id = $excel_id;
         $this->region_coato = $region_coato;
         $this->file = $file;
-        $this->start_date=$start_date;
-        $this->end_date=$end_date;
     }
 
 
     public function handle()
     {
-        Excel::import(new OdsAmbulanceIndicatorsImport($this->excel_id,$this->region_coato,$this->start_date,$this->end_date), $this->file);
+        Excel::import(new OdsAmbulanceIndicatorsImport($this->excel_id,$this->region_coato), $this->file);
 
         $med_data = MedDataExcel::findOrFail($this->excel_id);
         $med_data->sanction=1;
@@ -48,8 +44,8 @@ class ImportExcelJob implements ShouldQueue
         $med_data = MedDataExcel::findOrFail($this->excel_id);
         $med_data->sanction=2;
         $med_data->save();
-        $errorMessage = "[" . date("Y-m-d H:i:s") . "] Xatolik: " . $exception ."\n";
-        file_put_contents("import_errors.log", $errorMessage, FILE_APPEND);
+
+        file_put_contents("import_errors.log", $exception, FILE_APPEND);
     }
 
 
