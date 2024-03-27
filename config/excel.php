@@ -277,7 +277,10 @@ return [
     |
     */
     'transactions' => [
-        'handler' => null,
+        'handler' => 'db',
+        'db'      => [
+            'connection' => null,
+        ],
     ],
 
     'temporary_files' => [
