@@ -241,7 +241,7 @@ return [
         |
         */
         'batch'     => [
-            'memory_limit' => 60000,
+            'memory_limit' => 600000,
         ],
 
         /*
@@ -277,10 +277,7 @@ return [
     |
     */
     'transactions' => [
-        'handler' => 'db',
-        'db'      => [
-            'connection' => null,
-        ],
+        'handler' => null,
     ],
 
     'temporary_files' => [
