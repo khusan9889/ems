@@ -13,12 +13,13 @@ class MedDataExcel extends Model
 
     public $fillable = [
         'id',
-        'file',
         'start_date',
         'end_date',
         'region_coato',
         'sanction'
     ];
+
+    public array $fileFields = ['file'];
 
     protected $table = 'med_data_excels';
 

@@ -306,6 +306,8 @@ class OdsAmbulanceIndicatorsController extends Controller
     {
         $med_data = MedDataExcel::findOrFail($id);
         OdsAmbulanceIndicators::where('excel_id', $med_data->id)->delete();
+        deleteFile($med_data->file);
+        deleteFile($med_data->file);
         $med_data->delete();
 
         return redirect()->back()->with('success', 'Запись успешно удалена');
