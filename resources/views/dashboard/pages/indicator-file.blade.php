@@ -176,7 +176,7 @@
                                 @endif
                             @endif
                         </td>
-                        <td><a href="{{asset($item->file)}}" download="">
+                        <td><a href="{{asset($item->file)}}" download="{{$item->start_date}}-{{$item->end_date}}">
                                 <b>
                                     {{$item->start_date}}-{{$item->end_date}}</a></td>
                         </b>
