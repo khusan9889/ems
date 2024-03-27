@@ -100,8 +100,6 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
     {
 
         try {
-            DB::beginTransaction();
-
 
             foreach ($rows as $row) {
 
@@ -153,11 +151,8 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, SkipsOnError, WithHe
 
 
             }
-            DB::commit();
         } catch (Exception $e) {
-            DB::rollback();
-            $errorMessage = "[" . date("Y-m-d H:i:s") . "] Error: " . $e->getMessage() . " Line: " . json_encode($row) . "\n";
-                file_put_contents("import_errors.log", $errorMessage, FILE_APPEND);
+                file_put_contents("import_errors.log", $e, FILE_APPEND);
             }
 
     }
