@@ -16,8 +16,6 @@ class ImportExcelJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-//    public $tries = 1;
-    public $timeout = 0;
     protected $excel_id;
     protected $region_coato;
     protected $file;
@@ -27,7 +25,6 @@ class ImportExcelJob implements ShouldQueue
         $this->excel_id = $excel_id;
         $this->region_coato = $region_coato;
         $this->file = $file;
-
     }
 
 
@@ -46,7 +43,7 @@ class ImportExcelJob implements ShouldQueue
         $med_data->sanction=2;
         $med_data->save();
 
-        file_put_contents("import_errors.log", $exception, FILE_APPEND);
+        file_put_contents(" storage/logs/jobs_failed.log", $exception, FILE_APPEND);
     }
 
 
