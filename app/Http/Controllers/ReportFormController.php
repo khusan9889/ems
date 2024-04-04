@@ -110,13 +110,13 @@ class ReportFormController extends Controller
         FilialSubWeek::updateOrCreate(
             ['id' => $id],
             [
-                'g_appeal' => $request->g_appeal_one,
+                'g_appeal' => $request->g_sleeping_one+$request->g_ambulator_one,
                 'g_sleeping' => $request->g_sleeping_one,
                 'g_ambulator' => $request->g_ambulator_one,
-                'y_appeal' => $request->y_appeal_one,
+                'y_appeal' => $request->y_sleeping_one+$request->y_ambulator_one,
                 'y_sleeping' => $request->y_sleeping_one,
                 'y_ambulator' => $request->y_ambulator_one,
-                'r_appeal' => $request->r_appeal_one,
+                'r_appeal' => $request->r_sleeping_one,
                 'r_sleeping' => $request->r_sleeping_one,
                 'r_death' => $request->r_death_one,
                 'r_dead' => $request->r_dead_one,
@@ -142,18 +142,18 @@ class ReportFormController extends Controller
                 'status' => 'Измененный'
             ]
         );
-        if($request->g_appeal!=null)
-        foreach ($request->g_appeal as $key => $value) {
+        if($request->g_sleeping!=null)
+        foreach ($request->g_sleeping as $key => $value) {
             FilialSubWeek::updateOrCreate(
                 ['id' => $key],
                 [
-                    'g_appeal' => $request->g_appeal[$key],
+                    'g_appeal' => $request->g_sleeping[$key]+$request->g_ambulator[$key],
                     'g_sleeping' => $request->g_sleeping[$key],
                     'g_ambulator' => $request->g_ambulator[$key],
-                    'y_appeal' => $request->y_appeal[$key],
+                    'y_appeal' => $request->y_sleeping[$key]+$request->y_ambulator[$key],
                     'y_sleeping' => $request->y_sleeping[$key],
                     'y_ambulator' => $request->y_ambulator[$key],
-                    'r_appeal' => $request->r_appeal[$key],
+                    'r_appeal' => $request->r_sleeping[$key],
                     'r_sleeping' => $request->r_sleeping[$key],
                     'r_death' => $request->r_death[$key],
                     'r_dead' => $request->r_dead[$key]
