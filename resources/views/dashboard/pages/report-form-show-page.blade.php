@@ -19,11 +19,11 @@
 
                         <li class="nav-item">
                             <a href="#nav-tab-1" data-toggle="tab"
-                               class="nav-link active">Филиал ва субфилиалларнинг қабул бўлимлари</a>
+                               class="nav-link active f-s-25">Филиал ва субфилиалларнинг қабул бўлимлари</a>
                         </li>
                         <li class="nav-item">
                             <a href="#nav-tab-2" data-toggle="tab"
-                               class="nav-link">{{$week->branch->name}}</a>
+                               class="nav-link f-s-25">{{$week->branch->name}}</a>
                         </li>
 
                 </ul>
@@ -37,38 +37,38 @@
             <div class="panel-body tab-content">
                     <div class="tab-pane fade active show" id="nav-tab-1">
                         <div class="d-flex">
-                            <table  class="table table-responsive table-bordered">
+                            <table  class="table table-responsive table-bordered f-s-25">
 
                                 <thead>
                                 <tr>
                                     <th scope="col" colspan="6"></th>
-                                    <th scope="col" colspan="3" style="background: olivedrab;text-align:center">шундан, яшил зона оркали</th>
-                                    <th scope="col" colspan="3" style="background: yellow;text-align:center">шундан, сарик зона оркали</th>
-                                    <th scope="col" colspan="4" style="background: red;text-align:center">шундан, кизил зона оркали</th>
+                                    <th scope="col" colspan="3" class="f-s-17" style="background: olivedrab;text-align:center">шундан, яшил зона оркали</th>
+                                    <th scope="col" colspan="3" class="f-s-17" style="background: yellow;text-align:center">шундан, сарик зона оркали</th>
+                                    <th scope="col" colspan="4" class="f-s-17" style="background: red;text-align:center">шундан, кизил зона оркали</th>
                                 </tr>
                                 <tr>
-                                    <th class="text-nowrap" scope="col-1">Филиал ва субфилиал номи</th>
-                                    <th class="text-nowrap" scope="col">Жами мурожаатлар</th>
-                                    <th class="text-nowrap" scope="col">Шундан, ёткизилгани</th>
-                                    <th class="text-nowrap" scope="col">Шундан, амбулатор</th>
-                                    <th class="text-nowrap" scope="col">Шундан, вафот этгани</th>
-                                    <th class="text-nowrap" scope="col">Мурда акт</th>
-                                    <th class="text-nowrap" scope="col">мурожаат</th>
-                                    <th class="text-nowrap" scope="col">шундан, ёткизилгани</th>
-                                    <th class="text-nowrap" scope="col">шундан, амбулатор</th>
-                                    <th class="text-nowrap" scope="col">мурожаат</th>
-                                    <th class="text-nowrap" scope="col">шундан, ёткизилгани</th>
-                                    <th class="text-nowrap" scope="col">шундан, амбулатор</th>
-                                    <th class="text-nowrap" scope="col">мурожаат</th>
-                                    <th class="text-nowrap" scope="col">шундан, ёткизилгани</th>
-                                    <th class="text-nowrap" scope="col">шундан, вафот этгани</th>
-                                    <th class="text-nowrap" scope="col">мурда акт</th>
+                                    <th class="text-nowrap f-s-17 f-s-17" scope="col-1">Филиал ва субфилиал номи</th>
+                                    <th class="text-nowrap f-s-17" scope="col">Жами мурожаатлар</th>
+                                    <th class="text-nowrap f-s-17" scope="col">Шундан, ёткизилгани</th>
+                                    <th class="text-nowrap f-s-17" scope="col">Шундан, амбулатор</th>
+                                    <th class="text-nowrap f-s-17" scope="col">Шундан, вафот этгани</th>
+                                    <th class="text-nowrap f-s-17" scope="col">Мурда акт</th>
+                                    <th class="text-nowrap f-s-17" scope="col">мурожаат</th>
+                                    <th class="text-nowrap f-s-17" scope="col">шундан, ёткизилгани</th>
+                                    <th class="text-nowrap f-s-17" scope="col">шундан, амбулатор</th>
+                                    <th class="text-nowrap f-s-17" scope="col">мурожаат</th>
+                                    <th class="text-nowrap f-s-17" scope="col">шундан, ёткизилгани</th>
+                                    <th class="text-nowrap f-s-17" scope="col">шундан, амбулатор</th>
+                                    <th class="text-nowrap f-s-17" scope="col">мурожаат</th>
+                                    <th class="text-nowrap f-s-17" scope="col">шундан, ёткизилгани</th>
+                                    <th class="text-nowrap f-s-17" scope="col">шундан, вафот этгани</th>
+                                    <th class="text-nowrap f-s-17" scope="col">мурда акт</th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
                                 <tr>
-                                    <td>{{$week->branch->name}}</td>
+                                    <td class="f-s-17">{{$week->branch->name}}</td>
                                     <td>{{$week->g_appeal+$week->y_appeal+$week->r_appeal}}</td>
                                     <td>{{$week->g_sleeping+$week->y_sleeping+$week->r_sleeping}}</td>
                                     <td>{{$week->g_ambulator+$week->y_ambulator}}</td>
@@ -88,7 +88,7 @@
 
                                 @foreach ($filial_sub_weeks as $key => $data)
                                     <tr>
-                                        <td>{{ $data?->sub_filial }}</td>
+                                        <td class="f-s-17">{{ $data?->sub_filial }}</td>
                                         <td>{{$data->g_appeal+$data->y_appeal+$data->r_appeal}}</td>
                                         <td>{{$data->g_sleeping+$data->y_sleeping+$data->r_sleeping}}</td>
                                         <td>{{$data->g_ambulator+$data->y_ambulator}}</td>
@@ -112,7 +112,7 @@
 
 
                     </div>
-                    <div class="tab-pane fade " id="nav-tab-2">
+                    <div class="tab-pane fade f-s-25" id="nav-tab-2">
                         <table class="table table-striped table-bordered" style="width: 100%">
                             <thead>
                             <tr>
