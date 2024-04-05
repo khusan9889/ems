@@ -43,7 +43,7 @@ class FilialSubWeekService implements FilialSubWeekServiceInterface
                 fn($query, $value) => $query->where('week_id', $value)
             );
 
-        $perPage = 15;
+        $perPage = 20;
         $results = $query->paginate($perPage);
 
         return $results;

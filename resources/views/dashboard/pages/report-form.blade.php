@@ -15,7 +15,7 @@
     <h1 class="page-header">Ҳисоботлар</h1>
     <x-panel>
         <div class="table-responsive">
-            <table id="data-table-default" class="table table-striped table-bordered align-middle">
+            <table id="data-table-default" class="table table-striped table-bordered align-middle  f-s-15">
                 <thead>
                 <tr>
                     <th class="text-nowrap">ИД</th>
@@ -55,7 +55,7 @@
                                 <select class="form-control form-control-sm w-75 " name="week" id="mySelect">
                                     <option value="" style="font-size: 12px;">Все</option>
                                     @foreach ($weeks as $id => $week)
-                                        <option value="{{ $id }}" style="font-size: 12px;"
+                                        <option value="{{ $id }}" style="font-size: 15px;"
                                             @if ($id == request('week'))
                                                     selected
                                             @endif

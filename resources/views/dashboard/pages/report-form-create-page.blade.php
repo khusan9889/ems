@@ -16,7 +16,7 @@
             <table class="table table-responsive borderless f-s-20">
                 <thead>
                 <tr>
-                    <th scope="col-1" class="vertical-align f-s-25">Филиал номи</th>
+                    <th scope="col-1" class="vertical-align f-s-20">Филиал номи</th>
                     <th scope="col" colspan="2" style="background: olivedrab;text-align:center">шундан, яшил зона оркали</th>
                     <th scope="col" colspan="2" style="background: yellow;text-align:center">шундан, сарик зона оркали</th>
                     <th scope="col" colspan="3" style="background: red;text-align:center">шундан, кизил зона оркали</th>
@@ -24,7 +24,7 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <th class="text-nowrap" scope="col-1 f-s-25">Филиал номи</th>
+                    <th class="text-nowrap" scope="col-1 f-s-20">Филиал номи</th>
 {{--                    <th class="text-nowrap" scope="col">мурожаат</th>--}}
                     <th class="text-nowrap" scope="col">ёткизилгани</th>
                     <th class="text-nowrap" scope="col">амбулатор</th>
@@ -38,27 +38,27 @@
                 </tr>
                 <tr>
                     <td>
-                        <pre class="form-control f-s-25">{{$week->branch->name}}</pre>
+                        <pre class="form-control f-s-20">{{$week->branch->name}}</pre>
                     </td>
-{{--                    <td><input class="form-control f-s-25" name="g_appeal_one" type="number" min="0"--}}
+{{--                    <td><input class="form-control f-s-20" name="g_appeal_one" type="number" min="0"--}}
 {{--                               value="{{$week->g_appeal}}"></td>--}}
-                    <td><input class="form-control f-s-25" name="g_sleeping_one" type="number" min="0"
+                    <td><input class="form-control f-s-20" name="g_sleeping_one" type="number" min="0"
                                value="{{$week->g_sleeping}}"></td>
-                    <td><input class="form-control f-s-25" name="g_ambulator_one" type="number" min="0"
+                    <td><input class="form-control f-s-20" name="g_ambulator_one" type="number" min="0"
                                value="{{$week->g_ambulator}}"></td>
-{{--                    <td><input class="form-control f-s-25" name="y_appeal_one" type="number" min="0"--}}
+{{--                    <td><input class="form-control f-s-20" name="y_appeal_one" type="number" min="0"--}}
 {{--                               value="{{$week->y_appeal}}"></td>--}}
-                    <td><input class="form-control f-s-25" name="y_sleeping_one" type="number" min="0"
+                    <td><input class="form-control f-s-20" name="y_sleeping_one" type="number" min="0"
                                value="{{$week->y_sleeping}}"></td>
-                    <td><input class="form-control f-s-25" name="y_ambulator_one" type="number" min="0"
+                    <td><input class="form-control f-s-20" name="y_ambulator_one" type="number" min="0"
                                value="{{$week->y_ambulator}}"></td>
-{{--                    <td><input class="form-control f-s-25" name="r_appeal_one" type="number" min="0"--}}
+{{--                    <td><input class="form-control f-s-20" name="r_appeal_one" type="number" min="0"--}}
 {{--                               value="{{$week->r_appeal}}"></td>--}}
-                    <td><input class="form-control f-s-25" name="r_sleeping_one" type="number" min="0"
+                    <td><input class="form-control f-s-20" name="r_sleeping_one" type="number" min="0"
                                value="{{$week->r_sleeping}}"></td>
-                    <td><input class="form-control f-s-25" name="r_death_one" type="number" min="0"
+                    <td><input class="form-control f-s-20" name="r_death_one" type="number" min="0"
                                value="{{$week->r_death}}"></td>
-                    <td><input class="form-control f-s-25" name="r_dead_one" type="number" min="0"
+                    <td><input class="form-control f-s-20" name="r_dead_one" type="number" min="0"
                                value="{{$week->r_dead}}">
                     </td>
                 </tr>
@@ -70,65 +70,65 @@
                 <div class="row mb-3 f-s-18">
                     <div class="col-2">
                         <label>03-тез ёрдам</label>
-                        <input type="number" min="0" class="form-control f-s-25" name="ambulance_03"
+                        <input type="number" min="0" class="form-control f-s-20" name="ambulance_03"
                                value="{{$week->ambulance_03}}" placeholder="03-тез ёрдам">
                     </div>
                     <div class="col-2">
                         <label>Жумладан болалар</label>
-                        <input type="number" min="0" class="form-control f-s-25" name="children_03"
+                        <input type="number" min="0" class="form-control f-s-20" name="children_03"
                                value="{{$week->children_03}}" placeholder="Жумладан болалар">
                     </div>
                     <div class="col-2">
                         <label>Узи келган</label>
-                        <input type="number" min="0" class="form-control f-s-25" name="arrived_himself"
+                        <input type="number" min="0" class="form-control f-s-20" name="arrived_himself"
                                value="{{$week->arrived_himself}}" placeholder="Узи келган">
                     </div>
                     <div class="col-2">
                         <label>Жумладан болалар</label>
-                        <input type="number" min="0" class="form-control f-s-25" name="children_arrived_himself"
+                        <input type="number" min="0" class="form-control f-s-20" name="children_arrived_himself"
                                value="{{$week->children_arrived_himself}}" placeholder="Жумладан болалар">
                     </div>
                     <div class="col-2">
                         <label>Йулланма билан келган</label>
-                        <input type="number" min="0" class="form-control f-s-25" name="came_ticket"
+                        <input type="number" min="0" class="form-control f-s-20" name="came_ticket"
                                value="{{$week->came_ticket}}" placeholder="Йулланма билан келган">
                     </div>
                     <div class="col-2">
                         <label>Жумладан болалар</label>
-                        <input type="number" min="0" class="form-control f-s-25" name="children_came_ticket"
+                        <input type="number" min="0" class="form-control f-s-20" name="children_came_ticket"
                                value="{{$week->children_came_ticket}}" placeholder="Жумладан болалар">
                     </div>
                 </div>
                 <div class="row mb-3 f-s-18">
                     <div class="col-2">
                         <label>Ётқизилган</label>
-                        <input type="number" min="0" class="form-control f-s-25" name="recumbent" value="{{$week->recumbent}}"
+                        <input type="number" min="0" class="form-control f-s-20" name="recumbent" value="{{$week->recumbent}}"
                                placeholder="Ётқизилган">
                     </div>
                     <div class="col-2">
                         <label>Жумладан болалар</label>
-                        <input type="number" min="0" class="form-control f-s-25" name="children_recumbent"
+                        <input type="number" min="0" class="form-control f-s-20" name="children_recumbent"
                                value="{{$week->children_recumbent}}" placeholder="Жумладан болалар">
                     </div>
                     <div class="col-2">
                         <label>Операция</label>
-                        <input type="number" min="0" class="form-control f-s-25" name="operation" value="{{$week->operation}}"
+                        <input type="number" min="0" class="form-control f-s-20" name="operation" value="{{$week->operation}}"
                                placeholder="Операция">
                     </div>
                     <div class="col-2">
                         <label>Жумладан болалар</label>
-                        <input type="number" min="0" class="form-control f-s-25" name="children_operation"
+                        <input type="number" min="0" class="form-control f-s-20" name="children_operation"
                                value="{{$week->children_operation}}" placeholder="Жумладан болалар">
                     </div>
                     <div class="col-2">
                         <label>Юқори техно операциялар</label>
-                        <input type="number" min="0" class="form-control f-s-25" name="high_tech_operas"
+                        <input type="number" min="0" class="form-control f-s-20" name="high_tech_operas"
                                value="{{$week->high_tech_operas}}"
                                placeholder="Юқори технологик операциялар">
                     </div>
                     <div class="col-2">
                         <label>Жумладан болалар</label>
-                        <input type="number" min="0" class="form-control f-s-25" name="children_high_tech_operas"
+                        <input type="number" min="0" class="form-control f-s-20" name="children_high_tech_operas"
                                value="{{$week->children_high_tech_operas}}"
                                placeholder="Жумладан болалар">
                     </div>
@@ -136,32 +136,32 @@
                 <div class="row mb-5 f-s-18">
                     <div class="col-2">
                         <label>Ўлганлар</label>
-                        <input type="number" min="0" class="form-control f-s-25" name="death" value="{{$week->death}}"
+                        <input type="number" min="0" class="form-control f-s-20" name="death" value="{{$week->death}}"
                                placeholder="Ўлганлар">
                     </div>
                     <div class="col-2">
                         <label>Жумладан болалар</label>
-                        <input type="number" min="0" class="form-control f-s-25" name="children_death"
+                        <input type="number" min="0" class="form-control f-s-20" name="children_death"
                                value="{{$week->children_death}}" placeholder="Жумладан болалар">
                     </div>
                     <div class="col-2">
                         <label>Амбулатор</label>
-                        <input type="number" min="0" class="form-control f-s-25" name="ambulator" value="{{$week->ambulator}}"
+                        <input type="number" min="0" class="form-control f-s-20" name="ambulator" value="{{$week->ambulator}}"
                                placeholder="Амбулатор">
                     </div>
                     <div class="col-2">
                         <label>Жумладан болалар</label>
-                        <input type="number" min="0" class="form-control f-s-25" name="children_ambulator"
+                        <input type="number" min="0" class="form-control f-s-20" name="children_ambulator"
                                value="{{$week->children_ambulator}}" placeholder="Жумладан болалар">
                     </div>
                     <div class="col-2">
                         <label>Амбулатор операциялар</label>
-                        <input type="number" min="0" class="form-control f-s-25" name="ambulatory_operas"
+                        <input type="number" min="0" class="form-control f-s-20" name="ambulatory_operas"
                                value="{{$week->ambulatory_operas}}" placeholder="Амбулатор операциялар">
                     </div>
                     <div class="col-2">
                         <label>Жумладан болалар</label>
-                        <input type="number" min="0" class="form-control f-s-25" name="including_children"
+                        <input type="number" min="0" class="form-control f-s-20" name="including_children"
                                value="{{$week->including_children}}" placeholder="Жумладан болалар">
                     </div>
                 </div>
@@ -196,27 +196,27 @@
                     @foreach ($filial_sub_weeks as $key => $data)
                         <tr>
                             <td>
-                                <pre class="form-control f-s-25">{{ $data?->sub_filial }}</pre>
+                                <pre class="form-control f-s-20">{{ $data?->sub_filial }}</pre>
                             </td>
 {{--                            <td><input class="form-control" name="g_appeal[{{$data->id}}]" type="number" min="0"--}}
 {{--                                       value="{{$data->g_appeal}}"></td>--}}
-                            <td><input class="form-control f-s-25" name="g_sleeping[{{$data->id}}]" type="number" min="0"
+                            <td><input class="form-control f-s-20" name="g_sleeping[{{$data->id}}]" type="number" min="0"
                                        value="{{$data->g_sleeping}}"></td>
-                            <td><input class="form-control f-s-25" name="g_ambulator[{{$data->id}}]" type="number" min="0"
+                            <td><input class="form-control f-s-20" name="g_ambulator[{{$data->id}}]" type="number" min="0"
                                        value="{{$data->g_ambulator}}"></td>
-{{--                            <td><input class="form-control f-s-25" name="y_appeal[{{$data->id}}]" type="number" min="0"--}}
+{{--                            <td><input class="form-control f-s-20" name="y_appeal[{{$data->id}}]" type="number" min="0"--}}
 {{--                                       value="{{$data->y_appeal}}"></td>--}}
-                            <td><input class="form-control f-s-25" name="y_sleeping[{{$data->id}}]" type="number" min="0"
+                            <td><input class="form-control f-s-20" name="y_sleeping[{{$data->id}}]" type="number" min="0"
                                        value="{{$data->y_sleeping}}"></td>
-                            <td><input class="form-control f-s-25" name="y_ambulator[{{$data->id}}]" type="number" min="0"
+                            <td><input class="form-control f-s-20" name="y_ambulator[{{$data->id}}]" type="number" min="0"
                                        value="{{$data->y_ambulator}}"></td>
-{{--                            <td><input class="form-control f-s-25" name="r_appeal[{{$data->id}}]" type="number" min="0"--}}
+{{--                            <td><input class="form-control f-s-20" name="r_appeal[{{$data->id}}]" type="number" min="0"--}}
 {{--                                       value="{{$data->r_appeal}}"></td>--}}
-                            <td><input class="form-control f-s-25" name="r_sleeping[{{$data->id}}]" type="number" min="0"
+                            <td><input class="form-control f-s-20" name="r_sleeping[{{$data->id}}]" type="number" min="0"
                                        value="{{$data->r_sleeping}}"></td>
-                            <td><input class="form-control f-s-25" name="r_death[{{$data->id}}]" type="number" min="0"
+                            <td><input class="form-control f-s-20" name="r_death[{{$data->id}}]" type="number" min="0"
                                        value="{{$data->r_death}}"></td>
-                            <td><input class="form-control f-s-25" name="r_dead[{{$data->id}}]" type="number" min="0"
+                            <td><input class="form-control f-s-20" name="r_dead[{{$data->id}}]" type="number" min="0"
                                        value="{{$data->r_dead}}"></td>
                         </tr>
                     @endforeach

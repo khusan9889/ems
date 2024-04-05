@@ -51,7 +51,47 @@
     <!-- end row -->
     <div class="row p-10">
 
-        <!-- begin col-4 -->
+        <!-- begin col-6 -->
+        <div class="col-md-6">
+            <div class="panel panel-inverse" data-sortable-id="index-6">
+                <div class="panel-heading">
+
+                    <h4 class="panel-title"> Активности</h4>
+                </div>
+                <div class="panel-body p-t-0">
+                    <table class="table table-valign-middle m-b-0">
+                        <table class="table table-striped align-middle">
+                            <thead>
+                            <tr>
+                                <th style="width: 60px;">№</th>
+                                <th>Действия</th>
+                                <th>Пользователь</th>
+                                <th>Дата и время</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($data as $key => $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->user->name }}, {{ $item->user->email }}</td>
+                                    <td>{{ localDatetime($item->created_at) }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        <div class="d-flex justify-content-center">
+                            {{ $data->links() }}
+                        </div>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <!-- end col-6 -->
+
+        <!-- begin col-6 -->
         <div class="col-md-6">
             <div class="panel panel-inverse" data-sortable-id="index-6">
                 <div class="panel-heading">
@@ -92,46 +132,8 @@
             </div>
 
         </div>
-        <!-- end col-4 -->
-        <!-- begin col-4 -->
-        <div class="col-md-6">
-            <div class="panel panel-inverse" data-sortable-id="index-6">
-                <div class="panel-heading">
+        <!-- end col-6 -->
 
-                    <h4 class="panel-title"> Активности</h4>
-                </div>
-                <div class="panel-body p-t-0">
-                    <table class="table table-valign-middle m-b-0">
-                        <table class="table table-striped align-middle">
-                            <thead>
-                            <tr>
-                                <th style="width: 60px;">№</th>
-                                <th>Действия</th>
-                                <th>Пользователь</th>
-                                <th>Дата и время</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach ($data as $key => $item)
-                                <tr>
-                                    <td>{{ $item->id }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->user->name }}, {{ $item->user->email }}</td>
-                                    <td>{{ localDatetime($item->created_at) }}</td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                        <div class="d-flex justify-content-center">
-                            {{ $data->links() }}
-                        </div>
-
-                    </table>
-                </div>
-            </div>
-
-        </div>
-        <!-- end col-4 -->
     </div>
 
 
