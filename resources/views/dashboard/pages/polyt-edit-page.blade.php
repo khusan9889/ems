@@ -22,7 +22,7 @@
                                     <td>{{$data->id}}</td>
                                 </tr>
                                 <tr>
-                                    <th>Субъект/Filial</th>
+                                    <th>Филиал/Filial</th>
                                     <td>
                                         <select class="form-control" required name="branch_id"
                                                 onchange="myFunction(this.value)"
@@ -396,7 +396,7 @@
                                 <button type="submit" name="confirm_status" value="3" class="btn btn-primary fa-pull-right m-r-5">Возврат на доработку</button>
                             @else
                                 <button type="submit" name="confirm_status" value="2" class="btn btn-primary fa-pull-right m-r-5">Подача на одобрение</button>
-                                <button type="submit" name="confirm_status" value="4" class="btn btn-primary fa-pull-right m-r-5">Сохранять</button>
+                                <button type="submit" name="confirm_status" value="4" class="btn btn-primary fa-pull-right m-r-5">Черновик</button>
                             @endif
                     </form>
                 </div>

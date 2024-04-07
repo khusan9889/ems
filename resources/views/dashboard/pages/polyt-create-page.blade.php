@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="branch">Выбрать субъект СЭМП/Filialni tanlang</label>
+                        <label for="branch">Выберите филиал/Filialni tanlang</label>
                         <select class="form-control" id="branch" name="branch_id" onchange="myFunction(this.value)">
                             <option value="" hidden>Выберите субъект</option>
                             @foreach ($branches as $key => $branch)
@@ -588,7 +588,7 @@
             </div>
 
                 <button type="submit" name="confirm_status" value="2" class="btn btn-primary fa-pull-right m-r-5">Подача на одобрение</button>
-                <button type="submit" name="confirm_status" value="4" class="btn btn-primary fa-pull-right m-r-5">Сохранять</button>
+                <button type="submit" name="confirm_status" value="4" class="btn btn-primary fa-pull-right m-r-5">Черновик</button>
         </form>
     </x-panel>
 @endsection

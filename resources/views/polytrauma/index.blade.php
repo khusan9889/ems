@@ -5,23 +5,22 @@
 
 
 <div class="table-responsive">
-    <table id="data-table-default" class="table table-striped table-bordered align-middle">
 
+<form action="">
+    <table id="data-table-default" class="table table-striped table-bordered align-middle">
         <thead>
             <tr>
                 <th  class="text-nowrap">№</th>
-                <th  class="text-nowrap">Субъект/Filial</th>
-                <th  class="text-nowrap">Отделение/Bo'lim</th>
-                <th  class="text-nowrap">Номер истории болезни/Kasallik tarixi raqami</th>
-                <th  class="text-nowrap">Пациент ФИО/Bemorning FIO</th>
-                <th  class="text-nowrap">Дата поступления/Qabul qilish sanasi</th>
-                <th  class="text-nowrap">Дата выписки/Chiqarish sanasi</th>
-                <th  class="text-nowrap">Канал госпитализации/Kasalxonaga yotqizish kanali</th>
-                <th  class="text-nowrap">ФИО лечащего врача/Davolovchi shifokorning FIO</th>
-                <th  class="text-nowrap">Подтвердите статус/Holatni tasdiqlang</th>
+                <th  class="text-nowrap">Филиал/Филиал</th>
+                <th  class="text-nowrap">Отделение/Бўлим</th>
+                <th  class="text-nowrap">Номер истории болезни/Касаллик тарихи рақами</th>
+                <th  class="text-nowrap">Пациент ФИО/Беморнинг ФИО</th>
+                <th  class="text-nowrap">Дата поступления/Қабул қилиш санаси</th>
+                <th  class="text-nowrap">Дата выписки/Чиқариш санаси</th>
+                <th  class="text-nowrap">ФИО лечащего врача/Даволовчи шифокорнинг ФИО</th>
+                <th  class="text-nowrap">Подтвердите статус/Ҳолатни тасдиқланг</th>
             </tr>
             <tr>
-                <form action="">
                 <td class="align-middle">
                     <div class="d-flex align-items-center justify-content-center">
                         <button class="btn btn-link btn-sm sort-btn" data-sort-by="id"
@@ -31,8 +30,7 @@
                         <input type="hidden" name="sort" value="{{ $order }}">
                     </div>
                 </td>
-                <td>
-                    <select class="form-control form-control-sm" name="branch" @if (auth()->user()->branch_id != 1) disabled @endif>
+                <td><select class="form-control form-control-sm" name="branch" @if (auth()->user()->branch_id != 1) disabled @endif>
                         <option value="" style="font-size: 12px;">Все</option>
                         @foreach ($branches as $id => $name)
                             <option value="{{ $id }}" style="font-size: 12px;"
@@ -55,18 +53,8 @@
                     <input class="form-control form-control-sm" type="date" name="hospitalization_date"
                         value="{{ request('hospitalization_date') }}">
                 </td>
-                <td>
-                    <input class="form-control form-control-sm" type="date" name="discharge_date"
-                        value="{{ request('discharge_date') }}">
-                </td>
-                <td>
-                    <select class="form-control form-control-sm" name="hospitalization_channels">
-                        <option value="">Все</option> <!-- Add an option for selecting all channels -->
-                        @foreach ($hospitalization_channels as $key => $value)
-                            <option value="{{ $key }}" @if ($key == request('hospitalization_channels')) selected @endif>{{ $value }}</option>
-                        @endforeach
-                    </select>
-                </td>
+                <td><input class="form-control form-control-sm" type="date" name="discharge_date"
+                        value="{{ request('discharge_date') }}"></td>
                 <td>
                     <input class="form-control form-control-sm" name="physician_full_name" value="{{ request('physician_full_name') }}"></input>
                 </td>
@@ -81,11 +69,9 @@
                         <button type="submit" class="btn btn-sm btn-primary">Применить</button>
                     </div>
                 </td>
-                </form>
             </tr>
 
         </thead>
-
         <tbody>
             @foreach ($data as $key => $item)
                 <tr
@@ -108,7 +94,6 @@
                     <td>{{ $item->full_name }}</td>
                     <td>{{ \Carbon\Carbon::parse($item->hospitalization_date)->format('Y-m-d H:i') }}</td>
                     <td>{{ \Carbon\Carbon::parse($item->discharge_date)->format('Y-m-d H:i') }} </td>
-                    <td>{{ $item->hospitalization_channels }}</td>
                     <td>{{ $item->physician_full_name }}</td>
                     {{-- <td>{{ $item->stat_department_full_name }}</td> --}}
                     <td class="align-middle">
@@ -117,6 +102,7 @@
                                 class="btn btn-primary btn-xs mr-1">
                                 <i class="fas fa-eye"></i>
                             </a>
+                            @if ($item->confirm_status != 1)
                             <a href="{{ route('polyt-edit-page', ['id' => $item->id]) }}"
                                 class="btn btn-warning btn-xs mr-1">
                                 <i class="fas fa-pen"></i>
@@ -125,12 +111,15 @@
                                 onclick="{{ $selectedID = $item->id }}; confirmDelete({{ $item->id }})">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
+                            @endif
                         </div>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+</form>
+
     Записи с {{ ($data->currentpage()-1)*$data->perpage() + ($data->total()==0?0:1)}} по {{($data->currentpage()-1)*$data->perpage() + count($data->items())}} из {{ $data->total() }} записей
 
 </div>

@@ -1,16 +1,15 @@
 @extends('dashboard.layouts.default')
 
 @section('content')
-    <h1 class="page-header">ОКС Статистика {{ request()->branch }}</h1>
     <x-form.date-range-filter :branches="$branches" />
-    <x-panel>
+    <x-panel title="ОКС статистика">
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>№</th>
-                        <th>Индикаторы/Ko'rsatkichlar</th>
-                        <th>Результат/Natija (%)</th>
+                        <th>Индикаторы/Кўрсаткичлар</th>
+                        <th>Результат/Натижа (%)</th>
                     </tr>
                 </thead>
                 @foreach ($data as $index => $item)

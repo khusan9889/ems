@@ -581,7 +581,7 @@
                                     class="btn btn-primary fa-pull-right m-r-5">Подача на одобрение
                             </button>
                             <button type="submit" name="confirm_status" value="4"
-                                    class="btn btn-primary fa-pull-right m-r-5">Сохранять
+                                    class="btn btn-primary fa-pull-right m-r-5">Черновик
                             </button>
                         @endif
                     </form>

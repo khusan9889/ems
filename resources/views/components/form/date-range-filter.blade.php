@@ -12,7 +12,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <label>Выберите субъект: </label>
+                        <label>Выберите филиал: </label>
                         <div class="d-flex flex-wrap" style="gap:1rem;">
                             @foreach ($branches as $branch)
                                 @php

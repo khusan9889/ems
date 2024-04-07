@@ -10,15 +10,14 @@
         <thead>
         <tr>
             <th class="text-nowrap">№</th>
-            <th class="text-nowrap">Субъект/Filial</th>
-            <th class="text-nowrap">Отделение/Bo'lim</th>
-            <th class="text-nowrap">Номер истории болезни/Kasallik tarixi raqami</th>
-            <th class="text-nowrap">Пациент ФИО/Bemorning FIO</th>
-            <th class="text-nowrap">Дата поступления/Qabul qilish sanasi</th>
-            <th class="text-nowrap">Дата выписки/Chiqarish sanasi</th>
-            <th class="text-nowrap">Канал госпитализации/Olib kelingan usuli</th>
-            <th class="text-nowrap">ФИО лечащего врача/Davolovchi shifokorning FIO</th>
-            <th class="text-nowrap">Подтвердите статус/Holatni tasdiqlang</th>
+            <th class="text-nowrap">Филиал/Филиал</th>
+            <th class="text-nowrap">Отделение/Бўлим</th>
+            <th class="text-nowrap">Номер истории болезни/Касаллик тарихи рақами</th>
+            <th class="text-nowrap">Пациент ФИО/Беморнинг ФИО</th>
+            <th class="text-nowrap">Дата поступления/Қабул қилиш санаси</th>
+            <th class="text-nowrap">Дата выписки/Чиқариш санаси</th>
+            <th class="text-nowrap">ФИО лечащего врача/Даволовчи шифокорнинг ФИО</th>
+            <th class="text-nowrap">Подтвердите статус/Ҳолатни тасдиқланг</th>
         </tr>
         <tr>
             <form action="">
@@ -61,16 +60,16 @@
                     <input class="form-control form-control-sm" type="date" name="discharge_date"
                            value="{{ request('discharge_date') }}">
                 </td>
-                <td>
-                    <select class="form-control form-control-sm" name="hospitalization_channels">
-                        <option value="">Все</option> <!-- Add an option for selecting all channels -->
-                        @foreach ($hospitalization_channels as $key => $value)
-                            <option value="{{ $key }}"
-                                    @if ($key == request('hospitalization_channels')) selected @endif>
-                                {{ $value }}</option>
-                        @endforeach
-                    </select>
-                </td>
+{{--                <td>--}}
+{{--                    <select class="form-control form-control-sm" name="hospitalization_channels">--}}
+{{--                        <option value="">Все</option> <!-- Add an option for selecting all channels -->--}}
+{{--                        @foreach ($hospitalization_channels as $key => $value)--}}
+{{--                            <option value="{{ $key }}"--}}
+{{--                                    @if ($key == request('hospitalization_channels')) selected @endif>--}}
+{{--                                {{ $value }}</option>--}}
+{{--                        @endforeach--}}
+{{--                    </select>--}}
+{{--                </td>--}}
                 <td>
                     <input class="form-control form-control-sm" name="physician_full_name"
                            value="{{ request('physician_full_name') }}">
@@ -108,16 +107,15 @@
 
                 @if ($item->confirm_status == 1)
                     class="table-success"
-                @endif
-            >
+                @endif>
                 <td>{{ $item->id }}</td>
-                <td>{{ $item->branch?->name }}</td>
-                <td>{{ $item->department?->name }}</td>
-                <td>{{ $item->history_disease }}</td>
+                <td>{{ $item->branch?->name}}</td>
+                <td>{{ $item->department?->name}}</td>
+                <td>{{ $item->history_disease}}</td>
                 <td>{{ $item->full_name }}</td>
                 <td>{{ \Carbon\Carbon::parse($item->hospitalization_date)->format('Y-m-d H:i') }}</td>
                 <td>{{ \Carbon\Carbon::parse($item->discharge_date)->format('Y-m-d H:i') }} </td>
-                <td>{{ $item->hospitalization_channels }}</td>
+{{--                <td>{{ $item->hospitalization_channels }}</td>--}}
                 <td>{{ $item->physician_full_name }}</td>
                 {{-- <td>{{ $item->stat_department_full_name }}</td> --}}
                 <td class="align-middle">
@@ -126,22 +124,23 @@
                            class="btn btn-primary btn-xs mr-1">
                             <i class="fas fa-eye"></i>
                         </a>
+                        @if ($item->confirm_status != 1)
                         <a href="{{ route('edit-page', ['id' => $item->id]) }}"
                            class="btn btn-warning btn-xs mr-1">
                             <i class="fas fa-pen"></i>
                         </a>
-                        <button type="button" class="btn btn-danger btn-xs mr-1"
-                                onclick="{{ $selectedID = $item->id }}; confirmDelete({{ $item->id }})">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
+                            <button type="button" class="btn btn-danger btn-xs mr-1"
+                                    onclick="{{ $selectedID = $item->id }}; confirmDelete({{ $item->id }})">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        @endif
+
                     </div>
                 </td>
             </tr>
         @endforeach
         </tbody>
-
     </table>
-
     Записи с {{ ($data->currentpage()-1)*$data->perpage() + ($data->total()==0?0:1)}}
     по {{($data->currentpage()-1)*$data->perpage() + count($data->items())}} из {{ $data->total() }} записей
 </div>
@@ -164,5 +163,4 @@
         $('#deleteConfirmationModal').modal('show');
         $('#deleteForm').attr('action', `/acs/delete/${id}`);
     }
-
 </script>

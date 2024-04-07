@@ -1,10 +1,9 @@
 @extends('dashboard.layouts.default')
 
 @section('content')
-    <h1 class="page-header">Политравма Статистика {{ request()->branch }}</h1>
     <x-form.date-range-filter :branches="$branches" />
 
-    <x-panel>
+    <x-panel title="Политравма статистика">
         <div class="table-responsive ">
             <table class="table table-striped table-bordered">
                 <ul class="nav nav-tabs bg-light" role="tablist">
