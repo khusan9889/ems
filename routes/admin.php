@@ -175,14 +175,14 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/edit/{id}', [OdsAmbulanceIndicatorsController::class, 'edit'])->name('indicator.edit');
 
         });
+        Route::group(['prefix' => 'indicator-file'], function () {
+            Route::get('/', [OdsAmbulanceIndicatorsController::class, 'index_file'])->name('indicator.file');
+            Route::delete('/delete/{id}', [OdsAmbulanceIndicatorsController::class, 'delete_files'])->name('indicator-file.delete');
+        });
+        Route::post('/import', [OdsAmbulanceIndicatorsController::class, 'importExcel'])->name('indicator.import');
+        Route::get('/export', [OdsAmbulanceIndicatorsController::class, 'exportExcel'])->name('indicator.export');
 
     });
-    Route::group(['prefix' => 'indicator-file'], function () {
-        Route::get('/', [OdsAmbulanceIndicatorsController::class, 'index_file'])->name('indicator.file');
-        Route::delete('/delete/{id}', [OdsAmbulanceIndicatorsController::class, 'delete_files'])->name('indicator-file.delete');
-    });
-    Route::post('/import', [OdsAmbulanceIndicatorsController::class, 'importExcel'])->name('indicator.import');
-    Route::get('/export', [OdsAmbulanceIndicatorsController::class, 'exportExcel'])->name('indicator.export');
 
 
     Route::get('week_data/{data}', [ReportFormController::class, 'week_data'])->name('form.week_data');

@@ -19,7 +19,7 @@ return [
     'less16' => 'Меньше 16',
     'more16' => 'Больше 16',
     'DepartmentController' => 'Отделение',
-    'BranchController' => 'Субъект',
+    'BranchController' => 'Филиал',
     "roleList" => "Список ролей",
     "roleEdit" => "Изменить",
     "PermissionController" => "Доступы",
@@ -156,6 +156,9 @@ return [
     'OdsAmbulanceReferencesController'=>'Справочник скорой помощи',
     'OdsAmbulanceIndicatorsController'=>'Скорой помощи данные',
     'importExcel'=>'Импорт Excel',
+    'index_file'=>'Чтение Excel',
+    'delete_files'=>'Удалить Excel файл',
+    'exportExcel'=>'Экспорт файла Excel',
 //----------------------------------------------------------
 
 
