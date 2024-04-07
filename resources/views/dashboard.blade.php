@@ -11,8 +11,8 @@
     <!-- begin row -->
     <div class="row p-10">
         <!-- begin col-3 -->
-        <div class="col-md-4 col-sm-6">
-            <div class="widget widget-stats bg-green">
+        <div class="col-md-3 col-sm-6">
+            <div class="widget widget-stats bg-green-darker">
                 <div class="stats-icon stats-icon-lg"><i class="fa fa-globe fa-fw"></i></div>
                 <div class="stats-title">Пользователь в индикаторах</div>
                 <div class="stats-number">{{$users}}</div>
@@ -23,7 +23,7 @@
         </div>
         <!-- end col-3 -->
         <!-- begin col-3 -->
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-3 col-sm-6">
             <div class="widget widget-stats bg-blue">
                 <div class="stats-icon stats-icon-lg"><i class="fa fa-tags fa-fw"></i></div>
                 <div class="stats-title">Филиал</div>
@@ -36,7 +36,7 @@
         <!-- end col-3 -->
 
         <!-- begin col-3 -->
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-3 col-sm-6">
             <div class="widget widget-stats bg-black">
                 <div class="stats-icon stats-icon-lg"><i class="fa fa-comments fa-fw"></i></div>
                 <div class="stats-title">Субфилиал</div>
@@ -47,13 +47,32 @@
             </div>
         </div>
         <!-- end col-3 -->
+        <!-- begin col-3 -->
+        <div class="col-md-3 col-sm-6">
+            <div class="widget widget-stats bg-black-darker">
+                <div class="stats-icon stats-icon-lg"><i class="fa fa-comments fa-fw"></i></div>
+                <div class="stats-title">Пользовательские данные</div>
+                <table class="table table-profile">
+                    <tbody>
+                    <tr>
+                        <td class="field" style="color: white">{{$user->role?->name}}</td>
+                        <td style="color: white"><i class="fa fa-lg m-r-5"></i> {{$user->branch?->name}} </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div class="stats-progress progress">
+                    <div class="progress-bar" style="width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+        <!-- end col-3 -->
     </div>
     <!-- end row -->
     <div class="row p-10">
-
-        <!-- begin col-6 -->
-        <div class="col-md-6">
-            <div class="panel panel-inverse" data-sortable-id="index-6">
+        <!-- begin col-12 -->
+        <div class="col-md-12">
+            <div class="panel panel-inverse" data-sortable-id="index-12">
                 <div class="panel-heading">
 
                     <h4 class="panel-title"> Активности</h4>
@@ -89,51 +108,7 @@
             </div>
 
         </div>
-        <!-- end col-6 -->
-
-        <!-- begin col-6 -->
-        <div class="col-md-6">
-            <div class="panel panel-inverse" data-sortable-id="index-6">
-                <div class="panel-heading">
-                    <h4 class="panel-title"> Пользовательские данные</h4>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-profile">
-                        <tbody>
-                        <tr class="highlight">
-                            <td class="field">ФИО</td>
-                            <td>{{$user->name}}</td>
-                        </tr>
-                        <tr>
-                            <td class="field">Филиал</td>
-                            <td><i class="fa fa-lg m-r-5"></i> {{$user->branch?->name}} </td>
-                        </tr>
-                        <tr>
-                            <td class="field">Отделение</td>
-                            <td><a href="#">{{$user->department?->name}}</a></td>
-                        </tr>
-                        <tr>
-                            <td class="field">Роль</td>
-                            <td>{{$user->role?->name}}</td>
-                        </tr>
-
-                        <tr class="highlight">
-                            <td class="field">Номер телефона</td>
-                            <td><a href="#">{{$user->phone_number}}</a></td>
-                        </tr>
-                        <tr class="highlight">
-                            <td class="field">Почта</td>
-                            <td><a href="#">{{$user->email}}</a></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-
-        </div>
-        <!-- end col-6 -->
-
+        <!-- end col-12 -->
     </div>
 
 
