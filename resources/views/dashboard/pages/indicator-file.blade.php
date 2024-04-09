@@ -49,7 +49,7 @@
                                 @foreach ($regions as $key => $region)
                                     <option
                                         value="{{ $region->coato }}" {{ request('region_coato') == $region->coato ? 'selected' : '' }}>
-                                        {{ $region->name }}
+                                        {{ $region?->name }}
                                     </option>
                                 @endforeach
                             </select>
@@ -91,7 +91,7 @@
                                     @foreach ($regions as $key => $region)
                                         <option
                                             value="{{ $region->coato }}" {{ request('call_region_coato') == $region->coato ? 'selected' : '' }}>
-                                            {{ $region->name }}
+                                            {{ $region?->name }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -152,7 +152,7 @@
                 @foreach ($indicators as $key => $item)
                     <tr>
                         <td>{{ ($indicators->currentpage()-1)*10 + $loop->index + 1}}</td>
-                        <td>{{ $item->region->name }}</td>
+                        <td>{{ $item->region?->name }}</td>
                         <td><b>{{ $item->start_date }}</b></td>
                         <td><b>{{ $item->end_date }}</b></td>
                         <td><b>{{ $item->indicators_count }}</b></td>
