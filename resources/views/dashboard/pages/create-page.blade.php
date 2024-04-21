@@ -321,7 +321,7 @@
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="thrombolytic_therapy"
                         id="thrombolytic_therapyOption2" value="Нет"
-                        {{ old('thrombolytic_therapy') == 'Нет' ? 'checked' : '' }}>
+                        {{ old('thrombolytic_therapy') == 'Нет' ? 'checked' : '' }} checked>
                     <label class="form-check-label" for="thrombolytic_therapyOption2">Нет/Yo'q</label>
                 </div>
                 @error('thrombolytic_therapy')
@@ -340,7 +340,7 @@
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="thrombolytic_therapy_administered"
                         id="thrombolytic_therapy_administeredOption2" value="Нет"
-                        {{ old('thrombolytic_therapy_administered') == 'Нет' ? 'checked' : '' }}>
+                        {{ old('thrombolytic_therapy_administered') == 'Нет' ? 'checked' : '' }} checked>
                     <label class="form-check-label" for="thrombolytic_therapy_administeredOption2">Нет/Yo'q</label>
                 </div>
                 @error('thrombolytic_therapy_administered')

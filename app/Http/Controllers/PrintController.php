@@ -13,6 +13,7 @@ class PrintController extends Controller
     public function create_pdf(Request $request, $id)
     {
         $acs = ACS::findOrFail($id);
+        return $acs;
         // dd($acs);
         $mpdf_uz = new Mpdf();
         $application_file_uz = 'uztest.pdf';

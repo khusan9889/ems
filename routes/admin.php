@@ -143,6 +143,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/', [OdsAmbulanceSubstationsController::class, 'index'])->name('substation.index');
             Route::get('/create-page', [OdsAmbulanceSubstationsController::class, 'create'])->name('substation.create-page');
             Route::delete('/delete/{id}', [OdsAmbulanceSubstationsController::class, 'destroy'])->name('substation.delete');
+            Route::delete('/delete/{id}', [OdsAmbulanceSubstationsController::class, 'destroy'])->name('substation.delete');
             Route::post('/store', [OdsAmbulanceSubstationsController::class, 'store'])->name('substation.store');
             Route::put('/update/{id}', [OdsAmbulanceSubstationsController::class, 'update'])->name('substation.update');
             Route::get('/edit/{id}', [OdsAmbulanceSubstationsController::class, 'edit'])->name('substation.edit');
