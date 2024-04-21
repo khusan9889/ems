@@ -33,7 +33,7 @@
                            data-sidebar-search="true"/>
                 </li>
             @endif
-            <li class="nav-header">Меню 5</li>
+            <li class="nav-header">Меню</li>
             @php
                 $currentUrl = (Request::path() != '/') ? '/'. Request::path() : '/';
 
