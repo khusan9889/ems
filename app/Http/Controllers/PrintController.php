@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ACS;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
-use Mpdf\Mpdf;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class PrintController extends Controller
@@ -13,13 +12,8 @@ class PrintController extends Controller
     public function create_pdf(Request $request, $id)
     {
         $acs = ACS::findOrFail($id);
-        $mpdf_uz = new Mpdf();
-        $application_file_uz = 'uztest.pdf';
-        $view_uz = View::make('dashboard.pages.print', compact('acs'));
-        $html_content_uz = $view_uz->render();
-        $mpdf_uz->WriteHTML($html_content_uz);
-        $mpdf_uz->Output('MyPDF.pdf', 'D');
-        $uz = 'storage/certificates/' . $application_file_uz;
-        return $uz;
+        $pdf = Pdf::loadView('dashboard.pages.print', ['acs' => $acs]);
+        return $pdf->download();
     }
+
 }
