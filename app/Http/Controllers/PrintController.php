@@ -6,6 +6,7 @@ use App\Models\ACS;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Mpdf\Mpdf;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class PrintController extends Controller
@@ -24,9 +25,17 @@ class PrintController extends Controller
     }
     public function generatePDF()
     {
-        $mpdf = new Mpdf();
-        $mpdf->WriteHTML('<h1>Hello World!</h1><p>Welcome to mPDF with Laravel.</p>');
-        $mpdf->Output('example.pdf', 'I');  // Brauzerda PDFni ko'rsatadi
+        $data = [
+            [
+                'quantity' => 1,
+                'description' => '1 Year Subscription',
+                'price' => '129.00'
+            ]
+        ];
+
+        $pdf = Pdf::loadView('pdf', ['data' => $data]);
+
+        return $pdf->download();
     }
 
 }
