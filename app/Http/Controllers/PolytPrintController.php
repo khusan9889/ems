@@ -14,7 +14,7 @@ class PolytPrintController extends Controller
     public function create_pdf(Request $request, $id)
     {
         $polyt = Polytrauma::findOrFail($id);
-        $pdf = Pdf::loadView('dashboard.pages.print', ['polyt' => $polyt]);
+        $pdf = Pdf::loadView('dashboard.pages.polyt-print', ['polyt' => $polyt]);
         return $pdf->download();
     }
 
