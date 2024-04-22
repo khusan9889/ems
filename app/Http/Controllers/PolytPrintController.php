@@ -13,7 +13,6 @@ class PolytPrintController extends Controller
     public function create_pdf(Request $request, $id)
     {
 
-        require_once __DIR__ . '/vendor/autoload.php'; // Composer autoload faylini yuklash
 
         $polyt = Polytrauma::findOrFail($id);
 
