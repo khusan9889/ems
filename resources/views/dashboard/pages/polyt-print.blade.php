@@ -7,6 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Политравма</title>
 </head>
+<style type="text/css">
+    * {
+        font-family: "DejaVu Sans", sans-serif,Helvetica;
+    }
+</style>
 
 <body>
     <p style="margin-top:0cm; margin-right:0cm; margin-bottom:30.0pt; margin-left:0cm; line-height:normal; font-size:15px; font-family:'Calibri', sans-serif; text-align:center;">
