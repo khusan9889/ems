@@ -13,9 +13,10 @@ class PrintController extends Controller
     public function create_pdf(Request $request, $id)
     {
         $acs = ACS::findOrFail($id);
-        $mpdf_uz = new Mpdf(['tempDir' => storage_path('temp')]); // Laravel storage katalogi ostida temp katalogi
+        $mpdf_uz = new Mpdf();
         $application_file_uz = 'uztest.pdf';
         $view_uz = View::make('dashboard.pages.print', compact('acs'));
+        return $view_uz;
         $html_content_uz = $view_uz->render();
         $mpdf_uz->WriteHTML($html_content_uz);
         $mpdf_uz->Output('MyPDF.pdf', 'D');
