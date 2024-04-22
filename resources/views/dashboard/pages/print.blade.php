@@ -43,7 +43,7 @@
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">
             Канал госпитализации:
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 @if (mb_strtolower(trim($acs->hospitalization_channels)) == 'скорая')
                     &#10004;
                 @else
@@ -70,7 +70,7 @@
     <p
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Исход лечения:
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp;
                 @if (mb_strtolower(trim($acs->treatment_result)) == 'выписан')
                     &#10004;
@@ -97,7 +97,7 @@
     </p>
     <p style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Исход:
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp;
                 @if (mb_strtolower(trim($acs->final_result)) == mb_strtolower('ОИМ с Q'))
                     &#10004;
@@ -125,7 +125,7 @@
     <p
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Срок ангинального приступа при поступлении:
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 @if (mb_strtolower(trim($acs->anginal_attack_date)) == mb_strtolower('до 6ч.'))
                     &#10004;
                 @else
@@ -155,7 +155,7 @@
         <div style="border: 1px solid #000; padding: 5px;">
             <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Показана экстренная ЧКВ/инвазивная ангиография:
-                    <strong style='font-family:helvetica'>
+                    <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         @if (mb_strtolower(trim($acs->cta_invasive_angiography)) == mb_strtolower('ДА'))
@@ -177,7 +177,7 @@
 
             <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Экстренная ЧКВ выполнена <strong>в течение 90 мин:</strong>
-                    <strong style='font-family:helvetica'>
+                    <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         @if (mb_strtolower(trim($acs->cta_90min)) == mb_strtolower('ДА'))
@@ -208,7 +208,7 @@
         <div style="border: 1px solid #000; padding: 5px;">
             <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Показана <strong>отсроченная</strong> ЧКВ/инвазивная ангиография:
-                    <strong style='font-family:helvetica'>
+                    <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         @if (mb_strtolower(trim($acs->deferred_cta_invasive)) == mb_strtolower('ДА'))
@@ -229,7 +229,7 @@
             </p>
             <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Отсроченная ЧКВ выполнена:
-                    <strong style='font-family:helvetica'>
+                    <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -256,7 +256,7 @@
     <p style='margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Если&nbsp;</span><span style="font-size:11px;">не проведена
             ЧКВ</span><span style="font-size:11px;">, отметьте причину: <strong>
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp;
                 @if (mb_strtolower(trim($acs->reasons_not_performing_cta)) == mb_strtolower('медицинские противопоказания'))
                     &#10004;
@@ -307,7 +307,7 @@
         <div style="border: 1px solid #000; padding: 5px;">
             <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Показана ли тромболитическая терапия (ТЛТ):
-                    <strong style='font-family:helvetica'>
+                    <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -330,7 +330,7 @@
             </p>
             <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Если &laquo;Да&raquo;, то проведена ли ТЛТ:
-                    <strong style='font-family:helvetica'>
+                    <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -354,7 +354,7 @@
             </p>
             <p style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
                 <span style="font-size:11px;">Если &laquo;НЕТ&raquo;, отметьте причину:
-                    <strong style='font-family:helvetica'>
+                    <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                         &nbsp;
                         @if (mb_strtolower(trim($acs->not_administering_tlt)) == mb_strtolower('медицинские противопоказания'))
                             &#10004;
@@ -392,7 +392,7 @@
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-                <strong style='font-family:helvetica'>
+                <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                     &nbsp;
                     @if (mb_strtolower(trim($acs->ecg_during_hospitalization)) == mb_strtolower('Да'))
                         &#10004;
@@ -418,7 +418,7 @@
             <span style="font-size:11px;">Если проведено ЭКГ, <strong>СТ сегмента повышен</strong>: &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                <strong style='font-family:helvetica'>
+                <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                     &nbsp;
                     @if (mb_strtolower(trim($acs->st_segment)) == mb_strtolower('Да'))
                         &#10004;
@@ -445,7 +445,7 @@
                 <span style="font-size:11px;">: &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp;
                 @if (mb_strtolower(trim($acs->echocardiogram)) == mb_strtolower('Да'))
                     &#10004;
@@ -471,7 +471,7 @@
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp;
                 @if (strcasecmp(trim($acs->first_measurement), '≤3 сутки') === 0)
                     &#10004;
@@ -494,7 +494,7 @@
         <span style="font-size:11px;">Проведены анализы на <strong>ЛПНП</strong>: &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp;
                 @if (mb_strtolower(trim($acs->cholestero_levels)) == mb_strtolower('Да'))
                     &#10004;
@@ -519,7 +519,7 @@
         <span
             style="font-size:11px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp;
                 @if (mb_strtolower(trim($acs->aptt)) == mb_strtolower('Да'))
                     &#10004;
@@ -543,7 +543,7 @@
         <span style="font-size:11px;">Проведена <strong>антикоагулянтная терапия</strong>: &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp;
                 @if (mb_strtolower(trim($acs->anticoagulant)) == mb_strtolower('Да'))
                     &#10004;
@@ -573,7 +573,7 @@
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-                <strong style='font-family:helvetica'>
+                <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                     &nbsp;
                     @if (mb_strtolower(trim($acs->aspirin)) == mb_strtolower('Да'))
                         &#10004;
@@ -602,7 +602,7 @@
             style="font-size:11px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp;
                 @if (mb_strtolower(trim($acs->p2y12)) == mb_strtolower('Да'))
                     &#10004;
@@ -637,7 +637,7 @@
                     высокой интенсивности</span></strong><span style="font-size:11px;">:&nbsp;</span><span
                 style="font-size:11px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-                <strong style='font-family:helvetica'>
+                <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                     &nbsp;
                     @if (mb_strtolower(trim($acs->high_intensity_statins)) == mb_strtolower('Да'))
                         &#10004;

@@ -31,7 +31,7 @@
     <p
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Канал госпитализации:
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 @if (mb_strtolower(trim($polyt->hospitalization_channels)) == 'скорая')
                     &#10004;
                 @else
@@ -62,7 +62,7 @@
     <p
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Исход лечения: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp;
                 @if (mb_strtolower(trim($polyt->treatment_result)) == 'выписан')
                     &#10004;
@@ -93,7 +93,7 @@
     <hr style="border: 0; height: 2px; background-color: black; margin-bottom: 5px;">
     <p style='margin-top:0.2cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Время поступления после получения травмы:&nbsp;<br>
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp;
                 @if (mb_strtolower(trim($polyt->arrival_after_injury)) == 'до 1ч.')
                     &#10004;
@@ -136,7 +136,7 @@
         <p
             style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;border:none;padding:0cm;'>
             <span style="font-size:11px;">Механизм травмы:
-                <strong style='font-family:helvetica'>
+                <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                     &nbsp;
                     @if (mb_strtolower(trim($polyt->mechanism_of_injury)) == 'ДТП')
                         &#10004;
@@ -176,7 +176,7 @@
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-size:11px;">
-                <strong style='font-family:helvetica'>
+                <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     @if (mb_strtolower(trim($polyt->survey_of_surgeon)) == mb_strtolower('ДА'))
@@ -200,7 +200,7 @@
         <span style="font-size:11px;">Осмотр нейрохирурга:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-size:11px;">
-                <strong style='font-family:helvetica'>
+                <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     @if (mb_strtolower(trim($polyt->survey_of_neurosurgeon)) == mb_strtolower('ДА'))
@@ -224,7 +224,7 @@
         <span style="font-size:11px;">Осмотр травматолога:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 @if (mb_strtolower(trim($polyt->survey_of_traumatologist)) == mb_strtolower('ДА'))
@@ -248,7 +248,7 @@
         <span style="font-size:11px;">Осмотр других узких специалистов:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
                 @if (mb_strtolower(trim($polyt->narrow_specialists)) == mb_strtolower('ДА'))
                     &#10004;
@@ -270,7 +270,7 @@
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Проведена&nbsp;</span><span style="font-size:11px;">R</span><span
             style="font-size:11px;">-графия (черепа, грудной клетки, костей таза, конечностей):
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp;
                 @if (mb_strtolower(trim($polyt->r_graphy)) == mb_strtolower('ДА'))
@@ -294,7 +294,7 @@
         style='margin-top:0.3cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Проведено УЗС (плевральных и брюшной полостей, забрюшинного
             пространства):&nbsp;
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 @if (mb_strtolower(trim($polyt->conducted_ultrasound)) == mb_strtolower('ДА'))
                     &#10004;
@@ -320,7 +320,7 @@
             style="font-size:11px;">&rdquo;</span><span style="font-size:11px;">): &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp;
                 @if (mb_strtolower(trim($polyt->msct)) == mb_strtolower('ДА'))
@@ -345,7 +345,7 @@
             тела)</span><span style="font-size:11px;">:</span><span style="font-size:11px;">&nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp;
                 @if (mb_strtolower(trim($polyt->msct_individual_parts)) == mb_strtolower('ДА'))
@@ -369,7 +369,7 @@
         <span style="font-size:11px;">Содержания нейтральных жиров в крови и моче</span><span style="font-size:11px;">:
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-size:11px;">
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp;
                 @if (mb_strtolower(trim($polyt->neutral_fats)) == mb_strtolower('ДА'))
@@ -395,7 +395,7 @@
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp;&nbsp;</span><span style="font-size:11px;">
-                <strong style='font-family:helvetica'>
+                <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     &nbsp; &nbsp;
                     @if (mb_strtolower(trim($polyt->analysis_of_hb_ht)) == mb_strtolower('ДА'))
@@ -421,7 +421,7 @@
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-size:11px;">&nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp;
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp;
                 @if (mb_strtolower(trim($polyt->dynamic_uzs)) == mb_strtolower('ДА'))
@@ -446,7 +446,7 @@
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp;
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp;
                 @if (mb_strtolower(trim($polyt->diagnostic_laparoscopy)) == mb_strtolower('ДА'))
@@ -472,7 +472,7 @@
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp;
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp;
                 @if (mb_strtolower(trim($polyt->thoracocentesis)) == mb_strtolower('ДА'))
@@ -498,7 +498,7 @@
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-size:11px;">
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp;
                 @if (mb_strtolower(trim($polyt->laparotomy)) == mb_strtolower('ДА'))
@@ -523,7 +523,7 @@
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-size:11px;">
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp;
                 @if (mb_strtolower(trim($polyt->thoracoscopy_thoracotomy)) == mb_strtolower('ДА'))
@@ -548,7 +548,7 @@
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp;
                 @if (mb_strtolower(trim($polyt->osteosynthesis_of_fractures)) == mb_strtolower('ДА'))
@@ -573,7 +573,7 @@
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp;
                 @if (mb_strtolower(trim($polyt->skull_trepanation)) == mb_strtolower('ДА'))
