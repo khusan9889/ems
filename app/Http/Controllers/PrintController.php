@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\ACS;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
-use Mpdf\Mpdf;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 

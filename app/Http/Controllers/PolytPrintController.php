@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Polytrauma;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
-use Mpdf\Mpdf;
+use Barryvdh\DomPDF\Facade\Pdf;
+
+
 
 
 class PolytPrintController extends Controller
