@@ -10,7 +10,7 @@
 </head>
 <style type="text/css">
     * {
-        font-family: "DejaVu Sans", sans-serif,Helvetica;
+        font-family: "DejaVu Sans, sans-serif,Helvetica";
     }
 </style>
 <body>

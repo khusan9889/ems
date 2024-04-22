@@ -9,12 +9,10 @@
 </head>
 <style type="text/css">
     * {
-        font-family: "DejaVu Sans", sans-serif,Helvetica;
+        font-family: "DejaVu Sans, sans-serif,Helvetica";
     }
 </style>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
 
-<link href="/path/to/font-awesome/css/all.min.css" rel="stylesheet">
 
 <body>
     <p style="margin-top:0cm; margin-right:0cm; margin-bottom:30.0pt; margin-left:0cm; line-height:normal; font-size:15px; font-family:'Calibri', sans-serif; text-align:center;">
