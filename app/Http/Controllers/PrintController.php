@@ -22,6 +22,11 @@ class PrintController extends Controller
         $uz = 'storage/certificates/' . $application_file_uz;
         return $uz;
     }
-
+    public function generatePDF()
+    {
+        $mpdf = new Mpdf();
+        $mpdf->WriteHTML('<h1>Hello World!</h1><p>Welcome to mPDF with Laravel.</p>');
+        $mpdf->Output('example.pdf', 'I');  // Brauzerda PDFni ko'rsatadi
+    }
 
 }
