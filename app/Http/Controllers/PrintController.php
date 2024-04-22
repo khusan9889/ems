@@ -13,8 +13,8 @@ class PrintController extends Controller
     public function create_pdf(Request $request, $id)
     {
         $acs = ACS::findOrFail($id);
-        return $acs;
         $mpdf_uz = new Mpdf();
+        return $acs;
         $application_file_uz = 'uztest.pdf';
         $view_uz = View::make('dashboard.pages.print', compact('acs'));
         return $view_uz;
