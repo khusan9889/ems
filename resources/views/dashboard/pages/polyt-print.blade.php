@@ -7,7 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Политравма</title>
 </head>
-
+<style type="text/css">
+    * {
+        font-family: "DejaVu Sans", sans-serif,Helvetica;
+    }
+</style>
 <body>
     <p style="margin-top:0cm; margin-right:0cm; margin-bottom:30.0pt; margin-left:0cm; line-height:normal; font-size:15px; font-family:'Calibri', sans-serif; text-align:center;">
         <strong><span style="font-size:11px;">КАРТА СОБЛЮДЕНИЯ КЛИНИЧЕСКИХ ПРОТОКОЛОВ<br>при ПОЛИТРАВМЕ</span></strong>
@@ -172,7 +176,7 @@
     <hr style="border: 0; height: 2px; background-color: black; margin-bottom: 2px;">
     <p
         style='margin-top:0.2cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'>
-        <span style="font-size:11px;">Осмотр хирурга</span><span style="font-size:11px;">:&nbsp; &nbsp; &nbsp; &nbsp;
+        <span style="font-size:11px;">Осмотр хирурга</span><span style="font-size:11px;">:
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-size:11px;">
@@ -197,7 +201,7 @@
     </p>
     <p
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'>
-        <span style="font-size:11px;">Осмотр нейрохирурга:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <span style="font-size:11px;">Осмотр нейрохирурга:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-size:11px;">
                 <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
@@ -221,7 +225,7 @@
     </p>
     <p
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'>
-        <span style="font-size:11px;">Осмотр травматолога:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <span style="font-size:11px;">Осмотр травматолога: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
@@ -245,7 +249,7 @@
     </p>
     <p
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'>
-        <span style="font-size:11px;">Осмотр других узких специалистов:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <span style="font-size:11px;">Осмотр других узких специалистов: &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
@@ -271,7 +275,7 @@
         <span style="font-size:11px;">Проведена&nbsp;</span><span style="font-size:11px;">R</span><span
             style="font-size:11px;">-графия (черепа, грудной клетки, костей таза, конечностей):
             <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp; &nbsp; &nbsp;
                 @if (mb_strtolower(trim($polyt->r_graphy)) == mb_strtolower('ДА'))
                     &#10004;
@@ -295,7 +299,7 @@
         <span style="font-size:11px;">Проведено УЗС (плевральных и брюшной полостей, забрюшинного
             пространства):&nbsp;
             <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 @if (mb_strtolower(trim($polyt->conducted_ultrasound)) == mb_strtolower('ДА'))
                     &#10004;
                 @else
@@ -318,7 +322,7 @@
             style="font-size:11px;">&ldquo;</span><span style="font-size:11px;">full</span><span
             style="font-size:11px;">&nbsp;</span><span style="font-size:11px;">body</span><span
             style="font-size:11px;">&rdquo;</span><span style="font-size:11px;">): &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+           &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -343,7 +347,7 @@
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Проведена&nbsp;</span><span style="font-size:11px;">МСКТ (отдельных частей
             тела)</span><span style="font-size:11px;">:</span><span style="font-size:11px;">&nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+           &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -367,7 +371,7 @@
     <p
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Содержания нейтральных жиров в крови и моче</span><span style="font-size:11px;">:
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-size:11px;">
             <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -392,7 +396,7 @@
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Проведен анализ &nbsp; Нв,&nbsp;</span><span
             style="font-size:11px;">Ht</span><span style="font-size:11px;">&nbsp;в динамике:&nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp;&nbsp;</span><span style="font-size:11px;">
                 <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
@@ -417,7 +421,7 @@
     <p
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
         <span style="font-size:11px;">Проведено УЗС в динамике</span><span style="font-size:11px;">:&nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-size:11px;">&nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp;
@@ -443,7 +447,7 @@
     <p
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'>
         <span style="font-size:11px;">Диагностическая лапароскопия:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp;
             <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
@@ -468,7 +472,7 @@
     <p
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'>
         <span style="font-size:11px;">Торакоцентез:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp;
@@ -494,7 +498,7 @@
     <p
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'>
         <span style="font-size:11px;">Лапаратомия:</span><span style="font-size:11px;">&nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-size:11px;">
@@ -520,7 +524,7 @@
     <p
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'>
         <span style="font-size:11px;">Торакоскопия (торакотомия):&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-size:11px;">
             <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
@@ -545,7 +549,7 @@
     <p
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'>
         <span style="font-size:11px;">Остеосинтез переломов:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
@@ -570,7 +574,7 @@
     <p
         style='margin-top:0cm;margin-right:0cm;margin-bottom:10pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'>
         <span style="font-size:11px;">Трепанация черепа:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
@@ -594,7 +598,7 @@
     </p>
     <p
         style='margin-top:1cm;margin-right:6.1pt;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'>
-        <span style="font-size:11px;">ФИО лечащего врача: &nbsp;{{ $polyt->physician_full_name }} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <span style="font-size:11px;">ФИО лечащего врача: &nbsp;{{ $polyt->physician_full_name }}  &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ФИО специалиста
             стат.отдела: &nbsp;{{ $polyt->stat_department_full_name }}</span></p>
     <div
