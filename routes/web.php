@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ReportFormController;
+use App\Http\Controllers\PrintController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/generate-pdf', 'PrintController@generatePDF');
