@@ -674,7 +674,7 @@
                 style="font-size:11px;">II</span></strong><span style="font-size:11px;">:&nbsp; &nbsp;
             &nbsp;&nbsp;</span><span style="font-size:11px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <strong style='font-family:helvetica'>
+            <strong style='font-family: "DejaVu Sans, sans-serif,Helvetica"'>
                 &nbsp;
                 @if (mb_strtolower(trim($acs->ACE_inhibitors_ARBs)) == mb_strtolower('Да'))
                     &#10004;
