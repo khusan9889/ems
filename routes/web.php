@@ -4,6 +4,7 @@ use App\Http\Controllers\ReportFormController;
 use Illuminate\Support\Facades\Route;
 
 
+Route::get('ok/{id}', [\App\Http\Controllers\PolytPrintController::class, 'create_pdf']);
 
 Route::get('php', function () {
     return phpinfo();
