@@ -13,7 +13,6 @@ class PolytPrintController extends Controller
     public function create_pdf(Request $request, $id)
     {
 
-        dd($id);
         $polyt = Polytrauma::findOrFail($id);
 
         $mpdf_uz = new Mpdf();
