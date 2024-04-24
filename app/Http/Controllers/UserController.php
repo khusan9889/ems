@@ -144,7 +144,7 @@ class UserController extends Controller
 
     public function activity()
     {
-        $data = ActionsLog::with('user')->paginate(50);
+        $data = ActionsLog::with('user')->sort('id','ASC')->paginate(50);
 
         return view('dashboard.pages.activities', ['data' => $data]);
     }
