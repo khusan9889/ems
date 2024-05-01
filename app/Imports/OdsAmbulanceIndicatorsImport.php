@@ -141,7 +141,7 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, WithHeadingRow, With
                         'call_end' => $row['okoncanie_vyzova'],
                         'return_substation' => $row['vozvr_nie_na_pst'],
                         'brigade_id' => $brigade,
-                        'address' => $row['adres_prozivaniia'],
+//                        'address' => $row['adres_prozivaniia'],
                         'reason_id' => $reason,
                         'gender' => $row['pol'],
                         'age' => $row['vozrast'],
