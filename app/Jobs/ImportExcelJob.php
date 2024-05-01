@@ -43,7 +43,6 @@ class ImportExcelJob implements ShouldQueue
         $med_data->sanction=2;
         $med_data->save();
 
-        file_put_contents(" storage/logs/laravel.log", $exception, FILE_APPEND);
     }
 
 
