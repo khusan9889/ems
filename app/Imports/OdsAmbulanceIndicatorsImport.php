@@ -116,20 +116,20 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, WithHeadingRow, With
                     and strlen(trim($row['vrna_prinvyzbr']))==8
                     and strlen(trim($row['vr_doezda_na_vyz']))==8
                 ) {
-                    $substation = OdsAmbulanceSubstations::findOrCreate($row['podstanciia'], $this->region_coato);
-                    $type = OdsAmbulanceReferences::findOrCreate($row['tip_vyzova'], 'call_types');
+//                    $substation = OdsAmbulanceSubstations::findOrCreate($row['podstanciia'], $this->region_coato);
+//                    $type = OdsAmbulanceReferences::findOrCreate($row['tip_vyzova'], 'call_types');
                     $reason = OdsAmbulanceReferences::findOrCreate($row['povod'], 'reasons');
-                    $call_result = OdsAmbulanceReferences::findOrCreate($row['rezultat_vyezda'], 'call_results');
-                    $hospitalization_result = $row['rez_tat_gosp_cii'] ? OdsAmbulanceReferences::findOrCreate($row['rez_tat_gosp_cii'], 'hospitalization_results') : null;
-                    $call_place = OdsAmbulanceReferences::findOrCreate($row['mesto_vyzova'], 'call_places');
+//                    $call_result = OdsAmbulanceReferences::findOrCreate($row['rezultat_vyezda'], 'call_results');
+//                    $hospitalization_result = $row['rez_tat_gosp_cii'] ? OdsAmbulanceReferences::findOrCreate($row['rez_tat_gosp_cii'], 'hospitalization_results') : null;
+//                    $call_place = OdsAmbulanceReferences::findOrCreate($row['mesto_vyzova'], 'call_places');
                     $diagnosis = OdsAmbulanceReferences::findOrCreate($row['diagnoz'], 'diagnoses');
-                    $hospital = OdsAmbulanceHospitals::findOrCreate($row['mesto_gospit'], $this->region_coato);
-                    $brigade = OdsAmbulanceBrigades::findOrCreate($row['brigada'], $substation);
+//                    $hospital = OdsAmbulanceHospitals::findOrCreate($row['mesto_gospit'], $this->region_coato);
+//                    $brigade = OdsAmbulanceBrigades::findOrCreate($row['brigada'], $substation);
                     OdsAmbulanceIndicators::create([
                         'call_region_coato' => $this->region_coato,
-                        'substation_id' => $substation,
+//                        'substation_id' => $substation,
                         'filling_call_card' =>strtolower(trim($row['kv_zapolnena']))==strtolower("Да")?true:false,
-                        'call_type_id' => $type,
+//                        'call_type_id' => $type,
                         'card_number' => $row['pp'],
                         'call_received' => $row['data_priema'],
                         'call_reception' => $data_p . ' ' . $row['vremia_priema'],
@@ -140,16 +140,16 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, WithHeadingRow, With
                         'arrival_medical_center' => $row['prib_ie_v_medorg'],
                         'call_end' => $row['okoncanie_vyzova'],
                         'return_substation' => $row['vozvr_nie_na_pst'],
-                        'brigade_id' => $brigade,
+//                        'brigade_id' => $brigade,
 //                        'address' => $row['adres_prozivaniia'],
                         'reason_id' => $reason,
-                        'gender' => $row['pol'],
-                        'age' => $row['vozrast'],
+//                        'gender' => $row['pol'],
+//                        'age' => $row['vozrast'],
                         'diagnos' => $row['kod_mkb'],
-                        'call_result_id' => $call_result,
-                        'hospital_id' => $hospital,
-                        'hospitalization_result_id' => $hospitalization_result,
-                        'call_place_id' => $call_place,
+//                        'call_result_id' => $call_result,
+//                        'hospital_id' => $hospital,
+//                        'hospitalization_result_id' => $hospitalization_result,
+//                        'call_place_id' => $call_place,
                         'brigade_call_time' => $row['vr_doezda_na_vyz'],
                         'travel_time' => $row['vrna_prinvyzbr'],
                         'diagnosis_id' => $diagnosis,
