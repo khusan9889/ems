@@ -159,7 +159,7 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, WithHeadingRow, With
 
                 }
             } catch (Exception $e) {
-                file_put_contents(" storage/logs/jobs.log", $e, FILE_APPEND);
+                file_put_contents(" storage/logs/laravel.log", $e, FILE_APPEND);
             }
         }
 
