@@ -104,10 +104,9 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, WithHeadingRow, With
 
         foreach ($rows as $row) {
             try {
-
+                DB::beginTransaction();
                 $data_priema = strtotime(trim($row['data_priema']));
                 $data_p = date("Y-m-d", $data_priema);
-
                 if (
                     strlen(trim($row['data_priema'])) == 10
                     and strlen(trim($row['vremia_priema'])) == 8
@@ -156,11 +155,11 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, WithHeadingRow, With
                         'diagnosis_id' => $diagnosis,
                         'excel_id' => $this->excel_id
                     ]);
-
-
                 }
+                DB::commit();
             } catch (Exception $e) {
-                Log::info($e);
+                DB::rollBack();
+                Log::error('Tranzaksiya xatosi: ' . $e->getMessage());
             }
         }
 
