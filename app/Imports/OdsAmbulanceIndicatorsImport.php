@@ -118,11 +118,11 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, WithHeadingRow, With
                 ) {
 //                    $substation = OdsAmbulanceSubstations::findOrCreate($row['podstanciia'], $this->region_coato);
 //                    $type = OdsAmbulanceReferences::findOrCreate($row['tip_vyzova'], 'call_types');
-                    $reason = OdsAmbulanceReferences::findOrCreate($row['povod'], 'reasons');
+                    $reason = OdsAmbulanceReferences::findOrCreate($row['povod']?$row['povod']:"Без причины", 'reasons');
 //                    $call_result = OdsAmbulanceReferences::findOrCreate($row['rezultat_vyezda'], 'call_results');
 //                    $hospitalization_result = $row['rez_tat_gosp_cii'] ? OdsAmbulanceReferences::findOrCreate($row['rez_tat_gosp_cii'], 'hospitalization_results') : null;
 //                    $call_place = OdsAmbulanceReferences::findOrCreate($row['mesto_vyzova'], 'call_places');
-                    $diagnosis = OdsAmbulanceReferences::findOrCreate($row['diagnoz'], 'diagnoses');
+                    $diagnosis = OdsAmbulanceReferences::findOrCreate($row['diagnoz']?$row['diagnoz']:"Недиагностированный", 'diagnoses');
 //                    $hospital = OdsAmbulanceHospitals::findOrCreate($row['mesto_gospit'], $this->region_coato);
 //                    $brigade = OdsAmbulanceBrigades::findOrCreate($row['brigada'], $substation);
                     OdsAmbulanceIndicators::create([
@@ -130,7 +130,7 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, WithHeadingRow, With
 //                        'substation_id' => $substation,
                         'filling_call_card' =>strtolower(trim($row['kv_zapolnena']))==strtolower("Да")?true:false,
 //                        'call_type_id' => $type,
-                        'card_number' => $row['pp'],
+//                        'card_number' => $row['pp'],
                         'call_received' => $row['data_priema'],
                         'call_reception' => $data_p . ' ' . $row['vremia_priema'],
                         'transfer_brigade' => $row['peredaca_brigade'],
