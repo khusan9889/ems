@@ -11,6 +11,7 @@ use App\Models\OdsAmbulanceSubstations;
 use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;
@@ -159,7 +160,7 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, WithHeadingRow, With
 
                 }
             } catch (Exception $e) {
-                file_put_contents(" storage/logs/laravel.log", $e, FILE_APPEND);
+                Log::info($e);
             }
         }
 
