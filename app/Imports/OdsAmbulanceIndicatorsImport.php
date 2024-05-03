@@ -22,7 +22,7 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 use Throwable;
 
 
-class OdsAmbulanceIndicatorsImport implements ToCollection, WithHeadingRow, WithChunkReading, WithMapping,WithBatchInserts
+class OdsAmbulanceIndicatorsImport implements ToCollection, WithHeadingRow, WithChunkReading, WithMapping, WithBatchInserts
 {
     protected $excel_id;
     protected $region_coato;
@@ -100,29 +100,29 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, WithHeadingRow, With
     public function collection(Collection $rows)
     {
 
-        try {
 
-            foreach ($rows as $row) {
+        foreach ($rows as $row) {
+            try {
 
                 $data_priema = strtotime(trim($row['data_priema']));
                 $data_p = date("Y-m-d", $data_priema);
 
                 if (
-                    strlen(trim($row['data_priema']))== 10
-                    and strlen(trim($row['vremia_priema']))== 8
-                    and strlen(trim($row['peredaca_brigade']))== 19
-                    and strlen(trim($row['vremia_vyezda_br']))==19
-                    and strlen(trim($row['pribytie_na_vyz']))==19
-                    and strlen(trim($row['vrna_prinvyzbr']))==8
-                    and strlen(trim($row['vr_doezda_na_vyz']))==8
+                    strlen(trim($row['data_priema'])) == 10
+                    and strlen(trim($row['vremia_priema'])) == 8
+                    and strlen(trim($row['peredaca_brigade'])) == 19
+                    and strlen(trim($row['vremia_vyezda_br'])) == 19
+                    and strlen(trim($row['pribytie_na_vyz'])) == 19
+                    and strlen(trim($row['vrna_prinvyzbr'])) == 8
+                    and strlen(trim($row['vr_doezda_na_vyz'])) == 8
                 ) {
 //                    $substation = OdsAmbulanceSubstations::findOrCreate($row['podstanciia'], $this->region_coato);
 //                    $type = OdsAmbulanceReferences::findOrCreate($row['tip_vyzova'], 'call_types');
-                    $reason = OdsAmbulanceReferences::findOrCreate($row['povod']?$row['povod']:"Без причины", 'reasons');
+                    $reason = OdsAmbulanceReferences::findOrCreate($row['povod'] ? $row['povod'] : "Без причины", 'reasons');
 //                    $call_result = OdsAmbulanceReferences::findOrCreate($row['rezultat_vyezda'], 'call_results');
 //                    $hospitalization_result = $row['rez_tat_gosp_cii'] ? OdsAmbulanceReferences::findOrCreate($row['rez_tat_gosp_cii'], 'hospitalization_results') : null;
 //                    $call_place = OdsAmbulanceReferences::findOrCreate($row['mesto_vyzova'], 'call_places');
-                    $diagnosis = OdsAmbulanceReferences::findOrCreate($row['diagnoz']?$row['diagnoz']:"Недиагностированный", 'diagnoses');
+                    $diagnosis = OdsAmbulanceReferences::findOrCreate($row['diagnoz'] ? $row['diagnoz'] : "Недиагностированный", 'diagnoses');
 //                    $hospital = OdsAmbulanceHospitals::findOrCreate($row['mesto_gospit'], $this->region_coato);
 //                    $brigade = OdsAmbulanceBrigades::findOrCreate($row['brigada'], $substation);
                     OdsAmbulanceIndicators::create([
@@ -145,7 +145,7 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, WithHeadingRow, With
                         'reason_id' => $reason,
 //                        'gender' => $row['pol'],
 //                        'age' => $row['vozrast'],
-                        'diagnos' => $row['kod_mkb']?$row['kod_mkb']:"Нет",
+                        'diagnos' => $row['kod_mkb'] ? $row['kod_mkb'] : "Нет",
 //                        'call_result_id' => $call_result,
 //                        'hospital_id' => $hospital,
 //                        'hospitalization_result_id' => $hospitalization_result,
@@ -156,13 +156,12 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, WithHeadingRow, With
                         'excel_id' => $this->excel_id
                     ]);
 
+
                 }
-
-
-            }
-        } catch (Exception $e) {
+            } catch (Exception $e) {
                 file_put_contents(" storage/logs/jobs.log", $e, FILE_APPEND);
             }
+        }
 
     }
 
