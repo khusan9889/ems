@@ -128,7 +128,7 @@ class OdsAmbulanceIndicatorsImport implements ToCollection, WithHeadingRow, With
                     OdsAmbulanceIndicators::create([
                         'call_region_coato' => $this->region_coato,
 //                        'substation_id' => $substation,
-                        'filling_call_card' =>strtolower(trim($row['kv_zapolnena']))==strtolower("Да")?true:false,
+                        'filling_call_card' =>strtolower(trim($row['kv_zapolnena']))==strtolower("да")?true:false,
 //                        'call_type_id' => $type,
 //                        'card_number' => $row['pp'],
                         'call_received' => $row['data_priema'],
