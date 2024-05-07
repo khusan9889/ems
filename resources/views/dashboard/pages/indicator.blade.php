@@ -33,21 +33,6 @@
                             @enderror
                         </td>
                         <td class="text-nowrap">
-                            <label>Подстанциялар</label>
-                            <select class="form-control" name="substation_id">
-                                <option value="">Все</option>
-                                @foreach ($substations as $key => $substation)
-                                    <option
-                                        value="{{ $substation->id }}" {{ request('substation_id') == $substation->id ? 'selected' : '' }}>
-                                        {{ $substation->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('substation_id')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </td>
-                        <td class="text-nowrap">
                             <label>Бригадалар</label>
                             <select class="form-control" name="brigade_id">
                                 <option value="">Все</option>
@@ -119,34 +104,34 @@
                 <tr>
                     <th class="text-nowrap">№</th>
                     <th class="text-nowrap">Вилоят</th>
-                    <th class="text-nowrap">Подстанция принятия вызова</th>
-                    <th class="text-nowrap">Заполнение карты вызова</th>
+{{--                    <th class="text-nowrap">Подстанция принятия вызова</th>--}}
+{{--                    <th class="text-nowrap">Заполнение карты вызова</th>--}}
                     <th class="text-nowrap">Тип вызова</th>
-                    <th class="text-nowrap">Номер КВ</th>
+{{--                    <th class="text-nowrap">Номер КВ</th>--}}
                     <th class="text-nowrap">Дата приёма</th>
-                    <th class="text-nowrap">Вр. нач. форм. КТ</th>
+{{--                    <th class="text-nowrap">Вр. нач. форм. КТ</th>--}}
                     <th class="text-nowrap">Время приёма</th>
                     {{--                    <th class="text-nowrap">Время завершения формирования КТ</th>--}}
                     <th class="text-nowrap">Время передачи вызова Бригаде</th>
                     <th class="text-nowrap">Время выезда Бригады</th>
                     <th class="text-nowrap">Прибытие Бригады на место вызова</th>
-                    <th class="text-nowrap">Время началы транспортировки</th>
-                    <th class="text-nowrap">Время прибытия на мед. Учреждение</th>
-                    <th class="text-nowrap">время завершения вызова</th>
-                    <th class="text-nowrap">Время возврашения на подстанцию</th>
-                    <th class="text-nowrap">Название бригады</th>
-                    <th class="text-nowrap">Подробный адрес вызова</th>
+{{--                    <th class="text-nowrap">Время началы транспортировки</th>--}}
+{{--                    <th class="text-nowrap">Время прибытия на мед. Учреждение</th>--}}
+{{--                    <th class="text-nowrap">время завершения вызова</th>--}}
+{{--                    <th class="text-nowrap">Время возврашения на подстанцию</th>--}}
+{{--                    <th class="text-nowrap">Название бригады</th>--}}
+{{--                    <th class="text-nowrap">Подробный адрес вызова</th>--}}
                     <th class="text-nowrap">Причина вызова</th>
-                    <th class="text-nowrap">Пол пациента</th>
-                    <th class="text-nowrap">Возраст пациента</th>
-                    {{--                    <th class="text-nowrap">Область проживания пациента</th>--}}
-                    {{--                    <th class="text-nowrap">Район проживания пациента</th>--}}
-                    <th class="text-nowrap">Код МКБ</th>
-                    <th class="text-nowrap">Результат выезда</th>
-                    <th class="text-nowrap">Место госпитализации</th>
-                    <th class="text-nowrap">Результат госпитализации</th>
-                    <th class="text-nowrap">Кто вызвал</th>
-                    <th class="text-nowrap">Место вызова</th>
+{{--                    <th class="text-nowrap">Пол пациента</th>--}}
+{{--                    <th class="text-nowrap">Возраст пациента</th>--}}
+{{--                    <th class="text-nowrap">Область проживания пациента</th>--}}
+{{--                    <th class="text-nowrap">Район проживания пациента</th>--}}
+{{--                    <th class="text-nowrap">Код МКБ</th>--}}
+{{--                    <th class="text-nowrap">Результат выезда</th>--}}
+{{--                    <th class="text-nowrap">Место госпитализации</th>--}}
+{{--                    <th class="text-nowrap">Результат госпитализации</th>--}}
+{{--                    <th class="text-nowrap">Кто вызвал</th>--}}
+{{--                    <th class="text-nowrap">Место вызова</th>--}}
                     <th class="text-nowrap">Вр.на прин.выз.бр.</th>
                     <th class="text-nowrap">Вр. доезда на выз.</th>
                     <th class="text-nowrap">Диагноз</th>
@@ -170,39 +155,36 @@
                     >
                         <td>{{ ($indicators->currentpage()-1)*10 + $loop->index + 1}} {{$item->confirm_status}}</td>
                         <td>{{ $item?->call_region?->name }}</td>
-                        {{--                        <td>{{ $item?->call_district?->name }}</td>--}}
-                        <td>{{ $item?->substation?->name }}</td>
-                        <td>@if($item->filling_call_card)
-                                Да
-                            @else
-                                Нет
-                            @endif</td>
-                        <td>{{ $item->call_type?->name }}</td>
-                        <td>{{ $item->card_number }}</td>
+{{--                        <td>{{ $item?->call_district?->name }}</td>--}}
+{{--                        <td>{{ $item?->substation?->name }}</td>--}}
+                        <td>@if($item->filling_call_card)Да@elseНет@endif</td>
+{{--                        <td>{{ $item->call_type?->name }}</td>--}}
+{{--                        <td>{{ $item->card_number }}</td>--}}
                         <td>{{ Carbon::parse($item->call_received)->isoFormat('YYYY-MM-DD') }}</td>
-                        <td>{{ $item->beginning_formation_ct}}</td>
+{{--                        <td>{{ $item->beginning_formation_ct}}</td>--}}
                         <td>{{ $item->call_reception}}</td>
-                        {{--                        <td>{{ $item->completion_formation_ct}}</td>--}}
+{{--                        <td>{{ $item->completion_formation_ct}}</td>--}}
                         <td>{{ $item->transfer_brigade}}</td>
                         <td>{{ $item->brigade_departure}}</td>
                         <td>{{ $item->arrival_brigade_place}}</td>
-                        <td>{{ $item->transportation_start}}</td>
-                        <td>{{ $item->arrival_medical_center}}</td>
-                        <td>{{ $item->call_end}}</td>
-                        <td>{{ $item->return_substation}}</td>
-                        <td>{{ $item?->brigade?->name }}</td>
-                        <td>{{ $item->address }}</td>
+{{--                        <td>{{ $item->transportation_start}}</td>--}}
+{{--                        <td>{{ $item->arrival_medical_center}}</td>--}}
+{{--                        <td>{{ $item->call_end}}</td>--}}
+{{--                        <td>{{ $item->return_substation}}</td>--}}
+{{--                        <td>{{ $item?->brigade?->name }}</td>--}}
+{{--                        <td>{{ $item->address }}</td>--}}
                         <td>{{ $item?->reason?->name }}</td>
-                        <td>{{ $item->gender }}</td>
-                        <td>{{ $item->age }}</td>
-                        {{--                        <td>{{ $item?->residence_region?->name }}</td>--}}
-                        {{--                        <td>{{ $item?->residence_district?->name }}</td>--}}
-                        <td>{{ $item->diagnos }}</td>
-                        <td>{{ $item?->call_result?->name }}</td>
-                        <td>{{ $item?->hospital?->name }}</td>
-                        <td>{{ $item?->hospitalization_result?->name }}</td>
-                        <td>{{ $item?->called_person?->name }}</td>
-                        <td>{{ $item?->call_place?->name }}</td>
+                    {{--<td>{{ $item->gender }}</td>--}}
+                    {{--<td>{{ $item->age }}</td>--}}
+                    {{--<td>{{ $item?->residence_region?->name }}</td>--}}
+                    {{--<td>{{ $item?->residence_district?->name }}</td>--}}
+                    {{--<td>{{ $item->diagnos }}</td>--}}
+                    {{--<td>{{ $item?->call_result?->name }}</td>--}}
+                    {{--<td>{{ $item?->hospital?->name }}</td>--}}
+                    {{--<td>{{ $item?->hospitalization_result?->name }}</td>--}}
+                    {{--<td>{{ $item?->called_person?->name }}</td>--}}
+                    {{--<td>{{ $item?->call_place?->name }}</td>--}}
+
                         <td>{{ $item->brigade_call_time }}</td>
                         <td>{{ $item->travel_time }}</td>
                         <td>{{ $item->diagnosis?->name }}</td>
