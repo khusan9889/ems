@@ -139,6 +139,8 @@ class ReportFormController extends Controller
                 'ambulatory_operas' => $request->ambulatory_operas,
                 'including_children' => $request->including_children,
                 'confirm_status' => $request->confirm_status,
+                'acs' => $request->acs,
+                'polytrauma' => $request->polytrauma,
                 'status' => 'Измененный'
             ]
         );

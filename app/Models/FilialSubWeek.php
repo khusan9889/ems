@@ -46,7 +46,9 @@ class FilialSubWeek extends Model
         'ambulatory_operas',
         'including_children',
         'status',
-        'confirm_status'
+        'confirm_status',
+        'acs',
+        'polytrauma'
     ];
 
     public $hidden = [

@@ -99,7 +99,7 @@
                                value="{{$week->children_came_ticket}}" placeholder="Жумладан болалар">
                     </div>
                 </div>
-                <div class="row mb-3 f-s-18">
+                <div class="row mb-2 f-s-18">
                     <div class="col-2">
                         <label>Ётқизилган</label>
                         <input type="number" min="0" class="form-control f-s-20" name="recumbent" value="{{$week->recumbent}}"
@@ -133,7 +133,7 @@
                                placeholder="Жумладан болалар">
                     </div>
                 </div>
-                <div class="row mb-5 f-s-18">
+                <div class="row mb-2 f-s-18">
                     <div class="col-2">
                         <label>Ўлганлар</label>
                         <input type="number" min="0" class="form-control f-s-20" name="death" value="{{$week->death}}"
@@ -164,6 +164,19 @@
                         <input type="number" min="0" class="form-control f-s-20" name="including_children"
                                value="{{$week->including_children}}" placeholder="Жумладан болалар">
                     </div>
+                </div>
+            </div>
+
+            <div class="row mb-3 f-s-18">
+                <div class="col-2">
+                    <label>ОИМ</label>
+                    <input type="number" min="0" class="form-control f-s-20" name="acs"
+                           value="{{$week->acs}}" placeholder="ОИМ">
+                </div>
+                <div class="col-2">
+                    <label>Политравма</label>
+                    <input type="number" min="0" class="form-control f-s-20" name="polytrauma"
+                           value="{{$week->polytrauma}}" placeholder="Политравма ">
                 </div>
             </div>
             @if($filial_sub_weeks->count() != 0)

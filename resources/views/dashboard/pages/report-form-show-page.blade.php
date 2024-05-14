@@ -195,6 +195,14 @@
                                 <td>Жумладан болалар</td>
                                 <td>{{$week->including_children}}</td>
                             </tr>
+                            <tr>
+                                <td>ОИМ</td>
+                                <td>{{$week->acs}}</td>
+                            </tr>
+                            <tr>
+                                <td>Политравма </td>
+                                <td>{{$week->polytrauma}}</td>
+                            </tr>
                         </table>
                     </div>
 
