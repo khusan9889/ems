@@ -27,9 +27,7 @@
                 <input class="appearance-none border-2 rounded w-full py-3 px-3 leading-tight border-gray-300 bg-gray-100 focus:outline-none focus:border-indigo-700 focus:bg-white text-gray-700 pr-16 font-mono js-password" id="password" type="password" name="password" required autocomplete="off"/>
             </div>
 
-            <button class="w-full bg-indigo-700 hover:bg-indigo-900 text-white font-medium py-3 px-4 mt-10 rounded focus:outline-none focus:shadow-outline" type="submit">
-                Войти
-            </button>
+            <button class="w-full bg-indigo-700 hover:bg-indigo-900 text-white font-medium py-3 px-4 mt-10" type="submit">Войти</button>
 
         </form>
     </x-auth-card>
