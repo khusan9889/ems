@@ -156,6 +156,14 @@
                                 <td>{{$week->children_came_ticket}}</td>
                             </tr>
                             <tr>
+                                <td>Ётқизилган</td>
+                                <td>{{$week->recumbent}}</td>
+                            </tr>
+                            <tr>
+                                <td>Жумладан болалар</td>
+                                <td>{{$week->children_recumbent}}</td>
+                            </tr>
+                            <tr>
                                 <td>Операция</td>
                                 <td>{{$week->operation}}</td>
                             </tr>
