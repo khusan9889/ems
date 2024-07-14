@@ -44,18 +44,18 @@ services:
             - db
 
     nginx:
-        image: nginx:1.19.8-alpine
         container_name: nginx
+        build:
+            context: .
+            dockerfile: Dockerfile.nginx
         restart: unless-stopped
         tty: true
         ports:
-            - 8100:80
-        volumes:
-            - ./:/var/www
-            - /home/administrator/ems/nginx.conf:/etc/nginx/nginx.conf:ro
-            - /home/administrator/ems/nginx/conf:/etc/nginx/conf.d
+            - 8088:80
         networks:
             - app-network
+        depends_on:
+            - app
 
     queue:
          container_name: queue
