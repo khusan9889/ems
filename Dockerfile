@@ -10,8 +10,6 @@ RUN apt-get update \
         libpng-dev \
         libonig-dev \
         libxml2-dev \
-        libxml2-dev \
-        libxml2-dev \
         zip \
         unzip \
         zlib1g-dev \

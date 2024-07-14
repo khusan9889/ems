@@ -54,7 +54,7 @@ services:
          - 8100:80
      volumes:
          - ./:/var/www
-         - ./nginx.conf:/etc/nginx/nginx.conf
+#         - ./nginx.conf:/etc/nginx/nginx.conf
          - ./public:/var/www/public
          - ./storage:/var/www/storage
          - ./infra/nginx/conf:/etc/nginx/conf.d
