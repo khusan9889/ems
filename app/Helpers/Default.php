@@ -131,7 +131,7 @@ function localDatetime($date, $timezone = 'Asia/Tashkent')
 function weekGenerate()
 {
     $d = new DateTime();
-    $v=Week::orderBy('start_date', 'DESC')->first()->start_date;
+    $v=Week::orderBy('start_date', 'DESC')->first()?->start_date;
     $date =  new DateTime($v);
     $d->modify("-14 day");
     for ($i = 7; $date < $d;) {
